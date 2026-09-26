@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  {{/* Two-column layout: main content + sidebar */}}
+  {{/* Two-column layout */}}
   <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_300px] gap-6">
 
     {{/* Main content */}}
@@ -38,7 +38,6 @@
     {{/* Sidebar */}}
     <aside class="space-y-4">
 
-      {{/* Quick links */}}
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
         <h3 class="text-sm font-extrabold text-slate-900 tracking-tight mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
           <i class="fa-solid fa-compass text-indigo-600"></i> Quick Links
@@ -51,7 +50,6 @@
         </ul>
       </div>
 
-      {{/* Contact box */}}
       <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
         <h3 class="text-sm font-extrabold text-slate-900 tracking-tight mb-4 pb-3 border-b border-slate-100 flex items-center gap-2">
           <i class="fa-solid fa-headset text-indigo-600"></i> Get in Touch
@@ -72,7 +70,6 @@
         </ul>
       </div>
 
-      {{/* CTA card */}}
       <div class="bg-gradient-to-br from-indigo-600 to-indigo-800 rounded-2xl p-5 text-white">
         <h3 class="text-sm font-extrabold tracking-tight mb-2">List Your Business</h3>
         <p class="text-xs text-indigo-100 leading-relaxed mb-4">Reach thousands of businesses looking for your services.</p>
@@ -87,11 +84,14 @@
 
 </div>
 
-{{/* ══════════════════════════════════════════════════════════
-     Page content typography
-     ══════════════════════════════════════════════════════════ */}}
 <style>
-  .page-content { color: #475569; font-size: 15px; line-height: 1.75; text-align: justify; text-justify: inter-word; }  .page-content h1,
+  .page-content {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .page-content h1,
   .page-content h2,
   .page-content h3,
   .page-content h4 {
@@ -135,6 +135,9 @@
 
   .page-content p {
     margin: 0.85rem 0;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
   }
 
   .page-content p:first-of-type {
@@ -173,6 +176,7 @@
   .page-content ol li {
     margin: 0.35rem 0;
     padding-left: 0.25rem;
+    text-align: left;
   }
 
   .page-content ul li::marker {
@@ -215,14 +219,19 @@
     margin: 1.25rem 0;
   }
 
-  /* First paragraph (drop cap style intro) */
   .page-content > p:first-child {
     font-size: 16px;
     color: #1e293b;
     line-height: 1.75;
   }
 
-  /* Responsive typography */
+  @media (max-width: 768px) {
+    .page-content p {
+      text-align: left;
+      hyphens: none;
+    }
+  }
+
   @media (max-width: 640px) {
     .page-content { font-size: 14px; }
     .page-content h2 { font-size: 19px; margin-top: 1.75rem; }
