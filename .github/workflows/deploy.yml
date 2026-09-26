@@ -89,7 +89,6 @@ jobs:
                   lines.append('draft = false')
                   lines.append(f'categories = {toml_val([client.get("category", "")])}')
                   for k, v in client.items():
-                      if k in ("id", "name", "category"): continue
                       lines.append(f'params.{k} = {toml_val(v)}')
                   lines.append('+++')
                   lines.append('')
