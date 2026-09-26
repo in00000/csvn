@@ -95,11 +95,39 @@ jobs:
                   out_file = out_dir / f"{slug}.md"
                   out_file.write_text("\n".join(lines), encoding="utf-8")
                   total += 1
-
           print(f"Generated {total} listing pages")
-          print("Files:")
-          for p in sorted(out_dir.glob("*.md")):
-              print(" ", p.name)
+
+          # ── Generate one page per category ─────────────────────
+          cat_out = root / "content" / "categories"
+          cat_out.mkdir(parents=True, exist_ok=True)
+          for old in cat_out.glob("*.md"):
+              old.unlink()
+
+          # All-categories index
+          (cat_out / "_index.md").write_text(
+              '+++\ntitle = "All Categories"\nlayout = "terms"\n+++\n',
+              encoding="utf-8"
+          )
+
+          with open(root / "data" / "categories.json", "r", encoding="utf-8") as f:
+              cats_data = json.load(f)
+
+          cat_count = 0
+          for cat in cats_data["categories"]:
+              fm = [
+                  "+++",
+                  f'title = {esc(cat.get("name", ""))}',
+                  f'slug = {esc(cat.get("slug", ""))}',
+                  f'description = {esc(cat.get("description", ""))}',
+                  f'group = {esc(cat.get("group", ""))}',
+                  'layout = "category"',
+                  "+++",
+                  "",
+              ]
+              (cat_out / f"{cat['slug']}.md").write_text("\n".join(fm), encoding="utf-8")
+              cat_count += 1
+
+          print(f"Generated {cat_count} category pages")
           PYEOF
 
       - name: Build with Hugo
