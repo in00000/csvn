@@ -76,14 +76,14 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      {{ range .Site.Data.categories.groups }}
-        {{ $group := . }}
-
-        {{/* Count categories in this group */}}
-        {{ $count := 0 }}
-        {{ range $.Site.Data.categories.categories }}
-          {{ if eq .group $group.id }}{{ $count = add $count 1 }}{{ end }}
-        {{ end }}
+{{ range .Site.Data.categories.groups }}
+  {{ $groupId := .id }}
+  <optgroup label="{{ .name }}">
+    {{ range $.Site.Data.categories.categories }}
+      {{ if eq .group $groupId }}<option>{{ .name }}</option>{{ end }}
+    {{ end }}
+  </optgroup>
+{{ end }}
 
         <button type="button"
                 class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between"
