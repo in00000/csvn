@@ -84,6 +84,23 @@
       }
     {{ end }}
   ];
+  // Strip surrounding quote characters from string values.
+  // (Protects against data that arrives pre-escaped.)
+  function cleanStr(s) {
+    if (typeof s !== 'string') return s;
+    if (s.length >= 2 && s.charAt(0) === '"' && s.charAt(s.length - 1) === '"') {
+      return s.slice(1, -1);
+    }
+    return s;
+  }
+
+  INDEX = INDEX.map(function (v) {
+    var out = {};
+    for (var k in v) {
+      out[k] = typeof v[k] === 'string' ? cleanStr(v[k]) : v[k];
+    }
+    return out;
+  });
 
   var input    = document.getElementById('search-input');
   var form     = document.getElementById('search-form');
