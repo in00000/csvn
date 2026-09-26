@@ -1,0 +1,132 @@
+{{ define "main" }}
+
+{{/* ── Category metadata ────────────────────────────────────── */}}
+{{ $slug := .Title | urlize }}
+{{ $catName := .Title }}
+{{ $catDesc := "" }}
+{{ $catIcon := "fa-briefcase" }}
+{{ $catGroup := "" }}
+
+{{/* Look up full details from data/categories.json */}}
+{{ range .Site.Data.categories.categories }}
+  {{ if eq .slug $slug }}
+    {{ $catName = .name }}
+    {{ $catDesc = .description }}
+    {{ $catGroup = .group }}
+  {{ end }}
+{{ end }}
+
+{{/* Find the group name + icon for this category */}}
+{{ range .Site.Data.categories.groups }}
+  {{ if eq .id $catGroup }}
+    {{ $catIcon = .icon }}
+  {{ end }}
+{{ end }}
+
+{{ $vendorCount := len .Pages }}
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+  {{/* ── Breadcrumb ───────────────────────────────────────────── */}}
+  <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4 flex-wrap">
+    <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+    <span class="text-slate-300">/</span>
+    <a href="/categories/" class="hover:text-indigo-600 transition-colors">Categories</a>
+    <span class="text-slate-300">/</span>
+    <span class="text-slate-800 font-medium truncate">{{ $catName }}</span>
+  </nav>
+
+  {{/* ══════════════════════════════════════════════════════════
+      CATEGORY HEADER
+      ══════════════════════════════════════════════════════════ */}}
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
+    <div class="h-1.5 bg-indigo-600"></div>
+    <div class="p-6 sm:p-8">
+      <div class="flex items-start gap-4 mb-4">
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl shrink-0 border border-indigo-100">
+          <i class="fa-solid {{ $catIcon }}"></i>
+        </div>
+        <div class="min-w-0 flex-1">
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 mb-1">
+            {{ $catName }}
+          </h1>
+          {{ if $catDesc }}
+            <p class="text-sm text-slate-600 leading-relaxed">{{ $catDesc }}</p>
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100 text-xs">
+        <span class="flex items-center gap-2 text-slate-600">
+          <i class="fa-solid fa-building text-indigo-500"></i>
+          <span class="font-bold text-slate-900">{{ $vendorCount }}</span>
+          {{ if eq $vendorCount 1 }}vendor{{ else }}vendors{{ end }} listed
+        </span>
+        <a href="/listings/" class="flex items-center gap-1.5 text-indigo-600 hover:text-indigo-700 font-semibold transition-colors">
+          <i class="fa-solid fa-list"></i> Browse all vendors
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {{/* ══════════════════════════════════════════════════════════
+      VENDOR GRID
+      ══════════════════════════════════════════════════════════ */}}
+  {{ if $vendorCount }}
+
+    {{/* Sort: tier first (featured > premium > standard), then by order field */}}
+    {{ $sorted := sort .Pages "Params.order" "asc" }}
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {{ range $sorted }}
+        {{ partial "client-card.html" .Params }}
+      {{ end }}
+    </div>
+
+    {{/* ── Pagination ──────────────────────────────────────────── */}}
+    {{ $paginator := .Paginate $sorted }}
+
+    {{ if gt $paginator.TotalPages 1 }}
+      <nav class="flex items-center justify-center gap-1.5 mt-8">
+        {{ if $paginator.HasPrev }}
+          <a href="{{ $paginator.Prev.URL }}" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:border-indigo-500 hover:text-indigo-600 transition-colors">
+            <i class="fa-solid fa-chevron-left text-[10px]"></i> Previous
+          </a>
+        {{ end }}
+
+        {{ range $paginator.Pagers }}
+          <a href="{{ .URL }}" class="inline-flex items-center justify-center w-9 h-9 text-xs font-bold rounded-lg transition-colors
+            {{ if eq . $.Paginator }}bg-indigo-600 text-white{{ else }}bg-white border border-slate-200 text-slate-700 hover:border-indigo-500 hover:text-indigo-600{{ end }}">
+            {{ .PageNumber }}
+          </a>
+        {{ end }}
+
+        {{ if $paginator.HasNext }}
+          <a href="{{ $paginator.Next.URL }}" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:border-indigo-500 hover:text-indigo-600 transition-colors">
+            Next <i class="fa-solid fa-chevron-right text-[10px]"></i>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+
+  {{ else }}
+
+    {{/* ── Empty state ─────────────────────────────────────────── */}}
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
+      <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 flex items-center justify-center mb-4">
+        <i class="fa-solid fa-folder-open text-2xl text-slate-300"></i>
+      </div>
+      <h3 class="text-lg font-bold text-slate-900 mb-1">No vendors listed yet</h3>
+      <p class="text-sm text-slate-500 mb-5 max-w-sm mx-auto">
+        We don't have any verified vendors in {{ $catName }} yet. Check back soon or browse other categories.
+      </p>
+      <a href="/categories/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors">
+        <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
+      </a>
+    </div>
+
+  {{ end }}
+
+</div>
+
+{{ end }}

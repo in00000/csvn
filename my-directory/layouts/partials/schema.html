@@ -1,0 +1,129 @@
+{{/* ─────────────────────────────────────────────────────────────
+     JSON-LD Structured Data
+     Helps Google, Bing, and other search engines understand
+     what each page represents → enables rich search results.
+     ───────────────────────────────────────────────────────────── */}}
+
+{{ if .IsHome }}
+
+  {{/* ── Homepage: Organization + WebSite (search box) ──────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ .Site.Title }},
+    "url": {{ .Site.BaseURL }},
+    "description": {{ .Site.Params.description }},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "{{ .Site.BaseURL }}search/?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+{{ else if eq .Type "listings" }}
+
+  {{/* ── Individual listing page: LocalBusiness + AggregateRating ── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": {{ .Title }},
+    "url": {{ .Permalink }},
+    {{ with .Params.tagline }}"description": {{ . }},{{ end }}
+    {{ with .Params.phone }}"telephone": {{ . }},{{ end }}
+    {{ with .Params.email }}"email": {{ . }},{{ end }}
+    {{ with .Params.website }}"sameAs": {{ . }},{{ end }}
+    {{ with .Params.address }}"address": {
+      "@type": "PostalAddress",
+      "streetAddress": {{ . }},
+      {{ with $.Params.city }}"addressLocality": {{ . }},{{ end }}
+      {{ with $.Params.area }}"addressRegion": {{ . }},{{ end }}
+      "addressCountry": "IN"
+    },{{ end }}
+    {{ with .Params.rating }}"aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ . }},
+      "reviewCount": {{ $.Params.reviewCount | default 1 }}
+    },{{ end }}
+    {{ with .Params.services }}"makesOffer": [
+      {{ range $i, $s := . }}{{ if $i }},{{ end }}{
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": {{ $s }} }
+      }{{ end }}
+    ],{{ end }}
+    "image": "https://via.placeholder.com/600x400?text={{ .Title | urlize }}"
+  }
+  </script>
+
+  {{/* ── Breadcrumb for listing pages ────────────────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",       "item": {{ .Site.BaseURL }} },
+      { "@type": "ListItem", "position": 2, "name": "Listings",   "item": "{{ .Site.BaseURL }}listings/" },
+      { "@type": "ListItem", "position": 3, "name": {{ .Title }} }
+    ]
+  }
+  </script>
+
+{{ else if eq .Kind "taxonomy" }}
+
+  {{/* ── Category page: CollectionPage ───────────────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": {{ .Title }},
+    "url": {{ .Permalink }},
+    "description": "Browse verified {{ .Title }} vendors on {{ .Site.Title }}.",
+    "isPartOf": { "@type": "WebSite", "name": {{ .Site.Title }}, "url": {{ .Site.BaseURL }} }
+  }
+  </script>
+
+  {{/* ── Breadcrumb for category pages ───────────────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",       "item": {{ .Site.BaseURL }} },
+      { "@type": "ListItem", "position": 2, "name": "Categories", "item": "{{ .Site.BaseURL }}categories/" },
+      { "@type": "ListItem", "position": 3, "name": {{ .Title }} }
+    ]
+  }
+  </script>
+
+{{ else if eq .Kind "taxonomyTerm" }}
+
+  {{/* ── All categories page ─────────────────────────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "All Categories",
+    "url": {{ .Permalink }},
+    "description": "Browse all service categories on {{ .Site.Title }}."
+  }
+  </script>
+
+{{ else }}
+
+  {{/* ── Any other page (About, Contact, static) ─────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": {{ .Title }},
+    "url": {{ .Permalink }},
+    "isPartOf": { "@type": "WebSite", "name": {{ .Site.Title }}, "url": {{ .Site.BaseURL }} }
+  }
+  </script>
+
+{{ end }}

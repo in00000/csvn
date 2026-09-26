@@ -1,0 +1,205 @@
+{
+  "groups": [
+    {
+      "id": "facility-management",
+      "name": "Facility Management",
+      "slug": "facility-management",
+      "icon": "ph-broom",
+      "sub": "Cleaning, pest control, waste, landscaping",
+      "categories": ["housekeeping","deep-cleaning","floor-polishing","pest-control","waste-management","landscaping","plant-rental"]
+    },
+    {
+      "id": "technical-services",
+      "name": "Technical Services",
+      "slug": "technical-services",
+      "icon": "ph-lightning",
+      "sub": "AC, electrical, plumbing, lift, UPS, solar",
+      "categories": ["ac-hvac","electrical","plumbing","elevator","power-backup","solar"]
+    },
+    {
+      "id": "security-safety",
+      "name": "Security & Safety",
+      "slug": "security-safety",
+      "icon": "ph-shield-check",
+      "sub": "Guards, CCTV, fire safety, access control",
+      "categories": ["security-guards","cctv","fire-safety","access-control","intercom","cybersecurity"]
+    },
+    {
+      "id": "it-technology",
+      "name": "IT & Technology",
+      "slug": "it-technology",
+      "icon": "ph-laptop",
+      "sub": "IT support, software, cloud, networking",
+      "categories": ["it-services","software-development","website-development","app-development","cloud-hosting","it-hardware","networking","crm-saas","data-analytics"]
+    },
+    {
+      "id": "office-setup",
+      "name": "Office Setup & Supplies",
+      "slug": "office-setup",
+      "icon": "ph-armchair",
+      "sub": "Furniture, interiors, stationery, signage",
+      "categories": ["office-furniture","office-interiors","office-renovation","stationery","printing-signage","packaging","uniforms"]
+    },
+    {
+      "id": "food-hospitality",
+      "name": "Food & Hospitality",
+      "slug": "food-hospitality",
+      "icon": "ph-fork-knife",
+      "sub": "Catering, canteen, pantry, water, hotels",
+      "categories": ["catering","canteen","pantry","water-vending","coffee-vending","hotels","guest-house"]
+    },
+    {
+      "id": "transport-logistics",
+      "name": "Transport & Logistics",
+      "slug": "transport-logistics",
+      "icon": "ph-truck",
+      "sub": "Employee transport, freight, courier, moving",
+      "categories": ["employee-transport","corporate-cabs","bus-shuttle","vehicle-leasing","courier","freight","warehousing","office-shifting","customs-clearing"]
+    },
+    {
+      "id": "marketing-branding",
+      "name": "Marketing & Branding",
+      "slug": "marketing-branding",
+      "icon": "ph-megaphone",
+      "sub": "Digital marketing, PR, gifting, events",
+      "categories": ["digital-marketing","seo-services","social-media","advertising","pr-agencies","branding","corporate-gifting","event-management","photography","printing"]
+    },
+    {
+      "id": "hr-people",
+      "name": "HR & People",
+      "slug": "hr-people",
+      "icon": "ph-users",
+      "sub": "Staffing, payroll, training, wellness",
+      "categories": ["staffing","executive-search","payroll","hr-software","training","wellness","team-building"]
+    },
+    {
+      "id": "finance-legal",
+      "name": "Finance & Legal",
+      "slug": "finance-legal",
+      "icon": "ph-scales",
+      "sub": "CA, tax, legal, insurance, compliance",
+      "categories": ["chartered-accountants","tax-consultants","gst-filing","legal-advisors","company-secretary","business-registration","iso-certification","insurance","financial-advisory"]
+    },
+    {
+      "id": "travel-events",
+      "name": "Travel & Events",
+      "slug": "travel-events",
+      "icon": "ph-airplane-tilt",
+      "sub": "Corporate travel, visa, MICE, offsites",
+      "categories": ["corporate-travel","visa-services","mice","corporate-events","team-offsites","forex"]
+    },
+    {
+      "id": "other-services",
+      "name": "Other Corporate Services",
+      "slug": "other-services",
+      "icon": "ph-briefcase",
+      "sub": "Industrial, safety, translation, coworking",
+      "categories": ["industrial-supplies","safety-equipment","manufacturing","rnd","translation","virtual-office","coworking","other"]
+    }
+  ],
+
+  "categories": [
+    { "id": "housekeeping",        "name": "Housekeeping & Cleaning",       "slug": "housekeeping",        "group": "facility-management",  "description": "Daily cleaning for offices, factories, and commercial spaces." },
+    { "id": "deep-cleaning",       "name": "Deep Cleaning & Sanitization",  "slug": "deep-cleaning",       "group": "facility-management",  "description": "Intensive cleaning, sanitization, and disinfection services." },
+    { "id": "floor-polishing",     "name": "Marble & Floor Polishing",      "slug": "floor-polishing",     "group": "facility-management",  "description": "Marble polishing, floor restoration, and protective coating." },
+    { "id": "pest-control",        "name": "Pest Control",                  "slug": "pest-control",        "group": "facility-management",  "description": "Fumigation, rodent control, and anti-termite treatment." },
+    { "id": "waste-management",    "name": "Waste Management",              "slug": "waste-management",    "group": "facility-management",  "description": "Industrial waste disposal, recycling, and compliance." },
+    { "id": "landscaping",         "name": "Landscaping & Gardening",       "slug": "landscaping",         "group": "facility-management",  "description": "Corporate landscaping, garden design, and maintenance." },
+    { "id": "plant-rental",        "name": "Office Plant Rental",           "slug": "plant-rental",        "group": "facility-management",  "description": "Indoor plant rental and maintenance for offices." },
+
+    { "id": "ac-hvac",             "name": "AC / HVAC Services",            "slug": "ac-hvac",             "group": "technical-services",   "description": "Air conditioning installation, servicing, and AMC." },
+    { "id": "electrical",          "name": "Electrical Services",           "slug": "electrical",          "group": "technical-services",   "description": "HT/LT electrical contracting, panel wiring, and repairs." },
+    { "id": "plumbing",            "name": "Plumbing Services",             "slug": "plumbing",            "group": "technical-services",   "description": "Industrial and commercial plumbing installation and repair." },
+    { "id": "elevator",            "name": "Elevator & Lift AMC",           "slug": "elevator",            "group": "technical-services",   "description": "Elevator installation, maintenance, and annual contracts." },
+    { "id": "power-backup",        "name": "UPS & Power Backup",            "slug": "power-backup",        "group": "technical-services",   "description": "UPS systems, inverters, and backup power solutions." },
+    { "id": "solar",               "name": "Solar Panel Installation",      "slug": "solar",               "group": "technical-services",   "description": "Rooftop solar installation and maintenance for businesses." },
+
+    { "id": "security-guards",     "name": "Security Guards",               "slug": "security-guards",     "group": "security-safety",      "description": "Trained security personnel for plants, offices, and events." },
+    { "id": "cctv",                "name": "CCTV & Surveillance",           "slug": "cctv",                "group": "security-safety",      "description": "CCTV installation, monitoring, and video surveillance." },
+    { "id": "fire-safety",         "name": "Fire & Safety Equipment",       "slug": "fire-safety",         "group": "security-safety",      "description": "Fire extinguishers, alarms, and safety system installation." },
+    { "id": "access-control",      "name": "Access Control Systems",        "slug": "access-control",      "group": "security-safety",      "description": "Biometric, card, and gate access control systems." },
+    { "id": "intercom",            "name": "Intercom & EPABX",              "slug": "intercom",            "group": "security-safety",      "description": "Intercom, EPABX, and communication system providers." },
+    { "id": "cybersecurity",       "name": "Cybersecurity",                 "slug": "cybersecurity",       "group": "security-safety",      "description": "Network security, penetration testing, and compliance." },
+
+    { "id": "it-services",         "name": "IT Services & AMC",             "slug": "it-services",         "group": "it-technology",        "description": "Managed IT services, helpdesk, and annual maintenance." },
+    { "id": "software-development","name": "Software Development",          "slug": "software-development","group": "it-technology",        "description": "Custom software, ERP, and enterprise application development." },
+    { "id": "website-development", "name": "Website Development",           "slug": "website-development", "group": "it-technology",        "description": "Corporate website design, development, and maintenance." },
+    { "id": "app-development",     "name": "Mobile App Development",        "slug": "app-development",     "group": "it-technology",        "description": "iOS and Android app development for enterprises." },
+    { "id": "cloud-hosting",       "name": "Cloud & Hosting",               "slug": "cloud-hosting",       "group": "it-technology",        "description": "Cloud migration, hosting, and infrastructure management." },
+    { "id": "it-hardware",         "name": "IT Hardware Supply",            "slug": "it-hardware",         "group": "it-technology",        "description": "Bulk supply of laptops, desktops, servers, and peripherals." },
+    { "id": "networking",          "name": "Networking & Cabling",          "slug": "networking",          "group": "it-technology",        "description": "Structured cabling, LAN, WAN, and network setup." },
+    { "id": "crm-saas",            "name": "CRM & SaaS Setup",              "slug": "crm-saas",            "group": "it-technology",        "description": "CRM implementation, SaaS onboarding, and integration." },
+    { "id": "data-analytics",      "name": "Data Analytics",                "slug": "data-analytics",      "group": "it-technology",        "description": "Business intelligence, dashboards, and data consulting." },
+
+    { "id": "office-furniture",    "name": "Office Furniture",              "slug": "office-furniture",    "group": "office-setup",         "description": "Workstations, chairs, and modular office furniture." },
+    { "id": "office-interiors",    "name": "Office Interiors",              "slug": "office-interiors",    "group": "office-setup",         "description": "Turnkey interior design and execution for offices." },
+    { "id": "office-renovation",   "name": "Office Renovation",             "slug": "office-renovation",   "group": "office-setup",         "description": "Office remodeling, partition, and upgrade services." },
+    { "id": "stationery",          "name": "Office Stationery",             "slug": "stationery",          "group": "office-setup",         "description": "Bulk office stationery and consumables supply." },
+    { "id": "printing-signage",    "name": "Printing & Signage",            "slug": "printing-signage",    "group": "office-setup",         "description": "Corporate printing, signage, and branding material." },
+    { "id": "packaging",           "name": "Packaging Solutions",           "slug": "packaging",           "group": "office-setup",         "description": "Industrial and retail packaging supply and design." },
+    { "id": "uniforms",            "name": "Uniform Suppliers",             "slug": "uniforms",            "group": "office-setup",         "description": "Corporate uniforms, safety wear, and staff apparel." },
+
+    { "id": "catering",            "name": "Corporate Catering",            "slug": "catering",            "group": "food-hospitality",     "description": "Corporate catering for events, offices, and factories." },
+    { "id": "canteen",             "name": "Canteen Services",              "slug": "canteen",             "group": "food-hospitality",     "description": "Canteen setup, management, and daily meal services." },
+    { "id": "pantry",              "name": "Pantry Supplies",               "slug": "pantry",              "group": "food-hospitality",     "description": "Office pantry supplies, snacks, and beverage management." },
+    { "id": "water-vending",       "name": "Water Purifier & Vending",      "slug": "water-vending",       "group": "food-hospitality",     "description": "Water purifier installation, servicing, and vending." },
+    { "id": "coffee-vending",      "name": "Coffee & Tea Vending",          "slug": "coffee-vending",      "group": "food-hospitality",     "description": "Coffee and tea vending machines and supply." },
+    { "id": "hotels",              "name": "Hotels & Accommodation",        "slug": "hotels",              "group": "food-hospitality",     "description": "Corporate hotel bookings and long-stay accommodation." },
+    { "id": "guest-house",         "name": "Guest House Services",          "slug": "guest-house",         "group": "food-hospitality",     "description": "Guest house and executive stay arrangements." },
+
+    { "id": "employee-transport",  "name": "Employee Transportation",       "slug": "employee-transport",  "group": "transport-logistics",  "description": "Employee pick-up and drop services for businesses." },
+    { "id": "corporate-cabs",      "name": "Corporate Cabs",                "slug": "corporate-cabs",      "group": "transport-logistics",  "description": "Corporate cab booking, monthly rentals, and airport transfers." },
+    { "id": "bus-shuttle",         "name": "Bus & Shuttle Services",        "slug": "bus-shuttle",         "group": "transport-logistics",  "description": "Staff buses and shuttle services for large campuses." },
+    { "id": "vehicle-leasing",     "name": "Vehicle Leasing",               "slug": "vehicle-leasing",     "group": "transport-logistics",  "description": "Long-term vehicle leasing for corporate fleets." },
+    { "id": "courier",             "name": "Couriers & Delivery",           "slug": "courier",             "group": "transport-logistics",  "description": "Business courier, same-day delivery, and logistics." },
+    { "id": "freight",             "name": "Freight & Cargo",               "slug": "freight",             "group": "transport-logistics",  "description": "Road, rail, air, and sea freight services." },
+    { "id": "warehousing",         "name": "Warehousing",                   "slug": "warehousing",         "group": "transport-logistics",  "description": "Warehouse storage and fulfillment services." },
+    { "id": "office-shifting",     "name": "Office Shifting & Relocation",  "slug": "office-shifting",     "group": "transport-logistics",  "description": "Complete office relocation and packing services." },
+    { "id": "customs-clearing",    "name": "Customs Clearing",              "slug": "customs-clearing",    "group": "transport-logistics",  "description": "Import/export customs clearance and documentation." },
+
+    { "id": "digital-marketing",   "name": "Digital Marketing",             "slug": "digital-marketing",   "group": "marketing-branding",   "description": "Full-service digital marketing and campaign management." },
+    { "id": "seo-services",        "name": "SEO Services",                  "slug": "seo-services",        "group": "marketing-branding",   "description": "Search engine optimization for corporate websites." },
+    { "id": "social-media",        "name": "Social Media Marketing",        "slug": "social-media",        "group": "marketing-branding",   "description": "Social media strategy, content, and paid campaigns." },
+    { "id": "advertising",         "name": "Advertising Agencies",          "slug": "advertising",         "group": "marketing-branding",   "description": "Print, TV, radio, and outdoor advertising services." },
+    { "id": "pr-agencies",         "name": "PR Agencies",                   "slug": "pr-agencies",         "group": "marketing-branding",   "description": "Public relations, press releases, and media outreach." },
+    { "id": "branding",            "name": "Branding & Design",             "slug": "branding",            "group": "marketing-branding",   "description": "Brand identity, logo design, and creative services." },
+    { "id": "corporate-gifting",   "name": "Corporate Gifting",             "slug": "corporate-gifting",   "group": "marketing-branding",   "description": "Bulk corporate gifts and branded merchandise." },
+    { "id": "event-management",    "name": "Event Management",              "slug": "event-management",    "group": "marketing-branding",   "description": "Corporate event planning, execution, and production." },
+    { "id": "photography",         "name": "Photography & Video",           "slug": "photography",         "group": "marketing-branding",   "description": "Corporate photography, videography, and production." },
+    { "id": "printing",            "name": "Printing Services",             "slug": "printing",            "group": "marketing-branding",   "description": "Offset and digital printing for corporate needs." },
+
+    { "id": "staffing",            "name": "Staffing & Recruitment",        "slug": "staffing",            "group": "hr-people",            "description": "Permanent and contract staffing for enterprises." },
+    { "id": "executive-search",    "name": "Executive Search",              "slug": "executive-search",    "group": "hr-people",            "description": "Senior leadership and CXO-level hiring services." },
+    { "id": "payroll",             "name": "Payroll Services",              "slug": "payroll",             "group": "hr-people",            "description": "Outsourced payroll processing and compliance." },
+    { "id": "hr-software",         "name": "HR Software",                   "slug": "hr-software",         "group": "hr-people",            "description": "HRMS, attendance, and workforce management software." },
+    { "id": "training",            "name": "Training & Development",        "slug": "training",            "group": "hr-people",            "description": "Corporate training programs and skill development." },
+    { "id": "wellness",            "name": "Corporate Wellness",            "slug": "wellness",            "group": "hr-people",            "description": "Employee wellness, health, and fitness programs." },
+    { "id": "team-building",       "name": "Team Building",                 "slug": "team-building",       "group": "hr-people",            "description": "Team building activities, retreats, and workshops." },
+
+    { "id": "chartered-accountants","name": "Chartered Accountants",        "slug": "chartered-accountants","group": "finance-legal",       "description": "CA services, audit, and financial advisory." },
+    { "id": "tax-consultants",     "name": "Tax Consultants",               "slug": "tax-consultants",     "group": "finance-legal",        "description": "Income tax, corporate tax, and tax planning." },
+    { "id": "gst-filing",          "name": "GST Filing Services",           "slug": "gst-filing",          "group": "finance-legal",        "description": "GST registration, returns filing, and compliance." },
+    { "id": "legal-advisors",      "name": "Legal Advisors",                "slug": "legal-advisors",      "group": "finance-legal",        "description": "Corporate legal counsel and litigation support." },
+    { "id": "company-secretary",   "name": "Company Secretary",             "slug": "company-secretary",   "group": "finance-legal",        "description": "CS services, ROC filings, and corporate compliance." },
+    { "id": "business-registration","name": "Business Registration",        "slug": "business-registration","group": "finance-legal",       "description": "Company incorporation and startup registration." },
+    { "id": "iso-certification",   "name": "ISO Certification",             "slug": "iso-certification",   "group": "finance-legal",        "description": "ISO, BIS, and other certification consultancy." },
+    { "id": "insurance",           "name": "Insurance Brokers",             "slug": "insurance",           "group": "finance-legal",        "description": "Corporate insurance, health, and general insurance." },
+    { "id": "financial-advisory",  "name": "Financial Advisory",            "slug": "financial-advisory",  "group": "finance-legal",        "description": "M&A, fundraising, and financial strategy consulting." },
+
+    { "id": "corporate-travel",    "name": "Corporate Travel",              "slug": "corporate-travel",    "group": "travel-events",        "description": "Business travel management and bookings." },
+    { "id": "visa-services",       "name": "Visa & Passport Services",      "slug": "visa-services",       "group": "travel-events",        "description": "Business visa, passport, and documentation support." },
+    { "id": "mice",                "name": "Conference & MICE",             "slug": "mice",                "group": "travel-events",        "description": "Meetings, incentives, conferences, and exhibitions." },
+    { "id": "corporate-events",    "name": "Corporate Event Planning",      "slug": "corporate-events",    "group": "travel-events",        "description": "Corporate event planning and management services." },
+    { "id": "team-offsites",       "name": "Team Offsites",                 "slug": "team-offsites",       "group": "travel-events",        "description": "Offsite retreats, team trips, and outbound activities." },
+    { "id": "forex",               "name": "Forex Services",                "slug": "forex",               "group": "travel-events",        "description": "Foreign exchange, remittance, and travel money cards." },
+
+    { "id": "industrial-supplies", "name": "Industrial Supplies",           "slug": "industrial-supplies", "group": "other-services",       "description": "MRO supplies, tools, and industrial consumables." },
+    { "id": "safety-equipment",    "name": "Safety Equipment",              "slug": "safety-equipment",    "group": "other-services",       "description": "PPE, safety gear, and industrial safety products." },
+    { "id": "manufacturing",       "name": "Manufacturing Services",        "slug": "manufacturing",       "group": "other-services",       "description": "Contract manufacturing and job work services." },
+    { "id": "rnd",                 "name": "Research & Development",        "slug": "rnd",                 "group": "other-services",       "description": "R&D services, prototyping, and product development." },
+    { "id": "translation",         "name": "Translation Services",          "slug": "translation",         "group": "other-services",       "description": "Document translation, localization, and interpreting." },
+    { "id": "virtual-office",      "name": "Virtual Office",                "slug": "virtual-office",      "group": "other-services",       "description": "Virtual office addresses and business registration." },
+    { "id": "coworking",           "name": "Coworking Spaces",              "slug": "coworking",           "group": "other-services",       "description": "Flexible coworking and managed office spaces." },
+    { "id": "other",               "name": "Other Corporate Services",      "slug": "other",               "group": "other-services",       "description": "Miscellaneous corporate services and vendors." }
+  ]
+}

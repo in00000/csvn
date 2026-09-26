@@ -1,0 +1,126 @@
+{{/* ─────────────────────────────────────────────────────────────
+     Reusable vendor card.
+     Called with a client object from data/clients/*.json.
+     Usage: {{ partial "client-card.html" . }}
+     ───────────────────────────────────────────────────────────── */}}
+
+{{ $tier := lower (.tier | default "standard") }}
+{{ $detailURL := printf "/listings/%s/" .id }}
+
+{{/* Tier visuals */}}
+{{ $topBar    := "bg-slate-300" }}
+{{ $badge     := "" }}
+{{ if eq $tier "featured" }}
+  {{ $topBar = "bg-emerald-500" }}
+  {{ $badge  = "bg-emerald-50 text-emerald-700 border border-emerald-200" }}
+{{ else if eq $tier "premium" }}
+  {{ $topBar = "bg-amber-500" }}
+  {{ $badge  = "bg-amber-50 text-amber-700 border border-amber-200" }}
+{{ end }}
+
+<article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all overflow-hidden flex flex-col">
+
+  {{/* ── Tier accent bar ──────────────────────────────────────── */}}
+  <div class="h-1 {{ $topBar }}"></div>
+
+  <div class="p-5 flex flex-col flex-grow">
+
+    {{/* ── Tier badge ───────────────────────────────────────────── */}}
+    {{ if $badge }}
+      <div class="mb-3">
+        <span class="inline-flex items-center gap-1 {{ $badge }} text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md">
+          {{ if eq $tier "featured" }}
+            <i class="fa-solid fa-circle-check text-[9px]"></i> Verified
+          {{ else }}
+            <i class="fa-solid fa-gem text-[9px]"></i> Premium
+          {{ end }}
+        </span>
+      </div>
+    {{ end }}
+
+    {{/* ── Name ─────────────────────────────────────────────────── */}}
+    <h3 class="text-base font-extrabold text-slate-900 leading-snug tracking-tight mb-1.5">
+      <a href="{{ $detailURL }}" class="hover:text-indigo-600 transition-colors">
+        {{ .name }}
+      </a>
+    </h3>
+
+    {{/* ── Tagline ──────────────────────────────────────────────── */}}
+    {{ with .tagline }}
+      <p class="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-2">
+        {{ . }}
+      </p>
+    {{ end }}
+
+    {{/* ── Meta info ────────────────────────────────────────────── */}}
+    <div class="space-y-2 mb-4 pb-4 border-b border-dashed border-slate-200">
+
+      {{/* Category */}}
+      {{ with .category }}
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <span class="flex items-center gap-2 text-slate-500 font-medium">
+            <i class="fa-solid fa-briefcase text-indigo-500 w-3.5 text-center"></i>
+            Service
+          </span>
+          <span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">
+            {{ humanize . }}
+          </span>
+        </div>
+      {{ end }}
+
+      {{/* Location */}}
+      {{ if or .city .area }}
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <span class="flex items-center gap-2 text-slate-500 font-medium">
+            <i class="fa-solid fa-location-dot text-indigo-500 w-3.5 text-center"></i>
+            Location
+          </span>
+          <span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">
+            {{ with .city }}{{ . }}{{ end }}{{ if and .city .area }}, {{ end }}{{ with .area }}{{ . }}{{ end }}
+          </span>
+        </div>
+      {{ end }}
+
+      {{/* Rating */}}
+      {{ with .rating }}
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <span class="flex items-center gap-2 text-slate-500 font-medium">
+            <i class="fa-solid fa-star text-indigo-500 w-3.5 text-center"></i>
+            Rating
+          </span>
+          <span class="flex items-center gap-1.5">
+            <span class="text-amber-500 text-[10px] tracking-tight">
+              {{ $r := int . }}{{ range seq $r }}<i class="fa-solid fa-star"></i>{{ end }}
+            </span>
+            <span class="font-bold text-slate-800">{{ . }}</span>
+            {{ with $.reviewCount }}
+              <span class="text-slate-400 font-medium">({{ . }})</span>
+            {{ end }}
+          </span>
+        </div>
+      {{ end }}
+
+      {{/* Phone */}}
+      {{ with .phone }}
+        <div class="flex items-center justify-between gap-3 text-xs">
+          <span class="flex items-center gap-2 text-slate-500 font-medium">
+            <i class="fa-solid fa-phone text-indigo-500 w-3.5 text-center"></i>
+            Phone
+          </span>
+          <span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">
+            {{ . }}
+          </span>
+        </div>
+      {{ end }}
+
+    </div>
+
+    {{/* ── CTA Button ───────────────────────────────────────────── */}}
+    <a href="{{ $detailURL }}"
+       class="mt-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg shadow-sm transition-colors">
+      View Full Profile
+      <i class="fa-solid fa-arrow-right text-[10px]"></i>
+    </a>
+
+  </div>
+</article>

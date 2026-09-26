@@ -1,0 +1,43 @@
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+
+    {{/* ── Logo ─────────────────────────────────────────────── */}}
+    <a href="/" class="flex items-center gap-2.5 shrink-0">
+      <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-sm">
+        <i class="fa-solid fa-building-columns text-base"></i>
+      </div>
+      <div class="leading-none">
+        <span class="block text-base font-extrabold tracking-tight text-slate-900">
+          ProBuild<span class="text-indigo-600">B2B</span>
+        </span>
+        <span class="hidden sm:block text-[10px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
+          Industrial & Commercial Network
+        </span>
+      </div>
+    </a>
+
+    {{/* ── Desktop Navigation ───────────────────────────────── */}}
+    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+      <a href="/categories/" class="hover:text-indigo-600 transition-colors">Categories</a>
+      <a href="/listings/" class="hover:text-indigo-600 transition-colors">All Vendors</a>
+      <a href="/about/" class="hover:text-indigo-600 transition-colors">About</a>
+      <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+    </nav>
+
+    {{/* ── Right Actions ────────────────────────────────────── */}}
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="/search/"
+         class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-500 hover:text-indigo-600 hover:bg-slate-100 transition-colors"
+         aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+      </a>
+      <a href="/contact/"
+         class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
+        <i class="fa-solid fa-plus text-xs"></i>
+        <span class="hidden sm:inline">Add Listing</span>
+        <span class="sm:hidden">Add</span>
+      </a>
+    </div>
+
+  </div>
+</header>

@@ -1,0 +1,60 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{{ if .IsHome }}
+  <title>{{ .Site.Title }}</title>
+{{ else }}
+  <title>{{ .Title }} · {{ .Site.Title }}</title>
+{{ end }}
+
+{{ $desc := "" }}
+{{ if .Description }}
+  {{ $desc = .Description }}
+{{ else if .IsHome }}
+  {{ $desc = .Site.Params.description }}
+{{ else if .Params.description }}
+  {{ $desc = .Params.description }}
+{{ else }}
+  {{ $desc = .Site.Params.description }}
+{{ end }}
+<meta name="description" content="{{ $desc }}">
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc }}">
+
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+      }
+    }
+  };
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+{{ if .Store.Get "needsAlpine" }}
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{ end }}
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; }
+</style>

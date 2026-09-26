@@ -1,0 +1,53 @@
+{{ $clients := .Site.Data.clients }}
+
+{{ range $filename, $entries := $clients }}
+
+  {{ range $entries }}
+
+    {{ $page := dict
+      "path"       (printf "/listings/%s" .id)
+      "title"      .name
+      "kind"       "page"
+      "categories" (slice .category)
+      "params"     (dict
+
+        "id"          .id
+        "name"        .name
+        "category"    .category
+
+        "tier"        (.tier        | default "Standard")
+        "order"       (.order       | default 999)
+
+        "tagline"     (.tagline     | default "")
+        "city"        (.city        | default "")
+        "area"        (.area        | default "")
+        "rating"      (.rating      | default 0)
+        "reviewCount" (.reviewCount | default 0)
+        "since"       (.since       | default "")
+        "experience"  (.experience  | default "")
+        "status"      (.status      | default "Open")
+
+        "phone"       (.phone       | default "")
+        "whatsapp"    (.whatsapp    | default "")
+        "email"       (.email       | default "")
+        "website"     (.website     | default "")
+        "address"     (.address     | default "")
+        "hours"       (.hours       | default "")
+        "mapUrl"      (.mapUrl      | default "")
+
+        "about"       (.about       | default slice)
+        "services"    (.services    | default slice)
+        "catalogues"  (.catalogues  | default slice)
+        "clients"     (.clients     | default slice)
+        "reviews"     (.reviews     | default slice)
+
+        "social"      (.social      | default dict)
+
+      )
+    }}
+
+    {{ $.AddPage $page }}
+
+  {{ end }}
+
+{{ end }}

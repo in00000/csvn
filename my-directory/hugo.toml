@@ -1,0 +1,68 @@
+# ─────────────────────────────────────────────────────────────
+#  ProBuildB2B — Hugo Configuration
+#  Site:    Industrial & Commercial Service Directory
+#  Scale:   50,000+ listing pages, text-only
+# ─────────────────────────────────────────────────────────────
+
+baseURL      = "https://example.com/"
+languageCode = "en-us"
+title        = "ProBuildB2B — Industrial & Commercial Service Providers"
+timeZone     = "Asia/Kolkata"
+
+# We don't need RSS feeds on a directory site.
+disableKinds = ["RSS"]
+
+# ─── Taxonomies ──────────────────────────────────────────────
+# Every client has a "category" field. Hugo auto-generates a real
+# page per category at /categories/<slug>/ using this taxonomy.
+[taxonomies]
+  category = "categories"
+
+# ─── Pagination ──────────────────────────────────────────────
+# Used on category pages, the all-listings page, and search results.
+[pagination]
+  pagerSize = 24
+
+# ─── Sitemap ─────────────────────────────────────────────────
+# Hugo auto-splits sitemaps when a site exceeds 50,000 URLs,
+# so all your listing pages get indexed cleanly.
+[sitemap]
+  changefreq = "weekly"
+  priority   = 0.5
+  filename   = "sitemap.xml"
+
+# ─── Site-wide parameters ────────────────────────────────────
+[params]
+  description  = "Source verified industrial & facility service contractors across 50+ industrial hubs."
+  reportEmail  = "admin@example.com"
+
+  # Homepage hero
+  heroTitle    = "Source Verified Industrial & Facility Service Providers in Seconds"
+  heroSubtitle = "Connect directly with pre-vetted contractors for Pest Control, Canteen Catering, Labour Contracting, Epoxy Flooring, and Heavy Maintenance."
+
+  # Industrial hubs shown in the hero search dropdown
+  hubs = [
+    "Pune & Chakan",
+    "Mumbai & Thane",
+    "Bangalore Industrial",
+    "Chennai Oragadam",
+    "NCR / Gurgaon"
+  ]
+
+# ─── Markup ──────────────────────────────────────────────────
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Allow raw HTML inside client descriptions if ever needed.
+      unsafe = true
+
+# ─── Build ───────────────────────────────────────────────────
+[build]
+  # Prints slow templates during local dev — useful when tuning
+  # 50k-page builds.
+  writeStats = true
+
+# ─── Outputs ─────────────────────────────────────────────────
+# Generate HTML for every page + a sitemap for the home page.
+[outputs]
+  home = ["HTML", "Sitemap"]

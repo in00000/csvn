@@ -1,0 +1,61 @@
+[
+  {
+    "id": "abc-pest-control",
+    "name": "ABC Pest Control Services",
+    "tagline": "Professional pest control for corporate offices, factories, and commercial buildings.",
+    "category": "pest-control",
+    "tier": "Premium",
+    "order": 1,
+
+    "city": "Mumbai",
+    "area": "Maharashtra",
+    "rating": 4.6,
+    "reviewCount": 18,
+    "since": 2017,
+    "experience": "8+ Years",
+    "status": "Verified",
+
+    "phone": "9123456780",
+    "whatsapp": "9123456780",
+    "email": "info@abcpestcontrol.com",
+    "website": "https://abcpestcontrol.com",
+    "address": "Andheri East, Mumbai",
+    "hours": "Mon–Sat: 9 AM – 7 PM",
+    "mapUrl": "https://maps.google.com/?q=Mumbai",
+
+    "about": [
+      "Professional pest control services for corporate offices, factories, and commercial buildings across Mumbai. Trained technicians, eco-friendly chemicals, and 24/7 emergency support."
+    ],
+
+    "services": [
+      "Termite Control",
+      "Rodent Control",
+      "Cockroach Treatment",
+      "Bed Bug Removal",
+      "Mosquito Control"
+    ],
+
+    "catalogues": [
+      { "title": "Product Catalogue", "subtitle": "Full product range",  "url": "https://example.com/cat1.pdf" },
+      { "title": "Price List",         "subtitle": "Current pricing",     "url": "https://example.com/cat2.pdf" },
+      { "title": "Service Brochure",   "subtitle": "Company overview",    "url": "https://example.com/cat3.pdf" }
+    ],
+
+    "clients": [
+      "Reliance",
+      "HDFC Bank",
+      "Lodha Group"
+    ],
+
+    "reviews": [
+      { "name": "Rahul Sharma", "rating": 5, "text": "Excellent service, professional team." },
+      { "name": "Priya Patel",  "rating": 4, "text": "Quick response, reasonable pricing." }
+    ],
+
+    "social": {
+      "facebook":  "",
+      "instagram": "",
+      "youtube":   ""
+    }
+  }
+]

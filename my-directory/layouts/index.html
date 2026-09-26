@@ -1,0 +1,326 @@
+{{ .Store.Set "needsAlpine" true }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-500 selection:text-white"
+      x-data="{ openRfpModal: false, showToast: false, toastMessage: '' }">
+
+  {{ partial "header.html" . }}
+
+  {{/* ══════════════════════════════════════════════════════════
+      HERO
+      ══════════════════════════════════════════════════════════ */}}
+  <section class="relative bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white py-20 sm:py-24 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-400/30 px-4 py-1.5 rounded-full text-indigo-200 text-xs font-semibold mb-6">
+        <i class="fa-solid fa-shield-halved text-sm"></i> Verified B2B Vendors across 50+ Industrial Hubs
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+        {{ .Site.Params.heroTitle }}
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+        {{ .Site.Params.heroSubtitle }}
+      </p>
+
+      {{/* ── Search bar ────────────────────────────────────────── */}}
+      <form action="/search/" method="get"
+            class="max-w-3xl mx-auto bg-white p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 items-stretch">
+        <div class="flex-1 flex items-center gap-3 px-4 py-2 border border-slate-200 md:border-none rounded-xl">
+          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+          <input type="text" name="q" placeholder="Search services, vendors, categories..."
+                 class="w-full text-slate-800 placeholder-slate-400 text-sm focus:outline-none bg-transparent">
+        </div>
+        <div class="md:w-52 border-t md:border-t-0 md:border-l border-slate-200 md:pl-4 py-2 flex items-center gap-3">
+          <i class="fa-solid fa-map-pin text-slate-400"></i>
+          <select name="hub"
+                  class="w-full text-sm text-slate-800 bg-transparent focus:outline-none cursor-pointer">
+            <option value="">All Industrial Hubs</option>
+            {{ range .Site.Params.hubs }}
+              <option value="{{ . }}">{{ . }}</option>
+            {{ end }}
+          </select>
+        </div>
+        <button type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-md shrink-0">
+          Find Vendors
+        </button>
+      </form>
+
+      {{/* ── Trust badges ──────────────────────────────────────── */}}
+      <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-slate-400">
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> 100% Verified GST &amp; Compliance</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> SLA Guaranteed Contracts</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Direct B2B Pricing</div>
+      </div>
+    </div>
+  </section>
+
+  {{/* ══════════════════════════════════════════════════════════
+      CATEGORIES — 12 parent groups, expand to show children
+      ══════════════════════════════════════════════════════════ */}}
+  <section id="categories" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Industrial Taxonomy</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Explore B2B Service Categories</h2>
+      </div>
+      <p class="text-sm text-slate-500 mt-2 md:mt-0">
+        {{ len .Site.Data.categories.categories }} categories across {{ len .Site.Data.categories.groups }} service groups.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {{ range .Site.Data.categories.groups }}
+        {{ $group := . }}
+
+        {{/* Count categories in this group */}}
+        {{ $count := 0 }}
+        {{ range $.Site.Data.categories.categories }}
+          {{ if eq .group $group.id }}{{ $count = add $count 1 }}{{ end }}
+        {{ end }}
+
+        <button type="button"
+                class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between"
+                data-target="group-{{ .id }}">
+          <div>
+            <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100">
+              <i class="fa-solid {{ .icon }}"></i>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">
+              {{ .name }}
+            </h3>
+            <p class="text-xs text-slate-500 leading-relaxed">{{ .sub }}</p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+            <span class="text-slate-400">{{ $count }} categories</span>
+            <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              Browse <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </span>
+          </div>
+        </button>
+      {{ end }}
+    </div>
+
+    {{/* ── Full category listing (hidden, toggled open) ──────── */}}
+    <div id="home-cat-panel" class="hidden mt-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+      <div class="flex items-center justify-between gap-3 px-6 py-4 border-b border-slate-100">
+        <div id="home-cat-title" class="text-sm font-extrabold text-slate-900">Select a category</div>
+        <button type="button" id="home-cat-close" class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="home-cat-body" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"></div>
+    </div>
+  </section>
+
+  {{/* ══════════════════════════════════════════════════════════
+      FEATURED VENDORS — from clients where tier = Featured/Premium
+      ══════════════════════════════════════════════════════════ */}}
+  {{ $featured := where .Site.RegularPages "Params.tier" "Featured" }}
+  {{ $premium := where .Site.RegularPages "Params.tier" "Premium" }}
+  {{ $homeVendors := first 6 ($featured | append $premium) }}
+
+  {{ if $homeVendors }}
+    <section id="featured" class="py-16 bg-slate-100 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Top Tier</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Featured Vendors</h2>
+            <p class="text-sm text-slate-500 mt-2">Handpicked, verified service providers on our network.</p>
+          </div>
+          <a href="/listings/" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+            View all vendors <i class="fa-solid fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {{ range $homeVendors }}
+            {{ partial "client-card.html" .Params }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* ══════════════════════════════════════════════════════════
+      HOW IT WORKS
+      ══════════════════════════════════════════════════════════ */}}
+  <section id="how-it-works" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Procurement Made Seamless</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">How B2B Sourcing Works</h2>
+      <p class="text-sm text-slate-500 mt-2">Built for plant managers, facility heads, and corporate procurement teams.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">01</div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Submit Your RFQ</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Specify your facility requirements, location, service frequency, and compliance mandates in under 2 minutes.</p>
+      </div>
+      <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">02</div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Get Pre-Vetted Bids</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Receive competitive commercial proposals from 3 to 5 verified local contractors with complete tax documentation.</p>
+      </div>
+      <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">03</div>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Deploy &amp; Manage</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Finalize your contract under standardized B2B SLA terms with milestone-based invoicing and digital sign-offs.</p>
+      </div>
+    </div>
+  </section>
+
+  {{/* ══════════════════════════════════════════════════════════
+      CTA STRIP
+      ══════════════════════════════════════════════════════════ */}}
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-8 sm:p-12 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Ready to source verified vendors?</h2>
+        <p class="text-sm text-slate-300 mb-6">Post your requirement and receive bids from pre-vetted contractors within 24 hours.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button @click="openRfpModal = true"
+                  class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-md">
+            <i class="fa-solid fa-paper-plane text-xs"></i> Post RFQ Free
+          </button>
+          <a href="/categories/"
+             class="inline-flex items-center gap-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/40 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+            <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ partial "footer.html" . }}
+
+  {{/* ══════════════════════════════════════════════════════════
+      RFQ MODAL
+      ══════════════════════════════════════════════════════════ */}}
+  <div x-show="openRfpModal"
+       x-transition.opacity
+       class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+       style="display: none;"
+       @keydown.escape.window="openRfpModal = false">
+
+    <div @click.away="openRfpModal = false"
+         class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+      <button @click="openRfpModal = false"
+              class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 transition-colors">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight mb-1">Post Your RFQ</h3>
+      <p class="text-xs text-slate-500 mb-6">Receive quotations from pre-vetted contractors within 24 hours.</p>
+
+      <form @submit.prevent="openRfpModal = false; toastMessage = 'RFQ submitted. We\'ll be in touch shortly.'; showToast = true; setTimeout(() => showToast = false, 4000)"
+            class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Company Name</label>
+          <input type="text" required placeholder="e.g. Acme Motors Ltd"
+                 class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Service</label>
+            <select class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition cursor-pointer">
+              {{ range .Site.Data.categories.groups }}
+                <optgroup label="{{ .name }}">
+                  {{ range $.Site.Data.categories.categories }}
+                    {{ if eq .group $id }}<option>{{ .name }}</option>{{ end }}
+                  {{ end }}
+                </optgroup>
+              {{ end }}
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Hub</label>
+            <select class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition cursor-pointer">
+              {{ range .Site.Params.hubs }}<option>{{ . }}</option>{{ end }}
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Requirement</label>
+          <textarea rows="3" required placeholder="Specify scope, headcount, or area in sq.ft..."
+                    class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition resize-y"></textarea>
+        </div>
+        <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+          <i class="fa-solid fa-paper-plane text-xs"></i> Broadcast RFQ
+        </button>
+      </form>
+    </div>
+  </div>
+
+  {{/* ══════════════════════════════════════════════════════════
+      TOAST
+      ══════════════════════════════════════════════════════════ */}}
+  <div x-show="showToast"
+       x-transition
+       class="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 z-50 text-sm font-medium"
+       style="display: none;">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+    <span x-text="toastMessage"></span>
+  </div>
+
+  {{/* ══════════════════════════════════════════════════════════
+      CATEGORY PANEL JS — expand group card to show children
+      ══════════════════════════════════════════════════════════ */}}
+  <script>
+    (function () {
+      'use strict';
+
+      var groups = {{ .Site.Data.categories.groups | jsonify | safeJS }};
+      var cats   = {{ .Site.Data.categories.categories | jsonify | safeJS }};
+
+      var panel   = document.getElementById('home-cat-panel');
+      var title   = document.getElementById('home-cat-title');
+      var body    = document.getElementById('home-cat-body');
+      var closeBtn = document.getElementById('home-cat-close');
+
+      document.querySelectorAll('.home-cat-card').forEach(function (card) {
+        card.addEventListener('click', function () {
+          var groupId = card.getAttribute('data-target').replace('group-', '');
+          var group = groups.find(function (g) { return g.id === groupId; });
+          if (!group) return;
+
+          title.textContent = group.name;
+          body.innerHTML = '';
+
+          cats.filter(function (c) { return c.group === groupId; })
+              .forEach(function (c) {
+                var a = document.createElement('a');
+                a.href = '/categories/' + c.slug + '/';
+                a.className = 'flex items-center justify-between gap-3 px-5 py-3 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors border-b border-slate-100';
+                a.innerHTML =
+                  '<span class="flex items-center gap-2.5 min-w-0">' +
+                    '<i class="fa-solid fa-circle text-indigo-300 text-[6px]"></i>' +
+                    '<span class="truncate">' + c.name + '</span>' +
+                  '</span>' +
+                  '<i class="fa-solid fa-arrow-right text-slate-300 text-[10px]"></i>';
+                body.appendChild(a);
+              });
+
+          panel.classList.remove('hidden');
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+
+      closeBtn.addEventListener('click', function () {
+        panel.classList.add('hidden');
+      });
+    })();
+  </script>
+
+</body>
+</html>
