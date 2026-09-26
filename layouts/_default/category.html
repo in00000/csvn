@@ -62,9 +62,13 @@
     </div>
   </div>
 
-  {{/* Vendor grid */}}
+    {{/* Vendor grid — tier-wise shuffle (rotates on every rebuild) */}}
   {{ if $vendorCount }}
-    {{ $sorted := sort $clients "Params.order" "asc" }}
+    {{ $featured := shuffle (where $clients "Params.tier" "Featured") }}
+    {{ $premium  := shuffle (where $clients "Params.tier" "Premium") }}
+    {{ $standard := shuffle (where $clients "Params.tier" "Standard") }}
+    {{ $sorted   := $featured | append $premium | append $standard }}
+
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {{ range $sorted }}
         {{ partial "client-card.html" .Params }}
