@@ -3,6 +3,8 @@ name: Build & Deploy Hugo Site
 on:
   push:
     branches: ["main"]
+  schedule:
+    - cron: "0 2 * * *"     # runs daily at 02:00 UTC (07:30 IST)
   workflow_dispatch:
 
 permissions:
