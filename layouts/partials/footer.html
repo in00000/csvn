@@ -1,14 +1,14 @@
 <footer class="bg-slate-900 text-slate-400 mt-20 border-t border-slate-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 
       {{/* ── Brand Column ─────────────────────────────────── */}}
-      <div>
+      <div class="lg:col-span-2">
         <div class="mb-5">
           <img src="/logo.png" alt="CSVN — Corporate Services Vendor Network" class="h-12 w-auto brightness-0 invert opacity-90">
         </div>
-        <p class="text-xs leading-relaxed mb-5">
+        <p class="text-xs leading-relaxed mb-5 max-w-sm">
           {{ .Site.Params.description }}
         </p>
         <div class="flex gap-3 text-slate-500">
@@ -18,41 +18,36 @@
         </div>
       </div>
 
-      {{/* ── Top Categories Column ────────────────────────── */}}
+      {{/* ── Explore Column ───────────────────────────────── */}}
       <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Popular Categories</h4>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Explore</h4>
         <ul class="space-y-2.5 text-xs">
-          <li><a href="/categories/pest-control/" class="hover:text-white transition-colors">Pest Control</a></li>
-          <li><a href="/categories/housekeeping/" class="hover:text-white transition-colors">Housekeeping</a></li>
-          <li><a href="/categories/catering/" class="hover:text-white transition-colors">Corporate Catering</a></li>
-          <li><a href="/categories/security-guards/" class="hover:text-white transition-colors">Security Guards</a></li>
-          <li><a href="/categories/electrical/" class="hover:text-white transition-colors">Electrical Services</a></li>
-          <li><a href="/categories/" class="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">View all →</a></li>
-        </ul>
-      </div>
-
-      {{/* ── Quick Links Column ───────────────────────────── */}}
-      <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/listings/" class="hover:text-white transition-colors">All Vendors</a></li>
-          <li><a href="/categories/" class="hover:text-white transition-colors">Browse Categories</a></li>
-          <li><a href="/about/" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/listings/" class="hover:text-white transition-colors">Directory</a></li>
+          <li><a href="/categories/" class="hover:text-white transition-colors">Categories</a></li>
           <li><a href="/search/" class="hover:text-white transition-colors">Search</a></li>
         </ul>
       </div>
 
-      {{/* ── Register Column ──────────────────────────────── */}}
+      {{/* ── Company Column ───────────────────────────────── */}}
       <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">List Your Business</h4>
-        <p class="text-xs text-slate-400 mb-4 leading-relaxed">
-          Are you a verified service provider? Get listed on our network and reach thousands of businesses.
-        </p>
-        <a href="/contact/"
-           class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg text-xs transition-colors">
-          <i class="fa-solid fa-circle-plus text-xs"></i> Register as Vendor
-        </a>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Company</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="/about/" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
+          <li><a href="/contact/" class="hover:text-white transition-colors">List Your Business</a></li>
+        </ul>
+      </div>
+
+      {{/* ── Legal Column ─────────────────────────────────── */}}
+      <div>
+        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Legal</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a></li>
+          <li><a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
+          <li><a href="/refund/" class="hover:text-white transition-colors">Refund Policy</a></li>
+          <li><a href="/disclaimer/" class="hover:text-white transition-colors">Disclaimer</a></li>
+          <li><a href="/contact/#grievance-officer" class="hover:text-white transition-colors">Grievance Officer</a></li>
+        </ul>
       </div>
 
     </div>
@@ -61,9 +56,8 @@
     <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
       <p>© {{ now.Year }} <span class="font-semibold text-slate-400">CSVN</span> — Corporate Services Vendor Network. All rights reserved.</p>
       <div class="flex gap-6">
-        <a href="/privacy/" class="hover:text-slate-300 transition-colors">Privacy Policy</a>
-        <a href="/terms/" class="hover:text-slate-300 transition-colors">Terms of Service</a>
-        <a href="/contact/" class="hover:text-slate-300 transition-colors">Compliance</a>
+        <a href="/contact/" class="hover:text-slate-300 transition-colors">Contact</a>
+        <a href="/contact/#grievance-officer" class="hover:text-slate-300 transition-colors">Grievance</a>
       </div>
     </div>
 
