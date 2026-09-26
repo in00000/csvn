@@ -233,11 +233,9 @@
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Service</label>
             <select class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition cursor-pointer">
-              {{ range .Site.Data.categories.groups }}
-                <optgroup label="{{ .name }}">
-                  {{ range $.Site.Data.categories.categories }}
-                    {{ if eq .group $id }}<option>{{ .name }}</option>{{ end }}
-                  {{ end }}
+          {{ range .Site.Data.categories.groups }}
+  {{ $group := . }}
+  {{ $count := len (where $.Site.Data.categories.categories "group" $group.id) }}
                 </optgroup>
               {{ end }}
             </select>
