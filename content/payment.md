@@ -20,8 +20,7 @@ Open any UPI app (PhonePe, Google Pay, Paytm, BHIM, or your bank's app) and scan
 
 <div style="background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; padding: 2rem; margin: 2rem 0; text-align: center;">
 
-  <!-- QR CODE — replace the src below with your QR code image -->
-  <img src="/payment-qr.png" alt="CSVN Payment QR Code" style="width: 260px; height: 260px; margin: 0 auto 1rem; display: block; background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+  <img src="/qr.png" alt="CSVN Payment QR Code" style="width: 260px; height: 260px; margin: 0 auto 1rem; display: block; background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
 
   <div style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Scan with any UPI app</div>
 
@@ -39,7 +38,7 @@ Don't want to scan? Send payment directly to our UPI ID:
 <div style="background: #fff; border: 2px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; margin: 2rem 0;">
   <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #64748b; margin-bottom: 0.5rem;">CSVN UPI ID</div>
   <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-    <code id="upi-id" style="background: #f1f5f9; color: #4f46e5; padding: 0.75rem 1rem; border-radius: 8px; font-size: 1rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; flex: 1; min-width: 200px;">sachin@okhdfcbank</code>
+    <code id="upi-id" style="background: #f1f5f9; color: #4f46e5; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; flex: 1; min-width: 200px; word-break: break-all;">BHARATPE09B9S1M8C3G33183@yesbankltd</code>
     <button onclick="copyUPI()" id="copy-btn" style="background: #4f46e5; color: #fff; border: 0; padding: 0.75rem 1.25rem; border-radius: 8px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem;">Copy UPI ID</button>
   </div>
 </div>
@@ -78,7 +77,7 @@ If you have any trouble with the payment, contact us before sending money:
 
 **Before paying, please verify:**
 
-- Our UPI ID is **sachin@okhdfcbank** (update this with your real UPI ID)
+- Our UPI ID is **BHARATPE09B9S1M8C3G33183@yesbankltd**
 - You're paying exactly **₹999**
 - You're on the official CSVN website (**csvn.in**)
 - You can reach us at **info@csvn.in** or **+91 87939 32827** before paying
