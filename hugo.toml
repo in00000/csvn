@@ -11,8 +11,7 @@ title        = "ProBuildB2B — Industrial & Commercial Service Providers"
 timeZone     = "Asia/Kolkata"
 
 # We don't need RSS feeds on a directory site.
-disableKinds = ["RSS"]
-
+disableKinds = ["RSS", "taxonomy", "term"]
 # ─── Taxonomies ──────────────────────────────────────────────
 # Every client has a "category" field. Hugo auto-generates a real
 # page per category at /categories/<slug>/ using this taxonomy.
