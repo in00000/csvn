@@ -21,7 +21,7 @@ We're launching CSVN with a single introductory plan at a rate that lets every b
 
 Everything you need to run a professional vendor listing on CSVN:
 
-- **Full business profile page** at `csvn.in/listings/your-business`
+- **Full business profile page** at `csvn.in/listings/your-unique-business-id` 
 - **Direct buyer contact** — phone, WhatsApp, email, and website displayed prominently
 - **Category listing** in one of 90+ service categories
 - **Service list** — up to 10 services displayed on your profile
