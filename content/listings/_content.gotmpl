@@ -5,7 +5,7 @@
   {{ range $entries }}
 
     {{ $page := dict
-      "path"       (printf "/listings/%s" .id)
+      "path"       (printf "listings/%s" .id)
       "title"      .name
       "kind"       "page"
       "categories" (slice .category)
