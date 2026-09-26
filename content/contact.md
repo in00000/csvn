@@ -32,27 +32,24 @@ Please note: we do not provide vendor recommendations or pricing quotes over the
 Nigdi, Pimpri-Chinchwad
 Pune, Maharashtra, India
 
-*Owned and operated by Sachin Ambekar (Sole Proprietor)*
-
 *Visits by appointment only. Please email or call before visiting.*
 
 ## For Vendors — List Your Business
 
-Want to list your company on CSVN? We offer free and paid listing options:
+Want to list your company on CSVN? We offer a straightforward Standard plan at ₹999/year:
 
-- **Free Listing** — Basic profile, contact details, and category placement
-- **Premium Listing** — Enhanced profile, priority placement, catalogue links
-- **Featured Listing** — Top-tier placement, verified badge, homepage featuring
+- **Full business profile** with all your details
+- **Direct buyer contact** — no middlemen, no commissions
+- **Fair daily rotation** so you get equal exposure
+- **Verified badge** after our verification process
 
-To get started, email us at [info@csvn.in](mailto:info@csvn.in) with:
+To get started:
 
-1. Your business name
-2. City and state
-3. Primary service category
-4. Contact number and email
-5. A short description of your services
-
-Our team will review your submission and respond within 2 business days.
+1. Read the [full plan details](/pricing/)
+2. Email us your business details at [info@csvn.in](mailto:info@csvn.in?subject=Standard%20Plan%20-%20%E2%82%B9999%2Fyear)
+3. We verify within 1–2 business days
+4. Pay ₹999 — [payment options here](/payment/)
+5. Your listing goes live within 24 hours
 
 ## For Businesses — Find Vendors
 
@@ -95,4 +92,4 @@ Please include the vendor name and the specific issue in your email. We investig
 
 ---
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
