@@ -37,6 +37,24 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      # ══════════════════════════════════════════════════════════
+      #  DUMMY CLIENTS (OPTIONAL)
+      #  Runs only if scripts/dummy-clients.py exists.
+      #  Delete that file to permanently remove all dummy data.
+      # ══════════════════════════════════════════════════════════
+      - name: Generate dummy clients (optional)
+        run: |
+          if [ -f scripts/dummy-clients.py ]; then
+            echo "Found scripts/dummy-clients.py — generating dummy clients"
+            python3 scripts/dummy-clients.py
+          else
+            echo "scripts/dummy-clients.py not found — skipping dummy generation"
+          fi
+
+      # ══════════════════════════════════════════════════════════
+      #  LISTING PAGE GENERATION
+      #  Converts data/clients/*.json into content/listings/*.md
+      # ══════════════════════════════════════════════════════════
       - name: Generate listing pages from JSON
         run: |
           python3 - <<'PYEOF'
@@ -89,6 +107,8 @@ jobs:
                   lines.append('draft = false')
                   lines.append(f'categories = {toml_val([client.get("category", "")])}')
                   for k, v in client.items():
+                      if k == "_dummy":
+                          continue
                       lines.append(f'params.{k} = {toml_val(v)}')
                   lines.append('+++')
                   lines.append('')
@@ -138,10 +158,10 @@ jobs:
             --baseURL "${{ steps.pages.outputs.base_url }}/"
           echo ""
           echo "=== Content folder ==="
-          ls -la content/listings/
+          ls -la content/listings/ | head -20
           echo ""
           echo "=== Built listings folder ==="
-          ls -la public/listings/ 2>/dev/null || echo "public/listings/ MISSING"
+          ls -la public/listings/ 2>/dev/null | head -20 || echo "public/listings/ MISSING"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
