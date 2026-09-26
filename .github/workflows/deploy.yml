@@ -39,11 +39,12 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Build with Hugo
+        env:
+          HUGO_ENABLE_CONTENT_ADAPTERS: true
         run: |
           hugo \
             --gc \
             --minify \
-            --enableContentAdapters \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact
