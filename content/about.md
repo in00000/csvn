@@ -1,18 +1,18 @@
 ---
 title: "About Us"
-description: "About CSVN — Corporate Services Vendor Network. India's verified B2B vendor directory, based in Nigdi, Pune."
+description: "CSVN — India's verified B2B vendor network. Discover trusted corporate service providers across 90+ categories."
 layout: "page"
 ---
 
 ## Who We Are
 
-**CSVN — Corporate Services Vendor Network** is a business-to-business directory connecting companies with verified service vendors across India. We are owned and operated by **Sachin Ambekar**, a sole proprietor based in **Nigdi, Pimpri-Chinchwad, Pune**.
+**CSVN — Corporate Services Vendor Network** is an India-focused business-to-business directory connecting companies with verified service vendors. We're built for procurement managers, facility heads, and business owners who need reliable vendors — fast.
 
 Our mission is simple: **make it easy for businesses to find trusted vendors, and easy for vendors to get discovered by the right clients.**
 
 ## What We Do
 
-CSVN is a directory of corporate service providers across 90+ categories — from pest control and housekeeping to IT services, security, catering, and industrial supplies. Every vendor listed on our network can be browsed, searched, and contacted directly.
+CSVN lists corporate service providers across 90+ categories — from pest control and housekeeping to IT services, security, catering, and industrial supplies. Every vendor on our network can be browsed, searched, and contacted directly.
 
 We don't take commissions from transactions between buyers and vendors. We provide a transparent platform where:
 
@@ -22,25 +22,32 @@ We don't take commissions from transactions between buyers and vendors. We provi
 
 ## What Makes Us Different
 
-**Verified Listings**
+### Verified Listings
 
 Vendors listing on CSVN go through a verification process that includes GST status, business registration, and service history where applicable. Our "Verified" badge is reserved for vendors who meet our standards.
 
-**Fair Rotation**
+### Fair Rotation
 
 Unlike traditional directories where only the top bidder gets seen, our placement system rotates vendors daily within each tier. Featured vendors get priority, but every vendor gets fair exposure over time.
 
-**No Middlemen**
+### No Middlemen
 
 We connect buyers directly with vendors. There are no hidden charges, no commissions, no barriers — just direct contact.
 
-**Category Depth**
+### Category Depth
 
 With 90+ service categories organized into 12 groups, we cover both common needs (housekeeping, catering) and specialized requirements (industrial MRO, epoxy flooring, fire safety systems).
 
 ## Our Reach
 
-CSVN currently serves businesses across major Indian industrial hubs, including Pune & Chakan, Mumbai & Thane, Bangalore Industrial, Chennai Oragadam, and NCR / Gurgaon.
+CSVN serves businesses across major Indian industrial hubs, including:
+
+- Pune & Chakan
+- Mumbai & Thane
+- Bangalore Industrial
+- Chennai Oragadam
+- NCR / Gurgaon
+- And expanding to more cities
 
 ## Who We Serve
 
@@ -59,4 +66,4 @@ If you have questions about the network, want to list your business, or need ass
 
 ---
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India. For legal correspondence, please refer to our [Terms of Service](/terms/) and [Privacy Policy](/privacy/).*
