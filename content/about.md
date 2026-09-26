@@ -1,6 +1,7 @@
 ---
 title: "About Us"
 description: "About CSVN — Corporate Services Vendor Network. India's verified B2B vendor directory, based in Nigdi, Pune."
+layout: "page"
 ---
 
 ## Who We Are
@@ -39,14 +40,7 @@ With 90+ service categories organized into 12 groups, we cover both common needs
 
 ## Our Reach
 
-CSVN currently serves businesses across major Indian industrial hubs, including:
-
-- Pune & Chakan
-- Mumbai & Thane
-- Bangalore Industrial
-- Chennai Oragadam
-- NCR / Gurgaon
-- And expanding to more cities
+CSVN currently serves businesses across major Indian industrial hubs, including Pune & Chakan, Mumbai & Thane, Bangalore Industrial, Chennai Oragadam, and NCR / Gurgaon.
 
 ## Who We Serve
 
