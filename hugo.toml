@@ -4,7 +4,7 @@
 #  Scale:   50,000+ listing pages, text-only
 # ─────────────────────────────────────────────────────────────
 
-baseURL      = "https://example.com/"
+baseURL      = "https://in00000.github.io/csvn/"
 languageCode = "en-us"
 title        = "ProBuildB2B — Industrial & Commercial Service Providers"
 timeZone     = "Asia/Kolkata"
