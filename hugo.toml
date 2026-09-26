@@ -5,6 +5,7 @@
 # ─────────────────────────────────────────────────────────────
 
 baseURL      = "https://in00000.github.io/csvn/"
+relativeURLs = true
 languageCode = "en-us"
 title        = "ProBuildB2B — Industrial & Commercial Service Providers"
 timeZone     = "Asia/Kolkata"
