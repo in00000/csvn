@@ -116,8 +116,8 @@
   {{/* ══════════════════════════════════════════════════════════
       FEATURED VENDORS
       ══════════════════════════════════════════════════════════ */}}
-  {{ $featured := where .Site.RegularPages "Params.tier" "Featured" }}
-  {{ $premium := where .Site.RegularPages "Params.tier" "Premium" }}
+  {{ $featured := shuffle (where .Site.RegularPages "Params.tier" "Featured") }}
+  {{ $premium  := shuffle (where .Site.RegularPages "Params.tier" "Premium") }}
   {{ $homeVendors := first 6 ($featured | append $premium) }}
 
   {{ if $homeVendors }}
