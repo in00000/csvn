@@ -17,7 +17,7 @@
       </span>
       <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Find Vendors</h1>
       <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
-        Search across {{ len .Site.RegularPages }} vendors by name, category, or service.
+        Search across {{ len (where .Site.RegularPages "Section" "listings") }} vendors by name, category, or service.
       </p>
 
       <form id="search-form" class="flex flex-col sm:flex-row gap-2 bg-white p-2 rounded-xl shadow-lg max-w-2xl">
@@ -33,18 +33,19 @@
     </div>
   </div>
 
-  {{/* Results */}}
+  {{/* Results meta */}}
   <div id="search-results-meta" class="text-sm text-slate-500 mb-5"></div>
 
+  {{/* Results grid */}}
   <div id="search-results" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
 
-  {{/* Empty state (before searching) */}}
+  {{/* Empty state */}}
   <div id="search-empty" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
     <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 flex items-center justify-center mb-4">
       <i class="fa-solid fa-magnifying-glass text-2xl text-slate-300"></i>
     </div>
     <h3 class="text-lg font-bold text-slate-900 mb-1">Start typing to search</h3>
-    <p class="text-sm text-slate-500 max-w-sm mx-auto">Search {{ len .Site.RegularPages }} verified vendors by name, category, or service.</p>
+    <p class="text-sm text-slate-500 max-w-sm mx-auto">Search {{ len (where .Site.RegularPages "Section" "listings") }} verified vendors by name, category, or service.</p>
   </div>
 
   {{/* No results */}}
@@ -61,39 +62,48 @@
 
 </div>
 
-{{/* Build a lightweight search index from all listing pages */}}
+{{/* ── Search index — embedded as application/json so Hugo never HTML-escapes it ── */}}
+<script type="application/json" id="search-index">
+[
+{{- $total := len (where .Site.RegularPages "Section" "listings") -}}
+{{- range $i, $p := where .Site.RegularPages "Section" "listings" -}}
+  {{- if $i }},{{ end -}}
+  {
+    "id": {{ $p.Params.id | default $p.File.ContentBaseName | jsonify | safeJS }},
+    "name": {{ $p.Title | jsonify | safeJS }},
+    "tier": {{ $p.Params.tier | default "Standard" | jsonify | safeJS }},
+    "category": {{ $p.Params.category | default "" | jsonify | safeJS }},
+    "city": {{ $p.Params.city | default "" | jsonify | safeJS }},
+    "area": {{ $p.Params.area | default "" | jsonify | safeJS }},
+    "phone": {{ $p.Params.phone | default "" | jsonify | safeJS }},
+    "tagline": {{ $p.Params.tagline | default "" | jsonify | safeJS }},
+    "rating": {{ $p.Params.rating | default 0 }},
+    "reviewCount": {{ $p.Params.reviewCount | default 0 }},
+    "services": {{ $p.Params.services | default slice | jsonify | safeJS }}
+  }
+{{- end -}}
+]
+</script>
+
 <script>
 (function () {
   'use strict';
 
-  var INDEX = [
-    {{ range $i, $p := where .Site.RegularPages "Section" "listings" }}
-      {{ if $i }},{{ end }}
-      {
-        id:       {{ $p.Params.id | default $p.File.ContentBaseName | jsonify }},
-        name:     {{ $p.Title | jsonify }},
-        tier:     {{ $p.Params.tier | default "Standard" | jsonify }},
-        category: {{ $p.Params.category | default "" | jsonify }},
-        city:     {{ $p.Params.city | default "" | jsonify }},
-        area:     {{ $p.Params.area | default "" | jsonify }},
-        phone:    {{ $p.Params.phone | default "" | jsonify }},
-        tagline:  {{ $p.Params.tagline | default "" | jsonify }},
-        rating:   {{ $p.Params.rating | default 0 }},
-        reviewCount: {{ $p.Params.reviewCount | default 0 }},
-        services: {{ $p.Params.services | default slice | jsonify }}
-      }
-    {{ end }}
-  ];
-  // Strip surrounding quote characters from string values.
-  // (Protects against data that arrives pre-escaped.)
-  function cleanStr(s) {
-    if (typeof s !== 'string') return s;
-    if (s.length >= 2 && s.charAt(0) === '"' && s.charAt(s.length - 1) === '"') {
-      return s.slice(1, -1);
-    }
-    return s;
+  // Parse the embedded JSON. The browser's JSON parser handles all escaping.
+  var INDEX = [];
+  try {
+    var raw = document.getElementById('search-index').textContent;
+    INDEX = JSON.parse(raw);
+  } catch (e) {
+    console.error('Search index parse failed:', e);
   }
 
+  // Defensive: strip any stray quote characters from string values
+  function cleanStr(s) {
+    if (typeof s !== 'string') return s;
+    s = s.replace(/^["'`]+/, '').replace(/["'`]+$/, '');
+    return s.trim();
+  }
   INDEX = INDEX.map(function (v) {
     var out = {};
     for (var k in v) {
@@ -110,7 +120,7 @@
   var noResult = document.getElementById('search-no-results');
 
   function esc(s) {
-    return String(s || '').replace(/[&<>"']/g, function (c) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c];
     });
   }
@@ -128,24 +138,26 @@
   }
 
   function card(v) {
+    var r = parseInt(v.rating, 10) || 0;
     var stars = '';
-    var r = parseInt(v.rating) || 0;
     for (var i = 0; i < r; i++) stars += '<i class="fa-solid fa-star"></i>';
     var badge = tierBadge(v.tier);
     var loc = [v.city, v.area].filter(Boolean).join(', ');
+    var services = Array.isArray(v.services) ? v.services.join(' ') : '';
+
     return '' +
-      '<article class="group bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all overflow-hidden flex flex-col">' +
+      '<article class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-slate-300 transition-all overflow-hidden flex flex-col">' +
         '<div class="h-1 ' + tierBar(v.tier) + '"></div>' +
         '<div class="p-5 flex flex-col flex-grow">' +
           (badge ? '<div class="mb-3">' + badge + '</div>' : '') +
           '<h3 class="text-base font-extrabold text-slate-900 leading-snug tracking-tight mb-1.5">' +
             '<a href="/listings/' + esc(v.id) + '/" class="hover:text-indigo-600 transition-colors">' + esc(v.name) + '</a>' +
           '</h3>' +
-          (v.tagline ? '<p class="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-2">' + esc(v.tagline) + '</p>' : '') +
+          (v.tagline ? '<p class="text-xs text-slate-500 leading-relaxed mb-4">' + esc(v.tagline) + '</p>' : '') +
           '<div class="space-y-2 mb-4 pb-4 border-b border-dashed border-slate-200">' +
             (v.category ? '<div class="flex items-center justify-between gap-3 text-xs"><span class="flex items-center gap-2 text-slate-500 font-medium"><i class="fa-solid fa-briefcase text-indigo-500 w-3.5 text-center"></i> Service</span><span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">' + esc(v.category) + '</span></div>' : '') +
             (loc ? '<div class="flex items-center justify-between gap-3 text-xs"><span class="flex items-center gap-2 text-slate-500 font-medium"><i class="fa-solid fa-location-dot text-indigo-500 w-3.5 text-center"></i> Location</span><span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">' + esc(loc) + '</span></div>' : '') +
-            (v.rating ? '<div class="flex items-center justify-between gap-3 text-xs"><span class="flex items-center gap-2 text-slate-500 font-medium"><i class="fa-solid fa-star text-indigo-500 w-3.5 text-center"></i> Rating</span><span class="flex items-center gap-1.5"><span class="text-amber-500 text-[10px] tracking-tight">' + stars + '</span><span class="font-bold text-slate-800">' + v.rating + '</span>' + (v.reviewCount ? '<span class="text-slate-400 font-medium">(' + v.reviewCount + ')</span>' : '') + '</span></div>' : '') +
+            (r ? '<div class="flex items-center justify-between gap-3 text-xs"><span class="flex items-center gap-2 text-slate-500 font-medium"><i class="fa-solid fa-star text-indigo-500 w-3.5 text-center"></i> Rating</span><span class="flex items-center gap-1.5"><span class="text-amber-500 text-[10px] tracking-tight">' + stars + '</span><span class="font-bold text-slate-800">' + v.rating + '</span>' + (v.reviewCount ? '<span class="text-slate-400 font-medium">(' + v.reviewCount + ')</span>' : '') + '</span></div>' : '') +
             (v.phone ? '<div class="flex items-center justify-between gap-3 text-xs"><span class="flex items-center gap-2 text-slate-500 font-medium"><i class="fa-solid fa-phone text-indigo-500 w-3.5 text-center"></i> Phone</span><span class="font-semibold text-slate-800 truncate max-w-[55%] text-right">' + esc(v.phone) + '</span></div>' : '') +
           '</div>' +
           '<a href="/listings/' + esc(v.id) + '/" class="mt-auto inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold py-2.5 px-4 rounded-lg shadow-sm transition-colors">' +
@@ -167,12 +179,11 @@
     }
 
     var matches = INDEX.filter(function (v) {
-      var hay = (v.name + ' ' + v.category + ' ' + v.tagline + ' ' + v.city + ' ' + v.area + ' ' +
-                 (Array.isArray(v.services) ? v.services.join(' ') : '')).toLowerCase();
+      var services = Array.isArray(v.services) ? v.services.join(' ') : '';
+      var hay = (v.name + ' ' + v.category + ' ' + v.tagline + ' ' + v.city + ' ' + v.area + ' ' + services).toLowerCase();
       return hay.indexOf(q) !== -1;
     });
 
-    // Sort: Featured first, then Premium, then Standard
     var w = { 'Featured': 1, 'Premium': 2, 'Standard': 3 };
     matches.sort(function (a, b) { return (w[a.tier] || 3) - (w[b.tier] || 3); });
 
@@ -199,7 +210,6 @@
     timer = setTimeout(function () { runSearch(input.value); }, 150);
   });
 
-  // Pre-fill from ?q=
   var params = new URLSearchParams(window.location.search);
   var initial = params.get('q') || '';
   if (initial) {
