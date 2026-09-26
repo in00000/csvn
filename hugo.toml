@@ -7,7 +7,7 @@
 baseURL      = "https://in00000.github.io/csvn/"
 relativeURLs = true
 languageCode = "en-us"
-title        = "ProBuildB2B — Industrial & Commercial Service Providers"
+title        = "CSVN — Corporate Services Vendor Network"
 timeZone     = "Asia/Kolkata"
 
 # We don't need RSS feeds on a directory site.
@@ -33,7 +33,7 @@ disableKinds = ["RSS", "term"]
 
 # ─── Site-wide parameters ────────────────────────────────────
 [params]
-  description  = "Source verified industrial & facility service contractors across 50+ industrial hubs."
+  description  = "CSVN — India's verified B2B vendor network. Source corporate service providers across 90+ categories."
   reportEmail  = "admin@example.com"
 
   # Homepage hero
