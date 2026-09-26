@@ -10,6 +10,7 @@
     <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
       <a href="/categories/" class="hover:text-indigo-600 transition-colors">Categories</a>
       <a href="/listings/" class="hover:text-indigo-600 transition-colors">All Vendors</a>
+      <a href="/pricing/" class="hover:text-indigo-600 transition-colors">Pricing</a>
       <a href="/about/" class="hover:text-indigo-600 transition-colors">About</a>
       <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
     </nav>
@@ -21,13 +22,25 @@
          aria-label="Search">
         <i class="fa-solid fa-magnifying-glass text-sm"></i>
       </a>
-      <a href="/contact/"
+      <a href="/list-your-business/"
          class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
         <i class="fa-solid fa-plus text-xs"></i>
-        <span class="hidden sm:inline">Add Listing</span>
-        <span class="sm:hidden">Add</span>
+        <span class="hidden sm:inline">List Your Business</span>
+        <span class="sm:hidden">List</span>
       </a>
     </div>
 
+  </div>
+
+  {{/* ── Mobile Menu ────────────────────────────────────────── */}}
+  <div class="md:hidden border-t border-slate-100 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-1 overflow-x-auto scrollbar-none">
+      <a href="/categories/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Categories</a>
+      <a href="/listings/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Vendors</a>
+      <a href="/pricing/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Pricing</a>
+      <a href="/about/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">About</a>
+      <a href="/contact/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Contact</a>
+      <a href="/search/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Search</a>
+    </div>
   </div>
 </header>
