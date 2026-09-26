@@ -18,14 +18,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.128.0
+      HUGO_VERSION: 0.139.0
       HUGO_ENVIRONMENT: production
       TZ: Asia/Kolkata
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -38,14 +37,84 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Generate listing pages from JSON
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          from pathlib import Path
+
+          root     = Path.cwd()
+          data_dir = root / "data" / "clients"
+          out_dir  = root / "content" / "listings"
+          out_dir.mkdir(parents=True, exist_ok=True)
+
+          # Clean any stale generated files
+          for old in out_dir.glob("*.md"):
+              old.unlink()
+
+          def esc(s):
+              if s is None: return '""'
+              s = str(s)
+              s = s.replace('\\', '\\\\').replace('"', '\\"')
+              s = s.replace('\n', '\\n').replace('\r', '\\r').replace('\t', '\\t')
+              return '"' + s + '"'
+
+          def toml_val(v):
+              if v is None: return '""'
+              if isinstance(v, bool): return "true" if v else "false"
+              if isinstance(v, (int, float)): return str(v)
+              if isinstance(v, str): return esc(v)
+              if isinstance(v, list):
+                  if not v: return "[]"
+                  if isinstance(v[0], dict):
+                      items = []
+                      for d in v:
+                          pairs = [f'{k} = {toml_val(val)}' for k, val in d.items()]
+                          items.append("{ " + ", ".join(pairs) + " }")
+                      return "[" + ", ".join(items) + "]"
+                  return "[" + ", ".join(toml_val(x) for x in v) + "]"
+              if isinstance(v, dict):
+                  pairs = [f'{k} = {toml_val(val)}' for k, val in v.items()]
+                  return "{ " + ", ".join(pairs) + " }"
+              return esc(str(v))
+
+          total = 0
+          for json_file in sorted(data_dir.glob("*.json")):
+              with open(json_file, "r", encoding="utf-8") as f:
+                  clients = json.load(f)
+              for client in clients:
+                  slug = client["id"]
+                  lines = ["+++"]
+                  lines.append(f'title = {esc(client.get("name", ""))}')
+                  lines.append('draft = false')
+                  lines.append(f'categories = {toml_val([client.get("category", "")])}')
+                  for k, v in client.items():
+                      if k in ("id", "name", "category"): continue
+                      lines.append(f'params.{k} = {toml_val(v)}')
+                  lines.append('+++')
+                  lines.append('')
+                  out_file = out_dir / f"{slug}.md"
+                  out_file.write_text("\n".join(lines), encoding="utf-8")
+                  total += 1
+
+          print(f"Generated {total} listing pages")
+          print("Files:")
+          for p in sorted(out_dir.glob("*.md")):
+              print(" ", p.name)
+          PYEOF
+
       - name: Build with Hugo
-        env:
-          HUGO_ENABLE_CONTENT_ADAPTERS: true
         run: |
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+          echo ""
+          echo "=== Content folder ==="
+          ls -la content/listings/
+          echo ""
+          echo "=== Built listings folder ==="
+          ls -la public/listings/ 2>/dev/null || echo "public/listings/ MISSING"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
