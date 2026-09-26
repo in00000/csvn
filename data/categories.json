@@ -4,7 +4,7 @@
       "id": "facility-management",
       "name": "Facility Management",
       "slug": "facility-management",
-      "icon": "ph-broom",
+      "icon": "fa-broom",
       "sub": "Cleaning, pest control, waste, landscaping",
       "categories": ["housekeeping","deep-cleaning","floor-polishing","pest-control","waste-management","landscaping","plant-rental"]
     },
@@ -12,7 +12,7 @@
       "id": "technical-services",
       "name": "Technical Services",
       "slug": "technical-services",
-      "icon": "ph-lightning",
+      "icon": "fa-bolt",
       "sub": "AC, electrical, plumbing, lift, UPS, solar",
       "categories": ["ac-hvac","electrical","plumbing","elevator","power-backup","solar"]
     },
@@ -20,7 +20,7 @@
       "id": "security-safety",
       "name": "Security & Safety",
       "slug": "security-safety",
-      "icon": "ph-shield-check",
+      "icon": "fa-shield-halved",
       "sub": "Guards, CCTV, fire safety, access control",
       "categories": ["security-guards","cctv","fire-safety","access-control","intercom","cybersecurity"]
     },
@@ -28,7 +28,7 @@
       "id": "it-technology",
       "name": "IT & Technology",
       "slug": "it-technology",
-      "icon": "ph-laptop",
+      "icon": "fa-laptop",
       "sub": "IT support, software, cloud, networking",
       "categories": ["it-services","software-development","website-development","app-development","cloud-hosting","it-hardware","networking","crm-saas","data-analytics"]
     },
@@ -36,7 +36,7 @@
       "id": "office-setup",
       "name": "Office Setup & Supplies",
       "slug": "office-setup",
-      "icon": "ph-armchair",
+      "icon": "fa-couch",
       "sub": "Furniture, interiors, stationery, signage",
       "categories": ["office-furniture","office-interiors","office-renovation","stationery","printing-signage","packaging","uniforms"]
     },
@@ -44,7 +44,7 @@
       "id": "food-hospitality",
       "name": "Food & Hospitality",
       "slug": "food-hospitality",
-      "icon": "ph-fork-knife",
+      "icon": "fa-utensils",
       "sub": "Catering, canteen, pantry, water, hotels",
       "categories": ["catering","canteen","pantry","water-vending","coffee-vending","hotels","guest-house"]
     },
@@ -52,7 +52,7 @@
       "id": "transport-logistics",
       "name": "Transport & Logistics",
       "slug": "transport-logistics",
-      "icon": "ph-truck",
+      "icon": "fa-truck",
       "sub": "Employee transport, freight, courier, moving",
       "categories": ["employee-transport","corporate-cabs","bus-shuttle","vehicle-leasing","courier","freight","warehousing","office-shifting","customs-clearing"]
     },
@@ -60,7 +60,7 @@
       "id": "marketing-branding",
       "name": "Marketing & Branding",
       "slug": "marketing-branding",
-      "icon": "ph-megaphone",
+      "icon": "fa-bullhorn",
       "sub": "Digital marketing, PR, gifting, events",
       "categories": ["digital-marketing","seo-services","social-media","advertising","pr-agencies","branding","corporate-gifting","event-management","photography","printing"]
     },
@@ -68,7 +68,7 @@
       "id": "hr-people",
       "name": "HR & People",
       "slug": "hr-people",
-      "icon": "ph-users",
+      "icon": "fa-users",
       "sub": "Staffing, payroll, training, wellness",
       "categories": ["staffing","executive-search","payroll","hr-software","training","wellness","team-building"]
     },
@@ -76,7 +76,7 @@
       "id": "finance-legal",
       "name": "Finance & Legal",
       "slug": "finance-legal",
-      "icon": "ph-scales",
+      "icon": "fa-scale-balanced",
       "sub": "CA, tax, legal, insurance, compliance",
       "categories": ["chartered-accountants","tax-consultants","gst-filing","legal-advisors","company-secretary","business-registration","iso-certification","insurance","financial-advisory"]
     },
@@ -84,7 +84,7 @@
       "id": "travel-events",
       "name": "Travel & Events",
       "slug": "travel-events",
-      "icon": "ph-airplane-tilt",
+      "icon": "fa-plane",
       "sub": "Corporate travel, visa, MICE, offsites",
       "categories": ["corporate-travel","visa-services","mice","corporate-events","team-offsites","forex"]
     },
@@ -92,7 +92,7 @@
       "id": "other-services",
       "name": "Other Corporate Services",
       "slug": "other-services",
-      "icon": "ph-briefcase",
+      "icon": "fa-briefcase",
       "sub": "Industrial, safety, translation, coworking",
       "categories": ["industrial-supplies","safety-equipment","manufacturing","rnd","translation","virtual-office","coworking","other"]
     }
