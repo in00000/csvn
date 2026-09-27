@@ -136,6 +136,41 @@
 .csvn-wrap .csvn-step .step-label{display:none}
 .csvn-wrap .csvn-step.active .step-label{display:inline}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   HERO TEXT VISIBILITY FIX
+   Overrides site theme paragraph/heading styles that were
+   making the hero subtitle & meta text unreadable.
+   ═══════════════════════════════════════════════════════════ */
+.csvn-wrap .csvn-hero,
+.csvn-wrap .csvn-hero *,
+.csvn-wrap .csvn-hero h1,
+.csvn-wrap .csvn-hero p,
+.csvn-wrap .csvn-hero span,
+.csvn-wrap .csvn-hero div {
+  color: #ffffff !important;
+}
+.csvn-wrap .csvn-hero .csvn-hero-sub {
+  color: rgba(255,255,255,0.92) !important;
+  opacity: 1 !important;
+}
+.csvn-wrap .csvn-hero .csvn-hero-label {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+.csvn-wrap .csvn-hero .csvn-hero-amt,
+.csvn-wrap .csvn-hero .csvn-hero-amt small {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+.csvn-wrap .csvn-hero .csvn-hero-amt small {
+  color: rgba(255,255,255,0.8) !important;
+}
+.csvn-wrap .csvn-hero .csvn-hero-meta,
+.csvn-wrap .csvn-hero .csvn-hero-meta span {
+  color: rgba(255,255,255,0.95) !important;
+  opacity: 1 !important;
+}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
