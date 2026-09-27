@@ -3,7 +3,7 @@
 <style>
 .csvn-wrap *{box-sizing:border-box}
 .csvn-wrap{max-width:920px;margin:0 auto;padding:0 20px;font-family:'Inter',system-ui,-apple-system,sans-serif;color:#1e293b;line-height:1.6;-webkit-font-smoothing:antialiased}
-.csvn-wrap .csvn-hero{margin-top:1.5rem;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 55%,#7c3aed 100%);border-radius:24px;padding:36px 28px;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(79,70,229,.45)}
+.csvn-wrap .csvn-hero{margin-top:1.5rem;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 55%,#7c3aed 100%);border-radius:24px;padding:36px 28px;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(79,70,229,.45);isolation:isolate}
 .csvn-wrap .csvn-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);pointer-events:none}
 .csvn-wrap .csvn-hero h1{font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.03em;margin:16px 0 8px;line-height:1.1;color:#fff}
 .csvn-wrap .csvn-hero-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.15)}
@@ -142,43 +142,52 @@
 }
 
 /* ═══════════════════════════════════════════════════════════
-   HERO TEXT VISIBILITY FIX
-   Overrides site theme paragraph/heading styles that were
-   making the hero subtitle & meta text unreadable.
+   NUCLEAR HERO TEXT VISIBILITY FIX
+   Beats theme rules including gradient-text (background-clip)
+   and parent blend filters.
    ═══════════════════════════════════════════════════════════ */
 .csvn-wrap .csvn-hero,
 .csvn-wrap .csvn-hero *,
 .csvn-wrap .csvn-hero h1,
 .csvn-wrap .csvn-hero p,
-.csvn-wrap .csvn-hero span,
-.csvn-wrap .csvn-hero div {
+.csvn-wrap .csvn-hero div,
+.csvn-wrap .csvn-hero span {
   color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
-.csvn-wrap .csvn-hero .csvn-hero-sub,
-.csvn-wrap .csvn-hero .csvn-hero-sub * {
+.csvn-wrap .csvn-hero-sub,
+.csvn-wrap .csvn-hero-sub *,
+.csvn-wrap .csvn-hero-sub > span {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
+  visibility: visible !important;
+  background: transparent !important;
+  background-image: none !important;
   background-clip: border-box !important;
   -webkit-background-clip: border-box !important;
-  background-image: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  text-shadow: none !important;
 }
-.csvn-wrap .csvn-hero .csvn-hero-label {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-.csvn-wrap .csvn-hero .csvn-hero-amt,
-.csvn-wrap .csvn-hero .csvn-hero-amt small {
+.csvn-wrap .csvn-hero-label {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   opacity: 1 !important;
 }
-.csvn-wrap .csvn-hero .csvn-hero-amt small {
-  color: rgba(255,255,255,0.8) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.8) !important;
+.csvn-wrap .csvn-hero-amt,
+.csvn-wrap .csvn-hero-amt small {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
 }
-.csvn-wrap .csvn-hero .csvn-hero-meta,
-.csvn-wrap .csvn-hero .csvn-hero-meta span {
+.csvn-wrap .csvn-hero-amt small {
+  color: rgba(255,255,255,0.85) !important;
+  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
+}
+.csvn-wrap .csvn-hero-meta,
+.csvn-wrap .csvn-hero-meta span {
   color: rgba(255,255,255,0.95) !important;
   -webkit-text-fill-color: rgba(255,255,255,0.95) !important;
   opacity: 1 !important;
@@ -188,7 +197,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <div class="csvn-wrap" id="csvnApp">
-<div class="csvn-hero"><span class="csvn-hero-label">Complete Your Listing</span><h1>CSVN Standard Listing</h1><p class="csvn-hero-sub" style="color:#ffffff !important;opacity:1 !important;font-size:14px !important;line-height:1.55 !important;max-width:520px !important;margin:0 !important;font-weight:400 !important;-webkit-text-fill-color:#ffffff !important;">Get your business listed on India's verified B2B vendor network with priority placement and unlimited customer inquiries for 12 months.</p><div class="csvn-hero-amt">₹999<small>One-time payment · 12 months validity</small></div><div class="csvn-hero-meta"><span>✓ Instant activation</span><span>✓ GST invoice</span><span>✓ 7-day refund</span></div></div>
+<div class="csvn-hero"><span class="csvn-hero-label">Complete Your Listing</span><h1>CSVN Standard Listing</h1><div class="csvn-hero-sub" style="display:block !important;position:relative !important;z-index:10 !important;margin:0 !important;padding:0 !important;max-width:520px !important;background:transparent !important;background-image:none !important;background-clip:border-box !important;-webkit-background-clip:border-box !important;filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;isolation:isolate !important;text-shadow:none !important;opacity:1 !important;visibility:visible !important;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:1 !important;font-size:14px !important;line-height:1.55 !important;font-weight:400 !important;font-family:inherit !important;background:transparent !important;background-image:none !important;background-clip:border-box !important;-webkit-background-clip:border-box !important;filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;text-shadow:none !important;display:inline !important;">Get your business listed on India's verified B2B vendor network with priority placement and unlimited customer inquiries for 12 months.</span></div><div class="csvn-hero-amt">₹999<small>One-time payment · 12 months validity</small></div><div class="csvn-hero-meta"><span>✓ Instant activation</span><span>✓ GST invoice</span><span>✓ 7-day refund</span></div></div>
 
 <div class="csvn-steps"><div class="csvn-step active" data-step="1"><div class="csvn-step-num"><span>1</span></div><span class="step-label">Your Details</span></div><div class="csvn-step" data-step="2"><div class="csvn-step-num"><span>2</span></div><span class="step-label">Pay ₹999</span></div><div class="csvn-step" data-step="3"><div class="csvn-step-num"><span>3</span></div><span class="step-label">Generate Invoice</span></div><div class="csvn-step" data-step="4"><div class="csvn-step-num"><span>4</span></div><span class="step-label">Confirmation</span></div></div>
 
