@@ -1,13 +1,10 @@
----
-title: "Payment"
-description: "Pay ₹999 for your CSVN Standard listing via UPI. Instant invoice, 24-hour activation, verified payee."
-layout: "page"
----
+{{ define "main" }}
 
 <style>
 .csvn-wrap *{box-sizing:border-box}
-.csvn-wrap{max-width:920px;margin:0 auto;font-family:'Inter',system-ui,-apple-system,sans-serif;color:#1e293b;line-height:1.6;-webkit-font-smoothing:antialiased}
+.csvn-wrap{max-width:920px;margin:0 auto;padding:0 20px;font-family:'Inter',system-ui,-apple-system,sans-serif;color:#1e293b;line-height:1.6;-webkit-font-smoothing:antialiased}
 .csvn-wrap .csvn-hero{margin-top:1.5rem;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 55%,#7c3aed 100%);border-radius:24px;padding:36px 28px;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(79,70,229,.45)}
+.csvn-wrap .csvn-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);pointer-events:none}
 .csvn-wrap .csvn-hero h1{font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.03em;margin:16px 0 8px;line-height:1.1;color:#fff}
 .csvn-wrap .csvn-hero-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.15)}
 .csvn-wrap .csvn-hero-sub{font-size:14px;opacity:.85;max-width:520px}
@@ -160,8 +157,6 @@ layout: "page"
 
 <div class="csvn-card"><div class="csvn-card-title">Frequently Asked Questions</div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">What if I paid but didn't receive a confirmation?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Email us at info@csvn.in with your UTR and business name. We'll verify manually and confirm within 2 business hours.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Can I pay from a different UPI app?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. Any UPI app works — PhonePe, Google Pay, Paytm, BHIM, Amazon Pay, WhatsApp Pay, or your bank's app. Just make sure the payee name shows "Sachin Ambekar".</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Is the payment refundable?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes — full refund within 7 days if you haven't received any customer inquiries, partial refund between 8–15 days, no refund after 15 days. See our full <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">How long does activation take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Typically within 24 hours of receiving your payment confirmation. You'll get an email with your listing URL and invoice as soon as it's live.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Do I get a GST invoice?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. A GST-compliant invoice is emailed to the address you provide, on the same day your listing is activated.</div></div></div>
 
-<p style="text-align:center;font-size:12px;color:#64748b;padding:36px 16px 8px;line-height:1.7"><strong style="color:#0f172a">CSVN</strong> — Corporate Services Vendor Network<br>Owned and operated by Sachin Ambekar · Nigdi, Pimpri-Chinchwad, Pune<br><a href="mailto:info@csvn.in" style="color:#4f46e5;font-weight:700">info@csvn.in</a> · <a href="tel:+918793932827" style="color:#4f46e5;font-weight:700">+91 87939 32827</a> · Mon–Sat, 10 AM – 6 PM IST</p>
-
 </div>
 
 <div class="csvn-toast-wrap" id="csvnToasts"></div>
@@ -185,11 +180,6 @@ var STORAGE_KEY='csvn_payment_v1';
 var state={step:1,form:{},hasScreenshot:false,submittedRef:null,receiptData:null};
 function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({step:state.step,form:state.form,submittedRef:state.submittedRef,receiptData:state.receiptData}));}catch(e){}}
 function loadState(){try{var raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;Object.assign(state,JSON.parse(raw));}catch(e){}}
-
-var progressBar=document.getElementById('progressBar');
-function showProgress(){}
-function hideProgress(){}
-
 function showStep(n){
   state.step=Math.max(1,Math.min(4,n));saveState();
   for(var i=1;i<=4;i++){
@@ -473,3 +463,5 @@ if(state.submittedRef && state.receiptData){
 }
 })();
 </script>
+
+{{ end }}
