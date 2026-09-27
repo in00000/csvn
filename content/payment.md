@@ -1,24 +1,21 @@
-{{ define "main" }}
+---
+title: "Payment"
+description: "Pay ₹999 for your CSVN Standard listing via UPI. Instant invoice, 24-hour activation, verified payee."
+layout: "page"
+---
 
 <style>
 .csvn-wrap *{box-sizing:border-box}
 .csvn-wrap{max-width:920px;margin:0 auto;padding:0 20px;font-family:'Inter',system-ui,-apple-system,sans-serif;color:#1e293b;line-height:1.6;-webkit-font-smoothing:antialiased}
-.csvn-wrap .csvn-hero{margin-top:1.5rem;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 55%,#7c3aed 100%);border-radius:24px;padding:36px 28px;color:#fff;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(79,70,229,.45);isolation:isolate}
+.csvn-wrap .csvn-hero{margin-top:1.5rem;background:linear-gradient(135deg,#1e1b4b 0%,#4f46e5 55%,#7c3aed 100%);border-radius:24px;padding:36px 28px;position:relative;overflow:hidden;box-shadow:0 24px 48px -16px rgba(79,70,229,.45)}
 .csvn-wrap .csvn-hero::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);pointer-events:none}
-.csvn-wrap .csvn-hero h1{font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-.03em;margin:16px 0 8px;line-height:1.1;color:#fff}
-.csvn-wrap .csvn-hero-label{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.15)}
-.csvn-wrap .csvn-hero-sub{font-size:14px;opacity:.85;max-width:520px}
-.csvn-wrap .csvn-hero-amt{font-size:clamp(44px,8vw,68px);font-weight:900;letter-spacing:-.045em;margin-top:22px;line-height:1;color:#fff}
-.csvn-wrap .csvn-hero-amt small{font-size:15px;font-weight:600;opacity:.7;display:block;margin-top:8px;letter-spacing:0}
-.csvn-wrap .csvn-hero-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-size:12px;opacity:.9;font-weight:500}
-.csvn-wrap .csvn-hero-meta span{display:inline-flex;align-items:center;gap:6px}
 .csvn-wrap .csvn-steps{display:flex;gap:6px;margin:1.75rem 0 1.25rem;background:#fff;padding:8px;border-radius:14px;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(15,23,42,.06);overflow-x:auto;scrollbar-width:none}
 .csvn-wrap .csvn-steps::-webkit-scrollbar{display:none}
 .csvn-wrap .csvn-step{flex:1;min-width:130px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:600;color:#64748b;cursor:pointer;transition:all .25s ease;white-space:nowrap;user-select:none}
 .csvn-wrap .csvn-step:hover{background:#f1f5f9}
 .csvn-wrap .csvn-step.active{background:#eef2ff;color:#4f46e5;font-weight:700}
 .csvn-wrap .csvn-step.done{color:#334155}
-.csvn-wrap .csvn-step-num{width:24px;height:24px;border-radius:50%;background:#e2e8f0;color:#64748b;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;transition:all .3s ease}
+.csvn-wrap .csvn-step-num{width:24px;height:24px;border-radius:50%;background:#e2e8f0;color:#64748b;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
 .csvn-wrap .csvn-step.active .csvn-step-num{background:#4f46e5;color:#fff}
 .csvn-wrap .csvn-step.done .csvn-step-num{background:#10b981;color:#fff}
 .csvn-wrap .csvn-step.done .csvn-step-num::before{content:'✓';font-size:13px;font-weight:900}
@@ -60,8 +57,7 @@
 .csvn-wrap .csvn-payee-row .val{color:#065f46;font-weight:800;text-align:right;word-break:break-all}
 .csvn-wrap .csvn-payee-row .val.mono{font-family:ui-monospace,Monaco,Menlo,monospace;font-size:12px}
 .csvn-wrap .csvn-qr{text-align:center;padding:26px 16px;background:linear-gradient(135deg,#fafbff 0%,#f5f3ff 100%);border-radius:12px;border:1.5px dashed #e0e7ff;margin-bottom:16px}
-.csvn-wrap .csvn-qr img{width:220px;height:220px;background:#fff;padding:12px;border-radius:14px;box-shadow:0 8px 24px -6px rgba(79,70,229,.18);display:inline-block;transition:transform .3s ease}
-.csvn-wrap .csvn-qr img:hover{transform:scale(1.04)}
+.csvn-wrap .csvn-qr img{width:220px;height:220px;background:#fff;padding:12px;border-radius:14px;box-shadow:0 8px 24px -6px rgba(79,70,229,.18);display:inline-block}
 .csvn-wrap .csvn-qr-hint{font-size:12px;color:#64748b;margin-top:14px;font-weight:500}
 .csvn-wrap .csvn-upi-apps{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2e8f0;padding:8px 14px;border-radius:100px;font-size:11px;font-weight:700;color:#64748b;margin-top:14px}
 .csvn-wrap .csvn-upi-apps .dot{width:6px;height:6px;border-radius:50%;background:#10b981}
@@ -129,7 +125,6 @@
 .csvn-wrap .csvn-foot{text-align:center;font-size:12px;color:#64748b;padding:36px 16px 8px;line-height:1.7}
 .csvn-wrap .csvn-foot strong{color:#0f172a;font-weight:800}
 .csvn-wrap .csvn-foot a{color:#4f46e5;text-decoration:none;font-weight:700}
-.csvn-wrap .csvn-foot a:hover{text-decoration:underline}
 @media (max-width:600px){
 .csvn-wrap .csvn-hero{padding:28px 22px;border-radius:20px}
 .csvn-wrap .csvn-card{padding:20px;border-radius:14px}
@@ -140,64 +135,22 @@
 .csvn-wrap .csvn-step .step-label{display:none}
 .csvn-wrap .csvn-step.active .step-label{display:inline}
 }
-
-/* ═══════════════════════════════════════════════════════════
-   NUCLEAR HERO TEXT VISIBILITY FIX
-   Beats theme rules including gradient-text (background-clip)
-   and parent blend filters.
-   ═══════════════════════════════════════════════════════════ */
-.csvn-wrap .csvn-hero,
-.csvn-wrap .csvn-hero *,
-.csvn-wrap .csvn-hero h1,
-.csvn-wrap .csvn-hero p,
-.csvn-wrap .csvn-hero div,
-.csvn-wrap .csvn-hero span {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-}
-.csvn-wrap .csvn-hero-sub,
-.csvn-wrap .csvn-hero-sub *,
-.csvn-wrap .csvn-hero-sub > span {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  background: transparent !important;
-  background-image: none !important;
-  background-clip: border-box !important;
-  -webkit-background-clip: border-box !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-  mix-blend-mode: normal !important;
-  text-shadow: none !important;
-}
-.csvn-wrap .csvn-hero-label {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-.csvn-wrap .csvn-hero-amt,
-.csvn-wrap .csvn-hero-amt small {
-  color: #ffffff !important;
-  -webkit-text-fill-color: #ffffff !important;
-  opacity: 1 !important;
-}
-.csvn-wrap .csvn-hero-amt small {
-  color: rgba(255,255,255,0.85) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.85) !important;
-}
-.csvn-wrap .csvn-hero-meta,
-.csvn-wrap .csvn-hero-meta span {
-  color: rgba(255,255,255,0.95) !important;
-  -webkit-text-fill-color: rgba(255,255,255,0.95) !important;
-  opacity: 1 !important;
-}
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <div class="csvn-wrap" id="csvnApp">
-<div class="csvn-hero"><span class="csvn-hero-label">Complete Your Listing</span><h1>CSVN Standard Listing</h1><div class="csvn-hero-sub" style="display:block !important;position:relative !important;z-index:10 !important;margin:0 !important;padding:0 !important;max-width:520px !important;background:transparent !important;background-image:none !important;background-clip:border-box !important;-webkit-background-clip:border-box !important;filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;isolation:isolate !important;text-shadow:none !important;opacity:1 !important;visibility:visible !important;"><span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:1 !important;font-size:14px !important;line-height:1.55 !important;font-weight:400 !important;font-family:inherit !important;background:transparent !important;background-image:none !important;background-clip:border-box !important;-webkit-background-clip:border-box !important;filter:none !important;-webkit-filter:none !important;mix-blend-mode:normal !important;text-shadow:none !important;display:inline !important;">Get your business listed on India's verified B2B vendor network with priority placement and unlimited customer inquiries for 12 months.</span></div><div class="csvn-hero-amt">₹999<small>One-time payment · 12 months validity</small></div><div class="csvn-hero-meta"><span>✓ Instant activation</span><span>✓ GST invoice</span><span>✓ 7-day refund</span></div></div>
+<div class="csvn-hero" style="color:#ffffff !important;">
+  <div style="display:inline-block !important;font-size:11px !important;font-weight:700 !important;letter-spacing:.12em !important;text-transform:uppercase !important;background:rgba(255,255,255,.15) !important;padding:6px 12px !important;border-radius:100px !important;border:1px solid rgba(255,255,255,.15) !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:1 !important;">Complete Your Listing</div>
+  <div style="font-size:clamp(24px,4vw,34px) !important;font-weight:900 !important;letter-spacing:-.03em !important;margin:16px 0 8px !important;line-height:1.1 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:1 !important;">CSVN Standard Listing</div>
+  <div style="font-size:14px !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:.92 !important;max-width:520px !important;line-height:1.55 !important;font-weight:400 !important;margin:0 !important;">Get your business listed on India's verified B2B vendor network with priority placement and unlimited customer inquiries for 12 months.</div>
+  <div style="font-size:clamp(44px,8vw,68px) !important;font-weight:900 !important;letter-spacing:-.045em !important;margin-top:22px !important;line-height:1 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:1 !important;">₹999<div style="font-size:15px !important;font-weight:600 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:.85 !important;display:block !important;margin-top:8px !important;letter-spacing:0 !important;">One-time payment · 12 months validity</div></div>
+  <div style="display:flex !important;gap:18px !important;flex-wrap:wrap !important;margin-top:24px !important;font-size:12px !important;font-weight:500 !important;color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;opacity:.95 !important;">
+    <span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;">✓ Instant activation</span>
+    <span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;">✓ GST invoice</span>
+    <span style="color:#ffffff !important;-webkit-text-fill-color:#ffffff !important;">✓ 7-day refund</span>
+  </div>
+</div>
 
 <div class="csvn-steps"><div class="csvn-step active" data-step="1"><div class="csvn-step-num"><span>1</span></div><span class="step-label">Your Details</span></div><div class="csvn-step" data-step="2"><div class="csvn-step-num"><span>2</span></div><span class="step-label">Pay ₹999</span></div><div class="csvn-step" data-step="3"><div class="csvn-step-num"><span>3</span></div><span class="step-label">Generate Invoice</span></div><div class="csvn-step" data-step="4"><div class="csvn-step-num"><span>4</span></div><span class="step-label">Confirmation</span></div></div>
 
@@ -520,5 +473,3 @@ if(state.submittedRef && state.receiptData){
 }
 })();
 </script>
-
-{{ end }}
