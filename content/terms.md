@@ -24,11 +24,14 @@ You may use CSVN only if you:
 CSVN is an online **directory** of business service vendors in India. We:
 
 - List vendors across 90+ service categories
-- Display vendor contact information, services, and customer reviews
-- Enable buyers to connect directly with vendors
-- Do NOT process payments, mediate transactions, or take commissions
+- Display vendor contact information and service details
+- Enable buyers to contact vendors directly through the details published on vendor profiles
 
-**We are a listing platform only.** We do not guarantee the quality, safety, or legality of services provided by any vendor.
+**We are a listing and visibility platform only.** We do not process payments between buyers and vendors, mediate transactions between them, or take commissions on deals they close.
+
+We do not guarantee the quality, safety, or legality of services provided by any vendor.
+
+We charge a flat listing fee (currently ₹999/year for the Standard plan) for paid vendor listings. That fee is for listing and visibility only. It does not guarantee enquiries, contracts, orders, or any specific business outcome.
 
 ## Vendor Listings
 
@@ -41,20 +44,22 @@ By submitting a listing to CSVN, you agree that:
 - Your services comply with applicable Indian laws
 - You will not post false, misleading, or defamatory content
 - You will not list services you are not licensed to offer
-- You will respond to genuine buyer inquiries promptly
+- You will respond to genuine buyer enquiries promptly
 
-### Listing Approval
+### Listing Review
 
-We reserve the right to:
+We review vendor submissions for completeness and compliance with these Terms. We reserve the right to:
 
-- Approve or reject any listing at our sole discretion
+- Approve or reject any listing at our discretion
 - Edit listings for clarity, formatting, or compliance
 - Remove listings that violate these Terms
-- Suspend or terminate vendor accounts without notice
+- Suspend or terminate listings for policy violations
 
-### Verification Badge
+For paid listings, if we suspend or remove a listing due to a vendor policy violation, no refund will be provided. If we remove a listing for reasons unrelated to the vendor, we will issue a pro-rata refund for the unused portion of the paid period, as described in our [Refund Policy](/refund/).
 
-The "Verified" badge is granted at our discretion. It indicates that we have reviewed certain documents provided by the vendor (such as GST registration or business licenses). It is **not** a guarantee of quality, reliability, or performance.
+### Listed Badge
+
+The "Listed" badge indicates that a vendor has a published, reviewed listing on CSVN. It does **not** constitute an endorsement, certification, or guarantee of the vendor's quality, reliability, credentials, licences, or performance. Buyers should independently verify vendor credentials before entering into any engagement.
 
 ## Prohibited Uses
 
@@ -64,7 +69,7 @@ You agree NOT to:
 - Impersonate another person or business
 - Violate any Indian law or regulation
 - Upload viruses, malware, or harmful code
-- Attempt to gain unauthorized access to our systems
+- Attempt to gain unauthorised access to our systems
 - Scrape, copy, or redistribute our database
 - Use the website to send spam or unsolicited communications
 - Post content that is defamatory, obscene, or promotes hatred
@@ -73,10 +78,10 @@ You agree NOT to:
 
 ## Buyer Responsibilities
 
-If you're using CSVN to find vendors:
+If you are using CSVN to find vendors:
 
 - **Verify independently** — We do not endorse or guarantee any vendor. Do your own due diligence before hiring.
-- **Contract directly** — Any agreement, payment, or dispute is between you and the vendor. CSVN is not a party.
+- **Contract directly** — Any agreement, payment, or dispute is between you and the vendor. CSVN is not a party to it.
 - **Report issues** — If a vendor behaves fraudulently, report it to [report@csvn.in](mailto:report@csvn.in).
 
 ## Intellectual Property
@@ -89,7 +94,7 @@ You may NOT copy, reproduce, modify, or distribute our content without written p
 
 ### Your Property
 
-You retain ownership of content you submit (descriptions, images, catalogues). By submitting, you grant us a **non-exclusive, royalty-free, worldwide license** to display, distribute, and promote that content on CSVN and related marketing channels.
+You retain ownership of content you submit (descriptions, images, catalogues). By submitting, you grant us a **non-exclusive, royalty-free, worldwide licence** to display, distribute, and promote that content on CSVN and related marketing channels.
 
 ## Disclaimers
 
@@ -99,19 +104,20 @@ You retain ownership of content you submit (descriptions, images, catalogues). B
 - Vendor information will be accurate, complete, or current
 - Services provided by vendors will meet your expectations
 - Any defects will be corrected
+- Any listing or promotional activity will result in enquiries, contracts, or orders
 
 We do not guarantee the quality, safety, or legality of any service offered by vendors listed on our website.
 
 ## Limitation of Liability
 
-To the maximum extent permitted by Indian law, CSVN, its owner, employees, and agents are **not liable** for:
+To the maximum extent permitted by Indian law, CSVN, its proprietor, and agents are **not liable** for:
 
 - Any indirect, incidental, or consequential damages
 - Loss of profits, data, or business opportunities
 - Damages arising from interactions with vendors
-- Damages resulting from unauthorized access to our systems
+- Damages resulting from unauthorised access to our systems
 
-Our total liability for any claim shall not exceed **₹1,000** or the amount you paid us (whichever is lower).
+Our total liability for any claim shall not exceed **₹1,000** or the amount you paid us in the preceding 12 months, whichever is lower.
 
 ## Indemnification
 
@@ -124,12 +130,14 @@ You agree to indemnify and hold CSVN harmless from any claims, damages, or expen
 
 ## Termination
 
-We may terminate or suspend your access to CSVN at any time, without notice, for:
+We may terminate or suspend your access to CSVN at any time, with notice, for:
 
 - Violation of these Terms
 - Fraudulent or illegal activity
 - Requests from law enforcement
 - Discontinuation of the service
+
+For paid listings, termination due to vendor policy violation will not trigger a refund. Termination for reasons unrelated to the vendor will be handled as per our [Refund Policy](/refund/).
 
 ## Governing Law
 
@@ -152,6 +160,6 @@ For questions about these Terms:
 
 ---
 
-**Last Updated:** 26 September 2026
+**Last Updated:** 30 September 2026
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is a proprietorship operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
