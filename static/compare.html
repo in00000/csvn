@@ -30,59 +30,10 @@ body{
   line-height:1.6;-webkit-font-smoothing:antialiased;
 }
 
-/* ═══ GOOGLE TRANSLATE — hide default banner ═══ */
+/* ═══ GOOGLE TRANSLATE — hide default banners ═══ */
 body > .skiptranslate{display:none !important}
 .goog-te-banner-frame{display:none !important}
 body{top:0 !important;position:static !important}
-.goog-te-gadget{
-  font-family:'Inter',sans-serif !important;
-  font-size:15px !important;
-  color:var(--slate-700) !important;
-}
-.goog-te-gadget > span > a{display:none !important}
-.goog-te-gadget-simple{
-  background:transparent !important;
-  border:none !important;
-  padding:0 !important;
-}
-.goog-te-gadget-simple .goog-te-menu-value{
-  color:var(--slate-900) !important;
-  font-weight:700 !important;
-  font-size:15px !important;
-}
-.goog-te-gadget-simple .goog-te-menu-value span{
-  color:var(--slate-900) !important;
-}
-.goog-te-gadget-simple .goog-te-menu-value span:nth-child(3),
-.goog-te-gadget-simple .goog-te-menu-value span:nth-child(4){
-  display:none !important;
-}
-.goog-te-menu-frame{
-  box-shadow:0 24px 48px -16px rgba(15,23,42,.28) !important;
-  border:1px solid var(--slate-200) !important;
-  border-radius:14px !important;
-  overflow:hidden !important;
-}
-.goog-te-menu2{border:none !important;padding:8px !important}
-.goog-te-menu2-item div,
-.goog-te-menu2-item:link div,
-.goog-te-menu2-item:visited div,
-.goog-te-menu2-item:active div{
-  font-family:'Inter',sans-serif !important;
-  color:var(--slate-700) !important;
-  font-size:14px !important;
-  padding:8px 12px !important;
-  border-radius:8px !important;
-}
-.goog-te-menu2-item:hover div{
-  background:var(--indigo-50) !important;
-  color:var(--indigo-700) !important;
-}
-.goog-te-menu2-item-selected div{
-  background:var(--indigo-100) !important;
-  color:var(--indigo-700) !important;
-  font-weight:700 !important;
-}
 
 /* ═══ HEADER ═══ */
 .page-header{
@@ -124,9 +75,7 @@ body{top:0 !important;position:static !important}
   max-width:720px;line-height:1.65;
 }
 
-/* ═══════════════════════════════════════════
-   LANGUAGE SELECTOR — prominent, spacious
-   ═══════════════════════════════════════════ */
+/* ═══ LANGUAGE SECTION ═══ */
 .lang-section{
   background:#ffffff;
   border-bottom:1px solid var(--slate-200);
@@ -169,29 +118,61 @@ body{top:0 !important;position:static !important}
   max-width:640px;
   margin:0 auto 40px;
 }
-.lang-selector-box{
-  display:inline-flex;align-items:center;gap:16px;
+
+/* Native language selector */
+.lang-native-wrap{
+  display:inline-flex;flex-direction:column;gap:12px;
   background:var(--slate-50);
   border:2px solid var(--indigo-200);
   border-radius:16px;
-  padding:18px 26px;
+  padding:20px 26px;
   box-shadow:0 12px 28px -14px rgba(79,70,229,.2);
   transition:all .24s cubic-bezier(.4,0,.2,1);
-  cursor:pointer;
+  min-width:320px;
+  text-align:left;
 }
-.lang-selector-box:hover{
+.lang-native-wrap:hover{
   border-color:var(--indigo-500);
   box-shadow:0 16px 36px -14px rgba(79,70,229,.35);
-  transform:translateY(-2px);
 }
-.lang-selector-box .lang-arrow{
-  color:var(--indigo-600);font-size:18px;
-  display:flex;align-items:center;justify-content:center;
+.lang-native-label{
+  font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--indigo-600);display:flex;align-items:center;gap:8px;
+  cursor:pointer;
 }
-.lang-selector-box #google_translate_element{
-  font-size:16px;line-height:1;
-  min-width:180px;text-align:left;
+.lang-native-label i{font-size:13px}
+.lang-native-inner{
+  position:relative;display:flex;align-items:center;
+  background:#ffffff;
+  border:1.5px solid var(--slate-200);
+  border-radius:11px;
+  overflow:hidden;
+  transition:border-color .2s ease;
 }
+.lang-native-inner:focus-within{
+  border-color:var(--indigo-500);
+  box-shadow:0 0 0 4px rgba(79,70,229,.12);
+}
+.lang-native-select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  width:100%;
+  padding:14px 44px 14px 18px;
+  font-family:'Inter',sans-serif;
+  font-size:16px;font-weight:700;
+  color:var(--slate-900);
+  background:transparent;
+  border:none;outline:none;
+  cursor:pointer;
+  line-height:1.4;
+}
+.lang-native-select:hover{color:var(--indigo-700)}
+.lang-native-arrow{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  color:var(--indigo-600);font-size:14px;pointer-events:none;
+  transition:transform .22s ease;
+}
+.lang-native-select:focus ~ .lang-native-arrow{transform:translateY(-50%) rotate(180deg)}
+
 .lang-hint{
   margin-top:28px;
   font-size:13px;
@@ -270,7 +251,7 @@ h2{
   color:var(--slate-400);margin-left:6px;
 }
 
-/* ═══ GRID ═══ */
+/* ═══ GRID & CARDS ═══ */
 .grid{display:grid;gap:20px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
 .grid-2{grid-template-columns:repeat(2,1fr)}
@@ -400,8 +381,8 @@ h2{
   .page-header{padding:44px 20px 52px}
   .lang-section{padding:44px 20px 52px}
   .lang-icon-wrap{width:60px;height:60px;font-size:24px;margin-bottom:22px}
-  .lang-selector-box{padding:14px 20px;gap:12px;flex-direction:column;align-items:stretch}
-  .lang-selector-box #google_translate_element{min-width:auto;text-align:center}
+  .lang-native-wrap{min-width:auto;width:100%;padding:16px 18px}
+  .lang-native-select{font-size:15px;padding:12px 40px 12px 14px}
   .compare-wrap{overflow-x:auto}
   .compare-table{min-width:640px}
   .compare-table th,.compare-table td{padding:14px 14px;font-size:12.5px}
@@ -435,15 +416,38 @@ h2{
     <p class="lang-subtext">
       Read this page in your preferred Indian language. Select from the dropdown below — the page will translate instantly.
     </p>
-    <div class="lang-selector-box">
-      <i class="fa-solid fa-globe lang-arrow"></i>
-      <div id="google_translate_element"></div>
-      <i class="fa-solid fa-chevron-down lang-arrow"></i>
+
+    <div class="lang-native-wrap">
+      <label for="langSelect" class="lang-native-label">
+        <i class="fa-solid fa-globe"></i> Select Language
+      </label>
+      <div class="lang-native-inner">
+        <select id="langSelect" class="lang-native-select" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी (Hindi)</option>
+          <option value="mr">मराठी (Marathi)</option>
+          <option value="ta">தமிழ் (Tamil)</option>
+          <option value="te">తెలుగు (Telugu)</option>
+          <option value="bn">বাংলা (Bengali)</option>
+          <option value="gu">ગુજરાતી (Gujarati)</option>
+          <option value="kn">ಕನ್ನಡ (Kannada)</option>
+          <option value="ml">മലയാളം (Malayalam)</option>
+          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+          <option value="ur">اردو (Urdu)</option>
+          <option value="or">ଓଡ଼ିଆ (Odia)</option>
+          <option value="as">অসমীয়া (Assamese)</option>
+        </select>
+        <i class="fa-solid fa-chevron-down lang-native-arrow"></i>
+      </div>
     </div>
+
     <p class="lang-hint">
       <i class="fa-solid fa-circle-check"></i>
       <span>Supported: <strong>हिन्दी · मराठी · தமிழ் · తెలుగు · বাংলা · ગુજરાતી · ಕನ್ನಡ · മലയാളം · ਪੰਜਾਬੀ · اردو · ଓଡ଼ିଆ</strong></span>
     </p>
+
+    <!-- Hidden Google Translate mount point (required for translation engine) -->
+    <div id="google_translate_element" style="display:none"></div>
   </div>
 </section>
 
@@ -515,7 +519,7 @@ h2{
   </div>
 </section>
 
-<!-- ═══════════════════ WHAT MAKES US DIFFERENT ═══════════════════ -->
+<!-- ═══════════════════ WHY VENDORS CHOOSE CSVN ═══════════════════ -->
 <section class="tight">
   <div class="container">
     <div class="sec-eyebrow">The Real Difference</div>
@@ -616,13 +620,48 @@ h2{
   </p>
 </footer>
 
-<!-- ═══════════════════ GOOGLE TRANSLATE ═══════════════════ -->
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
 <script type="text/javascript">
+/* ═══ Native language selector logic ═══ */
+function changeLanguage(lang) {
+  var host = location.hostname;
+  var expired = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+  var cookieNames = [
+    'googtrans=; ' + expired + '; path=/',
+    'googtrans=; ' + expired + '; path=/; domain=' + host,
+    'googtrans=; ' + expired + '; path=/; domain=.' + host
+  ];
+  cookieNames.forEach(function(c){ document.cookie = c; });
+
+  if (lang && lang !== 'en') {
+    var value = '/en/' + lang;
+    document.cookie = 'googtrans=' + value + '; path=/';
+    document.cookie = 'googtrans=' + value + '; path=/; domain=' + host;
+    document.cookie = 'googtrans=' + value + '; path=/; domain=.' + host;
+  }
+
+  var sel = document.getElementById('langSelect');
+  if (sel) {
+    sel.disabled = true;
+    sel.style.opacity = '0.6';
+  }
+
+  location.reload();
+}
+
+/* On load, detect current language and set dropdown */
+(function() {
+  var match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
+  var current = match ? match[1] : 'en';
+  var sel = document.getElementById('langSelect');
+  if (sel) sel.value = current;
+})();
+
+/* Load Google Translate engine (translation only, UI is hidden) */
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'en',
     includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
     autoDisplay: false
   }, 'google_translate_element');
 }
