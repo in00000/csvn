@@ -1,17 +1,17 @@
 # ─────────────────────────────────────────────────────────────
-#  ProBuildB2B — Hugo Configuration
-#  Site:    Industrial & Commercial Service Directory
+#  CSVN — Corporate Services Vendor Network
+#  Site:    B2B Service Provider Directory
 #  Scale:   50,000+ listing pages, text-only
 # ─────────────────────────────────────────────────────────────
 
-baseURL      = "https://in00000.github.io/csvn/"
-relativeURLs = true
+baseURL      = "https://www.csvn.in/"
 languageCode = "en-us"
 title        = "CSVN — Corporate Services Vendor Network"
 timeZone     = "Asia/Kolkata"
 
 # We don't need RSS feeds on a directory site.
 disableKinds = ["RSS", "term"]
+
 # ─── Taxonomies ──────────────────────────────────────────────
 # Every client has a "category" field. Hugo auto-generates a real
 # page per category at /categories/<slug>/ using this taxonomy.
@@ -33,12 +33,12 @@ disableKinds = ["RSS", "term"]
 
 # ─── Site-wide parameters ────────────────────────────────────
 [params]
-  description  = "CSVN — India's verified B2B vendor network. Source corporate service providers across 90+ categories."
-  reportEmail  = "admin@example.com"
+  description  = "CSVN — a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India."
+  reportEmail  = "info@csvn.in"
 
-  # Homepage hero
-  heroTitle    = "Source Verified Industrial & Facility Service Providers in Seconds"
-  heroSubtitle = "Connect directly with pre-vetted contractors for Pest Control, Canteen Catering, Labour Contracting, Epoxy Flooring, and Heavy Maintenance."
+  # Homepage hero — focused on visibility and reach, not guarantees
+  heroTitle    = "Get Discovered by India's Decision-Makers"
+  heroSubtitle = "CSVN is a B2B visibility platform that helps corporate service providers reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and other decision-makers across India."
 
   # Industrial hubs shown in the hero search dropdown
   hubs = [
