@@ -10,7 +10,7 @@ CSVN — Corporate Services Vendor Network ("we", "us", "our") respects your pri
 
 This policy applies to our website **csvn.in** and any related services. By using our website, you agree to the collection and use of information as described in this policy.
 
-This policy is compliant with the **Information Technology Act, 2000**, the **Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011**, and the **Digital Personal Data Protection Act, 2023**.
+This policy is intended to align with the Information Technology Act, 2000, the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, and the Digital Personal Data Protection Act, 2023.
 
 ## Information We Collect
 
@@ -20,7 +20,7 @@ When you contact us, submit a vendor listing, or interact with our services, we 
 
 - **Business information:** company name, address, phone number, email, website URL, service categories
 - **Contact information:** name, designation, phone number, email address
-- **Content you submit:** service descriptions, catalogues, customer testimonials
+- **Content you submit:** service descriptions, catalogues
 - **Communications:** emails, messages, and forms sent to us
 
 ### Information Collected Automatically
@@ -38,7 +38,7 @@ We use the information we collect to:
 
 - Provide and maintain the CSVN directory
 - Display vendor listings and enable direct contact between buyers and vendors
-- Respond to inquiries and support requests
+- Respond to enquiries and support requests
 - Improve the website, features, and user experience
 - Send service updates and important notices
 - Detect and prevent fraud, abuse, and security incidents
@@ -46,22 +46,23 @@ We use the information we collect to:
 
 ## Information Sharing
 
-We do **not** sell your personal information. We may share information only in these limited cases:
+We do not sell your personal information. We may share information only in these limited cases:
 
 ### With Vendors (Buyer-Initiated Contact)
 
-When you contact a vendor through our site, the vendor receives your inquiry details. This is initiated by you.
+When you contact a vendor through our site, the vendor receives your enquiry details. This is initiated by you.
 
 ### With Service Providers
 
 We use trusted third-party services to operate our website:
 
 - **GitHub Pages** — website hosting
-- **Google Analytics** (if enabled) — anonymous traffic statistics
+- **Form processing** — formsubmit.co (used to route listing form submissions to our email)
+- **Analytics services (if enabled)** — anonymous traffic statistics
 - **Email service providers** — for sending and receiving messages
-- **Cloudflare** (if enabled) — DNS and security services
+- **Cloudflare (if enabled)** — DNS and security services
 
-These providers access information only to perform specific tasks on our behalf and are bound by confidentiality agreements.
+These providers access information only to perform specific tasks on our behalf and are bound by their own confidentiality and privacy obligations.
 
 ### With Legal Authorities
 
@@ -75,10 +76,10 @@ We may disclose information when required by:
 
 We take reasonable measures to protect your personal information:
 
-- **HTTPS encryption** for all data transmitted to and from our website
-- **Secure hosting** via GitHub Pages (SOC 2 compliant infrastructure)
-- **Access controls** limiting who can access stored data
-- **Regular reviews** of our security practices
+- HTTPS encryption for all data transmitted to and from our website
+- Secure hosting via GitHub Pages (SOC 2 compliant infrastructure)
+- Access controls limiting who can access stored data
+- Regular reviews of our security practices
 
 However, no method of transmission over the internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
 
@@ -87,20 +88,20 @@ However, no method of transmission over the internet is 100% secure. While we st
 We retain personal information only as long as necessary:
 
 - **Vendor listings:** retained while the listing is active, plus 12 months after removal for legal and audit purposes
-- **Contact inquiries:** retained for up to 24 months
-- **Analytics data:** aggregated and anonymized after 26 months
+- **Contact enquiries:** retained for up to 24 months
+- **Analytics data:** aggregated and anonymised after 26 months
 - **Legal and compliance records:** retained as required by law
 
 ## Your Rights
 
-Under the **Digital Personal Data Protection Act, 2023** and other applicable laws, you have the right to:
+Under the Digital Personal Data Protection Act, 2023 and other applicable laws, you have the right to:
 
-- **Access** the personal information we hold about you
-- **Correct** inaccurate or incomplete information
-- **Request deletion** of your personal information
-- **Withdraw consent** for processing at any time
-- **Object** to certain uses of your data
-- **File a complaint** with the Data Protection Board of India
+- Access the personal information we hold about you
+- Correct inaccurate or incomplete information
+- Request deletion of your personal information
+- Withdraw consent for processing at any time
+- Object to certain uses of your data
+- File a complaint with the Data Protection Board of India
 
 To exercise any of these rights, email us at [privacy@csvn.in](mailto:privacy@csvn.in). We respond to all requests within 30 days.
 
@@ -128,13 +129,13 @@ We may update this Privacy Policy from time to time. When we do, we will:
 
 - Update the "Last Updated" date below
 - Post the new policy on this page
-- Notify material changes by email (if you're a registered vendor)
+- Notify material changes by email (if you are a registered vendor)
 
 Your continued use of the website after changes indicates acceptance of the updated policy.
 
 ## Grievance Officer
 
-Under the **Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021**, our Grievance Officer is:
+Under the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021, our Grievance Officer is:
 
 **Name:** Sachin Ambekar
 **Designation:** Grievance Officer
@@ -153,6 +154,6 @@ For privacy-related questions:
 
 ---
 
-**Last Updated:** 26 September 2026
+**Last Updated:** 30 September 2026
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is a proprietorship operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
