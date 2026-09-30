@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>CSVN vs Lead Generation Directories</title>
+<title>CSVN — Complete Presentation 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,440 +16,1089 @@
   --indigo-800:#3730a3;--indigo-900:#312e81;
   --slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;
   --slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;
-  --slate-800:#1e293b;--slate-900:#0f172a;
+  --slate-800:#1e293b;--slate-900:#0f172a;--slate-950:#020617;
   --emerald-50:#ecfdf5;--emerald-400:#34d399;--emerald-500:#10b981;
   --emerald-600:#059669;--emerald-700:#047857;
   --amber-50:#fffbeb;--amber-400:#fbbf24;--amber-500:#f59e0b;--amber-600:#d97706;
-  --rose-50:#fff1f2;--rose-500:#f43f5e;
+  --rose-50:#fff1f2;--rose-400:#fb7185;--rose-500:#f43f5e;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html,body{height:100%;overflow:hidden;background:var(--slate-950)}
 body{
   font-family:'Inter',system-ui,-apple-system,sans-serif;
-  background:var(--slate-50);color:var(--slate-800);
-  line-height:1.6;-webkit-font-smoothing:antialiased;
+  color:var(--slate-900);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateX(60px) scale(.98);
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1),visibility 0s linear .55s;
+  padding:80px 96px 72px;overflow:hidden;
+}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0) scale(1);transition-delay:0s}
+.slide.prev{transform:translateX(-60px) scale(.98)}
+
+.slide.light{background:var(--slate-50);color:var(--slate-900)}
+.slide.light::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 12% 15%,rgba(99,102,241,.07),transparent 42%),radial-gradient(circle at 88% 85%,rgba(16,185,129,.055),transparent 42%);
+}
+.slide.dark{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 42%,#0f172a 100%);color:#fff}
+.slide.dark::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(129,140,248,.16) 1px,transparent 1px);
+  background-size:30px 30px;opacity:.45;
+}
+.slide.dark::after{
+  content:'';position:absolute;top:-30%;right:-15%;width:760px;height:760px;
+  background:radial-gradient(circle,rgba(16,185,129,.22),transparent 62%);pointer-events:none;
+}
+.slide.section-divider{background:linear-gradient(135deg,#4f46e5 0%,#312e81 50%,#0f172a 100%)}
+.slide.section-divider::after{
+  content:'';position:absolute;top:-30%;right:-15%;width:800px;height:800px;
+  background:radial-gradient(circle,rgba(52,211,153,.28),transparent 60%);pointer-events:none;
 }
 
-/* ═══ HEADER ═══ */
-.page-header{
-  background:linear-gradient(135deg,#1e1b4b 0%,#312e81 45%,#0f172a 100%);
-  color:#fff;padding:56px 32px 64px;position:relative;overflow:hidden;
+.slide-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;max-width:1400px;width:100%;margin:0 auto}
+
+.brand-bar{
+  position:absolute;top:34px;left:96px;right:96px;
+  display:flex;align-items:center;justify-content:space-between;z-index:6;pointer-events:none;
 }
-.page-header::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(129,140,248,.15) 1px,transparent 1px);
-  background-size:28px 28px;opacity:.5;
+.brand-bar img{
+  height:38px;width:auto;display:block;background:#ffffff;padding:6px 14px;border-radius:10px;
+  box-shadow:0 4px 14px -4px rgba(0,0,0,.22);
 }
-.page-header::after{
-  content:'';position:absolute;top:-40%;right:-15%;width:700px;height:700px;
-  background:radial-gradient(circle,rgba(16,185,129,.22),transparent 62%);
+.brand-bar .deck-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-400)}
+.slide.dark .brand-bar .deck-label,.slide.section-divider .brand-bar .deck-label{color:rgba(255,255,255,.6)}
+
+.progress-track{position:absolute;top:0;left:0;right:0;height:3px;background:rgba(148,163,184,.15);z-index:200}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--indigo-500),var(--emerald-500));transition:width .55s cubic-bezier(.4,0,.2,1)}
+
+.nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:150;
+  width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.22);cursor:pointer;
+  background:rgba(15,23,42,.65);color:#ffffff;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .22s cubic-bezier(.4,0,.2,1);opacity:.6;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.5);
 }
-.header-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto}
-.logo-plate{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:#ffffff;padding:14px 26px;border-radius:14px;margin-bottom:28px;
-  box-shadow:0 14px 32px -10px rgba(0,0,0,.45);
+.nav-btn:hover{opacity:1;background:var(--indigo-600);border-color:var(--indigo-500);transform:translateY(-50%) scale(1.08);box-shadow:0 12px 32px -8px rgba(79,70,229,.6)}
+.nav-prev{left:24px}.nav-next{right:24px}
+.deck[data-theme="light"] .nav-btn{background:rgba(15,23,42,.08);color:var(--slate-800);border-color:rgba(15,23,42,.12);box-shadow:0 8px 24px -8px rgba(15,23,42,.18)}
+.deck[data-theme="light"] .nav-btn:hover{background:var(--indigo-600);color:#ffffff;border-color:var(--indigo-500)}
+
+.slide-counter{
+  position:absolute;bottom:34px;right:96px;z-index:150;font-size:12px;font-weight:700;letter-spacing:.12em;
+  color:var(--slate-500);background:rgba(255,255,255,.7);padding:8px 16px;border-radius:100px;
+  border:1px solid rgba(148,163,184,.25);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
 }
-.logo-plate img{height:44px;width:auto;display:block}
-.page-header .eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--emerald-400);margin-bottom:18px;
+.slide.dark .slide-counter,.slide.section-divider .slide-counter{color:rgba(255,255,255,.82);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.slide-counter .current{color:var(--indigo-600);font-weight:800}
+.slide.dark .slide-counter .current,.slide.section-divider .slide-counter .current{color:var(--emerald-400)}
+
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo-600);margin-bottom:20px}
+.slide.dark .eyebrow,.slide.section-divider .eyebrow{color:var(--indigo-200)}
+.eyebrow::before{content:'';width:26px;height:2px;background:currentColor;border-radius:2px}
+h1{font-size:clamp(40px,4.8vw,68px);font-weight:900;letter-spacing:-.038em;line-height:1.05;margin-bottom:22px}
+h2{font-size:clamp(30px,3.4vw,48px);font-weight:900;letter-spacing:-.032em;line-height:1.1;margin-bottom:18px}
+h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
+.lead{font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--slate-600);max-width:820px}
+.slide.dark .lead,.slide.section-divider .lead{color:rgba(255,255,255,.78)}
+.grad-text{background:linear-gradient(135deg,#818cf8 0%,#34d399 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.slide.light .grad-text{background:linear-gradient(135deg,#4f46e5 0%,#059669 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.anim{opacity:0;transform:translateY(20px)}
+.slide.active .anim{animation:fadeUp .72s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.slide.active .anim:nth-child(1){animation-delay:.08s}
+.slide.active .anim:nth-child(2){animation-delay:.16s}
+.slide.active .anim:nth-child(3){animation-delay:.24s}
+.slide.active .anim:nth-child(4){animation-delay:.32s}
+.slide.active .anim:nth-child(5){animation-delay:.40s}
+.slide.active .anim:nth-child(6){animation-delay:.48s}
+.slide.active .anim:nth-child(7){animation-delay:.56s}
+.slide.active .anim:nth-child(8){animation-delay:.64s}
+
+.title-wrap{display:flex;flex-direction:column;justify-content:center;height:100%;max-width:1060px;margin:0 auto;width:100%}
+.title-logo-plate{
+  display:inline-flex;align-items:center;justify-content:center;background:#ffffff;
+  padding:24px 42px;border-radius:22px;margin-bottom:40px;width:fit-content;
+  box-shadow:0 28px 60px -20px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
 }
-.page-header .eyebrow::before{content:'';width:26px;height:2px;background:currentColor;border-radius:2px}
-.page-header h1{
-  font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-.035em;line-height:1.1;
-  margin-bottom:16px;color:#fff;
+.title-logo{height:66px;width:auto;display:block}
+.title-tag{
+  display:inline-block;padding:9px 20px;border-radius:100px;
+  background:rgba(99,102,241,.18);border:1px solid rgba(129,140,248,.38);
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--indigo-200);margin-bottom:30px;width:fit-content;
 }
-.page-header h1 .grad{
-  background:linear-gradient(135deg,#818cf8 0%,#34d399 100%);
+.title-wrap h1{font-size:clamp(44px,5.2vw,74px);margin-bottom:22px;color:#fff}
+.title-wrap .lead{font-size:clamp(16px,1.7vw,21px);color:rgba(255,255,255,.82);max-width:720px}
+.title-meta{display:flex;gap:34px;margin-top:48px;flex-wrap:wrap}
+.title-meta .item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.78)}
+.title-meta .item i{color:var(--emerald-400);font-size:14px}
+
+/* Section divider */
+.section-title{
+  display:flex;flex-direction:column;justify-content:center;height:100%;max-width:1100px;margin:0 auto;width:100%;
+}
+.section-number{
+  font-size:clamp(80px,12vw,160px);font-weight:900;letter-spacing:-.06em;
+  line-height:.85;margin-bottom:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,.25) 0%,rgba(52,211,153,.4) 100%);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.page-header p{
-  font-size:clamp(15px,1.5vw,18px);color:rgba(255,255,255,.82);
-  max-width:720px;line-height:1.65;
+.section-label{
+  display:inline-block;padding:8px 20px;border-radius:100px;
+  background:rgba(16,185,129,.16);border:1px solid rgba(52,211,153,.4);
+  font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--emerald-400);margin-bottom:24px;width:fit-content;
 }
+.section-title h1{color:#fff;margin-bottom:20px;font-size:clamp(36px,4.8vw,64px)}
+.section-title .lead{font-size:clamp(16px,1.7vw,20px);color:rgba(255,255,255,.78);max-width:760px}
 
-/* ═══ TALK TO US SECTION ═══ */
-.talk-section{
-  background:#ffffff;
-  border-bottom:1px solid var(--slate-200);
-  padding:56px 32px 64px;
-  position:relative;
-  overflow:hidden;
+.sec-head{margin-bottom:38px}
+.sec-head h2{color:var(--slate-900)}
+.slide.dark .sec-head h2,.slide.section-divider .sec-head h2{color:#fff}
+
+.grid{display:grid;gap:22px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{
+  background:#fff;border:1px solid var(--slate-200);border-radius:18px;padding:28px;
+  transition:all .28s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;
 }
-.talk-section::before{
-  content:'';position:absolute;top:-30%;right:-8%;width:420px;height:420px;
-  background:radial-gradient(circle,rgba(99,102,241,.07),transparent 70%);
-  pointer-events:none;
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--indigo-500),var(--emerald-500));
+  transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.4,0,.2,1);
 }
-.talk-section::after{
-  content:'';position:absolute;bottom:-30%;left:-8%;width:420px;height:420px;
-  background:radial-gradient(circle,rgba(16,185,129,.06),transparent 70%);
-  pointer-events:none;
-}
-.talk-inner{
-  position:relative;z-index:2;
-  max-width:900px;margin:0 auto;text-align:center;
-}
-.talk-icon-wrap{
-  display:inline-flex;align-items:center;justify-content:center;
+.card:hover::before{transform:scaleX(1)}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 48px -20px rgba(79,70,229,.28);border-color:var(--indigo-200)}
+.slide.dark .card{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.1);backdrop-filter:blur(12px)}
+.slide.dark .card:hover{background:rgba(255,255,255,.09);border-color:rgba(52,211,153,.38);box-shadow:0 22px 48px -20px rgba(16,185,129,.35)}
+.card-icon{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px}
+.icon-indigo{background:var(--indigo-50);color:var(--indigo-600)}
+.icon-emerald{background:var(--emerald-50);color:var(--emerald-600)}
+.icon-amber{background:var(--amber-50);color:var(--amber-600)}
+.icon-rose{background:var(--rose-50);color:var(--rose-500)}
+.slide.dark .icon-indigo{background:rgba(99,102,241,.2);color:var(--indigo-200)}
+.slide.dark .icon-emerald{background:rgba(16,185,129,.2);color:var(--emerald-400)}
+.slide.dark .icon-amber{background:rgba(245,158,11,.2);color:var(--amber-400)}
+.card p{font-size:14px;color:var(--slate-500);line-height:1.68}
+.slide.dark .card p{color:rgba(255,255,255,.7)}
+.card h3{color:var(--slate-900)}
+.slide.dark .card h3{color:#fff}
+
+.ch-num{position:absolute;top:20px;right:22px;font-size:44px;font-weight:900;line-height:1;letter-spacing:-.05em;color:rgba(99,102,241,.1);pointer-events:none}
+.slide.dark .ch-num{color:rgba(52,211,153,.15)}
+
+.plist{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.plist-item{display:flex;gap:16px;align-items:flex-start}
+.plist-item .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.plist-item .txt h4{font-size:15px;font-weight:700;color:var(--slate-900);margin-bottom:4px}
+.slide.dark .plist-item .txt h4{color:#fff}
+.plist-item .txt p{font-size:13.5px;color:var(--slate-500);line-height:1.62}
+.slide.dark .plist-item .txt p{color:rgba(255,255,255,.68)}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:auto}
+.stat{background:#fff;border:1px solid var(--slate-200);border-radius:16px;padding:26px 22px;text-align:center;transition:all .28s ease}
+.stat:hover{transform:translateY(-3px);border-color:var(--indigo-200);box-shadow:0 16px 36px -16px rgba(79,70,229,.24)}
+.slide.dark .stat{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.1);backdrop-filter:blur(12px)}
+.slide.dark .stat:hover{background:rgba(255,255,255,.09);border-color:rgba(52,211,153,.35)}
+.stat-num{font-size:clamp(28px,3.2vw,42px);font-weight:900;letter-spacing:-.038em;line-height:1;margin-bottom:8px}
+.stat-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-400)}
+.slide.dark .stat-label{color:rgba(255,255,255,.58)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,var(--indigo-200) 0 10px,transparent 10px 20px);z-index:0}
+.step{position:relative;z-index:1}
+.step-num{
   width:72px;height:72px;border-radius:20px;
   background:linear-gradient(135deg,var(--indigo-600),var(--indigo-800));
-  color:#ffffff;font-size:28px;margin-bottom:28px;
-  box-shadow:0 18px 36px -12px rgba(79,70,229,.5);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:900;margin:0 auto 20px;
+  box-shadow:0 14px 30px -12px rgba(79,70,229,.55);
 }
-.talk-heading{
-  font-size:clamp(28px,3.6vw,42px);
-  font-weight:900;letter-spacing:-.03em;
-  color:var(--slate-900);
-  line-height:1.15;
-  margin-bottom:16px;
-}
-.talk-subtext{
-  font-size:clamp(15px,1.5vw,17px);
-  color:var(--slate-500);
-  line-height:1.7;
-  max-width:640px;
-  margin:0 auto 40px;
-}
+.step h4{font-size:15px;font-weight:800;text-align:center;margin-bottom:10px}
+.step p{font-size:13px;color:var(--slate-500);text-align:center;line-height:1.62}
 
-/* Contact buttons */
-.talk-buttons{
-  display:flex;
-  gap:14px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom:36px;
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;margin-top:14px}
+.flow::before{content:'';position:absolute;top:44px;left:12%;right:12%;height:2px;background:repeating-linear-gradient(90deg,var(--indigo-200) 0 10px,transparent 10px 20px);z-index:0}
+.flow-step{position:relative;z-index:1;text-align:center}
+.flow-num{
+  width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,var(--indigo-600),var(--emerald-600));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;margin:0 auto 16px;
+  box-shadow:0 12px 26px -10px rgba(79,70,229,.5);
 }
-.talk-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:11px;
-  padding:16px 30px;
-  border-radius:14px;
-  font-size:15px;
-  font-weight:800;
-  text-decoration:none;
-  transition:all .24s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 10px 24px -10px rgba(15,23,42,.22);
-  border:2px solid transparent;
-}
-.talk-btn i{font-size:18px}
+.flow-step h4{font-size:14px;font-weight:800;margin-bottom:6px;color:var(--slate-900)}
+.slide.dark .flow-step h4{color:#fff}
+.flow-step p{font-size:12px;color:var(--slate-500);line-height:1.55}
+.slide.dark .flow-step p{color:rgba(255,255,255,.65)}
 
-.talk-btn.whatsapp{
-  background:#25D366;
-  color:#ffffff;
-  box-shadow:0 10px 26px -8px rgba(37,211,102,.5);
-}
-.talk-btn.whatsapp:hover{
-  background:#1DA851;
-  transform:translateY(-3px);
-  box-shadow:0 16px 36px -8px rgba(37,211,102,.6);
-}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-top:8px}
+.split-col h3{font-size:17px;display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:16px;border-bottom:2px solid var(--slate-100)}
+.slide.dark .split-col h3{color:#fff;border-bottom-color:rgba(255,255,255,.1)}
+.split-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.split-col li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--slate-600);line-height:1.65}
+.slide.dark .split-col li{color:rgba(255,255,255,.72)}
+.split-col li i{color:var(--emerald-500);font-size:13px;margin-top:4px;flex-shrink:0}
 
-.talk-btn.call{
-  background:var(--indigo-600);
-  color:#ffffff;
-  box-shadow:0 10px 26px -8px rgba(79,70,229,.5);
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+.cat-pill{
+  background:#fff;border:1px solid var(--slate-200);
+  border-radius:13px;padding:16px 18px;display:flex;align-items:center;gap:12px;
+  font-size:13px;font-weight:600;color:var(--slate-700);transition:all .22s ease;
 }
-.talk-btn.call:hover{
-  background:var(--indigo-700);
-  transform:translateY(-3px);
-  box-shadow:0 16px 36px -8px rgba(79,70,229,.6);
-}
+.cat-pill:hover{border-color:var(--indigo-300);color:var(--indigo-600);transform:translateX(3px);box-shadow:0 8px 18px -8px rgba(79,70,229,.2)}
+.cat-pill i{color:var(--indigo-500);font-size:15px;width:18px;text-align:center}
 
-.talk-btn.email{
-  background:#ffffff;
-  color:var(--slate-800);
-  border-color:var(--slate-200);
+.price-card{
+  background:linear-gradient(135deg,#4f46e5 0%,#3730a3 100%);
+  border-radius:26px;padding:50px 48px;color:#fff;text-align:center;
+  box-shadow:0 34px 70px -22px rgba(79,70,229,.55);
+  max-width:660px;margin:0 auto;position:relative;overflow:hidden;
 }
-.talk-btn.email:hover{
-  border-color:var(--indigo-500);
-  color:var(--indigo-700);
-  transform:translateY(-3px);
-  box-shadow:0 16px 36px -8px rgba(79,70,229,.25);
-}
+.price-card::before{content:'';position:absolute;top:-50%;right:-20%;width:440px;height:440px;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 68%);pointer-events:none}
+.price-card::after{content:'';position:absolute;bottom:-40%;left:-15%;width:380px;height:380px;background:radial-gradient(circle,rgba(52,211,153,.18),transparent 68%);pointer-events:none}
+.price-card > *{position:relative;z-index:1}
+.price-tag{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:100px;padding:7px 18px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px}
+.price-amt{font-size:76px;font-weight:900;letter-spacing:-.045em;line-height:1;margin-bottom:8px}
+.price-amt span{font-size:22px;font-weight:500;opacity:.78}
+.price-sub{font-size:16px;font-weight:600;margin-bottom:32px}
+.price-features{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;margin-top:30px}
+.price-features li{font-size:13px;display:flex;gap:9px;align-items:flex-start;opacity:.94;line-height:1.55}
+.price-features li i{color:var(--emerald-400);margin-top:3px;font-size:12px;flex-shrink:0}
 
-.talk-hours{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  font-size:13.5px;
-  color:var(--slate-500);
-  background:var(--slate-50);
-  border:1px solid var(--slate-200);
-  border-radius:100px;
-  padding:10px 20px;
-}
-.talk-hours i{color:var(--emerald-500);font-size:14px}
-.talk-hours strong{color:var(--slate-700);font-weight:700}
+.commit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:10px}
+.commit{background:#fff;border:1px solid var(--slate-200);border-radius:17px;padding:28px 24px;text-align:center;transition:all .28s ease}
+.commit:hover{transform:translateY(-4px);border-color:var(--indigo-200);box-shadow:0 18px 40px -18px rgba(79,70,229,.24)}
+.commit i{font-size:28px;color:var(--indigo-600);margin-bottom:16px;display:block}
+.commit h4{font-size:15px;font-weight:800;margin-bottom:10px}
+.commit p{font-size:13px;color:var(--slate-500);line-height:1.65}
 
-/* ═══ CONTAINER ═══ */
-.container{max-width:1100px;margin:0 auto;padding:0 32px}
-section{padding:56px 0}
-section.tight{padding:36px 0}
+.roadmap{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+.rm-item{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid var(--slate-200);border-radius:14px;padding:20px 24px;transition:all .24s ease}
+.rm-item:hover{transform:translateX(4px);border-color:var(--indigo-200);box-shadow:0 12px 28px -12px rgba(79,70,229,.18)}
+.rm-badge{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;padding:6px 14px;border-radius:100px;flex-shrink:0}
+.rm-badge.now{background:var(--emerald-50);color:var(--emerald-700)}
+.rm-badge.soon{background:var(--amber-50);color:#b45309}
+.rm-badge.later{background:var(--slate-100);color:var(--slate-600)}
+.rm-text h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+.rm-text p{font-size:12.5px;color:var(--slate-500);line-height:1.55}
 
-/* ═══ HEADINGS ═══ */
-.sec-eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--indigo-600);margin-bottom:14px;
-}
-.sec-eyebrow::before{content:'';width:22px;height:2px;background:currentColor;border-radius:2px}
-h2{
-  font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-.028em;
-  line-height:1.15;color:var(--slate-900);margin-bottom:14px;
-}
-.sec-lead{font-size:15.5px;color:var(--slate-600);max-width:800px;line-height:1.7}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:18px;align-items:center}
+.contact-item{display:flex;gap:18px;align-items:flex-start;margin-bottom:26px}
+.contact-icon{width:54px;height:54px;border-radius:15px;flex-shrink:0;background:rgba(99,102,241,.16);border:1px solid rgba(129,140,248,.32);display:flex;align-items:center;justify-content:center;color:var(--indigo-200);font-size:20px}
+.contact-item .label{font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+.contact-item .val{font-size:17px;font-weight:700;color:#fff}
+.contact-item .val a{color:#fff;text-decoration:none;transition:color .2s ease}
+.contact-item .val a:hover{color:var(--emerald-400)}
+.contact-cta{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:40px 36px;text-align:center;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.contact-cta .logo-plate{display:inline-flex;align-items:center;justify-content:center;background:#ffffff;padding:14px 26px;border-radius:14px;margin-bottom:24px;box-shadow:0 12px 28px -10px rgba(0,0,0,.35)}
+.contact-cta img{height:48px;width:auto;display:block}
+.contact-cta h3{font-size:21px;margin-bottom:14px;color:#fff}
+.contact-cta p{font-size:14px;color:rgba(255,255,255,.72);margin-bottom:26px;line-height:1.68}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--indigo-700);font-weight:800;font-size:14px;padding:14px 28px;border-radius:12px;text-decoration:none;transition:all .24s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 24px -8px rgba(255,255,255,.28)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 32px -8px rgba(255,255,255,.36);background:var(--emerald-400);color:var(--slate-900)}
 
-/* ═══ COMPARISON TABLE ═══ */
-.compare-wrap{
-  background:#fff;border:1px solid var(--slate-200);border-radius:20px;
-  overflow:hidden;margin-top:32px;box-shadow:0 16px 40px -20px rgba(15,23,42,.12);
-}
+.disclaimer{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:18px 22px;font-size:12.5px;color:rgba(255,255,255,.68);line-height:1.65;margin-top:22px}
+.disclaimer strong{color:#fff;font-weight:700}
+.disclaimer.light{background:var(--slate-100);border-color:var(--slate-200);color:var(--slate-600)}
+.disclaimer.light strong{color:var(--slate-900)}
+
+/* Comparison table */
+.compare-wrap{background:#fff;border:1px solid var(--slate-200);border-radius:20px;overflow:hidden;margin-top:24px;box-shadow:0 16px 40px -20px rgba(15,23,42,.12)}
 .compare-table{width:100%;border-collapse:collapse}
 .compare-table thead{background:var(--slate-50)}
-.compare-table th{
-  padding:22px 24px;text-align:left;font-size:12px;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500);
-  border-bottom:1px solid var(--slate-200);
-}
-.compare-table th.csvn-col{
-  background:linear-gradient(135deg,var(--indigo-600),var(--indigo-800));
-  color:#fff;text-align:center;position:relative;
-}
-.compare-table th.csvn-col::before{
-  content:'RECOMMENDED';position:absolute;top:6px;right:14px;
-  font-size:8.5px;font-weight:800;letter-spacing:.14em;
-  background:var(--emerald-500);color:#fff;padding:3px 9px;border-radius:100px;
-}
+.compare-table th{padding:18px 22px;text-align:left;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500);border-bottom:1px solid var(--slate-200)}
+.compare-table th.csvn-col{background:linear-gradient(135deg,var(--indigo-600),var(--indigo-800));color:#fff;text-align:center;position:relative}
+.compare-table th.csvn-col::before{content:'RECOMMENDED';position:absolute;top:5px;right:12px;font-size:8px;font-weight:800;letter-spacing:.14em;background:var(--emerald-500);color:#fff;padding:2px 8px;border-radius:100px}
 .compare-table th.lgd-col{width:36%}
 .compare-table th.csvn-col{width:28%}
 .compare-table tbody tr{border-bottom:1px solid var(--slate-100);transition:background .18s ease}
 .compare-table tbody tr:hover{background:var(--slate-50)}
 .compare-table tbody tr:last-child{border-bottom:0}
-.compare-table td{
-  padding:20px 24px;font-size:14.5px;color:var(--slate-700);vertical-align:middle;
-}
-.compare-table td.feature{
-  font-weight:700;color:var(--slate-900);width:36%;
-}
+.compare-table td{padding:16px 22px;font-size:14px;color:var(--slate-700);vertical-align:middle}
+.compare-table td.feature{font-weight:700;color:var(--slate-900);width:36%}
 .compare-table td.lgd-col{color:var(--slate-600)}
-.compare-table td.csvn-col{
-  background:rgba(238,242,255,.35);text-align:center;
-  font-weight:800;color:var(--indigo-700);font-size:15px;
-}
-.compare-table td.csvn-col .yes{
-  display:inline-flex;align-items:center;gap:6px;
-  color:var(--emerald-600);
-}
-.compare-table td.csvn-col .yes i{font-size:13px}
-.compare-table td.csvn-col .num{
-  font-size:19px;font-weight:900;color:var(--indigo-600);
-  letter-spacing:-.02em;
-}
-.compare-table td.lgd-col .note{
-  display:inline-block;font-size:11px;font-weight:600;
-  color:var(--slate-400);margin-left:6px;
-}
+.compare-table td.csvn-col{background:rgba(238,242,255,.35);text-align:center;font-weight:800;color:var(--indigo-700);font-size:14.5px}
+.compare-table td.csvn-col .yes{display:inline-flex;align-items:center;gap:6px;color:var(--emerald-600)}
+.compare-table td.csvn-col .yes i{font-size:12px}
+.compare-table td.csvn-col .num{font-size:18px;font-weight:900;color:var(--indigo-600);letter-spacing:-.02em}
+.compare-table td.lgd-col .note{display:inline-block;font-size:10.5px;font-weight:600;color:var(--slate-400);margin-left:6px}
 
-/* ═══ GRID & CARDS ═══ */
-.grid{display:grid;gap:20px}
-.grid-3{grid-template-columns:repeat(3,1fr)}
-.grid-2{grid-template-columns:repeat(2,1fr)}
-@media(max-width:900px){.grid-3,.grid-2{grid-template-columns:1fr}}
-.card{
-  background:#fff;border:1px solid var(--slate-200);border-radius:18px;
-  padding:26px;transition:all .24s ease;
-}
-.card:hover{transform:translateY(-3px);box-shadow:0 20px 44px -20px rgba(79,70,229,.22);border-color:var(--indigo-200)}
-.card-icon{
-  width:48px;height:48px;border-radius:13px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:19px;margin-bottom:16px;
-}
-.icon-indigo{background:var(--indigo-50);color:var(--indigo-600)}
-.icon-emerald{background:var(--emerald-50);color:var(--emerald-600)}
-.icon-amber{background:var(--amber-50);color:var(--amber-600)}
-.card h3{font-size:16px;font-weight:800;color:var(--slate-900);margin-bottom:8px}
-.card p{font-size:13.5px;color:var(--slate-500);line-height:1.65}
+/* Contact buttons */
+.talk-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.talk-btn{display:inline-flex;align-items:center;gap:11px;padding:16px 30px;border-radius:14px;font-size:15px;font-weight:800;text-decoration:none;transition:all .24s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 24px -10px rgba(15,23,42,.22);border:2px solid transparent}
+.talk-btn i{font-size:18px}
+.talk-btn.whatsapp{background:#25D366;color:#ffffff;box-shadow:0 10px 26px -8px rgba(37,211,102,.5)}
+.talk-btn.whatsapp:hover{background:#1DA851;transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(37,211,102,.6)}
+.talk-btn.call{background:var(--indigo-600);color:#ffffff;box-shadow:0 10px 26px -8px rgba(79,70,229,.5)}
+.talk-btn.call:hover{background:var(--indigo-700);transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(79,70,229,.6)}
+.talk-btn.email{background:#ffffff;color:var(--slate-800);border-color:var(--slate-200)}
+.talk-btn.email:hover{border-color:var(--indigo-500);color:var(--indigo-700);transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(79,70,229,.25)}
 
-/* ═══ DECISION BOX ═══ */
-.decision-box{
-  background:#fff;border:1px solid var(--slate-200);border-radius:20px;
-  padding:36px;margin-top:32px;
-}
-.decision-box h3{
-  font-size:19px;font-weight:900;color:var(--slate-900);margin-bottom:22px;
-  display:flex;align-items:center;gap:11px;
-}
-.decision-box h3 i{color:var(--indigo-600);font-size:19px}
-.decision-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.decision-list li{
-  display:flex;gap:14px;align-items:flex-start;
-  font-size:14.5px;color:var(--slate-700);line-height:1.65;
-}
-.decision-list li i{
-  color:var(--emerald-500);font-size:14px;margin-top:5px;flex-shrink:0;
-}
-.decision-list li strong{color:var(--slate-900);font-weight:800}
+/* Trust chain */
+.trust-chain{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.trust-node{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px 24px;text-align:center;min-width:160px;backdrop-filter:blur(10px);transition:all .26s ease}
+.trust-node:hover{background:rgba(255,255,255,.1);border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
+.trust-node i{font-size:22px;color:var(--emerald-400);display:block;margin-bottom:10px}
+.trust-node .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px}
+.trust-node .val{font-size:14px;font-weight:800;color:#fff}
+.trust-arrow{font-size:18px;color:rgba(255,255,255,.35)}
 
-/* ═══ HONESTY BOX ═══ */
-.honesty-box{
-  background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);
-  border:1px solid #fcd34d;border-radius:16px;padding:24px 28px;
-  display:flex;gap:18px;align-items:flex-start;margin-top:28px;
-}
-.honesty-box i{
-  font-size:22px;color:var(--amber-600);flex-shrink:0;margin-top:2px;
-}
-.honesty-box .txt h4{
-  font-size:15px;font-weight:800;color:#78350f;margin-bottom:6px;
-}
-.honesty-box .txt p{
-  font-size:13.5px;color:#78350f;line-height:1.65;
-}
+.commit-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.commit-item{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+.commit-item i{color:var(--emerald-400);font-size:18px;margin-bottom:10px;display:block}
+.commit-item h4{font-size:13.5px;font-weight:800;color:#fff;margin-bottom:6px}
+.commit-item p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.55}
 
-/* ═══ CTA ═══ */
-.cta-section{
-  background:linear-gradient(135deg,#1e1b4b 0%,#312e81 45%,#0f172a 100%);
-  border-radius:22px;padding:44px 40px;color:#fff;text-align:center;
-  position:relative;overflow:hidden;margin-top:24px;
-}
-.cta-section::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(rgba(129,140,248,.15) 1px,transparent 1px);
-  background-size:26px 26px;opacity:.5;
-}
-.cta-section::after{
-  content:'';position:absolute;top:-40%;right:-15%;width:500px;height:500px;
-  background:radial-gradient(circle,rgba(16,185,129,.25),transparent 65%);
-}
-.cta-inner{position:relative;z-index:2}
-.cta-section h2{color:#fff;margin-bottom:14px}
-.cta-section p{color:rgba(255,255,255,.78);margin-bottom:28px;font-size:15px;max-width:560px;margin-left:auto;margin-right:auto}
-.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:13px 26px;border-radius:11px;font-size:14px;font-weight:800;
-  text-decoration:none;transition:all .22s cubic-bezier(.4,0,.2,1);border:none;cursor:pointer;
-}
-.btn-primary{background:var(--emerald-500);color:#fff;box-shadow:0 10px 24px -8px rgba(16,185,129,.5)}
-.btn-primary:hover{background:var(--emerald-600);transform:translateY(-2px);box-shadow:0 16px 32px -8px rgba(16,185,129,.6)}
-.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px)}
-.btn-ghost:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.cta-block{margin-top:26px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cta-block .txt h4{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+.cta-block .txt p{font-size:13px;color:rgba(255,255,255,.7)}
+.cta-block .cta-btn{background:var(--emerald-500);color:#fff;box-shadow:0 10px 24px -8px rgba(16,185,129,.5)}
+.cta-block .cta-btn:hover{background:var(--emerald-600)}
 
-/* ═══ DISCLAIMER ═══ */
-.disclaimer{
-  background:var(--slate-100);border:1px solid var(--slate-200);
-  border-radius:12px;padding:20px 24px;margin-top:36px;
-}
-.disclaimer h4{
-  font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--slate-500);margin-bottom:10px;
-}
-.disclaimer p{
-  font-size:12px;color:var(--slate-500);line-height:1.7;
-}
-.disclaimer p + p{margin-top:8px}
-
-/* ═══ FOOTER ═══ */
-.page-footer{
-  text-align:center;padding:44px 32px 36px;
-  font-size:12.5px;color:var(--slate-500);border-top:1px solid var(--slate-200);
-  margin-top:40px;line-height:1.7;
-}
-.page-footer a{color:var(--indigo-600);font-weight:600;text-decoration:none}
-.page-footer a:hover{text-decoration:underline}
-
-/* ═══ PRINT ═══ */
 @media print{
-  @page{size:A4;margin:14mm}
-  body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .talk-section{display:none}
-  .page-header{padding:36px 24px 40px}
-  .page-header h1{font-size:26px}
-  .cta-section .cta-buttons{display:none}
-  .cta-section::after{display:none}
-  section{padding:24px 0}
-  .compare-table td,.compare-table th{padding:12px 16px;font-size:12px}
-  .card{padding:18px}
-  .grid{gap:12px}
+  @page{size:landscape;margin:0}
+  html,body{overflow:visible;height:auto;background:#fff}
+  .deck{height:auto;overflow:visible}
+  .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;height:100vh;padding:60px 72px;width:100vw}
+  .slide:last-child{page-break-after:auto}
+  .nav-btn,.progress-track,.slide-counter{display:none!important}
+  .slide.dark,.slide.section-divider,.price-card,.step-num,.title-logo-plate,.contact-cta .logo-plate,.compare-table th.csvn-col{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .anim{opacity:1!important;transform:none!important;animation:none!important}
 }
 
-/* ═══ RESPONSIVE ═══ */
-@media(max-width:700px){
-  .container{padding:0 20px}
-  .page-header{padding:44px 20px 52px}
-  .talk-section{padding:44px 20px 52px}
-  .talk-icon-wrap{width:60px;height:60px;font-size:24px;margin-bottom:22px}
-  .talk-buttons{flex-direction:column;align-items:stretch}
-  .talk-btn{justify-content:center;padding:15px 24px}
+@media(max-width:1200px){
+  .slide{padding:76px 56px 64px}
+  .brand-bar{left:56px;right:56px}
+  .slide-counter{right:56px}
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:900px){
+  .grid-2,.grid-3,.grid-4,.split,.contact-grid{grid-template-columns:1fr}
+  .commit-grid{grid-template-columns:1fr 1fr}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .flow::before{display:none}
+  .commit-list{grid-template-columns:1fr}
   .compare-wrap{overflow-x:auto}
   .compare-table{min-width:640px}
-  .compare-table th,.compare-table td{padding:14px 14px;font-size:12.5px}
-  .compare-table th.csvn-col::before{top:4px;right:8px;font-size:7.5px;padding:2px 6px}
-  .decision-box{padding:26px 22px}
-  .cta-section{padding:36px 24px}
+}
+@media(max-width:700px){
+  .slide{padding:64px 26px 60px}
+  .brand-bar{left:26px;right:26px;top:22px}
+  .brand-bar img{height:30px;padding:5px 10px}
+  .brand-bar .deck-label{display:none}
+  .slide-counter{right:26px;bottom:24px;font-size:11px}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .price-features{grid-template-columns:1fr}
+  .price-amt{font-size:54px}
+  .nav-btn{width:44px;height:44px;font-size:13px}
+  .nav-prev{left:12px}
+  .nav-next{right:12px}
+  .commit-grid{grid-template-columns:1fr}
+  .talk-buttons{flex-direction:column;align-items:stretch}
+  .talk-btn{justify-content:center}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ HEADER ═══════════════════ -->
-<header class="page-header">
-  <div class="header-inner">
-    <div class="logo-plate">
-      <img src="https://www.csvn.in/logo.png" alt="CSVN">
-    </div>
-    <div class="eyebrow">Why CSVN</div>
-    <h1>How CSVN compares to<br><span class="grad">Lead Generation Directories</span></h1>
-    <p>Most B2B vendor platforms are built for large advertisers. CSVN is built for corporate service providers who want visibility without paying ₹10,000+ per year, without commissions, and without gatekeepers.</p>
+<div class="deck" id="deck" data-theme="dark">
+
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PART 1 — CORPORATE OVERVIEW (Slides 1-15)
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- S1 — TITLE -->
+<section class="slide dark active" data-index="0">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Corporate Presentation · 2026</span>
   </div>
-</header>
-
-<!-- ═══════════════════ TALK TO US ═══════════════════ -->
-<section class="talk-section">
-  <div class="talk-inner">
-    <div class="talk-icon-wrap">
-      <i class="fa-solid fa-comments"></i>
-    </div>
-    <h2 class="talk-heading">Have Questions? Let's Talk</h2>
-    <p class="talk-subtext">
-      Whether you are a vendor thinking about listing, or a business looking for a specific service — reach out directly. We respond personally.
-    </p>
-
-    <div class="talk-buttons">
-      <a href="https://wa.me/918793932827?text=Hi%20CSVN%2C%20I%20have%20a%20question%20about%20listing%20my%20business."
-         target="_blank"
-         rel="noopener"
-         class="talk-btn whatsapp">
-        <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
-      </a>
-      <a href="tel:+918793932827" class="talk-btn call">
-        <i class="fa-solid fa-phone"></i> Call Now
-      </a>
-      <a href="mailto:info@csvn.in?subject=Question%20about%20CSVN" class="talk-btn email">
-        <i class="fa-solid fa-envelope"></i> Email Us
-      </a>
-    </div>
-
-    <div class="talk-hours">
-      <i class="fa-solid fa-clock"></i>
-      <span>Available <strong>Monday to Saturday, 10 AM – 6 PM IST</strong></span>
+  <div class="slide-content">
+    <div class="title-wrap">
+      <div class="title-logo-plate anim">
+        <img src="https://www.csvn.in/logo.png" alt="CSVN" class="title-logo">
+      </div>
+      <div class="title-tag anim">B2B Service Provider Directory</div>
+      <h1 class="anim">Get Discovered by<br>India's <span class="grad-text">Decision-Makers</span></h1>
+      <p class="lead anim">CSVN is a B2B visibility platform connecting corporate service vendors with Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and business decision-makers across India.</p>
+      <div class="title-meta anim">
+        <div class="item"><i class="fa-solid fa-circle-check"></i> 91 Categories</div>
+        <div class="item"><i class="fa-solid fa-circle-check"></i> Pan-India Coverage</div>
+        <div class="item"><i class="fa-solid fa-circle-check"></i> ₹999/Year</div>
+        <div class="item"><i class="fa-solid fa-circle-check"></i> No Commission</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ COMPARISON TABLE ═══════════════════ -->
-<section>
-  <div class="container">
-    <div class="sec-eyebrow">Head to Head</div>
-    <h2>What you get — and what you pay</h2>
-    <p class="sec-lead">A factual comparison of the two main approaches to vendor visibility in India.</p>
+<!-- S2 — ABOUT US -->
+<section class="slide light" data-index="1">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">About Us</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Who We Are</div>
+      <h2 class="anim">A modern B2B directory built for <span class="grad-text">corporate India</span></h2>
+    </div>
+    <p class="lead anim">CSVN — Corporate Services Vendor Network — is an India-focused B2B directory connecting corporate service providers with the businesses that need them. We are independently operated from Pune, Maharashtra.</p>
+    <div class="grid grid-3 anim" style="margin-top:38px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>Make it easier for service providers to be discovered by decision-makers, and easier for businesses to find the right vendor.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>A transparent, commission-free platform where every vendor gets fair visibility and every buyer finds reliable contacts.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Our Values</h3>
+        <p>Honesty, transparency, and straightforward communication. We say what we do — and what we do not do.</p>
+      </div>
+    </div>
+    <div class="stats-row anim" style="margin-top:auto">
+      <div class="stat"><div class="stat-num grad-text">91</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-num grad-text">12</div><div class="stat-label">Service Groups</div></div>
+      <div class="stat"><div class="stat-num grad-text">₹999</div><div class="stat-label">Per Year</div></div>
+      <div class="stat"><div class="stat-num grad-text">0%</div><div class="stat-label">Commission</div></div>
+    </div>
+  </div>
+</section>
 
-    <div class="compare-wrap">
+<!-- S3 — THE PROBLEM -->
+<section class="slide dark" data-index="2">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">The Problem</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Why It Is Broken</div>
+      <h2 class="anim" style="color:#fff">Corporate vendor discovery is <span class="grad-text">expensive and opaque</span></h2>
+    </div>
+    <div class="grid grid-2 anim" style="gap:18px">
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico" style="background:rgba(244,63,94,.18);color:var(--rose-400)"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+          <div class="txt"><h4>High listing fees</h4><p>Traditional directories charge ₹10,000–₹50,000 per year, shutting out small and mid-sized vendors.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico" style="background:rgba(244,63,94,.18);color:var(--rose-400)"><i class="fa-solid fa-percent"></i></div>
+          <div class="txt"><h4>Commissions on every deal</h4><p>Some platforms take 5–15% of every transaction, reducing vendor margins.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico" style="background:rgba(244,63,94,.18);color:var(--rose-400)"><i class="fa-solid fa-eye-slash"></i></div>
+          <div class="txt"><h4>No transparency</h4><p>Vendors cannot tell if the platform is actually reaching buyers, or if they are just another listing.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico" style="background:rgba(244,63,94,.18);color:var(--rose-400)"><i class="fa-solid fa-user-slash"></i></div>
+          <div class="txt"><h4>Middlemen everywhere</h4><p>Lead brokers insert themselves between vendor and buyer, taking cuts on both sides.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4 — OUR SOLUTION -->
+<section class="slide light" data-index="3">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Our Solution</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">What We Built</div>
+      <h2 class="anim">A directory that works <span class="grad-text">for vendors, not against them</span></h2>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:14px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-tag"></i></div>
+        <h3>Flat ₹999 per year</h3>
+        <p>One price. No tiers to decode. No hidden charges. Cheaper than a cup of coffee per week.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-circle-nodes"></i></div>
+        <h3>Zero commission</h3>
+        <p>Whatever you charge your client, you keep. We never take a cut of your deals.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <h3>Fair rotation</h3>
+        <p>Listings rotate within their tier so no vendor is permanently buried at the bottom.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-phone"></i></div>
+        <h3>Direct contact</h3>
+        <p>Buyers reach you directly. No middlemen, no lead brokers, no gatekeepers.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Pan-India reach</h3>
+        <p>Coverage across every major industrial and commercial hub in India.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Transparent listing</h3>
+        <p>Clear badges, honest descriptions. No fake verified claims. What you see is what you get.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5 — WHY CHOOSE US -->
+<section class="slide dark" data-index="4">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Why Choose Us</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Differentiators</div>
+      <h2 class="anim" style="color:#fff">What makes CSVN <span class="grad-text">different</span></h2>
+    </div>
+    <div class="grid grid-3 anim">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3>₹999 flat fee</h3>
+        <p>One price for a full 12-month listing. No upsells, no commissions, no surprises.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-users"></i></div>
+        <h3>91 categories</h3>
+        <p>From pest control and housekeeping to IT services and industrial supplies.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-handshake-slash"></i></div>
+        <h3>No middlemen</h3>
+        <p>Direct buyer-to-vendor contact. We never insert ourselves into your negotiations.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-list-check"></i></div>
+        <h3>Professional profiles</h3>
+        <p>Each listing includes services, location, contact details, and business description.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-city"></i></div>
+        <h3>Pan-India coverage</h3>
+        <p>Delhi-NCR, Mumbai, Pune, Bengaluru, Chennai, Hyderabad, Kolkata, Ahmedabad and more.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3>Honest promises</h3>
+        <p>We do not guarantee leads. We provide visibility. Commercial outcomes are your own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S6 — WHO WE SERVE -->
+<section class="slide light" data-index="5">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Who We Serve</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Two Sides of the Platform</div>
+      <h2 class="anim">Built for <span class="grad-text">vendors and buyers</span> alike</h2>
+    </div>
+    <div class="split anim">
+      <div class="split-col">
+        <h3><i class="fa-solid fa-store" style="color:var(--indigo-600)"></i> For Vendors</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Professional business profile on the CSVN directory</li>
+          <li><i class="fa-solid fa-circle-check"></i> Direct contact details — phone, WhatsApp, email, website</li>
+          <li><i class="fa-solid fa-circle-check"></i> Category listing in one of 91 service categories</li>
+          <li><i class="fa-solid fa-circle-check"></i> Up to 10 services displayed on your profile</li>
+          <li><i class="fa-solid fa-circle-check"></i> 1 catalogue link for product range or price list</li>
+          <li><i class="fa-solid fa-circle-check"></i> Rotation within your tier for fair placement</li>
+          <li><i class="fa-solid fa-circle-check"></i> No commissions on deals you close with buyers</li>
+        </ul>
+      </div>
+      <div class="split-col">
+        <h3><i class="fa-solid fa-magnifying-glass" style="color:var(--emerald-600)"></i> For Buyers</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Browse vendors by category and city</li>
+          <li><i class="fa-solid fa-circle-check"></i> Direct contact — no middlemen or lead brokers</li>
+          <li><i class="fa-solid fa-circle-check"></i> Full business profiles with services and location</li>
+          <li><i class="fa-solid fa-circle-check"></i> Transparent listings with listed badges</li>
+          <li><i class="fa-solid fa-circle-check"></i> Sourcing across 90+ corporate service categories</li>
+          <li><i class="fa-solid fa-circle-check"></i> Search by name, service, or city</li>
+          <li><i class="fa-solid fa-circle-check"></i> Free to use — no buyer fees, ever</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 — HOW WE WORK -->
+<section class="slide light" data-index="6">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">How We Work</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Simple Process</div>
+      <h2 class="anim">From listing to live in <span class="grad-text">4 business days</span></h2>
+      <p class="lead anim" style="margin-top:10px">A simple, transparent process. No lengthy onboarding. No hidden steps.</p>
+    </div>
+    <div class="steps anim" style="margin-top:50px">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Create Your Listing</h4>
+        <p>Submit your business details through our payment page or email them to us.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>We Review</h4>
+        <p>We review your listing for completeness and category accuracy within 1–2 business days.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>You Pay ₹999</h4>
+        <p>Pay securely via UPI. Receive an instant payment receipt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Go Live</h4>
+        <p>Your listing goes live within 4 business days. Confirmation email with your listing URL.</p>
+      </div>
+    </div>
+    <div class="disclaimer light anim" style="margin-top:46px">
+      <strong>Note:</strong> CSVN is a visibility platform. Listing or promotional activity does not guarantee enquiries, contracts, or orders.
+    </div>
+  </div>
+</section>
+
+<!-- S8 — CATEGORIES -->
+<section class="slide light" data-index="7">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Our Categories</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Service Coverage</div>
+      <h2 class="anim"><span class="grad-text">91 categories</span> across 12 service groups</h2>
+    </div>
+    <div class="cat-grid anim" style="margin-top:22px">
+      <div class="cat-pill"><i class="fa-solid fa-broom"></i> Facility Management</div>
+      <div class="cat-pill"><i class="fa-solid fa-bolt"></i> Technical Services</div>
+      <div class="cat-pill"><i class="fa-solid fa-shield-halved"></i> Security &amp; Safety</div>
+      <div class="cat-pill"><i class="fa-solid fa-laptop"></i> IT &amp; Technology</div>
+      <div class="cat-pill"><i class="fa-solid fa-couch"></i> Office Setup</div>
+      <div class="cat-pill"><i class="fa-solid fa-utensils"></i> Food &amp; Hospitality</div>
+      <div class="cat-pill"><i class="fa-solid fa-truck"></i> Transport &amp; Logistics</div>
+      <div class="cat-pill"><i class="fa-solid fa-bullhorn"></i> Marketing &amp; Branding</div>
+      <div class="cat-pill"><i class="fa-solid fa-users"></i> HR &amp; People</div>
+      <div class="cat-pill"><i class="fa-solid fa-scale-balanced"></i> Finance &amp; Legal</div>
+      <div class="cat-pill"><i class="fa-solid fa-plane"></i> Travel &amp; Events</div>
+      <div class="cat-pill"><i class="fa-solid fa-briefcase"></i> Other Services</div>
+    </div>
+    <div class="stats-row anim" style="margin-top:auto">
+      <div class="stat"><div class="stat-num grad-text">91</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-num grad-text">12</div><div class="stat-label">Groups</div></div>
+      <div class="stat"><div class="stat-num grad-text">90+</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat"><div class="stat-num grad-text">100+</div><div class="stat-label">Industrial Belts</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S9 — COVERAGE -->
+<section class="slide dark" data-index="8">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Coverage</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Pan-India Presence</div>
+      <h2 class="anim" style="color:#fff">Serving every major <span class="grad-text">industrial and commercial hub</span></h2>
+    </div>
+    <div class="grid grid-2 anim" style="gap:36px;margin-top:14px">
+      <div>
+        <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-city" style="color:var(--emerald-400)"></i> Metro Cities</h3>
+        <div class="plist">
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.2);color:var(--indigo-200)"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="txt"><h4>Delhi-NCR</h4><p>Delhi · Gurgaon · Noida · Faridabad · Ghaziabad</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.2);color:var(--indigo-200)"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="txt"><h4>Mumbai &amp; Pune</h4><p>Mumbai · Thane · Navi Mumbai · Pune · Pimpri-Chinchwad</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.2);color:var(--indigo-200)"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="txt"><h4>Bengaluru</h4><p>Bengaluru · Mysuru · Mangaluru · Hosur</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.2);color:var(--indigo-200)"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="txt"><h4>Chennai</h4><p>Chennai · Coimbatore · Madurai · Oragadam</p></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-industry" style="color:var(--emerald-400)"></i> Industrial Belts</h3>
+        <div class="plist">
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.2);color:var(--emerald-400)"><i class="fa-solid fa-industry"></i></div>
+            <div class="txt"><h4>Pune–Chakan–Talegaon</h4><p>Auto, engineering, and manufacturing cluster</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.2);color:var(--emerald-400)"><i class="fa-solid fa-industry"></i></div>
+            <div class="txt"><h4>Chennai–Oragadam</h4><p>Auto and electronics manufacturing corridor</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.2);color:var(--emerald-400)"><i class="fa-solid fa-industry"></i></div>
+            <div class="txt"><h4>Delhi–Manesar–Bawal</h4><p>NCR industrial and logistics belt</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.2);color:var(--emerald-400)"><i class="fa-solid fa-industry"></i></div>
+            <div class="txt"><h4>Vadodara–Ankleshwar</h4><p>Chemical and petrochemical industrial zone</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S10 — FOR VENDORS -->
+<section class="slide light" data-index="9">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">For Vendors</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Grow Your Business</div>
+      <h2 class="anim">Everything you need to be <span class="grad-text">discovered</span></h2>
+      <p class="lead anim">Your CSVN profile is designed to convert visitors into contacts. Every detail is built to help buyers reach you fast.</p>
+    </div>
+    <div class="grid grid-2 anim" style="gap:16px;margin-top:26px">
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-indigo"><i class="fa-solid fa-id-card"></i></div>
+          <div class="txt"><h4>Full business profile</h4><p>Name, tagline, description, and logo on a professional directory page.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-emerald"><i class="fa-solid fa-phone"></i></div>
+          <div class="txt"><h4>Direct contact details</h4><p>Phone, WhatsApp, email, and website displayed prominently for buyers.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-amber"><i class="fa-solid fa-list"></i></div>
+          <div class="txt"><h4>Service list</h4><p>Show up to 10 specific services so buyers find exactly what you offer.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-indigo"><i class="fa-solid fa-file-pdf"></i></div>
+          <div class="txt"><h4>Catalogue link</h4><p>Link to your catalogue, brochure, or price list for easy buyer access.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-emerald"><i class="fa-solid fa-map-pin"></i></div>
+          <div class="txt"><h4>Location &amp; map</h4><p>Help local buyers find you with your address and a Google Maps link.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="plist-item">
+          <div class="ico icon-amber"><i class="fa-solid fa-arrows-rotate"></i></div>
+          <div class="txt"><h4>Fair rotation</h4><p>Your listing rotates within your tier so you get visibility over time.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S11 — FOR BUYERS -->
+<section class="slide light" data-index="10">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">For Buyers</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Smarter Sourcing</div>
+      <h2 class="anim">Find reliable vendors <span class="grad-text">without the middlemen</span></h2>
+      <p class="lead anim">Whether you are a Purchase Head, Procurement Manager, HR Head, or Admin Head — CSVN helps you shortlist vendors across 90+ categories in minutes.</p>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:34px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>Search by category</h3>
+        <p>Browse 91 categories across 12 service groups to find exactly what you need.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Filter by city</h3>
+        <p>Find vendors in your city or nearby industrial hub — Pune, Mumbai, Bengaluru, Chennai, NCR and more.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-phone-volume"></i></div>
+        <h3>Contact directly</h3>
+        <p>Call, WhatsApp, or email vendors directly. No forms, no brokers.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-file-contract"></i></div>
+        <h3>Full profiles</h3>
+        <p>See services, location, hours, and business details before you reach out.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-circle-check"></i></div>
+        <h3>Listed badge</h3>
+        <p>Listings are marked with a Listed badge so you can identify reviewed profiles.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+        <h3>Always free</h3>
+        <p>CSVN is free for buyers. No subscription, no fees, no minimum order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S12 — PRICING -->
+<section class="slide light" data-index="11">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Pricing</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head" style="text-align:center;margin-bottom:30px">
+      <div class="eyebrow anim" style="justify-content:center">Simple Pricing</div>
+      <h2 class="anim">One plan. <span class="grad-text">One price.</span> No surprises.</h2>
+    </div>
+    <div class="price-card anim">
+      <div class="price-tag">Introductory Price</div>
+      <div class="price-amt">₹999<span> / year</span></div>
+      <div class="price-sub">Standard Listing Plan</div>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-circle-check"></i> Full business profile page</li>
+        <li><i class="fa-solid fa-circle-check"></i> Direct contact details</li>
+        <li><i class="fa-solid fa-circle-check"></i> Category listing</li>
+        <li><i class="fa-solid fa-circle-check"></i> Up to 10 services</li>
+        <li><i class="fa-solid fa-circle-check"></i> 1 catalogue link</li>
+        <li><i class="fa-solid fa-circle-check"></i> Listed badge</li>
+        <li><i class="fa-solid fa-circle-check"></i> Payment receipt</li>
+        <li><i class="fa-solid fa-circle-check"></i> No commission on deals</li>
+      </ul>
+    </div>
+    <div class="anim" style="text-align:center;margin-top:22px;font-size:13px;color:var(--slate-500)">
+      Premium and Featured plans coming soon. Existing Standard vendors get upgrade discounts.
+    </div>
+  </div>
+</section>
+
+<!-- S13 — COMMITMENT -->
+<section class="slide light" data-index="12">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Our Commitment</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Transparency First</div>
+      <h2 class="anim">What we do — and what we <span class="grad-text">do not do</span></h2>
+    </div>
+    <div class="commit-grid anim" style="margin-top:26px">
+      <div class="commit">
+        <i class="fa-solid fa-eye"></i>
+        <h4>Transparent listings</h4>
+        <p>Every profile shows exactly what the vendor has chosen to publish. No embellishment.</p>
+      </div>
+      <div class="commit">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <h4>Fair rotation</h4>
+        <p>No vendor is permanently buried. Listings rotate within their tier for fair placement.</p>
+      </div>
+      <div class="commit">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <h4>No hidden charges</h4>
+        <p>One flat fee. No commission, no transaction fees, no processing fees.</p>
+      </div>
+      <div class="commit">
+        <i class="fa-solid fa-comments"></i>
+        <h4>Straightforward communication</h4>
+        <p>We describe what we do — and what we do not do. No confusing fine print.</p>
+      </div>
+      <div class="commit">
+        <i class="fa-solid fa-handshake-slash"></i>
+        <h4>No deal intermediation</h4>
+        <p>We are not a party to transactions between buyers and vendors. Your contract is your own.</p>
+      </div>
+      <div class="commit">
+        <i class="fa-solid fa-circle-info"></i>
+        <h4>Honest disclaimers</h4>
+        <p>Listing does not guarantee enquiries, contracts, or orders. Outcomes depend on buyer demand and vendor quality.</p>
+      </div>
+    </div>
+    <div class="disclaimer light anim" style="margin-top:30px">
+      <strong>Our promise:</strong> We describe CSVN honestly. If something changes, we tell you. If we cannot deliver something, we say so before you pay.
+    </div>
+  </div>
+</section>
+
+<!-- S14 — ROADMAP -->
+<section class="slide light" data-index="13">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Roadmap</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">What Is Next</div>
+      <h2 class="anim">The <span class="grad-text">CSVN roadmap</span></h2>
+    </div>
+    <div class="roadmap anim" style="margin-top:26px">
+      <div class="rm-item">
+        <span class="rm-badge now">Available</span>
+        <div class="rm-text"><h4>Standard Listing — ₹999/year</h4><p>Full business profile, direct contact details, rotation within tier, payment receipt.</p></div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge soon">Coming Soon</span>
+        <div class="rm-text"><h4>Premium Listing</h4><p>Priority placement within category, multi-catalogue support, enhanced profile visibility.</p></div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge soon">Coming Soon</span>
+        <div class="rm-text"><h4>Featured Listing</h4><p>Homepage featuring, top-tier rotation, highlighted badge on category pages.</p></div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge later">Planned</span>
+        <div class="rm-text"><h4>Vendor Self-Service Portal</h4><p>Update your own listing details without contacting support.</p></div>
+      </div>
+      <div class="rm-item">
+        <span class="rm-badge later">Planned</span>
+        <div class="rm-text"><h4>Automated Payment Verification</h4><p>Instant listing activation through integration with major Indian payment gateways.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S15 — CONTACT -->
+<section class="slide dark" data-index="14">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Contact Us</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Get in Touch</div>
+      <h2 class="anim" style="color:#fff">Ready to <span class="grad-text">get discovered?</span></h2>
+    </div>
+    <div class="contact-grid anim">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-globe"></i></div>
+          <div>
+            <div class="label">Website</div>
+            <div class="val"><a href="https://www.csvn.in" target="_blank">www.csvn.in</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div class="label">Email</div>
+            <div class="val"><a href="mailto:info@csvn.in">info@csvn.in</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <div class="label">Phone</div>
+            <div class="val"><a href="tel:+918793932827">+91 87939 32827</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="label">Operated From</div>
+            <div class="val">Pune, Maharashtra, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <div class="logo-plate">
+          <img src="https://www.csvn.in/logo.png" alt="CSVN">
+        </div>
+        <h3>List Your Business</h3>
+        <p>Join India's growing B2B service provider directory. Get your business discovered by decision-makers across the country.</p>
+        <a href="https://www.csvn.in/list-your-business/" target="_blank" class="cta-btn">
+          <i class="fa-solid fa-plus"></i> Get Started
+        </a>
+      </div>
+    </div>
+    <div class="disclaimer anim">
+      <strong>CSVN — Corporate Services Vendor Network</strong> is independently operated from Pune, Maharashtra. Listing does not guarantee enquiries, contracts, or orders. For legal correspondence, refer to the Terms of Service and Privacy Policy at csvn.in.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PART 2 — HOW WE COMPARE (Slides 16-19)
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- S16 — COMPARISON TITLE -->
+<section class="slide section-divider" data-index="15">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Part 2 · Comparison</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-title">
+      <span class="section-label anim">Why CSVN</span>
+      <h1 class="anim">How CSVN compares to <span class="grad-text">Lead Generation Directories</span></h1>
+      <p class="lead anim">Most B2B vendor platforms are built for large advertisers. CSVN is built for corporate service providers who want visibility without paying ₹10,000+ per year, without commissions, and without gatekeepers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S17 — COMPARISON TABLE -->
+<section class="slide light" data-index="16">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Head to Head</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head" style="margin-bottom:20px">
+      <div class="eyebrow anim">Feature-by-Feature</div>
+      <h2 class="anim">What you get — and what you pay</h2>
+    </div>
+    <div class="compare-wrap anim">
       <table class="compare-table">
         <thead>
           <tr>
@@ -515,14 +1164,19 @@ h2{
   </div>
 </section>
 
-<!-- ═══════════════════ WHY VENDORS CHOOSE CSVN ═══════════════════ -->
-<section class="tight">
-  <div class="container">
-    <div class="sec-eyebrow">The Real Difference</div>
-    <h2>Why vendors choose CSVN</h2>
-    <p class="sec-lead">Three structural differences that make CSVN cheaper, faster, and more transparent for corporate service providers.</p>
-
-    <div class="grid grid-3" style="margin-top:28px">
+<!-- S18 — WHY VENDORS CHOOSE CSVN -->
+<section class="slide light" data-index="17">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">The Real Difference</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Three Real Differences</div>
+      <h2 class="anim">Why vendors choose <span class="grad-text">CSVN</span></h2>
+      <p class="lead anim">Structural differences that make CSVN cheaper, faster, and more transparent for corporate service providers.</p>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:32px">
       <div class="card">
         <div class="card-icon icon-indigo"><i class="fa-solid fa-tag"></i></div>
         <h3>Priced for small vendors</h3>
@@ -539,82 +1193,642 @@ h2{
         <p>Listings rotate within their tier on every page load. We do not promise leads — we promise visibility. If it does not work for you, you simply do not renew.</p>
       </div>
     </div>
+    <div class="disclaimer light anim" style="margin-top:36px">
+      <strong>Our honest position:</strong> We are not trying to beat traditional directories on scale. We are offering an affordable, transparent alternative for vendors who cannot justify ₹10,000+ per year. If you need aggressive lead volume and have the budget, a larger platform may serve you better. If you want a professional corporate listing at a fair price, CSVN is built for you.
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════ DECISION GUIDE ═══════════════════ -->
-<section class="tight">
-  <div class="container">
-    <div class="decision-box">
-      <h3><i class="fa-solid fa-circle-question"></i> Which is right for you?</h3>
-      <ul class="decision-list">
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <span><strong>A lead generation directory</strong> makes sense if you have a large budget (₹15,000+ per year), need aggressive lead flow, and can handle high volumes of enquiries.</span>
-        </li>
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <span><strong>CSVN</strong> makes sense if you want a professional corporate listing, direct buyer contact, no commissions, fair rotation, and a price that does not strain your business.</span>
-        </li>
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          <span><strong>Both together</strong> also work. Many vendors use CSVN as a low-cost foundation and add paid directories when their business volume supports it.</span>
-        </li>
-      </ul>
+<!-- S19 — WHICH IS RIGHT FOR YOU -->
+<section class="slide light" data-index="18">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Which Is Right for You</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Decision Guide</div>
+      <h2 class="anim">Which option is <span class="grad-text">right for you?</span></h2>
+      <p class="lead anim">Two very different products. Both are valid choices — depending on your business stage and budget.</p>
     </div>
-
-    <div class="honesty-box">
-      <i class="fa-solid fa-circle-info"></i>
+    <div class="grid grid-2 anim" style="gap:22px;margin-top:24px">
+      <div class="card">
+        <div class="card-icon icon-rose"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Choose a Lead Generation Directory if...</h3>
+        <p style="margin-top:8px">You have a large budget (₹15,000+ per year), need aggressive lead flow, and can handle high volumes of enquiries. You are looking for maximum volume, and you are willing to pay for it.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-circle-check"></i></div>
+        <h3>Choose CSVN if...</h3>
+        <p style="margin-top:8px">You want a professional corporate listing, direct buyer contact, no commissions, fair rotation, and a price that does not strain your business. You want visibility without gambling ₹10,000+ per year.</p>
+      </div>
+    </div>
+    <div class="honesty-box anim" style="margin-top:28px;background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);border-color:#a5b4fc">
+      <i class="fa-solid fa-lightbulb" style="color:var(--indigo-600)"></i>
       <div class="txt">
-        <h4>Our honest position</h4>
-        <p>We are not trying to beat traditional directories on scale. We are offering an affordable, transparent alternative for vendors who cannot justify ₹10,000+ per year. If you need aggressive lead volume and have the budget, a larger platform may serve you better. If you want a professional corporate listing at a fair price, CSVN is built for you.</p>
+        <h4 style="color:var(--indigo-800)">You can also use both together</h4>
+        <p style="color:var(--indigo-700)">Many vendors use CSVN as a low-cost foundation and add paid directories when their business volume supports it. The two are not mutually exclusive. CSVN at ₹999 is a low-risk way to establish a corporate listing.</p>
+      </div>
+    </div>
+    <div class="disclaimer light anim" style="margin-top:26px">
+      <strong>Important:</strong> "Lead Generation Directory" is used here as a general category descriptor. It does not refer to any specific company, brand, or platform. Pricing, features, and policies vary widely. Vendors should independently verify all information before making a purchasing decision. CSVN is a visibility platform, not a lead generation service.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PART 3 — HOW WE REACH DECISION-MAKERS (Slides 20-29)
+     ═══════════════════════════════════════════════════════ -->
+
+<!-- S20 — OUTREACH TITLE -->
+<section class="slide section-divider" data-index="19">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Part 3 · Outreach</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-title">
+      <span class="section-label anim">Multi-Channel Outreach</span>
+      <h1 class="anim">How We Reach <span class="grad-text">India's Decision-Makers</span></h1>
+      <p class="lead anim">Every CSVN listing is promoted through multiple channels designed to reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and business decision-makers across India.</p>
+      <div class="title-meta anim" style="margin-top:36px">
+        <div class="item"><i class="fa-solid fa-envelope"></i> Email Outreach</div>
+        <div class="item"><i class="fa-solid fa-users"></i> Industry Networks</div>
+        <div class="item"><i class="fa-solid fa-bullseye"></i> Direct Buyer Outreach</div>
+        <div class="item"><i class="fa-solid fa-magnifying-glass"></i> On-Platform Discovery</div>
+        <div class="item"><i class="fa-solid fa-handshake"></i> Referrals</div>
+        <div class="item"><i class="fa-solid fa-comments"></i> Community Groups</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ CTA ═══════════════════ -->
-<section>
-  <div class="container">
-    <div class="cta-section">
-      <div class="cta-inner">
-        <h2>Ready to be discovered?</h2>
-        <p>Join CSVN and get your business in front of Purchase Heads, Procurement Heads, HR Heads, and Admin Heads across India.</p>
-        <div class="cta-buttons">
-          <a href="https://www.csvn.in/list-your-business/" class="btn btn-primary">
-            <i class="fa-solid fa-plus"></i> List Your Business
-          </a>
-          <a href="https://www.csvn.in/pricing/" class="btn btn-ghost">
-            <i class="fa-solid fa-tag"></i> View Full Pricing
-          </a>
+<!-- S21 — CORE PRINCIPLE -->
+<section class="slide light" data-index="20">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Core Principle</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Our Approach</div>
+      <h2 class="anim">We do not wait for buyers to find us. <span class="grad-text">We take your listing to them.</span></h2>
+    </div>
+    <p class="lead anim" style="max-width:900px">Most directories simply list vendors and wait. CSVN works differently. Every vendor listing is promoted through multiple outreach channels so decision-makers see it while they are actively sourcing.</p>
+    <div class="grid grid-3 anim" style="margin-top:36px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Active, not passive</h3>
+        <p>We do not wait for buyers to search. We actively send vendor listings to decision-makers through multiple channels.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Multi-channel by design</h3>
+        <p>Multiple channels working together — email, industry networks, direct outreach, search visibility, referrals, and community groups.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Honest positioning</h3>
+        <p>We do not promise leads. We promise visibility. Commercial outcomes depend on buyer demand and vendor quality.</p>
+      </div>
+    </div>
+    <div class="stats-row anim" style="margin-top:auto">
+      <div class="stat"><div class="stat-num grad-text">6</div><div class="stat-label">Outreach Channels</div></div>
+      <div class="stat"><div class="stat-num grad-text">91</div><div class="stat-label">Categories Covered</div></div>
+      <div class="stat"><div class="stat-num grad-text">4</div><div class="stat-label">Decision-Maker Roles</div></div>
+      <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Outreach Reach</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S22 — SIX CHANNELS -->
+<section class="slide dark" data-index="21">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Six Channels</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel Overview</div>
+      <h2 class="anim" style="color:#fff">How we reach <span class="grad-text">decision-makers</span></h2>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:14px">
+      <div class="card">
+        <span class="ch-num">01</span>
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Targeted Email Outreach</h3>
+        <p>Direct emails to Purchase, Procurement, HR, and Admin leaders across India.</p>
+      </div>
+      <div class="card">
+        <span class="ch-num">02</span>
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-users"></i></div>
+        <h3>Industry Networks</h3>
+        <p>HR communities, business associations, and industry forums where decision-makers discuss vendors.</p>
+      </div>
+      <div class="card">
+        <span class="ch-num">03</span>
+        <div class="card-icon icon-amber"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Direct Buyer Outreach</h3>
+        <p>Coordinated outreach to Purchase and Procurement teams via email, phone, and professional platforms.</p>
+      </div>
+      <div class="card">
+        <span class="ch-num">04</span>
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>On-Platform Discovery</h3>
+        <p>91 category pages indexed on Google, structured data, and search filters.</p>
+      </div>
+      <div class="card">
+        <span class="ch-num">05</span>
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Referrals &amp; Introductions</h3>
+        <p>Warm introductions to decision-makers from our business and consulting network.</p>
+      </div>
+      <div class="card">
+        <span class="ch-num">06</span>
+        <div class="card-icon icon-amber"><i class="fa-solid fa-comments"></i></div>
+        <h3>Community Groups</h3>
+        <p>HR, procurement, and business owner groups across India.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S23 — EMAIL OUTREACH -->
+<section class="slide light" data-index="22">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 01 · Email Outreach</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 01</div>
+      <h2 class="anim">Targeted <span class="grad-text">email outreach</span></h2>
+      <p class="lead anim">Category-specific emails sent directly to decision-makers who source services like yours.</p>
+    </div>
+    <div class="flow anim" style="margin-top:12px">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h4>Curated Recipient List</h4>
+        <p>Purchase, Procurement, HR, Admin, and operations leaders across India.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h4>Category-Specific Content</h4>
+        <p>Each email focuses on one category — with vendor listings from that category.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h4>Direct Link to CSVN</h4>
+        <p>Buyers click through to the CSVN category page or your specific listing.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h4>Buyer Contacts Vendor</h4>
+        <p>Interested buyers reach the vendor directly using the contact details on CSVN.</p>
+      </div>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:36px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-user-tie"></i></div>
+        <h3>Who We Reach</h3>
+        <p>Purchase Heads, Procurement Managers, HR Heads, Admin Heads, and founders — the people who decide what to buy.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-envelope-open-text"></i></div>
+        <h3>What We Send</h3>
+        <p>Clean, professional emails that highlight vendor listings relevant to the recipient's industry and city.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-clock"></i></div>
+        <h3>How Often</h3>
+        <p>Consistent weekly and monthly sends — not one-off bursts. Regular visibility builds recall.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S24 — INDUSTRY NETWORKS -->
+<section class="slide light" data-index="23">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 02 · Industry Networks</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 02</div>
+      <h2 class="anim"><span class="grad-text">Industry networks</span> and professional communities</h2>
+      <p class="lead anim">CSVN participates in the professional communities where corporate decision-makers already discuss vendor sourcing — HR groups, business associations, and industry forums.</p>
+    </div>
+    <div class="split anim" style="margin-top:14px">
+      <div class="split-col">
+        <h3><i class="fa-solid fa-users" style="color:var(--indigo-600)"></i> Communities We Engage</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> HR and people-management communities across India</li>
+          <li><i class="fa-solid fa-circle-check"></i> Procurement and sourcing discussion forums</li>
+          <li><i class="fa-solid fa-circle-check"></i> Business owner and entrepreneur groups</li>
+          <li><i class="fa-solid fa-circle-check"></i> Industry and trade associations</li>
+          <li><i class="fa-solid fa-circle-check"></i> Facility management and admin heads groups</li>
+          <li><i class="fa-solid fa-circle-check"></i> Local business networks in major industrial hubs</li>
+        </ul>
+      </div>
+      <div class="split-col">
+        <h3><i class="fa-solid fa-share-nodes" style="color:var(--emerald-600)"></i> How We Participate</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Sharing relevant vendor listings when members ask for services</li>
+          <li><i class="fa-solid fa-circle-check"></i> Contributing to discussions on procurement and vendor selection</li>
+          <li><i class="fa-solid fa-circle-check"></i> Highlighting new category pages and listing updates</li>
+          <li><i class="fa-solid fa-circle-check"></i> Sharing insights on corporate vendor discovery</li>
+          <li><i class="fa-solid fa-circle-check"></i> Answering buyer questions about specific service categories</li>
+          <li><i class="fa-solid fa-circle-check"></i> Building long-term relationships for consistent reach</li>
+        </ul>
+      </div>
+    </div>
+    <div class="stats-row anim" style="margin-top:auto">
+      <div class="stat"><div class="stat-num grad-text">50+</div><div class="stat-label">Communities</div></div>
+      <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Network Reach</div></div>
+      <div class="stat"><div class="stat-num grad-text">Weekly</div><div class="stat-label">Engagement</div></div>
+      <div class="stat"><div class="stat-num grad-text">Free</div><div class="stat-label">For Vendors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S25 — DIRECT BUYER OUTREACH -->
+<section class="slide light" data-index="24">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 03 · Direct Buyer Outreach</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 03</div>
+      <h2 class="anim"><span class="grad-text">Direct outreach</span> to purchase and procurement teams</h2>
+      <p class="lead anim">Beyond email, we reach decision-makers through multiple professional channels — combining email, phone, and professional platforms to ensure vendors get in front of the right people.</p>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:24px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-envelope"></i></div>
+        <h3>Email Campaigns</h3>
+        <p>Targeted emails to decision-makers by role, industry, and city — introducing CSVN and its categories.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-phone"></i></div>
+        <h3>Phone Follow-ups</h3>
+        <p>Where relevant, direct phone follow-ups to strengthen outreach and build personal contact.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Role-Targeted Campaigns</h3>
+        <p>Separate campaigns for Purchase Heads, Procurement Managers, HR Heads, and Admin Heads.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-building"></i></div>
+        <h3>Industry Verticals</h3>
+        <p>Manufacturing, IT, healthcare, logistics, and services — targeted by sector rather than generic.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>City-Specific Sends</h3>
+        <p>Campaigns tailored to specific cities — Pune, Mumbai, Bengaluru, Chennai, NCR, and more.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Measured Outreach</h3>
+        <p>Every campaign is tracked. We know what lands and what does not — and refine accordingly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S26 — ON-PLATFORM DISCOVERY -->
+<section class="slide dark" data-index="25">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 04 · On-Platform Discovery</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 04</div>
+      <h2 class="anim" style="color:#fff"><span class="grad-text">On-platform discovery</span> through search</h2>
+      <p class="lead anim">CSVN is built for search. 91 category pages, structured data, and clean technical SEO mean buyers can find your listing organically.</p>
+    </div>
+    <div class="grid grid-2 anim" style="gap:32px;margin-top:16px">
+      <div>
+        <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-magnifying-glass" style="color:var(--emerald-400)"></i> What We Have Built</h3>
+        <div class="plist">
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-file-code"></i></div>
+            <div class="txt"><h4>91 category pages</h4><p>Each with unique, hand-written 150-word content describing the category.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-sitemap"></i></div>
+            <div class="txt"><h4>Sitemap submitted</h4><p>Google Search Console verified, 106 pages discovered and queued for indexing.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-code"></i></div>
+            <div class="txt"><h4>Organization schema</h4><p>Structured data tells Google exactly who CSVN is, where it operates, and what it does.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div class="txt"><h4>Search filters</h4><p>Buyers can search by category, city, and service directly on the platform.</p></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-user-check" style="color:var(--emerald-400)"></i> What This Means for You</h3>
+        <div class="plist">
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-link"></i></div>
+            <div class="txt"><h4>Your listing becomes discoverable</h4><p>Buyers searching Google for your service and city can find your profile.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-clock"></i></div>
+            <div class="txt"><h4>Long-term asset</h4><p>Search visibility grows over time. Every month your listing ranks better.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-infinity"></i></div>
+            <div class="txt"><h4>24×7 visibility</h4><p>Unlike email outreach, your listing works for you even when we are asleep.</p></div>
+          </div>
+          <div class="plist-item">
+            <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="txt"><h4>No pay-per-click</h4><p>Organic visibility without ad spend. Your ₹999 covers the whole year.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ DISCLAIMER ═══════════════════ -->
-<section class="tight">
-  <div class="container">
-    <div class="disclaimer">
-      <h4>Important Information</h4>
-      <p>"Lead Generation Directory" is a general category of B2B platforms in India. It is used here as a broad category descriptor and does not refer to any specific company, brand, or platform. Pricing, features, and policies vary widely between providers in this category.</p>
-      <p>The comparison on this page reflects general characteristics of the category and is provided for informational purposes only. CSVN makes no claim about any specific company's pricing, features, or policies, and does not intend to disparage any competitor. Vendors should independently verify all information before making a purchasing decision.</p>
-      <p>CSVN is a visibility platform, not a lead generation service. Listing on CSVN does not guarantee enquiries, contracts, or orders. Commercial outcomes depend on buyer demand, category, city, and the quality of the vendor's own offering.</p>
+<!-- S27 — REFERRALS -->
+<section class="slide light" data-index="26">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 05 · Referrals</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 05</div>
+      <h2 class="anim"><span class="grad-text">Referrals and warm introductions</span></h2>
+      <p class="lead anim">Referrals convert better than any cold outreach. CSVN builds on existing business relationships to introduce vendor listings where there is a genuine fit.</p>
+    </div>
+    <div class="grid grid-2 anim" style="gap:18px;margin-top:26px">
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-briefcase"></i></div>
+        <h3>Consulting and Business Network</h3>
+        <p>Ongoing consulting relationships across manufacturing, services, and IT — many of whom need corporate vendors regularly.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-user-group"></i></div>
+        <h3>Alumni and Business School Networks</h3>
+        <p>Business school alumni networks and corporate relations contacts in multiple industries.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-share-nodes"></i></div>
+        <h3>Vendor Referrals</h3>
+        <p>Every listed vendor can refer other vendors. Referred vendors get priority review and faster onboarding.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>Industry Introductions</h3>
+        <p>Where relevant, CSVN introduces vendor listings to decision-makers through its network.</p>
+      </div>
+    </div>
+    <div class="disclaimer light anim" style="margin-top:28px">
+      <strong>Note:</strong> Referrals are made at CSVN's discretion, based on fit and relevance. They are not guaranteed for every listing.
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="page-footer">
-  <p>
-    <strong style="color:var(--slate-800)">CSVN — Corporate Services Vendor Network</strong><br>
-    Independently operated from Pune, Maharashtra, India<br>
-    <a href="mailto:info@csvn.in">info@csvn.in</a> · 
-    <a href="tel:+918793932827">+91 87939 32827</a> · 
-    <a href="https://www.csvn.in">www.csvn.in</a>
-  </p>
-</footer>
+<!-- S28 — COMMUNITY GROUPS -->
+<section class="slide light" data-index="27">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Channel 06 · Community Groups</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Channel 06</div>
+      <h2 class="anim"><span class="grad-text">Community and group</span> promotion</h2>
+      <p class="lead anim">India's corporate ecosystem lives in WhatsApp groups, industry forums, and business communities. CSVN participates where decision-makers already are.</p>
+    </div>
+    <div class="grid grid-3 anim" style="margin-top:26px">
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-brands fa-whatsapp"></i></div>
+        <h3>HR WhatsApp Groups</h3>
+        <p>Active in HR, recruitment, and people-management groups where HR Heads and Admins discuss vendor needs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-users-rectangle"></i></div>
+        <h3>Business Owner Groups</h3>
+        <p>Founder and entrepreneur communities where business owners ask for vendor recommendations.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-industry"></i></div>
+        <h3>Industry Associations</h3>
+        <p>Manufacturing, service, and trade associations where CSVN is promoted as a sourcing resource.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-emerald"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Local Business Networks</h3>
+        <p>City and regional business networks in major industrial hubs across India.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-indigo"><i class="fa-solid fa-comments"></i></div>
+        <h3>Corporate Service Forums</h3>
+        <p>Online discussion forums where procurement and facility teams share vendor sourcing questions.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon icon-amber"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Alumni &amp; Academic Groups</h3>
+        <p>Business school alumni groups — senior managers and directors who source corporate services.</p>
+      </div>
+    </div>
+    <div class="stats-row anim" style="margin-top:auto">
+      <div class="stat"><div class="stat-num grad-text">50+</div><div class="stat-label">Groups Targeted</div></div>
+      <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Group Reach</div></div>
+      <div class="stat"><div class="stat-num grad-text">Weekly</div><div class="stat-label">Engagement</div></div>
+      <div class="stat"><div class="stat-num grad-text">Free</div><div class="stat-label">For Vendors</div></div>
+    </div>
+  </div>
+</section>
 
+<!-- S29 — OUTREACH SUMMARY -->
+<section class="slide dark" data-index="28">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Summary</span>
+  </div>
+  <div class="slide-content">
+    <div class="sec-head">
+      <div class="eyebrow anim">Putting It Together</div>
+      <h2 class="anim" style="color:#fff">Multiple channels. <span class="grad-text">One outcome.</span></h2>
+      <p class="lead anim">Your listing is not sitting in a directory waiting to be found. It is actively promoted through multiple coordinated channels so decision-makers see it while they are sourcing.</p>
+    </div>
+    <div class="trust-chain anim" style="margin-top:20px">
+      <div class="trust-node">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <div class="lbl">Step 1</div>
+        <div class="val">CSVN Listing</div>
+      </div>
+      <i class="fa-solid fa-arrow-right trust-arrow"></i>
+      <div class="trust-node">
+        <i class="fa-solid fa-circle-check"></i>
+        <div class="lbl">Step 2</div>
+        <div class="val">Listed Platform</div>
+      </div>
+      <i class="fa-solid fa-arrow-right trust-arrow"></i>
+      <div class="trust-node">
+        <i class="fa-solid fa-user-tie"></i>
+        <div class="lbl">Step 3</div>
+        <div class="val">Decision-Maker Outreach</div>
+      </div>
+      <i class="fa-solid fa-arrow-right trust-arrow"></i>
+      <div class="trust-node">
+        <i class="fa-solid fa-phone"></i>
+        <div class="lbl">Step 4</div>
+        <div class="val">Buyer Contacts Vendor</div>
+      </div>
+    </div>
+    <div class="commit-list anim" style="margin-top:36px">
+      <div class="commit-item">
+        <i class="fa-solid fa-circle-check"></i>
+        <h4>What We Commit To</h4>
+        <p>A professional listing, active promotion through multiple channels, and honest communication at every step.</p>
+      </div>
+      <div class="commit-item">
+        <i class="fa-solid fa-circle-info"></i>
+        <h4>What We Do Not Promise</h4>
+        <p>We do not guarantee enquiries, contracts, or orders. We provide visibility — outcomes depend on buyer demand.</p>
+      </div>
+      <div class="commit-item">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+        <h4>What You Pay</h4>
+        <p>₹999 per year. No commission. No hidden fees. No auto-renewal. No lock-in.</p>
+      </div>
+    </div>
+    <div class="cta-block anim">
+      <div class="txt">
+        <h4>Ready to get discovered?</h4>
+        <p>List your business on CSVN and start reaching decision-makers across India.</p>
+      </div>
+      <a href="https://www.csvn.in/list-your-business/" target="_blank" class="cta-btn">
+        <i class="fa-solid fa-plus"></i> List Your Business
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- S30 — FINAL / LET'S TALK -->
+<section class="slide section-divider" data-index="29">
+  <div class="brand-bar">
+    <img src="https://www.csvn.in/logo.png" alt="CSVN">
+    <span class="deck-label">Let's Talk</span>
+  </div>
+  <div class="slide-content">
+    <div class="section-title">
+      <span class="section-label anim">Have Questions?</span>
+      <h1 class="anim">Let's <span class="grad-text">Talk</span></h1>
+      <p class="lead anim">Whether you are a vendor thinking about listing, or a business looking for a specific service — reach out directly. We respond personally.</p>
+      
+      <div class="talk-buttons anim" style="margin-top:36px;justify-content:flex-start">
+        <a href="https://wa.me/918793932827?text=Hi%20CSVN%2C%20I%20have%20a%20question%20about%20listing%20my%20business."
+           target="_blank" rel="noopener" class="talk-btn whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+        </a>
+        <a href="tel:+918793932827" class="talk-btn call">
+          <i class="fa-solid fa-phone"></i> Call Now
+        </a>
+        <a href="mailto:info@csvn.in?subject=Question%20about%20CSVN" class="talk-btn email">
+          <i class="fa-solid fa-envelope"></i> Email Us
+        </a>
+      </div>
+
+      <div class="anim" style="margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-size:14px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:12px 24px;width:fit-content">
+        <i class="fa-solid fa-clock" style="color:var(--emerald-400);font-size:15px"></i>
+        <span>Available <strong style="color:#fff">Monday to Saturday, 10 AM – 6 PM IST</strong></span>
+      </div>
+
+      <div style="margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,.12);max-width:760px">
+        <p style="font-size:12.5px;color:rgba(255,255,255,.55);line-height:1.7">
+          <strong style="color:rgba(255,255,255,.85)">CSVN — Corporate Services Vendor Network</strong> is independently operated from Pune, Maharashtra, India. Listing does not guarantee enquiries, contracts, or orders. For legal correspondence, refer to Terms of Service and Privacy Policy at csvn.in.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NAVIGATION ═══ -->
+<button class="nav-btn nav-prev" id="btnPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+<button class="nav-btn nav-next" id="btnNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+<div class="slide-counter"><span class="current" id="curNum">01</span> / <span id="totNum">30</span></div>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var total = slides.length;
+var cur = 0;
+var bar = document.getElementById('progressBar');
+var curNum = document.getElementById('curNum');
+var deck = document.getElementById('deck');
+document.getElementById('totNum').textContent = String(total).padStart(2,'0');
+
+function isDark(){
+  var s = slides[cur];
+  return s.classList.contains('dark') || s.classList.contains('section-divider');
+}
+function updateTheme(){
+  deck.setAttribute('data-theme', isDark() ? 'dark' : 'light');
+}
+function updateUI(){
+  bar.style.width = (((cur+1)/total)*100) + '%';
+  curNum.textContent = String(cur+1).padStart(2,'0');
+  updateTheme();
+}
+function go(n){
+  if(n < 0) n = 0;
+  if(n >= total) n = total - 1;
+  if(n === cur) return;
+  var prevIdx = cur;
+  slides[prevIdx].classList.add('prev');
+  slides[prevIdx].classList.remove('active');
+  setTimeout(function(){ slides[prevIdx].classList.remove('prev'); }, 620);
+  cur = n;
+  slides[cur].classList.remove('prev');
+  void slides[cur].offsetWidth;
+  slides[cur].classList.add('active');
+  updateUI();
+  if(history.replaceState) history.replaceState(null, '', '#/' + (cur+1));
+}
+document.getElementById('btnNext').addEventListener('click', function(){ go(cur+1); });
+document.getElementById('btnPrev').addEventListener('click', function(){ go(cur-1); });
+document.addEventListener('keydown', function(e){
+  var k = e.key;
+  if(k === 'ArrowRight' || k === 'ArrowDown' || k === ' ' || k === 'PageDown' || k === 'Enter'){ e.preventDefault(); go(cur+1); }
+  else if(k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace'){ e.preventDefault(); go(cur-1); }
+  else if(k === 'Home'){ e.preventDefault(); go(0); }
+  else if(k === 'End'){ e.preventDefault(); go(total-1); }
+  else if(k === 'f' || k === 'F'){
+    if(!document.fullscreenElement){ if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); }
+    else { if(document.exitFullscreen) document.exitFullscreen(); }
+  }
+});
+var tx=0, ty=0;
+deck.addEventListener('touchstart', function(e){ tx = e.changedTouches[0].screenX; ty = e.changedTouches[0].screenY; }, {passive:true});
+deck.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].screenX - tx;
+  var dy = e.changedTouches[0].screenY - ty;
+  if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)){ if(dx < 0) go(cur+1); else go(cur-1); }
+}, {passive:true});
+function readHash(){
+  var m = location.hash.match(/^#\/(\d+)/);
+  if(m){ var n = parseInt(m[1], 10) - 1; if(n >= 0 && n < total && n !== cur) go(n); }
+}
+window.addEventListener('hashchange', readHash);
+if(location.hash) readHash();
+updateUI();
+})();
+</script>
 </body>
 </html>
