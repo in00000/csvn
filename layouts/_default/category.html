@@ -78,18 +78,66 @@
     </section>
   {{ end }}
 
-  {{/* Vendor grid — tier-wise shuffle (rotates on every rebuild) */}}
+  {{/* ═══════════════════════════════════════════════════════════
+      VENDOR GRID — split into three tier blocks.
+      Each block rotates independently on every page load
+      via the client-side shuffle script in head.html.
+      ═══════════════════════════════════════════════════════════ */}}
   {{ if $vendorCount }}
     {{ $featured := shuffle (where $clients "Params.tier" "Featured") }}
     {{ $premium  := shuffle (where $clients "Params.tier" "Premium") }}
     {{ $standard := shuffle (where $clients "Params.tier" "Standard") }}
-    {{ $sorted   := $featured | append $premium | append $standard }}
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {{ range $sorted }}
-        {{ partial "client-card.html" .Params }}
-      {{ end }}
-    </div>
+    {{/* ── FEATURED BLOCK ────────────────────────────────── */}}
+    {{ if $featured }}
+      <section class="mb-8">
+        <h3 class="text-xs font-extrabold uppercase tracking-widest text-emerald-600 mb-4 flex items-center gap-2 pb-3 border-b border-slate-200">
+          <i class="fa-solid fa-star"></i>
+          Featured Vendors
+          <span class="text-slate-400 font-semibold normal-case tracking-normal">({{ len $featured }})</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-shuffle="true">
+          {{ range $featured }}
+            {{ partial "client-card.html" .Params }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    {{/* ── PREMIUM BLOCK ─────────────────────────────────── */}}
+    {{ if $premium }}
+      <section class="mb-8">
+        <h3 class="text-xs font-extrabold uppercase tracking-widest text-amber-600 mb-4 flex items-center gap-2 pb-3 border-b border-slate-200">
+          <i class="fa-solid fa-gem"></i>
+          Premium Vendors
+          <span class="text-slate-400 font-semibold normal-case tracking-normal">({{ len $premium }})</span>
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-shuffle="true">
+          {{ range $premium }}
+            {{ partial "client-card.html" .Params }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    {{/* ── STANDARD BLOCK ────────────────────────────────── */}}
+    {{ if $standard }}
+      <section class="mb-8">
+        {{ if or $featured $premium }}
+          <h3 class="text-xs font-extrabold uppercase tracking-widest text-slate-500 mb-4 flex items-center gap-2 pb-3 border-b border-slate-200">
+            <i class="fa-solid fa-list"></i>
+            All Listings
+            <span class="text-slate-400 font-semibold normal-case tracking-normal">({{ len $standard }})</span>
+          </h3>
+        {{ end }}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-shuffle="true">
+          {{ range $standard }}
+            {{ partial "client-card.html" .Params }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
   {{ else }}
     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
       <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 flex items-center justify-center mb-4">
