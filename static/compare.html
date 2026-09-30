@@ -30,11 +30,6 @@ body{
   line-height:1.6;-webkit-font-smoothing:antialiased;
 }
 
-/* ═══ GOOGLE TRANSLATE — hide default banners ═══ */
-body > .skiptranslate{display:none !important}
-.goog-te-banner-frame{display:none !important}
-body{top:0 !important;position:static !important}
-
 /* ═══ HEADER ═══ */
 .page-header{
   background:linear-gradient(135deg,#1e1b4b 0%,#312e81 45%,#0f172a 100%);
@@ -75,43 +70,43 @@ body{top:0 !important;position:static !important}
   max-width:720px;line-height:1.65;
 }
 
-/* ═══ LANGUAGE SECTION ═══ */
-.lang-section{
+/* ═══ TALK TO US SECTION ═══ */
+.talk-section{
   background:#ffffff;
   border-bottom:1px solid var(--slate-200);
   padding:56px 32px 64px;
   position:relative;
   overflow:hidden;
 }
-.lang-section::before{
+.talk-section::before{
   content:'';position:absolute;top:-30%;right:-8%;width:420px;height:420px;
   background:radial-gradient(circle,rgba(99,102,241,.07),transparent 70%);
   pointer-events:none;
 }
-.lang-section::after{
+.talk-section::after{
   content:'';position:absolute;bottom:-30%;left:-8%;width:420px;height:420px;
   background:radial-gradient(circle,rgba(16,185,129,.06),transparent 70%);
   pointer-events:none;
 }
-.lang-inner{
+.talk-inner{
   position:relative;z-index:2;
   max-width:900px;margin:0 auto;text-align:center;
 }
-.lang-icon-wrap{
+.talk-icon-wrap{
   display:inline-flex;align-items:center;justify-content:center;
   width:72px;height:72px;border-radius:20px;
   background:linear-gradient(135deg,var(--indigo-600),var(--indigo-800));
   color:#ffffff;font-size:28px;margin-bottom:28px;
   box-shadow:0 18px 36px -12px rgba(79,70,229,.5);
 }
-.lang-heading{
+.talk-heading{
   font-size:clamp(28px,3.6vw,42px);
   font-weight:900;letter-spacing:-.03em;
   color:var(--slate-900);
   line-height:1.15;
   margin-bottom:16px;
 }
-.lang-subtext{
+.talk-subtext{
   font-size:clamp(15px,1.5vw,17px);
   color:var(--slate-500);
   line-height:1.7;
@@ -119,68 +114,76 @@ body{top:0 !important;position:static !important}
   margin:0 auto 40px;
 }
 
-/* Native language selector */
-.lang-native-wrap{
-  display:inline-flex;flex-direction:column;gap:12px;
-  background:var(--slate-50);
-  border:2px solid var(--indigo-200);
-  border-radius:16px;
-  padding:20px 26px;
-  box-shadow:0 12px 28px -14px rgba(79,70,229,.2);
+/* Contact buttons */
+.talk-buttons{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:36px;
+}
+.talk-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  padding:16px 30px;
+  border-radius:14px;
+  font-size:15px;
+  font-weight:800;
+  text-decoration:none;
   transition:all .24s cubic-bezier(.4,0,.2,1);
-  min-width:320px;
-  text-align:left;
+  box-shadow:0 10px 24px -10px rgba(15,23,42,.22);
+  border:2px solid transparent;
 }
-.lang-native-wrap:hover{
-  border-color:var(--indigo-500);
-  box-shadow:0 16px 36px -14px rgba(79,70,229,.35);
-}
-.lang-native-label{
-  font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--indigo-600);display:flex;align-items:center;gap:8px;
-  cursor:pointer;
-}
-.lang-native-label i{font-size:13px}
-.lang-native-inner{
-  position:relative;display:flex;align-items:center;
-  background:#ffffff;
-  border:1.5px solid var(--slate-200);
-  border-radius:11px;
-  overflow:hidden;
-  transition:border-color .2s ease;
-}
-.lang-native-inner:focus-within{
-  border-color:var(--indigo-500);
-  box-shadow:0 0 0 4px rgba(79,70,229,.12);
-}
-.lang-native-select{
-  appearance:none;-webkit-appearance:none;-moz-appearance:none;
-  width:100%;
-  padding:14px 44px 14px 18px;
-  font-family:'Inter',sans-serif;
-  font-size:16px;font-weight:700;
-  color:var(--slate-900);
-  background:transparent;
-  border:none;outline:none;
-  cursor:pointer;
-  line-height:1.4;
-}
-.lang-native-select:hover{color:var(--indigo-700)}
-.lang-native-arrow{
-  position:absolute;right:16px;top:50%;transform:translateY(-50%);
-  color:var(--indigo-600);font-size:14px;pointer-events:none;
-  transition:transform .22s ease;
-}
-.lang-native-select:focus ~ .lang-native-arrow{transform:translateY(-50%) rotate(180deg)}
+.talk-btn i{font-size:18px}
 
-.lang-hint{
-  margin-top:28px;
-  font-size:13px;
-  color:var(--slate-400);
-  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+.talk-btn.whatsapp{
+  background:#25D366;
+  color:#ffffff;
+  box-shadow:0 10px 26px -8px rgba(37,211,102,.5);
 }
-.lang-hint i{color:var(--indigo-500);font-size:14px}
-.lang-hint strong{color:var(--slate-600);font-weight:700}
+.talk-btn.whatsapp:hover{
+  background:#1DA851;
+  transform:translateY(-3px);
+  box-shadow:0 16px 36px -8px rgba(37,211,102,.6);
+}
+
+.talk-btn.call{
+  background:var(--indigo-600);
+  color:#ffffff;
+  box-shadow:0 10px 26px -8px rgba(79,70,229,.5);
+}
+.talk-btn.call:hover{
+  background:var(--indigo-700);
+  transform:translateY(-3px);
+  box-shadow:0 16px 36px -8px rgba(79,70,229,.6);
+}
+
+.talk-btn.email{
+  background:#ffffff;
+  color:var(--slate-800);
+  border-color:var(--slate-200);
+}
+.talk-btn.email:hover{
+  border-color:var(--indigo-500);
+  color:var(--indigo-700);
+  transform:translateY(-3px);
+  box-shadow:0 16px 36px -8px rgba(79,70,229,.25);
+}
+
+.talk-hours{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:13.5px;
+  color:var(--slate-500);
+  background:var(--slate-50);
+  border:1px solid var(--slate-200);
+  border-radius:100px;
+  padding:10px 20px;
+}
+.talk-hours i{color:var(--emerald-500);font-size:14px}
+.talk-hours strong{color:var(--slate-700);font-weight:700}
 
 /* ═══ CONTAINER ═══ */
 .container{max-width:1100px;margin:0 auto;padding:0 32px}
@@ -364,7 +367,7 @@ h2{
 @media print{
   @page{size:A4;margin:14mm}
   body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .lang-section{display:none}
+  .talk-section{display:none}
   .page-header{padding:36px 24px 40px}
   .page-header h1{font-size:26px}
   .cta-section .cta-buttons{display:none}
@@ -379,10 +382,10 @@ h2{
 @media(max-width:700px){
   .container{padding:0 20px}
   .page-header{padding:44px 20px 52px}
-  .lang-section{padding:44px 20px 52px}
-  .lang-icon-wrap{width:60px;height:60px;font-size:24px;margin-bottom:22px}
-  .lang-native-wrap{min-width:auto;width:100%;padding:16px 18px}
-  .lang-native-select{font-size:15px;padding:12px 40px 12px 14px}
+  .talk-section{padding:44px 20px 52px}
+  .talk-icon-wrap{width:60px;height:60px;font-size:24px;margin-bottom:22px}
+  .talk-buttons{flex-direction:column;align-items:stretch}
+  .talk-btn{justify-content:center;padding:15px 24px}
   .compare-wrap{overflow-x:auto}
   .compare-table{min-width:640px}
   .compare-table th,.compare-table td{padding:14px 14px;font-size:12.5px}
@@ -406,48 +409,36 @@ h2{
   </div>
 </header>
 
-<!-- ═══════════════════ LANGUAGE SELECTOR ═══════════════════ -->
-<section class="lang-section">
-  <div class="lang-inner">
-    <div class="lang-icon-wrap">
-      <i class="fa-solid fa-language"></i>
+<!-- ═══════════════════ TALK TO US ═══════════════════ -->
+<section class="talk-section">
+  <div class="talk-inner">
+    <div class="talk-icon-wrap">
+      <i class="fa-solid fa-comments"></i>
     </div>
-    <h2 class="lang-heading">Choose Your Language</h2>
-    <p class="lang-subtext">
-      Read this page in your preferred Indian language. Select from the dropdown below — the page will translate instantly.
+    <h2 class="talk-heading">Have Questions? Let's Talk</h2>
+    <p class="talk-subtext">
+      Whether you are a vendor thinking about listing, or a business looking for a specific service — reach out directly. We respond personally.
     </p>
 
-    <div class="lang-native-wrap">
-      <label for="langSelect" class="lang-native-label">
-        <i class="fa-solid fa-globe"></i> Select Language
-      </label>
-      <div class="lang-native-inner">
-        <select id="langSelect" class="lang-native-select" onchange="changeLanguage(this.value)">
-          <option value="en">English</option>
-          <option value="hi">हिन्दी (Hindi)</option>
-          <option value="mr">मराठी (Marathi)</option>
-          <option value="ta">தமிழ் (Tamil)</option>
-          <option value="te">తెలుగు (Telugu)</option>
-          <option value="bn">বাংলা (Bengali)</option>
-          <option value="gu">ગુજરાતી (Gujarati)</option>
-          <option value="kn">ಕನ್ನಡ (Kannada)</option>
-          <option value="ml">മലയാളം (Malayalam)</option>
-          <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
-          <option value="ur">اردو (Urdu)</option>
-          <option value="or">ଓଡ଼ିଆ (Odia)</option>
-          <option value="as">অসমীয়া (Assamese)</option>
-        </select>
-        <i class="fa-solid fa-chevron-down lang-native-arrow"></i>
-      </div>
+    <div class="talk-buttons">
+      <a href="https://wa.me/918793932827?text=Hi%20CSVN%2C%20I%20have%20a%20question%20about%20listing%20my%20business."
+         target="_blank"
+         rel="noopener"
+         class="talk-btn whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+      </a>
+      <a href="tel:+918793932827" class="talk-btn call">
+        <i class="fa-solid fa-phone"></i> Call Now
+      </a>
+      <a href="mailto:info@csvn.in?subject=Question%20about%20CSVN" class="talk-btn email">
+        <i class="fa-solid fa-envelope"></i> Email Us
+      </a>
     </div>
 
-    <p class="lang-hint">
-      <i class="fa-solid fa-circle-check"></i>
-      <span>Supported: <strong>हिन्दी · मराठी · தமிழ் · తెలుగు · বাংলা · ગુજરાતી · ಕನ್ನಡ · മലയാളം · ਪੰਜਾਬੀ · اردو · ଓଡ଼ିଆ</strong></span>
-    </p>
-
-    <!-- Hidden Google Translate mount point (required for translation engine) -->
-    <div id="google_translate_element" style="display:none"></div>
+    <div class="talk-hours">
+      <i class="fa-solid fa-clock"></i>
+      <span>Available <strong>Monday to Saturday, 10 AM – 6 PM IST</strong></span>
+    </div>
   </div>
 </section>
 
@@ -494,6 +485,13 @@ h2{
             <td class="csvn-col">Not required</td>
           </tr>
           <tr>
+            <td class="feature">Multi-category listing</td>
+            <td class="lgd-col">Limited</td>
+            <td class="csvn-col"><span class="yes"><i class="fa-solid fa-circle-check"></i> 91 categories</span></td>
+          </tr>
+          <tr>
+            <td class="feature">Setup time</td>
+                      <tr>
             <td class="feature">Multi-category listing</td>
             <td class="lgd-col">Limited</td>
             <td class="csvn-col"><span class="yes"><i class="fa-solid fa-circle-check"></i> 91 categories</span></td>
@@ -619,54 +617,6 @@ h2{
     <a href="https://www.csvn.in">www.csvn.in</a>
   </p>
 </footer>
-
-<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
-<script type="text/javascript">
-/* ═══ Native language selector logic ═══ */
-function changeLanguage(lang) {
-  var host = location.hostname;
-  var expired = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
-  var cookieNames = [
-    'googtrans=; ' + expired + '; path=/',
-    'googtrans=; ' + expired + '; path=/; domain=' + host,
-    'googtrans=; ' + expired + '; path=/; domain=.' + host
-  ];
-  cookieNames.forEach(function(c){ document.cookie = c; });
-
-  if (lang && lang !== 'en') {
-    var value = '/en/' + lang;
-    document.cookie = 'googtrans=' + value + '; path=/';
-    document.cookie = 'googtrans=' + value + '; path=/; domain=' + host;
-    document.cookie = 'googtrans=' + value + '; path=/; domain=.' + host;
-  }
-
-  var sel = document.getElementById('langSelect');
-  if (sel) {
-    sel.disabled = true;
-    sel.style.opacity = '0.6';
-  }
-
-  location.reload();
-}
-
-/* On load, detect current language and set dropdown */
-(function() {
-  var match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
-  var current = match ? match[1] : 'en';
-  var sel = document.getElementById('langSelect');
-  if (sel) sel.value = current;
-})();
-
-/* Load Google Translate engine (translation only, UI is hidden) */
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
