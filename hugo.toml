@@ -8,6 +8,7 @@ baseURL      = "https://www.csvn.in/"
 languageCode = "en-us"
 title        = "CSVN India — Corporate Services Vendor Network | B2B Vendor Directory"
 timeZone     = "Asia/Kolkata"
+
 # We don't need RSS feeds on a directory site.
 disableKinds = ["RSS", "term"]
 
