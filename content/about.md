@@ -1,69 +1,86 @@
 ---
 title: "About Us"
-description: "CSVN — India's verified B2B vendor network. Discover trusted corporate service providers across 90+ categories."
+description: "CSVN — a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India."
 layout: "page"
 ---
 
 ## Who We Are
 
-**CSVN — Corporate Services Vendor Network** is an India-focused business-to-business directory connecting companies with verified service vendors. We're built for procurement managers, facility heads, and business owners who need reliable vendors — fast.
+**CSVN — Corporate Services Vendor Network** is an India-focused B2B directory built for corporate service providers and the businesses that need them.
 
-Our mission is simple: **make it easy for businesses to find trusted vendors, and easy for vendors to get discovered by the right clients.**
+We connect listed vendors with Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and other decision-makers who are actively looking for corporate services across India.
+
+Our goal is straightforward: **make it easier for service providers to be discovered by decision-makers, and easier for businesses to find the right vendor for their needs.**
 
 ## What We Do
 
-CSVN lists corporate service providers across 90+ categories — from pest control and housekeeping to IT services, security, catering, and industrial supplies. Every vendor on our network can be browsed, searched, and contacted directly.
+CSVN lists corporate service providers across **90+ service categories** organised into 12 groups — from pest control, housekeeping, and canteen catering to IT services, security, industrial supplies, MRO, and facility management.
 
-We don't take commissions from transactions between buyers and vendors. We provide a transparent platform where:
+Every listed vendor gets a professional business profile on the CSVN directory, including:
 
-- **Businesses** find verified vendors by category, city, and service — with full company profiles, contact details, catalogues, and customer reviews
-- **Vendors** showcase their services, list their offerings, and reach potential clients directly
-- **Everyone** gets equal opportunity through our rotating placement system — no vendor is permanently buried at the bottom
+- Business description and service list
+- Direct contact details — phone, WhatsApp, email, and website
+- Location and service area
+- Category listing under one or more relevant categories
 
-## What Makes Us Different
+Businesses can browse the directory by category and location, view vendor profiles, and contact vendors directly. **There are no middlemen, no lead brokers, and no commissions on transactions between buyers and vendors.**
 
-### Verified Listings
+## How We Reach Decision-Makers
 
-Vendors listing on CSVN go through a verification process that includes GST status, business registration, and service history where applicable. Our "Verified" badge is reserved for vendors who meet our standards.
+CSVN promotes listed vendors through multiple outreach channels to maximise visibility:
 
-### Fair Rotation
+- **Targeted email outreach** to Purchase, Procurement, HR, Admin, and operations leaders across India
+- **Professional and industry networks**, including HR and business communities
+- **On-platform discovery** — businesses searching the CSVN directory for specific services
+- **Organic search visibility** through indexed category and location pages
 
-Unlike traditional directories where only the top bidder gets seen, our placement system rotates vendors daily within each tier. Featured vendors get priority, but every vendor gets fair exposure over time.
+This multi-channel approach is designed to place vendor services in front of the people who make sourcing decisions — not just passive visitors.
 
-### No Middlemen
+**Note:** CSVN is a visibility platform. Listing or promotional activity does not guarantee enquiries, contracts, or orders. We do not promise a specific number of buyer contacts.
 
-We connect buyers directly with vendors. There are no hidden charges, no commissions, no barriers — just direct contact.
+## Our Coverage
 
-### Category Depth
-
-With 90+ service categories organized into 12 groups, we cover both common needs (housekeeping, catering) and specialized requirements (industrial MRO, epoxy flooring, fire safety systems).
-
-## Our Reach
-
-CSVN serves businesses across major Indian industrial hubs, including:
+CSVN works pan-India, serving vendors and buyers across major industrial and commercial hubs including:
 
 - Pune & Chakan
 - Mumbai & Thane
 - Bangalore Industrial
-- Chennai Oragadam
-- NCR / Gurgaon
-- And expanding to more cities
+- Chennai & Oragadam
+- Delhi-NCR / Gurgaon
+- Hyderabad
+- Ahmedabad
+- Kolkata
+
+Coverage is expanding continuously. If your city is not listed, contact us — we likely already have vendors or buyers in your area, and we are adding new locations regularly.
 
 ## Who We Serve
 
-- Manufacturing plants and factories
-- IT parks and corporate offices
-- Warehouses and logistics hubs
-- Hospitals, hotels, and hospitality businesses
-- Schools, colleges, and institutions
-- Retail chains and commercial complexes
+**Vendors** — corporate service providers who want professional visibility among decision-makers without paying for expensive traditional directories or giving up commission on every deal.
+
+**Buyers** — procurement teams, facility heads, HR leaders, admin heads, and business owners looking for reliable service providers across a wide range of categories.
+
+## What We Do Not Do
+
+To keep expectations clear, CSVN does **not**:
+
+- Guarantee a specific number of enquiries, leads, contracts, or orders
+- Charge commission, transaction fees, or processing fees on deals between buyers and vendors
+- Act as an intermediary in negotiations or contracts between buyers and vendors
+- Verify every credential, certification, or capability of every listing
+
+We provide the platform and the visibility. Commercial outcomes depend on buyer demand, category, and the quality of each vendor's own offering.
 
 ## Our Commitment
 
-We are committed to honest listings, fair treatment for all vendors, and providing a platform that genuinely helps Indian businesses operate more efficiently.
+We are committed to:
+
+- **Transparent listings** — every vendor profile carries the information vendors choose to publish
+- **Fair rotation** — listings rotate within their tier so no vendor is permanently buried
+- **No hidden charges** — one flat fee, no commission, no surprises
+- **Straightforward communication** — we describe what we do and what we do not do
 
 If you have questions about the network, want to list your business, or need assistance, please [contact us](/contact/).
 
 ---
 
-*CSVN — Corporate Services Vendor Network is operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India. For legal correspondence, please refer to our [Terms of Service](/terms/) and [Privacy Policy](/privacy/).*
+*CSVN — Corporate Services Vendor Network is independently operated from Pune, Maharashtra, India, and serves vendors and buyers across India. For legal correspondence, please refer to our [Terms of Service](/terms/) and [Privacy Policy](/privacy/).*
