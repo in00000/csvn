@@ -26,13 +26,14 @@ For urgent matters or to speak with someone directly:
 
 Please note: we do not provide vendor recommendations or pricing quotes over the phone. All vendor contact information is available directly on each vendor's profile page.
 
-## Office Address
+## Location
 
-**CSVN — Corporate Services Vendor Network**
+CSVN operates remotely from Pune, Maharashtra, and serves vendors and buyers across India. All correspondence is handled by email and phone — we do not offer in-person meetings.
+
+**Registered Address (for legal and postal correspondence only):**
+CSVN — Corporate Services Vendor Network
 Nigdi, Pimpri-Chinchwad
 Pune, Maharashtra, India
-
-*Visits by appointment only. Please email or call before visiting.*
 
 ## For Vendors — List Your Business
 
