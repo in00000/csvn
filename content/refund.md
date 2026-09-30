@@ -6,7 +6,7 @@ layout: "page"
 
 ## Overview
 
-CSVN offers both **free** and **paid** vendor listings. This Refund Policy explains when and how refunds are issued for paid listings.
+CSVN offers both **free** and **paid** vendor listings. This Refund Policy explains when and how refunds are issued for paid listings. By making a payment for a paid listing, you agree to this policy.
 
 ## Free Listings
 
@@ -14,34 +14,33 @@ Free listings have no payment involved and are not subject to this policy. You c
 
 ## Paid Listings
 
-Paid listing plans (Premium and Featured) are billed in advance. By making a payment, you agree to this Refund Policy.
+Paid listing plans are billed in advance. The service provided is a **12-month digital listing** on the CSVN platform. The listing is activated within 24 business hours of payment verification.
+
+**Important:** CSVN is a visibility platform. We do **not** guarantee any specific number of inquiries, leads, contracts, or sales. Lack of inquiries or business results is **not** a valid reason for a refund.
 
 ## Refund Eligibility
 
 ### Full Refund
 
-You are eligible for a **100% refund** if:
+You are eligible for a **100% refund** only in the following cases:
 
-- You request a refund within **7 days** of payment, AND
-- You have not yet received any buyer inquiries through your paid listing, AND
-- The listing has been live for less than 7 days
-
-### Partial Refund (50%)
-
-You are eligible for a **50% refund** if:
-
-- You request a refund between **8 and 15 days** after payment, AND
-- You have received fewer than 5 buyer inquiries through your paid listing
+- **Service Failure:** We fail to activate your listing within **48 business hours** of receiving your payment and complete business details, and you request a refund before activation.
+- **Duplicate Payment:** You accidentally made the same payment twice for the same listing.
+- **Cancellation Before Activation:** You request a cancellation within **24 hours** of payment and before your listing has been activated.
 
 ### No Refund
 
-Refunds are **not** available if:
+Refunds are **not** available in any other circumstances, including but not limited to:
 
-- More than 15 days have passed since payment
-- You have received 5 or more buyer inquiries
-- You have violated our Terms of Service
-- Your listing was removed due to policy violations
-- You requested a specific placement that was delivered as promised
+- You have received fewer inquiries than expected.
+- You have received no inquiries at all.
+- You changed your mind after the listing was activated.
+- You are dissatisfied with the design or placement of your listing (unless it materially deviates from the agreed description).
+- You have violated our Terms of Service.
+- Your listing was removed due to policy violations.
+- You provided incorrect or incomplete business information that delayed activation.
+
+**Once your listing is activated, the service is considered delivered and no refund will be issued.**
 
 ## How to Request a Refund
 
@@ -50,9 +49,9 @@ Email [info@csvn.in](mailto:info@csvn.in) with:
 1. Your business name and registered email
 2. Date of payment
 3. Amount paid
-4. Reason for the refund request
+4. Reason for the refund request (must meet eligibility criteria above)
 
-We acknowledge all refund requests within **2 business days**.
+We acknowledge all refund requests within **2 business days**. If your request does not meet the eligibility criteria, we will inform you and no refund will be processed.
 
 ## Processing Time
 
@@ -68,7 +67,7 @@ The refund is credited to the original payment method only. We do not issue refu
 
 ### By You
 
-You may cancel your paid listing at any time by emailing us. Cancellation stops future billing but does not automatically trigger a refund. Refunds are governed by the eligibility rules above.
+You may cancel your paid listing at any time by emailing us. Cancellation stops future billing (if any) but does not automatically trigger a refund. Refunds are governed by the eligibility rules above.
 
 ### By CSVN
 
@@ -79,13 +78,13 @@ We may cancel or suspend a paid listing at any time if:
 - The listing is subject to a legal complaint
 - We discontinue the paid listing program
 
-In these cases, we will issue a **pro-rata refund** for the unused portion of the paid period.
+In these cases, we will issue a **pro-rata refund** for the unused portion of the paid period, calculated on a monthly basis.
 
 ## Exceptions
 
 Refunds are not provided for:
 
-- Third-party payment gateway fees (typically 2–3% of the transaction)
+- Third-party payment gateway fees (if applicable)
 - GST or taxes already remitted to the government
 - Bank charges or currency conversion fees
 - Listings removed due to vendor policy violations
@@ -108,12 +107,12 @@ We may update this Refund Policy at any time. Changes apply to future payments o
 
 For refund and billing questions:
 
-**Email:** [info@csvn.in](mailto:info@csvn.in)
-**Phone:** +91 87939 32827
+**Email:** [info@csvn.in](mailto:info@csvn.in)  
+**Phone:** +91 87939 32827  
 **Working Hours:** Monday to Saturday, 10:00 AM to 6:00 PM IST
 
 ---
 
-**Last Updated:** 26 September 2026
+**Last Updated:** 30 September 2026
 
 *CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
