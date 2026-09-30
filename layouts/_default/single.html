@@ -2,14 +2,19 @@
 
 {{/* ── Extract commonly-used values ─────────────────────────── */}}
 {{ $tier := lower (.Params.tier | default "standard") }}
+{{ $isSample := .Params.isSample | default false }}
 {{ $phoneClean := replaceRE "[^0-9+]" "" .Params.phone }}
 {{ $waClean := replaceRE "[^0-9]" "" .Params.whatsapp }}
 
 {{/* ── Tier badge styles ────────────────────────────────────── */}}
 {{ $badgeClass := "bg-slate-100 text-slate-700 border-slate-200" }}
-{{ $badgeIcon  := "fa-circle-check" }}
-{{ $badgeText  := "Verified" }}
-{{ if eq $tier "featured" }}
+{{ $badgeIcon  := "fa-circle" }}
+{{ $badgeText  := "Standard" }}
+{{ if $isSample }}
+  {{ $badgeClass = "bg-slate-100 text-slate-700 border-slate-300" }}
+  {{ $badgeIcon  = "fa-flask" }}
+  {{ $badgeText  = "Sample" }}
+{{ else if eq $tier "featured" }}
   {{ $badgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200" }}
   {{ $badgeIcon  = "fa-circle-check" }}
   {{ $badgeText  = "Featured" }}
@@ -35,6 +40,19 @@
     <span class="text-slate-800 font-medium truncate">{{ .Title }}</span>
   </nav>
 
+  {{/* ── Sample Listing banner ─────────────────────────────────── */}}
+  {{ if $isSample }}
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-4 flex items-start gap-3">
+      <i class="fa-solid fa-flask text-amber-600 text-lg mt-0.5 shrink-0"></i>
+      <div>
+        <div class="text-sm font-bold text-amber-900 mb-0.5">Sample Listing</div>
+        <p class="text-xs text-amber-800 leading-relaxed">
+          This is a demonstration profile to show how a CSVN listing looks. It does not represent a real vendor.
+        </p>
+      </div>
+    </div>
+  {{ end }}
+
   {{/* ══════════════════════════════════════════════════════════
       HEADER CARD — business name, tier, meta, primary CTAs
       ══════════════════════════════════════════════════════════ */}}
@@ -49,10 +67,12 @@
             <span class="inline-flex items-center gap-1.5 {{ $badgeClass }} border text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
               <i class="fa-solid {{ $badgeIcon }} text-[9px]"></i> {{ $badgeText }}
             </span>
-            {{ with .Params.status }}
-              <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-600 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md">
-                <i class="fa-solid fa-circle text-[6px] text-emerald-500"></i> {{ . }}
-              </span>
+            {{ if not $isSample }}
+              {{ with .Params.status }}
+                <span class="inline-flex items-center gap-1.5 bg-slate-100 text-slate-600 text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-md">
+                  <i class="fa-solid fa-circle text-[6px] text-emerald-500"></i> {{ . }}
+                </span>
+              {{ end }}
             {{ end }}
           </div>
 
@@ -81,11 +101,13 @@
               </span>
             {{ end }}
             {{ with .Params.rating }}
-              <span class="flex items-center gap-1.5">
-                <i class="fa-solid fa-star text-amber-500"></i>
-                <span class="font-bold text-slate-800">{{ . }}</span>
-                <span class="text-slate-400">/ 5</span>
-              </span>
+              {{ if gt . 0 }}
+                <span class="flex items-center gap-1.5">
+                  <i class="fa-solid fa-star text-amber-500"></i>
+                  <span class="font-bold text-slate-800">{{ . }}</span>
+                  <span class="text-slate-400">/ 5</span>
+                </span>
+              {{ end }}
             {{ end }}
             {{ with .Params.since }}
               <span class="flex items-center gap-1.5">
@@ -283,16 +305,18 @@
 
             {{/* Rating summary */}}
             {{ with .Params.rating }}
-              <div class="text-center pb-6 mb-6 border-b border-slate-100">
-                <div class="text-amber-500 text-xl mb-1">
-                  {{ $full := int . }}
-                  {{ range seq $full }}<i class="fa-solid fa-star"></i>{{ end }}
+              {{ if gt . 0 }}
+                <div class="text-center pb-6 mb-6 border-b border-slate-100">
+                  <div class="text-amber-500 text-xl mb-1">
+                    {{ $full := int . }}
+                    {{ range seq $full }}<i class="fa-solid fa-star"></i>{{ end }}
+                  </div>
+                  <div class="text-3xl font-extrabold text-slate-900 leading-none mb-1">{{ . }}</div>
+                  {{ with $.Params.reviewCount }}
+                    <div class="text-xs text-slate-500">Based on {{ . }} customer reviews</div>
+                  {{ end }}
                 </div>
-                <div class="text-3xl font-extrabold text-slate-900 leading-none mb-1">{{ . }}</div>
-                {{ with $.Params.reviewCount }}
-                  <div class="text-xs text-slate-500">Based on {{ . }} verified reviews</div>
-                {{ end }}
-              </div>
+              {{ end }}
             {{ end }}
 
             {{/* Individual reviews */}}
@@ -419,15 +443,17 @@
             </li>
           {{ end }}
           {{ with .Params.rating }}
-            <li class="flex items-center justify-between gap-3">
-              <span class="text-slate-500">Rating</span>
-              <span class="font-bold text-slate-800 text-right">{{ . }} / 5</span>
-            </li>
+            {{ if gt . 0 }}
+              <li class="flex items-center justify-between gap-3">
+                <span class="text-slate-500">Rating</span>
+                <span class="font-bold text-slate-800 text-right">{{ . }} / 5</span>
+              </li>
+            {{ end }}
           {{ end }}
           {{ with .Params.status }}
             <li class="flex items-center justify-between gap-3">
               <span class="text-slate-500">Status</span>
-              <span class="font-bold text-emerald-600 text-right">{{ . }}</span>
+              <span class="font-bold {{ if $isSample }}text-slate-600{{ else }}text-emerald-600{{ end }} text-right">{{ . }}</span>
             </li>
           {{ end }}
         </ul>
