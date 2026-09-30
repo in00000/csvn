@@ -104,7 +104,7 @@ body{
   transition:width .55s cubic-bezier(.4,0,.2,1);
 }
 
-/* ═══ NAV ARROWS — always visible ═══ */
+/* ═══ NAV ARROWS ═══ */
 .nav-btn{
   position:absolute;top:50%;transform:translateY(-50%);z-index:150;
   width:52px;height:52px;border-radius:50%;
@@ -130,10 +130,6 @@ body{
 .nav-btn:active{transform:translateY(-50%) scale(.97)}
 .nav-prev{left:24px}
 .nav-next{right:24px}
-
-/* Light slides get inverted arrows */
-.slide.light ~ .nav-btn,
-body:has(.slide.light.active) .nav-btn{}
 
 .deck[data-theme="light"] .nav-btn{
   background:rgba(15,23,42,.08);
@@ -586,7 +582,7 @@ h3{font-size:19px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
         <div class="card">
           <div class="card-icon icon-emerald"><i class="fa-solid fa-eye"></i></div>
           <h3>Our Vision</h3>
-          <p>A transparent, commission-free platform where every vendor gets fair visibility and every buyer finds verified contacts.</p>
+          <p>A transparent, commission-free platform where every vendor gets fair visibility and every buyer finds reliable contacts.</p>
         </div>
         <div class="card">
           <div class="card-icon icon-amber"><i class="fa-solid fa-handshake"></i></div>
@@ -1232,13 +1228,11 @@ function go(n){
 
   cur = n;
   slides[cur].classList.remove('prev');
-  // Force reflow so animations restart
   void slides[cur].offsetWidth;
   slides[cur].classList.add('active');
 
   updateUI();
 
-  // Update URL hash without scrolling
   if(history.replaceState){
     history.replaceState(null, '', '#/' + (cur+1));
   }
@@ -1266,7 +1260,6 @@ document.addEventListener('keydown', function(e){
   }
 });
 
-// Touch / swipe
 var tx = 0, ty = 0;
 deck.addEventListener('touchstart', function(e){
   tx = e.changedTouches[0].screenX;
@@ -1280,7 +1273,6 @@ deck.addEventListener('touchend', function(e){
   }
 }, {passive:true});
 
-// Hash support: #/3 jumps to slide 3
 function readHash(){
   var m = location.hash.match(/^#\/(\d+)/);
   if(m){
