@@ -40,18 +40,43 @@ This multi-channel approach is designed to place vendor services in front of the
 
 ## Our Coverage
 
-CSVN works pan-India, serving vendors and buyers across major industrial and commercial hubs including:
+**CSVN works pan-India.** We serve vendors and buyers across every major region of the country, including North, South, East, West, Central, and North-East India.
 
-- Pune & Chakan
-- Mumbai & Thane
-- Bangalore Industrial
-- Chennai & Oragadam
-- Delhi-NCR / Gurgaon
-- Hyderabad
-- Ahmedabad
-- Kolkata
+**Metro cities and primary commercial hubs:**
 
-Coverage is expanding continuously. If your city is not listed, contact us — we likely already have vendors or buyers in your area, and we are adding new locations regularly.
+- Delhi-NCR (Delhi, Gurgaon, Noida, Faridabad, Ghaziabad)
+- Mumbai, Thane, Navi Mumbai, Pune, Pimpri-Chinchwad
+- Bengaluru, Mysuru, Mangaluru
+- Hyderabad, Secunderabad, Warangal
+- Chennai, Coimbatore, Madurai, Tiruchirappalli
+- Kolkata, Howrah, Durgapur, Siliguri
+- Ahmedabad, Surat, Vadodara, Rajkot
+- Jaipur, Jodhpur, Udaipur
+- Lucknow, Kanpur, Varanasi
+- Chandigarh, Mohali, Panchkula
+- Indore, Bhopal, Gwalior
+- Kochi, Thiruvananthapuram, Kozhikode
+- Bhubaneswar, Cuttack, Rourkela
+- Guwahati, Shillong, Imphal
+- Nagpur, Nashik, Aurangabad
+- Raipur, Bhilai, Bilaspur
+- Patna, Ranchi, Jamshedpur
+- Dehradun, Haridwar, Noida Extension
+- Visakhapatnam, Vijayawada, Guntur
+- Goa (Panaji, Margao, Vasco da Gama)
+
+**Industrial belts and manufacturing corridors:**
+
+- Pune–Chakan–Talegaon industrial belt
+- Mumbai–Pune expressway corridor
+- Chennai–Oragadam–Sriperumbudur auto cluster
+- Bengaluru–Hosur–Tumakuru industrial region
+- Delhi–NCR industrial areas (Manesar, Bawal, Neemrana)
+- Vadodara–Ankleshwar–Dahej chemical belt
+- Jamshedpur–Adityapur industrial area
+- Visakhapatnam–Vizianagaram coastal belt
+
+Coverage is expanding continuously. If your city or region is not listed, contact us — we are actively onboarding vendors and buyers across all states, and we add new locations every month.
 
 ## Who We Serve
 
