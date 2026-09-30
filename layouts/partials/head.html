@@ -65,3 +65,42 @@
 </style>
 {{ partial "schema.html" . }}
 
+{{/* ─── Client-side shuffle ──────────────────────────────────
+     Shuffles any element with data-shuffle="true" on page load.
+     Used on category pages + homepage to rotate vendor cards
+     within their tier block on every page load.
+     ────────────────────────────────────────────────────────── */}}
+<script>
+(function () {
+  'use strict';
+
+  function shuffle(el) {
+    if (!el) return;
+    var kids = Array.prototype.slice.call(el.children);
+    if (kids.length < 2) return;
+    for (var i = kids.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = kids[i]; kids[i] = kids[j]; kids[j] = t;
+    }
+    var frag = document.createDocumentFragment();
+    for (var k = 0; k < kids.length; k++) {
+      frag.appendChild(kids[k]);
+    }
+    el.appendChild(frag);
+  }
+
+  function run() {
+    var targets = document.querySelectorAll('[data-shuffle="true"]');
+    for (var i = 0; i < targets.length; i++) {
+      shuffle(targets[i]);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})();
+</script>
+
