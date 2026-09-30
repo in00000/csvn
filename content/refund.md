@@ -24,7 +24,7 @@ Paid listing plans are billed in advance. The service provided is a **12-month d
 
 You are eligible for a **100% refund** only in the following cases:
 
-- **Service Failure:** We fail to activate your listing within **48 business hours** of receiving your payment and complete business details, and you request a refund before activation.
+- **Service Failure:** We fail to activate your listing within **4 business days** of receiving your payment and complete business details, and you request a refund before activation.
 - **Duplicate Payment:** You accidentally made the same payment twice for the same listing.
 - **Cancellation Before Activation:** You request a cancellation within **24 hours** of payment and before your listing has been activated.
 
