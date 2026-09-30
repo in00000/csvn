@@ -124,7 +124,6 @@ jobs:
                   for k, v in client.items():
                       if k in ("_dummy", "_sample"):
                           continue
-                      # Avoid duplicating the two keys we already wrote above
                       if is_sample and k in ("noindex", "isSample"):
                           continue
                       lines.append(f'params.{k} = {toml_val(v)}')
@@ -161,9 +160,13 @@ jobs:
                   f'description = {esc(cat.get("description", ""))}',
                   f'group = {esc(cat.get("group", ""))}',
                   'layout = "category"',
-                  "+++",
-                  "",
               ]
+              # Include longDescription when present — powers the SEO
+              # "About [Category]" section on each category page.
+              if cat.get("longDescription"):
+                  fm.append(f'longDescription = {esc(cat["longDescription"])}')
+              fm.append("+++")
+              fm.append("")
               (cat_out / f"{cat['slug']}.md").write_text("\n".join(fm), encoding="utf-8")
               cat_count += 1
 
