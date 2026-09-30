@@ -22,16 +22,16 @@ Any agreement you enter into with a vendor is between you and that vendor. CSVN 
 
 ## Vendor Information
 
-Vendor listings — including company names, addresses, phone numbers, service descriptions, catalogues, and customer reviews — are provided by the vendors themselves or sourced from publicly available information.
+Vendor listings — including company names, addresses, phone numbers, service descriptions, and catalogues — are provided by the vendors themselves.
 
 We do NOT:
 
-- Independently verify every claim made by vendors
+- Verify every claim made by vendors
 - Guarantee that a vendor is licensed, insured, or legally compliant
 - Guarantee that a vendor will perform services as described
-- Guarantee the accuracy of customer reviews
+- Guarantee the accuracy of every detail in a listing
 
-The **"Verified" badge** means we have reviewed certain documents provided by a vendor (such as GST registration). It is NOT a guarantee of quality, reliability, financial standing, or performance.
+The **"Listed" badge** indicates that a vendor has a published, reviewed listing on CSVN. It is NOT a guarantee of quality, reliability, credentials, financial standing, or performance. It is not an endorsement.
 
 **Always do your own due diligence before hiring any vendor.**
 
@@ -61,13 +61,15 @@ For advice on any specific matter, consult a qualified professional.
 We make no guarantees that:
 
 - You will find suitable vendors through our directory
-- Your paid listing will result in increased business
-- A specific number of inquiries will result from any listing
+- Your paid listing will result in increased business or enquiries
+- A specific number of enquiries will result from any listing
 - Any particular placement position will be maintained permanently
+
+Listing or promotional activity on CSVN does not guarantee enquiries, contracts, or orders.
 
 ## Technical Disclaimer
 
-We strive for 99%+ uptime, but we do NOT guarantee that:
+We do not guarantee that:
 
 - The website will always be available
 - Access will be uninterrupted or error-free
@@ -76,7 +78,7 @@ We strive for 99%+ uptime, but we do NOT guarantee that:
 
 ## Limitation of Liability
 
-To the fullest extent permitted by Indian law, CSVN and its owner are NOT liable for any direct, indirect, incidental, consequential, or punitive damages arising from:
+To the fullest extent permitted by Indian law, CSVN and its proprietor are NOT liable for any direct, indirect, incidental, consequential, or punitive damages arising from:
 
 - Use of, or inability to use, our website
 - Reliance on any information obtained from our website
@@ -101,6 +103,6 @@ Questions about this Disclaimer?
 
 ---
 
-**Last Updated:** 26 September 2026
+**Last Updated:** 30 September 2026
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is a proprietorship operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
