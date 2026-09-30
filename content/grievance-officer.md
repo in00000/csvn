@@ -51,7 +51,7 @@ Email your complaint to [grievance@csvn.in](mailto:grievance@csvn.in) with:
 ## What Happens After You File
 
 1. **Acknowledgment** — You receive an email confirming receipt within 24 hours.
-2. **Investigation** — Our team reviews the complaint, contacts relevant parties if needed.
+2. **Investigation** — We review the complaint, and contact relevant parties if needed.
 3. **Decision** — We determine the appropriate action (remove content, warn vendor, suspend listing, etc.).
 4. **Resolution** — You receive a written decision within 15 days.
 5. **Appeal** — If you disagree with the outcome, you can escalate to the **Grievance Appellate Committee** (gac.gov.in) as per IT Rules, 2021.
@@ -68,7 +68,7 @@ If your complaint is about a specific vendor's conduct, please note:
 
 For complaints about how your personal data is handled, you may also contact:
 
-- **Our Privacy Officer:** [privacy@csvn.in](mailto:privacy@csvn.in)
+- **CSVN privacy contact:** [privacy@csvn.in](mailto:privacy@csvn.in)
 - **Data Protection Board of India** — under the DPDP Act, 2023
 
 ## Report Incorrect Information
@@ -77,6 +77,6 @@ For routine corrections (wrong phone number, outdated address, etc.), email [rep
 
 ---
 
-**Last Updated:** 26 September 2026
+**Last Updated:** 30 September 2026
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambehar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is a proprietorship operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
