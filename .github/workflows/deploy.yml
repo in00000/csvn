@@ -42,7 +42,7 @@ jobs:
       # ══════════════════════════════════════════════════════════
       #  DUMMY CLIENTS (OPTIONAL)
       #  Runs only if scripts/dummy-clients.py exists.
-      #  Delete that file to permanently remove all dummy data.
+      #  Delete that file to permanently remove all sample data.
       # ══════════════════════════════════════════════════════════
       - name: Generate dummy clients (optional)
         run: |
@@ -56,6 +56,9 @@ jobs:
       # ══════════════════════════════════════════════════════════
       #  LISTING PAGE GENERATION
       #  Converts data/clients/*.json into content/listings/*.md
+      #  Sample listings get params.noindex = true so templates can
+      #  add <meta name="robots" content="noindex"> and exclude them
+      #  from the sitemap.
       # ══════════════════════════════════════════════════════════
       - name: Generate listing pages from JSON
         run: |
@@ -99,17 +102,30 @@ jobs:
               return esc(str(v))
 
           total = 0
+          sample_count = 0
           for json_file in sorted(data_dir.glob("*.json")):
               with open(json_file, "r", encoding="utf-8") as f:
                   clients = json.load(f)
               for client in clients:
                   slug = client["id"]
+
+                  # A listing is a SAMPLE if either _dummy or _sample is true.
+                  # Samples are excluded from Google (noindex + sitemap filter)
+                  # so they never dilute the domain's search reputation.
+                  is_sample = bool(client.get("_dummy") or client.get("_sample"))
+
                   lines = ["+++"]
                   lines.append(f'title = {esc(client.get("name", ""))}')
                   lines.append('draft = false')
                   lines.append(f'categories = {toml_val([client.get("category", "")])}')
+                  if is_sample:
+                      lines.append('params.noindex = true')
+                      lines.append('params.isSample = true')
                   for k, v in client.items():
-                      if k == "_dummy":
+                      if k in ("_dummy", "_sample"):
+                          continue
+                      # Avoid duplicating the two keys we already wrote above
+                      if is_sample and k in ("noindex", "isSample"):
                           continue
                       lines.append(f'params.{k} = {toml_val(v)}')
                   lines.append('+++')
@@ -117,7 +133,9 @@ jobs:
                   out_file = out_dir / f"{slug}.md"
                   out_file.write_text("\n".join(lines), encoding="utf-8")
                   total += 1
-          print(f"Generated {total} listing pages")
+                  if is_sample:
+                      sample_count += 1
+          print(f"Generated {total} listing pages ({sample_count} marked as samples / noindex)")
 
           # ── Generate one page per category ─────────────────────
           cat_out = root / "content" / "categories"
