@@ -114,20 +114,23 @@
   </section>
 
   {{/* ══════════════════════════════════════════════════════════
-      FEATURED VENDORS
+      RECENTLY LISTED VENDORS
+      Includes Featured, Premium, and Standard tier as fallback
+      so the homepage always shows 6 listings.
       ══════════════════════════════════════════════════════════ */}}
   {{ $featured := shuffle (where .Site.RegularPages "Params.tier" "Featured") }}
   {{ $premium  := shuffle (where .Site.RegularPages "Params.tier" "Premium") }}
-  {{ $homeVendors := first 6 ($featured | append $premium) }}
+  {{ $standard := shuffle (where .Site.RegularPages "Params.tier" "Standard") }}
+  {{ $homeVendors := first 6 ($featured | append $premium | append $standard) }}
 
   {{ if $homeVendors }}
     <section id="featured" class="py-16 bg-slate-100 border-y border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Top Tier</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Featured Listings</h2>
-            <p class="text-sm text-slate-500 mt-2">Professionally listed service providers on the CSVN network.</p>
+            <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Recently Added</span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Recently Listed</h2>
+            <p class="text-sm text-slate-500 mt-2">Sample and newly listed service providers on the CSVN network.</p>
           </div>
           <a href="/listings/" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
             View all listings <i class="fa-solid fa-arrow-right text-xs"></i>
