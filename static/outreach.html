@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>CSVN — How We Reach Decision-Makers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +27,84 @@ html,body{height:100%;overflow:hidden;background:var(--slate-950)}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-900);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
 
+/* ═══ HIDE GOOGLE TRANSLATE BANNER ═══ */
+body > .skiptranslate{display:none !important}
+.goog-te-banner-frame{display:none !important}
+body{top:0 !important;position:static !important}
+
+/* ═══ LANGUAGE SELECTOR — fixed bottom-left ═══ */
+.lang-fixed{
+  position:fixed;
+  bottom:26px;
+  left:96px;
+  z-index:200;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.95);
+  border:1.5px solid var(--indigo-200);
+  border-radius:12px;
+  padding:8px 14px 8px 12px;
+  box-shadow:0 10px 28px -10px rgba(15,23,42,.35);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:all .22s cubic-bezier(.4,0,.2,1);
+}
+.lang-fixed:hover{
+  border-color:var(--indigo-500);
+  box-shadow:0 14px 34px -10px rgba(79,70,229,.4);
+  transform:translateY(-2px);
+}
+.lang-fixed .lang-ico{
+  color:var(--indigo-600);font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+}
+.lang-fixed .lang-select-wrap{
+  position:relative;display:flex;align-items:center;
+}
+.lang-fixed select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  font-family:'Inter',sans-serif;
+  font-size:13px;font-weight:700;
+  color:var(--slate-800);
+  background:transparent;
+  border:none;outline:none;
+  padding:4px 22px 4px 0;
+  cursor:pointer;
+  line-height:1.4;
+  min-width:130px;
+}
+.lang-fixed select:hover{color:var(--indigo-700)}
+.lang-fixed .lang-chev{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  color:var(--indigo-600);font-size:10px;pointer-events:none;
+}
+
+/* Dark slides get a slightly different bg for contrast */
+.deck[data-theme="dark"] .lang-fixed{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(129,140,248,.35);
+  box-shadow:0 10px 28px -10px rgba(0,0,0,.5);
+}
+.deck[data-theme="dark"] .lang-fixed:hover{
+  background:rgba(255,255,255,.15);
+  border-color:var(--emerald-400);
+  box-shadow:0 14px 34px -10px rgba(16,185,129,.45);
+}
+.deck[data-theme="dark"] .lang-fixed .lang-ico{color:var(--emerald-400)}
+.deck[data-theme="dark"] .lang-fixed select{color:#ffffff}
+.deck[data-theme="dark"] .lang-fixed select:hover{color:var(--emerald-400)}
+.deck[data-theme="dark"] .lang-fixed .lang-chev{color:var(--emerald-400)}
+
+@media(max-width:700px){
+  .lang-fixed{
+    left:26px;
+    bottom:20px;
+    padding:6px 10px 6px 9px;
+    gap:7px;
+  }
+  .lang-fixed select{font-size:12px;min-width:110px;padding:3px 20px 3px 0}
+}
+
+/* ═══ SLIDES ═══ */
 .slide{
   position:absolute;inset:0;display:flex;flex-direction:column;
   opacity:0;visibility:hidden;transform:translateX(60px) scale(.98);
@@ -262,7 +341,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
   .deck{height:auto;overflow:visible}
   .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;height:100vh;padding:60px 72px;width:100vw}
   .slide:last-child{page-break-after:auto}
-  .nav-btn,.progress-track,.slide-counter{display:none!important}
+  .nav-btn,.progress-track,.slide-counter,.lang-fixed{display:none!important}
   .slide.dark,.flow-num,.title-logo-plate,.card,.trust-node,.cta-btn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .anim{opacity:1!important;transform:none!important;animation:none!important}
 }
@@ -271,6 +350,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
   .slide{padding:76px 56px 64px}
   .brand-bar{left:56px;right:56px}
   .slide-counter{right:56px}
+  .lang-fixed{left:56px}
 }
 @media(max-width:900px){
   .grid-2,.grid-3,.grid-4,.split{grid-template-columns:1fr}
@@ -295,6 +375,32 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
 </style>
 </head>
 <body>
+
+<!-- ═══════════════════ LANGUAGE SELECTOR ═══════════════════ -->
+<div class="lang-fixed">
+  <i class="fa-solid fa-language lang-ico"></i>
+  <div class="lang-select-wrap">
+    <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Choose language">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="mr">मराठी</option>
+      <option value="ta">தமிழ்</option>
+      <option value="te">తెలుగు</option>
+      <option value="bn">বাংলা</option>
+      <option value="gu">ગુજરાતી</option>
+      <option value="kn">ಕನ್ನಡ</option>
+      <option value="ml">മലയാളം</option>
+      <option value="pa">ਪੰਜਾਬੀ</option>
+      <option value="ur">اردو</option>
+      <option value="or">ଓଡ଼ିଆ</option>
+      <option value="as">অসমীয়া</option>
+    </select>
+    <i class="fa-solid fa-chevron-down lang-chev"></i>
+  </div>
+</div>
+
+<!-- Hidden Google Translate mount -->
+<div id="google_translate_element" style="display:none"></div>
 
 <div class="deck" id="deck" data-theme="dark">
 
@@ -470,7 +576,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
     </div>
   </section>
 
-  <!-- ═══ 5. INDUSTRY NETWORKS (no founder refs) ═══ -->
+  <!-- ═══ 5. INDUSTRY NETWORKS ═══ -->
   <section class="slide light" data-index="4">
     <div class="brand-bar">
       <img src="https://www.csvn.in/logo.png" alt="CSVN">
@@ -849,6 +955,43 @@ window.addEventListener('hashchange', readHash);
 if(location.hash) readHash();
 updateUI();
 })();
+
+/* ═══ Language selector logic ═══ */
+function changeLanguage(lang) {
+  var host = location.hostname;
+  var expired = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+  ['googtrans=; '+expired+'; path=/',
+   'googtrans=; '+expired+'; path=/; domain='+host,
+   'googtrans=; '+expired+'; path=/; domain=.'+host].forEach(function(c){ document.cookie = c; });
+
+  if (lang && lang !== 'en') {
+    var value = '/en/' + lang;
+    document.cookie = 'googtrans=' + value + '; path=/';
+    document.cookie = 'googtrans=' + value + '; path=/; domain=' + host;
+    document.cookie = 'googtrans=' + value + '; path=/; domain=.' + host;
+  }
+
+  var sel = document.getElementById('langSelect');
+  if (sel) { sel.disabled = true; sel.style.opacity = '0.6'; }
+  location.reload();
+}
+
+(function() {
+  var match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
+  var current = match ? match[1] : 'en';
+  var sel = document.getElementById('langSelect');
+  if (sel) sel.value = current;
+})();
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
+    autoDisplay: false
+  }, 'google_translate_element');
+}
 </script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
