@@ -27,21 +27,29 @@ html,body{height:100%;overflow:hidden;background:var(--slate-950)}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-900);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
 
-/* ═══ LANGUAGE SELECTOR — fixed bottom-left ═══ */
+/* ═══ HIDE GOOGLE TRANSLATE BANNERS ═══ */
+body > .skiptranslate:not(#google_translate_element){display:none !important}
+.goog-te-banner-frame{display:none !important}
+body{top:0 !important;position:static !important}
+#goog-gt-tt{display:none !important}
+.goog-text-highlight{background-color:transparent !important;box-shadow:none !important}
+
+/* ═══ LANGUAGE SELECTOR — visible Google widget, styled clean ═══ */
 .lang-fixed{
   position:fixed;
   bottom:26px;
   left:96px;
-  z-index:200;
+  z-index:9999;
   display:flex;align-items:center;gap:10px;
   background:rgba(255,255,255,.95);
   border:1.5px solid var(--indigo-200);
   border-radius:12px;
-  padding:8px 14px 8px 12px;
+  padding:6px 14px 6px 12px;
   box-shadow:0 10px 28px -10px rgba(15,23,42,.35);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   transition:all .22s cubic-bezier(.4,0,.2,1);
+  min-height:44px;
 }
 .lang-fixed:hover{
   border-color:var(--indigo-500);
@@ -51,28 +59,96 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-90
 .lang-fixed .lang-ico{
   color:var(--indigo-600);font-size:14px;
   display:flex;align-items:center;justify-content:center;
-}
-.lang-fixed .lang-select-wrap{
-  position:relative;display:flex;align-items:center;
-}
-.lang-fixed select{
-  appearance:none;-webkit-appearance:none;-moz-appearance:none;
-  font-family:'Inter',sans-serif;
-  font-size:13px;font-weight:700;
-  color:var(--slate-800);
-  background:transparent;
-  border:none;outline:none;
-  padding:4px 22px 4px 0;
-  cursor:pointer;
-  line-height:1.4;
-  min-width:130px;
-}
-.lang-fixed select:hover{color:var(--indigo-700)}
-.lang-fixed .lang-chev{
-  position:absolute;right:0;top:50%;transform:translateY(-50%);
-  color:var(--indigo-600);font-size:10px;pointer-events:none;
+  flex-shrink:0;
 }
 
+/* Google Translate gadget styling */
+#google_translate_element{
+  font-size:13px;line-height:1.4;
+  display:flex;align-items:center;
+}
+#google_translate_element .goog-te-gadget{
+  font-family:'Inter',system-ui,sans-serif !important;
+  font-size:13px !important;
+  color:var(--slate-800) !important;
+  line-height:1.4 !important;
+}
+#google_translate_element .goog-te-gadget > span > a{
+  display:none !important;
+}
+#google_translate_element .goog-te-gadget > span{
+  color:var(--slate-800) !important;
+}
+#google_translate_element .goog-te-gadget-simple{
+  background:transparent !important;
+  border:none !important;
+  padding:0 !important;
+  font-family:'Inter',sans-serif !important;
+  font-size:13px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value{
+  color:var(--slate-800) !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+  font-family:'Inter',sans-serif !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value span{
+  color:var(--slate-800) !important;
+  font-weight:700 !important;
+}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value span:nth-child(3){
+  display:none !important;
+}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value span:nth-child(4){
+  display:none !important;
+}
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value img{
+  display:none !important;
+}
+#google_translate_element .goog-te-gadget-icon{
+  display:none !important;
+}
+
+/* The dropdown menu that pops open when clicked */
+.goog-te-menu-frame{
+  box-shadow:0 24px 48px -16px rgba(15,23,42,.28) !important;
+  border:1px solid var(--slate-200) !important;
+  border-radius:14px !important;
+  overflow:hidden !important;
+  max-height:80vh !important;
+}
+.goog-te-menu2{
+  border:none !important;
+  padding:8px !important;
+  max-height:70vh !important;
+  overflow-y:auto !important;
+}
+.goog-te-menu2-item div,
+.goog-te-menu2-item:link div,
+.goog-te-menu2-item:visited div,
+.goog-te-menu2-item:active div{
+  font-family:'Inter',system-ui,sans-serif !important;
+  color:var(--slate-700) !important;
+  font-size:14px !important;
+  padding:8px 14px !important;
+  border-radius:8px !important;
+  font-weight:600 !important;
+}
+.goog-te-menu2-item:hover div{
+  background:var(--indigo-50) !important;
+  color:var(--indigo-700) !important;
+}
+.goog-te-menu2-item-selected div{
+  background:var(--indigo-100) !important;
+  color:var(--indigo-700) !important;
+  font-weight:800 !important;
+}
+
+/* Dark theme variant */
 .deck[data-theme="dark"] .lang-fixed{
   background:rgba(255,255,255,.1);
   border-color:rgba(129,140,248,.35);
@@ -84,18 +160,27 @@ body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-90
   box-shadow:0 14px 34px -10px rgba(16,185,129,.45);
 }
 .deck[data-theme="dark"] .lang-fixed .lang-ico{color:var(--emerald-400)}
-.deck[data-theme="dark"] .lang-fixed select{color:#ffffff}
-.deck[data-theme="dark"] .lang-fixed select:hover{color:var(--emerald-400)}
-.deck[data-theme="dark"] .lang-fixed .lang-chev{color:var(--emerald-400)}
+.deck[data-theme="dark"] #google_translate_element .goog-te-gadget,
+.deck[data-theme="dark"] #google_translate_element .goog-te-gadget > span,
+.deck[data-theme="dark"] #google_translate_element .goog-te-gadget-simple,
+.deck[data-theme="dark"] #google_translate_element .goog-te-gadget-simple .goog-te-menu-value,
+.deck[data-theme="dark"] #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span{
+  color:#ffffff !important;
+}
 
 @media(max-width:700px){
   .lang-fixed{
     left:26px;
     bottom:20px;
-    padding:6px 10px 6px 9px;
+    padding:5px 10px 5px 9px;
     gap:7px;
   }
-  .lang-fixed select{font-size:12px;min-width:110px;padding:3px 20px 3px 0}
+  #google_translate_element,
+  #google_translate_element .goog-te-gadget,
+  #google_translate_element .goog-te-gadget-simple .goog-te-menu-value,
+  #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span{
+    font-size:12px !important;
+  }
 }
 
 /* ═══ SLIDES ═══ */
@@ -373,24 +458,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
 <!-- ═══════════════════ LANGUAGE SELECTOR ═══════════════════ -->
 <div class="lang-fixed">
   <i class="fa-solid fa-language lang-ico"></i>
-  <div class="lang-select-wrap">
-    <select id="langSelect" onchange="changeLanguage(this.value)" aria-label="Choose language">
-      <option value="en">English</option>
-      <option value="hi">हिन्दी</option>
-      <option value="mr">मराठी</option>
-      <option value="ta">தமிழ்</option>
-      <option value="te">తెలుగు</option>
-      <option value="bn">বাংলা</option>
-      <option value="gu">ગુજરાતી</option>
-      <option value="kn">ಕನ್ನಡ</option>
-      <option value="ml">മലയാളം</option>
-      <option value="pa">ਪੰਜਾਬੀ</option>
-      <option value="ur">اردو</option>
-      <option value="or">ଓଡ଼ିଆ</option>
-      <option value="as">অসমীয়া</option>
-    </select>
-    <i class="fa-solid fa-chevron-down lang-chev"></i>
-  </div>
+  <div id="google_translate_element"></div>
 </div>
 
 <div class="deck" id="deck" data-theme="dark">
@@ -947,55 +1015,17 @@ if(location.hash) readHash();
 updateUI();
 })();
 
-/* ═══════════════════════════════════════════════════════════
-   LANGUAGE SELECTOR — Google Translate web proxy (100% reliable)
-   ═══════════════════════════════════════════════════════════ */
-
-var ORIGINAL_HOST = 'www.csvn.in';
-
-function changeLanguage(lang) {
-  // Determine current page path
-  var path = '/outreach.html';
-
-  // If we are already on a translate.goog proxy, extract the real path
-  if (location.hostname.indexOf('translate.goog') !== -1) {
-    path = location.pathname;
-  } else {
-    path = location.pathname || '/outreach.html';
-  }
-
-  // If user selected English, go back to the real URL
-  if (lang === 'en') {
-    window.location.href = 'https://' + ORIGINAL_HOST + path;
-    return;
-  }
-
-  // Otherwise, redirect to Google Translate web proxy
-  var proxyHost = ORIGINAL_HOST.replace(/\./g, '-') + '.translate.goog';
-  var proxyURL = 'https://' + proxyHost + path +
-                 '?_x_tr_sl=en' +
-                 '&_x_tr_tl=' + lang +
-                 '&_x_tr_hl=en' +
-                 '&_x_tr_pto=wapp';
-
-  window.location.href = proxyURL;
+/* ═══ Google Translate init — visible widget, styled to match design ═══ */
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
 }
-
-/* Sync dropdown with current language on load */
-(function() {
-  var lang = 'en';
-
-  // Check if we are on translate.goog and read the language parameter
-  if (location.hostname.indexOf('translate.goog') !== -1) {
-    var params = new URLSearchParams(location.search);
-    var tl = params.get('_x_tr_tl');
-    if (tl) lang = tl;
-  }
-
-  var sel = document.getElementById('langSelect');
-  if (sel) sel.value = lang;
-})();
 </script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
