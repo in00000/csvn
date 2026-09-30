@@ -39,17 +39,18 @@ Pune, Maharashtra, India
 Want to list your company on CSVN? We offer a straightforward Standard plan at ₹999/year:
 
 - **Full business profile** with all your details
-- **Direct buyer contact** — no middlemen, no commissions
-- **Fair daily rotation** so you get equal exposure
-- **Verified badge** after our verification process
+- **Direct contact details** on your profile — buyers reach out to you directly
+- **Rotation within your tier** for fair placement
+- **Listed badge** after our listing review
+- **No commissions** on deals you close with buyers
 
 To get started:
 
 1. Read the [full plan details](/pricing/)
-2. Email us your business details at [info@csvn.in](mailto:info@csvn.in?subject=Standard%20Plan%20-%20%E2%82%B9999%2Fyear)
-3. We verify within 1–2 business days
+2. Email us your business details at [info@csvn.in](mailto:info@csvn.in?subject=Standard%20Plan%20-%20%E2%82%B9999%2Fyear), or use our [payment and listing form](/payment/)
+3. We review your listing details within 1–2 business days
 4. Pay ₹999 — [payment options here](/payment/)
-5. Your listing goes live within 24 hours
+5. Your listing goes live within **4 business days** of payment verification
 
 ## For Businesses — Find Vendors
 
@@ -92,4 +93,4 @@ Please include the vendor name and the specific issue in your email. We investig
 
 ---
 
-*CSVN — Corporate Services Vendor Network is operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is independently operated from Pune, Maharashtra, India. For legal correspondence, please refer to our [Terms of Service](/terms/) and [Privacy Policy](/privacy/).*
