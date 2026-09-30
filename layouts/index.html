@@ -137,11 +137,11 @@
           </a>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {{ range $homeVendors }}
-            {{ partial "client-card.html" .Params }}
-          {{ end }}
-        </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-shuffle="true">
+  {{ range $homeVendors }}
+    {{ partial "client-card.html" .Params }}
+  {{ end }}
+</div>
       </div>
     </section>
   {{ end }}
