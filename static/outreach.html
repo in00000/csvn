@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSVN — How We Reach Decision-Makers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --indigo-50:#eef2ff;--indigo-100:#e0e7ff;--indigo-200:#c7d2fe;--indigo-300:#a5b4fc;
+  --indigo-400:#818cf8;--indigo-500:#6366f1;--indigo-600:#4f46e5;--indigo-700:#4338ca;
+  --indigo-800:#3730a3;--indigo-900:#312e81;
+  --slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;
+  --slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;
+  --slate-800:#1e293b;--slate-900:#0f172a;--slate-950:#020617;
+  --emerald-50:#ecfdf5;--emerald-400:#34d399;--emerald-500:#10b981;
+  --emerald-600:#059669;--emerald-700:#047857;
+  --amber-50:#fffbeb;--amber-400:#fbbf24;--amber-500:#f59e0b;--amber-600:#d97706;
+  --rose-50:#fff1f2;--rose-400:#fb7185;--rose-500:#f43f5e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--slate-950)}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-900);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+
+.slide{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transform:translateX(60px) scale(.98);
+  transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1),visibility 0s linear .55s;
+  padding:80px 96px 72px;overflow:hidden;
+}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0) scale(1);transition-delay:0s}
+.slide.prev{transform:translateX(-60px) scale(.98)}
+
+.slide.light{background:var(--slate-50);color:var(--slate-900)}
+.slide.light::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 12% 15%,rgba(99,102,241,.07),transparent 42%),radial-gradient(circle at 88% 85%,rgba(16,185,129,.06),transparent 42%);
+}
+.slide.dark{background:linear-gradient(135deg,#1e1b4b 0%,#312e81 42%,#0f172a 100%);color:#fff}
+.slide.dark::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(129,140,248,.16) 1px,transparent 1px);
+  background-size:30px 30px;opacity:.45;
+}
+.slide.dark::after{
+  content:'';position:absolute;top:-30%;right:-15%;width:760px;height:760px;
+  background:radial-gradient(circle,rgba(16,185,129,.22),transparent 62%);pointer-events:none;
+}
+
+.slide-content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;max-width:1400px;width:100%;margin:0 auto}
+
+.brand-bar{
+  position:absolute;top:34px;left:96px;right:96px;
+  display:flex;align-items:center;justify-content:space-between;z-index:6;pointer-events:none;
+}
+.brand-bar img{
+  height:38px;width:auto;display:block;background:#ffffff;padding:6px 14px;border-radius:10px;
+  box-shadow:0 4px 14px -4px rgba(0,0,0,.22);
+}
+.brand-bar .deck-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--slate-400)}
+.slide.dark .brand-bar .deck-label{color:rgba(255,255,255,.6)}
+
+.progress-track{position:absolute;top:0;left:0;right:0;height:3px;background:rgba(148,163,184,.15);z-index:200}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--indigo-500),var(--emerald-500));transition:width .55s cubic-bezier(.4,0,.2,1)}
+
+.nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:150;
+  width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.22);cursor:pointer;
+  background:rgba(15,23,42,.65);color:#ffffff;display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .22s cubic-bezier(.4,0,.2,1);opacity:.6;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.5);
+}
+.nav-btn:hover{opacity:1;background:var(--indigo-600);border-color:var(--indigo-500);transform:translateY(-50%) scale(1.08);box-shadow:0 12px 32px -8px rgba(79,70,229,.6)}
+.nav-prev{left:24px}.nav-next{right:24px}
+.deck[data-theme="light"] .nav-btn{background:rgba(15,23,42,.08);color:var(--slate-800);border-color:rgba(15,23,42,.12);box-shadow:0 8px 24px -8px rgba(15,23,42,.18)}
+.deck[data-theme="light"] .nav-btn:hover{background:var(--indigo-600);color:#ffffff;border-color:var(--indigo-500)}
+
+.slide-counter{
+  position:absolute;bottom:34px;right:96px;z-index:150;font-size:12px;font-weight:700;letter-spacing:.12em;
+  color:var(--slate-500);background:rgba(255,255,255,.7);padding:8px 16px;border-radius:100px;
+  border:1px solid rgba(148,163,184,.25);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.slide.dark .slide-counter{color:rgba(255,255,255,.82);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.slide-counter .current{color:var(--indigo-600);font-weight:800}
+.slide.dark .slide-counter .current{color:var(--emerald-400)}
+
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo-600);margin-bottom:20px}
+.slide.dark .eyebrow{color:var(--emerald-400)}
+.eyebrow::before{content:'';width:26px;height:2px;background:currentColor;border-radius:2px}
+h1{font-size:clamp(40px,4.8vw,68px);font-weight:900;letter-spacing:-.038em;line-height:1.05;margin-bottom:22px}
+h2{font-size:clamp(30px,3.4vw,48px);font-weight:900;letter-spacing:-.032em;line-height:1.1;margin-bottom:18px}
+h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
+.lead{font-size:clamp(15px,1.5vw,18px);line-height:1.65;color:var(--slate-600);max-width:820px}
+.slide.dark .lead{color:rgba(255,255,255,.78)}
+.grad-text{background:linear-gradient(135deg,#818cf8 0%,#34d399 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.slide.light .grad-text{background:linear-gradient(135deg,#4f46e5 0%,#059669 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+.anim{opacity:0;transform:translateY(20px)}
+.slide.active .anim{animation:fadeUp .72s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.slide.active .anim:nth-child(1){animation-delay:.08s}
+.slide.active .anim:nth-child(2){animation-delay:.16s}
+.slide.active .anim:nth-child(3){animation-delay:.24s}
+.slide.active .anim:nth-child(4){animation-delay:.32s}
+.slide.active .anim:nth-child(5){animation-delay:.40s}
+.slide.active .anim:nth-child(6){animation-delay:.48s}
+.slide.active .anim:nth-child(7){animation-delay:.56s}
+.slide.active .anim:nth-child(8){animation-delay:.64s}
+
+.title-wrap{display:flex;flex-direction:column;justify-content:center;height:100%;max-width:1100px;margin:0 auto;width:100%}
+.title-logo-plate{
+  display:inline-flex;align-items:center;justify-content:center;background:#ffffff;
+  padding:22px 38px;border-radius:22px;margin-bottom:38px;width:fit-content;
+  box-shadow:0 28px 60px -20px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+}
+.title-logo{height:62px;width:auto;display:block}
+.title-tag{
+  display:inline-block;padding:9px 20px;border-radius:100px;
+  background:rgba(16,185,129,.16);border:1px solid rgba(52,211,153,.4);
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--emerald-400);margin-bottom:28px;width:fit-content;
+}
+.title-wrap h1{font-size:clamp(42px,5vw,72px);margin-bottom:22px;color:#fff}
+.title-wrap .lead{font-size:clamp(16px,1.7vw,20px);color:rgba(255,255,255,.82);max-width:740px}
+.title-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap}
+.title-meta .item{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.78)}
+.title-meta .item i{color:var(--emerald-400);font-size:14px}
+
+.sec-head{margin-bottom:38px}
+.sec-head h2{color:var(--slate-900)}
+.slide.dark .sec-head h2{color:#fff}
+
+.grid{display:grid;gap:22px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+
+.card{
+  background:#fff;border:1px solid var(--slate-200);border-radius:18px;padding:26px;
+  transition:all .28s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--indigo-500),var(--emerald-500));
+  transform:scaleX(0);transform-origin:left;transition:transform .38s cubic-bezier(.4,0,.2,1);
+}
+.card:hover::before{transform:scaleX(1)}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 48px -20px rgba(79,70,229,.28);border-color:var(--indigo-200)}
+.slide.dark .card{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.1);backdrop-filter:blur(12px)}
+.slide.dark .card:hover{background:rgba(255,255,255,.09);border-color:rgba(52,211,153,.38);box-shadow:0 22px 48px -20px rgba(16,185,129,.35)}
+.card-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px}
+.icon-indigo{background:var(--indigo-50);color:var(--indigo-600)}
+.icon-emerald{background:var(--emerald-50);color:var(--emerald-600)}
+.icon-amber{background:var(--amber-50);color:var(--amber-600)}
+.icon-rose{background:var(--rose-50);color:var(--rose-500)}
+.slide.dark .icon-indigo{background:rgba(99,102,241,.2);color:var(--indigo-200)}
+.slide.dark .icon-emerald{background:rgba(16,185,129,.2);color:var(--emerald-400)}
+.slide.dark .icon-amber{background:rgba(245,158,11,.2);color:var(--amber-400)}
+.card p{font-size:13.5px;color:var(--slate-500);line-height:1.65}
+.slide.dark .card p{color:rgba(255,255,255,.7)}
+.card h3{color:var(--slate-900);font-size:15.5px}
+.slide.dark .card h3{color:#fff;font-size:15.5px}
+
+.ch-num{position:absolute;top:20px;right:22px;font-size:44px;font-weight:900;line-height:1;letter-spacing:-.05em;color:rgba(99,102,241,.1);pointer-events:none}
+.slide.dark .ch-num{color:rgba(52,211,153,.15)}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative;margin-top:14px}
+.flow::before{
+  content:'';position:absolute;top:44px;left:12%;right:12%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--indigo-200) 0 10px,transparent 10px 20px);z-index:0;
+}
+.flow-step{position:relative;z-index:1;text-align:center}
+.flow-num{
+  width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,var(--indigo-600),var(--emerald-600));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:900;margin:0 auto 16px;
+  box-shadow:0 12px 26px -10px rgba(79,70,229,.5);
+}
+.flow-step h4{font-size:14px;font-weight:800;margin-bottom:6px;color:var(--slate-900)}
+.slide.dark .flow-step h4{color:#fff}
+.flow-step p{font-size:12px;color:var(--slate-500);line-height:1.55}
+.slide.dark .flow-step p{color:rgba(255,255,255,.65)}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:8px}
+.split-col h3{
+  font-size:16px;display:flex;align-items:center;gap:10px;
+  margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--slate-100);
+}
+.slide.dark .split-col h3{color:#fff;border-bottom-color:rgba(255,255,255,.1)}
+.split-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.split-col li{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;color:var(--slate-600);line-height:1.65}
+.slide.dark .split-col li{color:rgba(255,255,255,.72)}
+.split-col li i{color:var(--emerald-500);font-size:12px;margin-top:5px;flex-shrink:0}
+
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:auto}
+.stat{
+  background:#fff;border:1px solid var(--slate-200);border-radius:16px;
+  padding:24px 20px;text-align:center;transition:all .28s ease;
+}
+.stat:hover{transform:translateY(-3px);border-color:var(--indigo-200);box-shadow:0 16px 36px -16px rgba(79,70,229,.24)}
+.slide.dark .stat{background:rgba(255,255,255,.055);border-color:rgba(255,255,255,.1);backdrop-filter:blur(12px)}
+.slide.dark .stat:hover{background:rgba(255,255,255,.09);border-color:rgba(52,211,153,.35)}
+.stat-num{font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-.038em;line-height:1;margin-bottom:8px}
+.stat-label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-400)}
+.slide.dark .stat-label{color:rgba(255,255,255,.58)}
+
+.plist{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.plist-item{display:flex;gap:14px;align-items:flex-start}
+.plist-item .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px}
+.plist-item .txt h4{font-size:14.5px;font-weight:700;color:var(--slate-900);margin-bottom:3px}
+.slide.dark .plist-item .txt h4{color:#fff}
+.plist-item .txt p{font-size:13px;color:var(--slate-500);line-height:1.6}
+.slide.dark .plist-item .txt p{color:rgba(255,255,255,.68)}
+
+.trust-chain{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.trust-node{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;padding:20px 24px;text-align:center;min-width:160px;
+  backdrop-filter:blur(10px);transition:all .26s ease;
+}
+.trust-node:hover{background:rgba(255,255,255,.1);border-color:rgba(52,211,153,.4);transform:translateY(-3px)}
+.trust-node i{font-size:22px;color:var(--emerald-400);display:block;margin-bottom:10px}
+.trust-node .lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:4px}
+.trust-node .val{font-size:14px;font-weight:800;color:#fff}
+.trust-arrow{font-size:18px;color:rgba(255,255,255,.35)}
+
+.commit-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.commit-item{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:20px}
+.commit-item i{color:var(--emerald-400);font-size:18px;margin-bottom:10px;display:block}
+.commit-item h4{font-size:13.5px;font-weight:800;color:#fff;margin-bottom:6px}
+.commit-item p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.55}
+
+.cta-block{
+  margin-top:26px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);
+  border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.cta-block .txt h4{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+.cta-block .txt p{font-size:13px;color:rgba(255,255,255,.7)}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:9px;background:var(--emerald-500);color:#fff;
+  font-weight:800;font-size:13.5px;padding:12px 24px;border-radius:11px;text-decoration:none;
+  transition:all .24s cubic-bezier(.4,0,.2,1);box-shadow:0 10px 24px -8px rgba(16,185,129,.5);flex-shrink:0;
+}
+.cta-btn:hover{transform:translateY(-2px);background:var(--emerald-600);box-shadow:0 16px 32px -8px rgba(16,185,129,.6)}
+
+.disclaimer{
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+  border-radius:13px;padding:16px 20px;font-size:12.5px;
+  color:rgba(255,255,255,.68);line-height:1.65;margin-top:18px;
+}
+.disclaimer strong{color:#fff;font-weight:700}
+
+@media print{
+  @page{size:landscape;margin:0}
+  html,body{overflow:visible;height:auto;background:#fff}
+  .deck{height:auto;overflow:visible}
+  .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;height:100vh;padding:60px 72px;width:100vw}
+  .slide:last-child{page-break-after:auto}
+  .nav-btn,.progress-track,.slide-counter{display:none!important}
+  .slide.dark,.flow-num,.title-logo-plate,.card,.trust-node,.cta-btn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .anim{opacity:1!important;transform:none!important;animation:none!important}
+}
+
+@media(max-width:1200px){
+  .slide{padding:76px 56px 64px}
+  .brand-bar{left:56px;right:56px}
+  .slide-counter{right:56px}
+}
+@media(max-width:900px){
+  .grid-2,.grid-3,.grid-4,.split{grid-template-columns:1fr}
+  .flow{grid-template-columns:1fr 1fr}
+  .flow::before{display:none}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .commit-list{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .slide{padding:64px 26px 60px}
+  .brand-bar{left:26px;right:26px;top:22px}
+  .brand-bar img{height:30px;padding:5px 10px}
+  .brand-bar .deck-label{display:none}
+  .slide-counter{right:26px;bottom:24px;font-size:11px}
+  .nav-btn{width:44px;height:44px;font-size:13px}
+  .nav-prev{left:12px}.nav-next{right:12px}
+  .flow{grid-template-columns:1fr}
+  .trust-chain{gap:10px}
+  .trust-node{min-width:auto;padding:14px 16px}
+  .trust-arrow{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck" data-theme="dark">
+
+  <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+  <!-- ═══ 1. TITLE ═══ -->
+  <section class="slide dark active" data-index="0">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Outreach Strategy · 2026</span>
+    </div>
+    <div class="slide-content">
+      <div class="title-wrap">
+        <div class="title-logo-plate anim">
+          <img src="https://www.csvn.in/logo.png" alt="CSVN" class="title-logo">
+        </div>
+        <div class="title-tag anim">Multi-Channel Outreach</div>
+        <h1 class="anim">How We Reach<br>India's <span class="grad-text">Decision-Makers</span></h1>
+        <p class="lead anim">Every CSVN listing is promoted through multiple channels designed to reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and business decision-makers across India.</p>
+        <div class="title-meta anim">
+          <div class="item"><i class="fa-solid fa-envelope"></i> Email Outreach</div>
+          <div class="item"><i class="fa-solid fa-users"></i> Industry Networks</div>
+          <div class="item"><i class="fa-solid fa-bullseye"></i> Direct Buyer Outreach</div>
+          <div class="item"><i class="fa-solid fa-magnifying-glass"></i> On-Platform Discovery</div>
+          <div class="item"><i class="fa-solid fa-handshake"></i> Referrals</div>
+          <div class="item"><i class="fa-solid fa-comments"></i> Community Groups</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. CORE PRINCIPLE ═══ -->
+  <section class="slide light" data-index="1">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Core Principle</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Our Approach</div>
+        <h2 class="anim">We do not wait for buyers to find us. <span class="grad-text">We take your listing to them.</span></h2>
+      </div>
+      <p class="lead anim" style="max-width:900px">Most directories simply list vendors and wait. CSVN works differently. Every vendor listing is promoted through multiple outreach channels so decision-makers see it while they are actively sourcing.</p>
+      <div class="grid grid-3 anim" style="margin-top:36px">
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Active, not passive</h3>
+          <p>We do not wait for buyers to search. We actively send vendor listings to decision-makers through multiple channels.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Multi-channel by design</h3>
+          <p>Multiple channels working together — email, industry networks, direct outreach, search visibility, referrals, and community groups.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Honest positioning</h3>
+          <p>We do not promise leads. We promise visibility. Commercial outcomes depend on buyer demand and vendor quality.</p>
+        </div>
+      </div>
+      <div class="stats-row anim" style="margin-top:auto">
+        <div class="stat"><div class="stat-num grad-text">6</div><div class="stat-label">Outreach Channels</div></div>
+        <div class="stat"><div class="stat-num grad-text">91</div><div class="stat-label">Categories Covered</div></div>
+        <div class="stat"><div class="stat-num grad-text">4</div><div class="stat-label">Decision-Maker Roles</div></div>
+        <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Outreach Reach</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 3. CHANNEL OVERVIEW ═══ -->
+  <section class="slide dark" data-index="2">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel Overview</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Six Channels</div>
+        <h2 class="anim" style="color:#fff">How we reach <span class="grad-text">decision-makers</span></h2>
+      </div>
+      <div class="grid grid-3 anim" style="margin-top:14px">
+        <div class="card">
+          <span class="ch-num">01</span>
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-envelope"></i></div>
+          <h3>Targeted Email Outreach</h3>
+          <p>Direct emails to Purchase, Procurement, HR, and Admin leaders across India.</p>
+        </div>
+        <div class="card">
+          <span class="ch-num">02</span>
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-users"></i></div>
+          <h3>Industry Networks</h3>
+          <p>HR communities, business associations, and industry forums where decision-makers discuss vendors.</p>
+        </div>
+        <div class="card">
+          <span class="ch-num">03</span>
+          <div class="card-icon icon-amber"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Direct Buyer Outreach</h3>
+          <p>Coordinated outreach to Purchase and Procurement teams via email, phone, and professional platforms.</p>
+        </div>
+        <div class="card">
+          <span class="ch-num">04</span>
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>On-Platform Discovery</h3>
+          <p>91 category pages indexed on Google, structured data, and search filters.</p>
+        </div>
+        <div class="card">
+          <span class="ch-num">05</span>
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-handshake"></i></div>
+          <h3>Referrals &amp; Introductions</h3>
+          <p>Warm introductions to decision-makers from our business and consulting network.</p>
+        </div>
+        <div class="card">
+          <span class="ch-num">06</span>
+          <div class="card-icon icon-amber"><i class="fa-solid fa-comments"></i></div>
+          <h3>Community Groups</h3>
+          <p>HR, procurement, and business owner groups across India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. EMAIL OUTREACH ═══ -->
+  <section class="slide light" data-index="3">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 01 · Email Outreach</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 01</div>
+        <h2 class="anim">Targeted <span class="grad-text">email outreach</span></h2>
+        <p class="lead anim">Category-specific emails sent directly to decision-makers who source services like yours.</p>
+      </div>
+      <div class="flow anim" style="margin-top:12px">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <h4>Curated Recipient List</h4>
+          <p>Purchase, Procurement, HR, Admin, and operations leaders across India.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <h4>Category-Specific Content</h4>
+          <p>Each email focuses on one category — with vendor listings from that category.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <h4>Direct Link to CSVN</h4>
+          <p>Buyers click through to the CSVN category page or your specific listing.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <h4>Buyer Contacts Vendor</h4>
+          <p>Interested buyers reach the vendor directly using the contact details on CSVN.</p>
+        </div>
+      </div>
+      <div class="grid grid-3 anim" style="margin-top:36px">
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>Who We Reach</h3>
+          <p>Purchase Heads, Procurement Managers, HR Heads, Admin Heads, and founders — the people who decide what to buy.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <h3>What We Send</h3>
+          <p>Clean, professional emails that highlight vendor listings relevant to the recipient's industry and city.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-clock"></i></div>
+          <h3>How Often</h3>
+          <p>Consistent weekly and monthly sends — not one-off bursts. Regular visibility builds recall.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 5. INDUSTRY NETWORKS (no founder refs) ═══ -->
+  <section class="slide light" data-index="4">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 02 · Industry Networks</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 02</div>
+        <h2 class="anim"><span class="grad-text">Industry networks</span> and professional communities</h2>
+        <p class="lead anim">CSVN participates in the professional communities where corporate decision-makers already discuss vendor sourcing — HR groups, business associations, and industry forums.</p>
+      </div>
+      <div class="split anim" style="margin-top:14px">
+        <div class="split-col">
+          <h3><i class="fa-solid fa-users" style="color:var(--indigo-600)"></i> Communities We Engage</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> HR and people-management communities across India</li>
+            <li><i class="fa-solid fa-circle-check"></i> Procurement and sourcing discussion forums</li>
+            <li><i class="fa-solid fa-circle-check"></i> Business owner and entrepreneur groups</li>
+            <li><i class="fa-solid fa-circle-check"></i> Industry and trade associations</li>
+            <li><i class="fa-solid fa-circle-check"></i> Facility management and admin heads groups</li>
+            <li><i class="fa-solid fa-circle-check"></i> Local business networks in major industrial hubs</li>
+          </ul>
+        </div>
+        <div class="split-col">
+          <h3><i class="fa-solid fa-share-nodes" style="color:var(--emerald-600)"></i> How We Participate</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Sharing relevant vendor listings when members ask for services</li>
+            <li><i class="fa-solid fa-circle-check"></i> Contributing to discussions on procurement and vendor selection</li>
+            <li><i class="fa-solid fa-circle-check"></i> Highlighting new category pages and listing updates</li>
+            <li><i class="fa-solid fa-circle-check"></i> Sharing insights on corporate vendor discovery</li>
+            <li><i class="fa-solid fa-circle-check"></i> Answering buyer questions about specific service categories</li>
+            <li><i class="fa-solid fa-circle-check"></i> Building long-term relationships for consistent reach</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stats-row anim" style="margin-top:auto">
+        <div class="stat"><div class="stat-num grad-text">50+</div><div class="stat-label">Communities</div></div>
+        <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Network Reach</div></div>
+        <div class="stat"><div class="stat-num grad-text">Weekly</div><div class="stat-label">Engagement</div></div>
+        <div class="stat"><div class="stat-num grad-text">Free</div><div class="stat-label">For Vendors</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 6. DIRECT BUYER OUTREACH ═══ -->
+  <section class="slide light" data-index="5">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 03 · Direct Buyer Outreach</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 03</div>
+        <h2 class="anim"><span class="grad-text">Direct outreach</span> to purchase and procurement teams</h2>
+        <p class="lead anim">Beyond email, we reach decision-makers through multiple professional channels — combining email, phone, and professional platforms to ensure vendors get in front of the right people.</p>
+      </div>
+      <div class="grid grid-3 anim" style="margin-top:24px">
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-envelope"></i></div>
+          <h3>Email Campaigns</h3>
+          <p>Targeted emails to decision-makers by role, industry, and city — introducing CSVN and its categories.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-phone"></i></div>
+          <h3>Phone Follow-ups</h3>
+          <p>Where relevant, direct phone follow-ups to strengthen outreach and build personal contact.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-bullseye"></i></div>
+          <h3>Role-Targeted Campaigns</h3>
+          <p>Separate campaigns for Purchase Heads, Procurement Managers, HR Heads, and Admin Heads.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-building"></i></div>
+          <h3>Industry Verticals</h3>
+          <p>Manufacturing, IT, healthcare, logistics, and services — targeted by sector rather than generic.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>City-Specific Sends</h3>
+          <p>Campaigns tailored to specific cities — Pune, Mumbai, Bengaluru, Chennai, NCR, and more.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Measured Outreach</h3>
+          <p>Every campaign is tracked. We know what lands and what does not — and refine accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7. ON-PLATFORM DISCOVERY ═══ -->
+  <section class="slide dark" data-index="6">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 04 · On-Platform Discovery</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 04</div>
+        <h2 class="anim" style="color:#fff"><span class="grad-text">On-platform discovery</span> through search</h2>
+        <p class="lead anim">CSVN is built for search. 91 category pages, structured data, and clean technical SEO mean buyers can find your listing organically.</p>
+      </div>
+      <div class="grid grid-2 anim" style="gap:32px;margin-top:16px">
+        <div>
+          <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-magnifying-glass" style="color:var(--emerald-400)"></i> What We Have Built</h3>
+          <div class="plist">
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-file-code"></i></div>
+              <div class="txt"><h4>91 category pages</h4><p>Each with unique, hand-written 150-word content describing the category.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-sitemap"></i></div>
+              <div class="txt"><h4>Sitemap submitted</h4><p>Google Search Console verified, 106 pages discovered and queued for indexing.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-code"></i></div>
+              <div class="txt"><h4>Organization schema</h4><p>Structured data tells Google exactly who CSVN is, where it operates, and what it does.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(16,185,129,.18);color:var(--emerald-400)"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div class="txt"><h4>Search filters</h4><p>Buyers can search by category, city, and service directly on the platform.</p></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 style="color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:10px"><i class="fa-solid fa-user-check" style="color:var(--emerald-400)"></i> What This Means for You</h3>
+          <div class="plist">
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-link"></i></div>
+              <div class="txt"><h4>Your listing becomes discoverable</h4><p>Buyers searching Google for your service and city can find your profile.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-clock"></i></div>
+              <div class="txt"><h4>Long-term asset</h4><p>Search visibility grows over time. Every month your listing ranks better.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-infinity"></i></div>
+              <div class="txt"><h4>24×7 visibility</h4><p>Unlike email outreach, your listing works for you even when we are asleep.</p></div>
+            </div>
+            <div class="plist-item">
+              <div class="ico" style="background:rgba(99,102,241,.18);color:var(--indigo-200)"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="txt"><h4>No pay-per-click</h4><p>Organic visibility without ad spend. Your ₹999 covers the whole year.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 8. REFERRALS ═══ -->
+  <section class="slide light" data-index="7">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 05 · Referrals</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 05</div>
+        <h2 class="anim"><span class="grad-text">Referrals and warm introductions</span></h2>
+        <p class="lead anim">Referrals convert better than any cold outreach. CSVN builds on existing business relationships to introduce vendor listings where there is a genuine fit.</p>
+      </div>
+      <div class="grid grid-2 anim" style="gap:18px;margin-top:26px">
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-briefcase"></i></div>
+          <h3>Consulting and Business Network</h3>
+          <p>Ongoing consulting relationships across manufacturing, services, and IT — many of whom need corporate vendors regularly.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-user-group"></i></div>
+          <h3>Alumni and Business School Networks</h3>
+          <p>Business school alumni networks and corporate relations contacts in multiple industries.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-share-nodes"></i></div>
+          <h3>Vendor Referrals</h3>
+          <p>Every listed vendor can refer other vendors. Referred vendors get priority review and faster onboarding.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3>Industry Introductions</h3>
+          <p>Where relevant, CSVN introduces vendor listings to decision-makers through its network.</p>
+        </div>
+      </div>
+      <div class="disclaimer anim" style="background:var(--slate-100);border-color:var(--slate-200);color:var(--slate-600);margin-top:28px">
+        <strong style="color:var(--slate-900)">Note:</strong> Referrals are made at CSVN's discretion, based on fit and relevance. They are not guaranteed for every listing.
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 9. COMMUNITY GROUPS ═══ -->
+  <section class="slide light" data-index="8">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Channel 06 · Community Groups</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Channel 06</div>
+        <h2 class="anim"><span class="grad-text">Community and group</span> promotion</h2>
+        <p class="lead anim">India's corporate ecosystem lives in WhatsApp groups, industry forums, and business communities. CSVN participates where decision-makers already are.</p>
+      </div>
+      <div class="grid grid-3 anim" style="margin-top:26px">
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-brands fa-whatsapp"></i></div>
+          <h3>HR WhatsApp Groups</h3>
+          <p>Active in HR, recruitment, and people-management groups where HR Heads and Admins discuss vendor needs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-users-rectangle"></i></div>
+          <h3>Business Owner Groups</h3>
+          <p>Founder and entrepreneur communities where business owners ask for vendor recommendations.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-industry"></i></div>
+          <h3>Industry Associations</h3>
+          <p>Manufacturing, service, and trade associations where CSVN is promoted as a sourcing resource.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-emerald"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>Local Business Networks</h3>
+          <p>City and regional business networks in major industrial hubs across India.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-indigo"><i class="fa-solid fa-comments"></i></div>
+          <h3>Corporate Service Forums</h3>
+          <p>Online discussion forums where procurement and facility teams share vendor sourcing questions.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon icon-amber"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Alumni &amp; Academic Groups</h3>
+          <p>Business school alumni groups — senior managers and directors who source corporate services.</p>
+        </div>
+      </div>
+      <div class="stats-row anim" style="margin-top:auto">
+        <div class="stat"><div class="stat-num grad-text">50+</div><div class="stat-label">Groups Targeted</div></div>
+        <div class="stat"><div class="stat-num grad-text">Pan-India</div><div class="stat-label">Group Reach</div></div>
+        <div class="stat"><div class="stat-num grad-text">Weekly</div><div class="stat-label">Engagement</div></div>
+        <div class="stat"><div class="stat-num grad-text">Free</div><div class="stat-label">For Vendors</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 10. SUMMARY ═══ -->
+  <section class="slide dark" data-index="9">
+    <div class="brand-bar">
+      <img src="https://www.csvn.in/logo.png" alt="CSVN">
+      <span class="deck-label">Summary</span>
+    </div>
+    <div class="slide-content">
+      <div class="sec-head">
+        <div class="eyebrow anim">Putting It Together</div>
+        <h2 class="anim" style="color:#fff">Multiple channels. <span class="grad-text">One outcome.</span></h2>
+        <p class="lead anim">Your listing is not sitting in a directory waiting to be found. It is actively promoted through multiple coordinated channels so decision-makers see it while they are sourcing.</p>
+      </div>
+
+      <div class="trust-chain anim" style="margin-top:20px">
+        <div class="trust-node">
+          <i class="fa-solid fa-table-cells-large"></i>
+          <div class="lbl">Step 1</div>
+          <div class="val">CSVN Listing</div>
+        </div>
+        <i class="fa-solid fa-arrow-right trust-arrow"></i>
+        <div class="trust-node">
+          <i class="fa-solid fa-circle-check"></i>
+          <div class="lbl">Step 2</div>
+          <div class="val">Verified Platform</div>
+        </div>
+        <i class="fa-solid fa-arrow-right trust-arrow"></i>
+        <div class="trust-node">
+          <i class="fa-solid fa-user-tie"></i>
+          <div class="lbl">Step 3</div>
+          <div class="val">Decision-Maker Outreach</div>
+        </div>
+        <i class="fa-solid fa-arrow-right trust-arrow"></i>
+        <div class="trust-node">
+          <i class="fa-solid fa-phone"></i>
+          <div class="lbl">Step 4</div>
+          <div class="val">Buyer Contacts Vendor</div>
+        </div>
+      </div>
+
+      <div class="commit-list anim" style="margin-top:36px">
+        <div class="commit-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>What We Commit To</h4>
+          <p>A professional listing, active promotion through multiple channels, and honest communication at every step.</p>
+        </div>
+        <div class="commit-item">
+          <i class="fa-solid fa-circle-info"></i>
+          <h4>What We Do Not Promise</h4>
+          <p>We do not guarantee enquiries, contracts, or orders. We provide visibility — outcomes depend on buyer demand.</p>
+        </div>
+        <div class="commit-item">
+          <i class="fa-solid fa-indian-rupee-sign"></i>
+          <h4>What You Pay</h4>
+          <p>₹999 per year. No commission. No hidden fees. No auto-renewal. No lock-in.</p>
+        </div>
+      </div>
+
+      <div class="cta-block anim">
+        <div class="txt">
+          <h4>Ready to get discovered?</h4>
+          <p>List your business on CSVN and start reaching decision-makers across India.</p>
+        </div>
+        <a href="https://www.csvn.in/list-your-business/" target="_blank" class="cta-btn">
+          <i class="fa-solid fa-plus"></i> List Your Business
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <button class="nav-btn nav-prev" id="btnPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="nav-btn nav-next" id="btnNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="slide-counter"><span class="current" id="curNum">01</span> / <span id="totNum">10</span></div>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var total = slides.length;
+var cur = 0;
+var bar = document.getElementById('progressBar');
+var curNum = document.getElementById('curNum');
+var deck = document.getElementById('deck');
+document.getElementById('totNum').textContent = String(total).padStart(2,'0');
+
+function updateTheme(){ deck.setAttribute('data-theme', slides[cur].classList.contains('light') ? 'light' : 'dark'); }
+function updateUI(){
+  bar.style.width = (((cur+1)/total)*100) + '%';
+  curNum.textContent = String(cur+1).padStart(2,'0');
+  updateTheme();
+}
+function go(n){
+  if(n < 0) n = 0;
+  if(n >= total) n = total - 1;
+  if(n === cur) return;
+  var prevIdx = cur;
+  slides[prevIdx].classList.add('prev');
+  slides[prevIdx].classList.remove('active');
+  setTimeout(function(){ slides[prevIdx].classList.remove('prev'); }, 620);
+  cur = n;
+  slides[cur].classList.remove('prev');
+  void slides[cur].offsetWidth;
+  slides[cur].classList.add('active');
+  updateUI();
+  if(history.replaceState) history.replaceState(null, '', '#/' + (cur+1));
+}
+document.getElementById('btnNext').addEventListener('click', function(){ go(cur+1); });
+document.getElementById('btnPrev').addEventListener('click', function(){ go(cur-1); });
+document.addEventListener('keydown', function(e){
+  var k = e.key;
+  if(k === 'ArrowRight' || k === 'ArrowDown' || k === ' ' || k === 'PageDown' || k === 'Enter'){ e.preventDefault(); go(cur+1); }
+  else if(k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace'){ e.preventDefault(); go(cur-1); }
+  else if(k === 'Home'){ e.preventDefault(); go(0); }
+  else if(k === 'End'){ e.preventDefault(); go(total-1); }
+  else if(k === 'f' || k === 'F'){
+    if(!document.fullscreenElement){ if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); }
+    else { if(document.exitFullscreen) document.exitFullscreen(); }
+  }
+});
+var tx=0, ty=0;
+deck.addEventListener('touchstart', function(e){ tx = e.changedTouches[0].screenX; ty = e.changedTouches[0].screenY; }, {passive:true});
+deck.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].screenX - tx;
+  var dy = e.changedTouches[0].screenY - ty;
+  if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)){ if(dx < 0) go(cur+1); else go(cur-1); }
+}, {passive:true});
+function readHash(){
+  var m = location.hash.match(/^#\/(\d+)/);
+  if(m){ var n = parseInt(m[1], 10) - 1; if(n >= 0 && n < total && n !== cur) go(n); }
+}
+window.addEventListener('hashchange', readHash);
+if(location.hash) readHash();
+updateUI();
+})();
+</script>
+</body>
+</html>
