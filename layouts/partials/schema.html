@@ -6,7 +6,45 @@
 
 {{ if .IsHome }}
 
-  {{/* ── Homepage: Organization + WebSite (search box) ──────── */}}
+  {{/* ── Homepage: Organization ─────────────────────────────────
+       Tells Google your brand name, alternative names, and area
+       served. This is what powers brand searches like "CSVN India".
+       ────────────────────────────────────────────────────────── */}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CSVN — Corporate Services Vendor Network",
+    "alternateName": [
+      "CSVN",
+      "CSVN India",
+      "Corporate Services Vendor Network",
+      "CSVN B2B Directory",
+      "CSVN Vendor Network"
+    ],
+    "url": "https://www.csvn.in/",
+    "logo": "https://www.csvn.in/logo.png",
+    "description": "CSVN is a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India.",
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Pune, Maharashtra, India"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Support",
+      "email": "info@csvn.in",
+      "telephone": "+91-87939-32827",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Hindi"]
+    }
+  }
+  </script>
+
+  {{/* ── Homepage: WebSite (search box) ──────────────────────── */}}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,7 +65,12 @@
 
 {{ else if eq .Type "listings" }}
 
-  {{/* ── Individual listing page: LocalBusiness + AggregateRating ── */}}
+  {{/* ── Individual listing page ───────────────────────────────
+       Only emit LocalBusiness schema for REAL listings.
+       Sample listings are skipped to avoid emitting fake business
+       structured data to Google.
+       ────────────────────────────────────────────────────────── */}}
+  {{ if not .Params.isSample }}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,20 +88,21 @@
       {{ with $.Params.area }}"addressRegion": {{ . }},{{ end }}
       "addressCountry": "IN"
     },{{ end }}
-    {{ with .Params.rating }}"aggregateRating": {
+    {{ with .Params.rating }}{{ if gt . 0 }}"aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": {{ . }},
       "reviewCount": {{ $.Params.reviewCount | default 1 }}
-    },{{ end }}
+    },{{ end }}{{ end }}
     {{ with .Params.services }}"makesOffer": [
       {{ range $i, $s := . }}{{ if $i }},{{ end }}{
         "@type": "Offer",
         "itemOffered": { "@type": "Service", "name": {{ $s }} }
       }{{ end }}
     ],{{ end }}
-    "image": "https://via.placeholder.com/600x400?text={{ .Title | urlize }}"
+    "image": "https://www.csvn.in/logo.png"
   }
   </script>
+  {{ end }}
 
   {{/* ── Breadcrumb for listing pages ────────────────────────── */}}
   <script type="application/ld+json">
@@ -82,7 +126,7 @@
     "@type": "CollectionPage",
     "name": {{ .Title }},
     "url": {{ .Permalink }},
-    "description": "Browse verified {{ .Title }} vendors on {{ .Site.Title }}.",
+    "description": "Browse {{ .Title }} service providers listed on {{ .Site.Title }}.",
     "isPartOf": { "@type": "WebSite", "name": {{ .Site.Title }}, "url": {{ .Site.BaseURL }} }
   }
   </script>
