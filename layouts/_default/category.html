@@ -3,6 +3,7 @@
 {{ $slug := .Params.slug }}
 {{ $catName := .Title }}
 {{ $catDesc := .Params.description }}
+{{ $catLong := .Params.longDescription }}
 
 {{/* Find parent group + icon */}}
 {{ $catIcon := "fa-briefcase" }}
@@ -47,7 +48,7 @@
         <span class="flex items-center gap-2 text-slate-600">
           <i class="fa-solid fa-building text-indigo-500"></i>
           <span class="font-bold text-slate-900">{{ $vendorCount }}</span>
-          {{ if eq $vendorCount 1 }}vendor{{ else }}vendors{{ end }} listed
+          {{ if eq $vendorCount 1 }}listing{{ else }}listings{{ end }}
         </span>
         {{ if $catGroupName }}
           <span class="flex items-center gap-2 text-slate-600">
@@ -56,13 +57,28 @@
           </span>
         {{ end }}
         <a href="/listings/" class="flex items-center gap-1.5 text-indigo-600 hover:text-indigo-700 font-semibold transition-colors">
-          <i class="fa-solid fa-list"></i> Browse all vendors
+          <i class="fa-solid fa-list"></i> Browse all listings
         </a>
       </div>
     </div>
   </div>
 
-    {{/* Vendor grid — tier-wise shuffle (rotates on every rebuild) */}}
+  {{/* About this category — unique SEO content */}}
+  {{ if $catLong }}
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 mb-6">
+      <h2 class="text-lg font-extrabold text-slate-900 tracking-tight mb-3 flex items-center gap-2">
+        <i class="fa-solid fa-circle-info text-indigo-600"></i>
+        About {{ $catName }} on CSVN
+      </h2>
+      <div class="text-sm text-slate-600 leading-relaxed space-y-3">
+        {{ range split $catLong "\n\n" }}
+          <p>{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  {{/* Vendor grid — tier-wise shuffle (rotates on every rebuild) */}}
   {{ if $vendorCount }}
     {{ $featured := shuffle (where $clients "Params.tier" "Featured") }}
     {{ $premium  := shuffle (where $clients "Params.tier" "Premium") }}
@@ -79,9 +95,9 @@
       <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 flex items-center justify-center mb-4">
         <i class="fa-solid fa-folder-open text-2xl text-slate-300"></i>
       </div>
-      <h3 class="text-lg font-bold text-slate-900 mb-1">No vendors listed yet</h3>
+      <h3 class="text-lg font-bold text-slate-900 mb-1">No listings yet</h3>
       <p class="text-sm text-slate-500 mb-5 max-w-sm mx-auto">
-        We don't have any verified vendors in {{ $catName }} yet. Check back soon or browse other categories.
+        We don't have any listings in {{ $catName }} yet. Check back soon or browse other categories.
       </p>
       <a href="/categories/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors">
         <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
