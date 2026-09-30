@@ -6,11 +6,15 @@
 
 {{ $tier := lower (.tier | default "standard") }}
 {{ $detailURL := printf "/listings/%s/" .id }}
+{{ $isSample := .isSample | default false }}
 
 {{/* Tier visuals */}}
-{{ $topBar    := "bg-slate-300" }}
-{{ $badge     := "" }}
-{{ if eq $tier "featured" }}
+{{ $topBar := "bg-slate-300" }}
+{{ $badge  := "" }}
+{{ if $isSample }}
+  {{ $topBar = "bg-slate-400" }}
+  {{ $badge  = "bg-slate-100 text-slate-700 border border-slate-300" }}
+{{ else if eq $tier "featured" }}
   {{ $topBar = "bg-emerald-500" }}
   {{ $badge  = "bg-emerald-50 text-emerald-700 border border-emerald-200" }}
 {{ else if eq $tier "premium" }}
@@ -25,12 +29,14 @@
 
   <div class="p-5 flex flex-col flex-grow">
 
-    {{/* ── Tier badge ───────────────────────────────────────────── */}}
+    {{/* ── Tier / Sample badge ─────────────────────────────────── */}}
     {{ if $badge }}
       <div class="mb-3">
         <span class="inline-flex items-center gap-1 {{ $badge }} text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md">
-          {{ if eq $tier "featured" }}
-            <i class="fa-solid fa-circle-check text-[9px]"></i> Verified
+          {{ if $isSample }}
+            <i class="fa-solid fa-flask text-[9px]"></i> Sample
+          {{ else if eq $tier "featured" }}
+            <i class="fa-solid fa-circle-check text-[9px]"></i> Featured
           {{ else }}
             <i class="fa-solid fa-gem text-[9px]"></i> Premium
           {{ end }}
