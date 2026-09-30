@@ -17,7 +17,7 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
       <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-400/30 px-4 py-1.5 rounded-full text-indigo-200 text-xs font-semibold mb-6">
-        <i class="fa-solid fa-shield-halved text-sm"></i> Verified B2B Vendors across 50+ Industrial Hubs
+        <i class="fa-solid fa-shield-halved text-sm"></i> Listed B2B Service Providers across India
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">
@@ -39,7 +39,7 @@
           <i class="fa-solid fa-map-pin text-slate-400"></i>
           <select name="hub"
                   class="w-full text-sm text-slate-800 bg-transparent focus:outline-none cursor-pointer">
-            <option value="">All Industrial Hubs</option>
+            <option value="">All Locations</option>
             {{ range .Site.Params.hubs }}
               <option value="{{ . }}">{{ . }}</option>
             {{ end }}
@@ -52,9 +52,9 @@
       </form>
 
       <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-slate-400">
-        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> 100% Verified GST &amp; Compliance</div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> SLA Guaranteed Contracts</div>
-        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Direct B2B Pricing</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Listed Business Profiles</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Direct Contact, No Middlemen</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> No Commission on Deals</div>
       </div>
     </div>
   </section>
@@ -65,7 +65,7 @@
   <section id="categories" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
       <div>
-        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Industrial Taxonomy</span>
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Service Directory</span>
         <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Explore B2B Service Categories</h2>
       </div>
       <p class="text-sm text-slate-500 mt-2 md:mt-0">
@@ -126,11 +126,11 @@
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Top Tier</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Featured Vendors</h2>
-            <p class="text-sm text-slate-500 mt-2">Handpicked, verified service providers on our network.</p>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Featured Listings</h2>
+            <p class="text-sm text-slate-500 mt-2">Professionally listed service providers on the CSVN network.</p>
           </div>
           <a href="/listings/" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
-            View all vendors <i class="fa-solid fa-arrow-right text-xs"></i>
+            View all listings <i class="fa-solid fa-arrow-right text-xs"></i>
           </a>
         </div>
 
@@ -148,28 +148,32 @@
       ══════════════════════════════════════════════════════════ */}}
   <section id="how-it-works" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Procurement Made Seamless</span>
-      <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">How B2B Sourcing Works</h2>
-      <p class="text-sm text-slate-500 mt-2">Built for plant managers, facility heads, and corporate procurement teams.</p>
+      <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Simple &amp; Transparent</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">How CSVN Works</h2>
+      <p class="text-sm text-slate-500 mt-2">A B2B visibility platform built for corporate service providers and the decision-makers who look for them.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">01</div>
-        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Submit Your RFQ</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Specify your facility requirements, location, service frequency, and compliance mandates in under 2 minutes.</p>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Create Your Listing</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Publish a professional business profile with your services, location, and direct contact details on the CSVN directory.</p>
       </div>
       <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">02</div>
-        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Get Pre-Vetted Bids</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Receive competitive commercial proposals from 3 to 5 verified local contractors with complete tax documentation.</p>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Be Visible to Decision-Makers</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Your listing is discoverable by Purchase Heads, Procurement Heads, HR Heads, Admin Heads, founders, and other decision-makers browsing the platform.</p>
       </div>
       <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
         <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">03</div>
-        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Deploy &amp; Manage</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Finalize your contract under standardized B2B SLA terms with milestone-based invoicing and digital sign-offs.</p>
+        <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Connect Directly</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Buyers reach out to you directly through the contact details on your profile. No middlemen, no commission on your deals.</p>
       </div>
     </div>
+
+    <p class="text-center text-xs text-slate-400 mt-8 max-w-3xl mx-auto leading-relaxed">
+      CSVN is a visibility platform. Listing or promotional activity does not guarantee enquiries, contracts, or orders.
+    </p>
   </section>
 
   {{/* ══════════════════════════════════════════════════════════
@@ -179,13 +183,13 @@
     <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-8 sm:p-12 text-white text-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
       <div class="relative z-10 max-w-2xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Ready to source verified vendors?</h2>
-        <p class="text-sm text-slate-300 mb-6">Post your requirement and receive bids from pre-vetted contractors within 24 hours.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Ready to be discovered by buyers?</h2>
+        <p class="text-sm text-slate-300 mb-6">List your business on CSVN and make your services visible to decision-makers across India.</p>
         <div class="flex flex-wrap justify-center gap-3">
-          <button @click="openRfpModal = true"
-                  class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-md">
-            <i class="fa-solid fa-paper-plane text-xs"></i> Post RFQ Free
-          </button>
+          <a href="/list-your-business/"
+             class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-md">
+            <i class="fa-solid fa-plus text-xs"></i> List Your Business
+          </a>
           <a href="/categories/"
              class="inline-flex items-center gap-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/40 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
             <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
@@ -198,7 +202,7 @@
   {{ partial "footer.html" . }}
 
   {{/* ══════════════════════════════════════════════════════════
-      RFQ MODAL
+      ENQUIRY MODAL — reframed from "RFQ" to a neutral enquiry form
       ══════════════════════════════════════════════════════════ */}}
   <div x-show="openRfpModal"
        x-transition.opacity
@@ -213,10 +217,10 @@
         <i class="fa-solid fa-xmark text-xl"></i>
       </button>
 
-      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight mb-1">Post Your RFQ</h3>
-      <p class="text-xs text-slate-500 mb-6">Receive quotations from pre-vetted contractors within 24 hours.</p>
+      <h3 class="text-xl font-extrabold text-slate-900 tracking-tight mb-1">Share Your Requirement</h3>
+      <p class="text-xs text-slate-500 mb-6">Tell us what you are looking for. We will review your enquiry and, where relevant, share it with listed vendors on the platform.</p>
 
-      <form @submit.prevent="openRfpModal = false; toastMessage = 'RFQ submitted. We will be in touch shortly.'; showToast = true; setTimeout(() => showToast = false, 4000)"
+      <form @submit.prevent="openRfpModal = false; toastMessage = 'Enquiry submitted. Thank you.'; showToast = true; setTimeout(() => showToast = false, 4000)"
             class="space-y-4">
         <div>
           <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Company Name</label>
@@ -239,7 +243,7 @@
             </select>
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Hub</label>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Location</label>
             <select class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition cursor-pointer">
               {{ range .Site.Params.hubs }}<option>{{ . }}</option>{{ end }}
             </select>
@@ -247,12 +251,15 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Requirement</label>
-          <textarea rows="3" required placeholder="Specify scope, headcount, or area in sq.ft..."
+          <textarea rows="3" required placeholder="Describe the service you are looking for..."
                     class="w-full px-3 py-2.5 text-sm bg-slate-50 border border-slate-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:bg-white focus:outline-none transition resize-y"></textarea>
         </div>
+        <p class="text-[11px] text-slate-400 leading-relaxed">
+          Note: Submitting an enquiry does not create any obligation on CSVN or on any vendor. We do not guarantee responses, quotations, or contracts.
+        </p>
         <button type="submit"
                 class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
-          <i class="fa-solid fa-paper-plane text-xs"></i> Broadcast RFQ
+          <i class="fa-solid fa-paper-plane text-xs"></i> Submit Enquiry
         </button>
       </form>
     </div>
