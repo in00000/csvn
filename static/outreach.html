@@ -27,11 +27,6 @@ html,body{height:100%;overflow:hidden;background:var(--slate-950)}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-900);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
 
-/* ═══ HIDE GOOGLE TRANSLATE BANNER ═══ */
-body > .skiptranslate{display:none !important}
-.goog-te-banner-frame{display:none !important}
-body{top:0 !important;position:static !important}
-
 /* ═══ LANGUAGE SELECTOR — fixed bottom-left ═══ */
 .lang-fixed{
   position:fixed;
@@ -78,7 +73,6 @@ body{top:0 !important;position:static !important}
   color:var(--indigo-600);font-size:10px;pointer-events:none;
 }
 
-/* Dark slides get a slightly different bg for contrast */
 .deck[data-theme="dark"] .lang-fixed{
   background:rgba(255,255,255,.1);
   border-color:rgba(129,140,248,.35);
@@ -398,9 +392,6 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
     <i class="fa-solid fa-chevron-down lang-chev"></i>
   </div>
 </div>
-
-<!-- Hidden Google Translate mount -->
-<div id="google_translate_element" style="display:none"></div>
 
 <div class="deck" id="deck" data-theme="dark">
 
@@ -956,42 +947,55 @@ if(location.hash) readHash();
 updateUI();
 })();
 
-/* ═══ Language selector logic ═══ */
-function changeLanguage(lang) {
-  var host = location.hostname;
-  var expired = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
-  ['googtrans=; '+expired+'; path=/',
-   'googtrans=; '+expired+'; path=/; domain='+host,
-   'googtrans=; '+expired+'; path=/; domain=.'+host].forEach(function(c){ document.cookie = c; });
+/* ═══════════════════════════════════════════════════════════
+   LANGUAGE SELECTOR — Google Translate web proxy (100% reliable)
+   ═══════════════════════════════════════════════════════════ */
 
-  if (lang && lang !== 'en') {
-    var value = '/en/' + lang;
-    document.cookie = 'googtrans=' + value + '; path=/';
-    document.cookie = 'googtrans=' + value + '; path=/; domain=' + host;
-    document.cookie = 'googtrans=' + value + '; path=/; domain=.' + host;
+var ORIGINAL_HOST = 'www.csvn.in';
+
+function changeLanguage(lang) {
+  // Determine current page path
+  var path = '/outreach.html';
+
+  // If we are already on a translate.goog proxy, extract the real path
+  if (location.hostname.indexOf('translate.goog') !== -1) {
+    path = location.pathname;
+  } else {
+    path = location.pathname || '/outreach.html';
+  }
+
+  // If user selected English, go back to the real URL
+  if (lang === 'en') {
+    window.location.href = 'https://' + ORIGINAL_HOST + path;
+    return;
+  }
+
+  // Otherwise, redirect to Google Translate web proxy
+  var proxyHost = ORIGINAL_HOST.replace(/\./g, '-') + '.translate.goog';
+  var proxyURL = 'https://' + proxyHost + path +
+                 '?_x_tr_sl=en' +
+                 '&_x_tr_tl=' + lang +
+                 '&_x_tr_hl=en' +
+                 '&_x_tr_pto=wapp';
+
+  window.location.href = proxyURL;
+}
+
+/* Sync dropdown with current language on load */
+(function() {
+  var lang = 'en';
+
+  // Check if we are on translate.goog and read the language parameter
+  if (location.hostname.indexOf('translate.goog') !== -1) {
+    var params = new URLSearchParams(location.search);
+    var tl = params.get('_x_tr_tl');
+    if (tl) lang = tl;
   }
 
   var sel = document.getElementById('langSelect');
-  if (sel) { sel.disabled = true; sel.style.opacity = '0.6'; }
-  location.reload();
-}
-
-(function() {
-  var match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/);
-  var current = match ? match[1] : 'en';
-  var sel = document.getElementById('langSelect');
-  if (sel) sel.value = current;
+  if (sel) sel.value = lang;
 })();
-
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en',
-    includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
-    autoDisplay: false
-  }, 'google_translate_element');
-}
 </script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
