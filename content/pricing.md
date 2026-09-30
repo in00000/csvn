@@ -32,6 +32,7 @@ Everything you need to publish a professional business listing on CSVN:
 - **No cap on how many buyers can contact you** through the platform
 - **Rotation within the Standard tier** — your listing rotates among Standard-tier listings for fair placement
 - **Payment receipt** for your records
+- **Listing activation within 4 business days** of payment verification
 - **No commissions** — you keep 100% of every deal you close with a buyer
 
 **Important:** CSVN is a visibility platform. Listing or promotional activity does **not** guarantee enquiries, contracts, or orders. We do not promise a specific number of buyer contacts.
@@ -87,10 +88,10 @@ Yes — you'll be notified the moment these plans launch, and Standard vendors w
 No. CSVN does not charge commission, processing fees, or transaction fees. Whatever you charge your client, you keep.
 
 **Q: How long does setup take?**
-Send us your business details. We review them (1–2 business days). After payment verification, your listing goes live within 24 business hours.
+Send us your business details. We review them (1–2 business days). After payment verification, your listing goes live within **4 business days**.
 
 **Q: Can I cancel?**
-Yes — email us anytime and we'll remove your listing within 24 hours. Refunds are governed by our [Refund Policy](/refund/).
+Yes — email us anytime and we'll remove your listing within **4 business days**. Refunds are governed by our [Refund Policy](/refund/).
 
 ## How to Get Started
 
@@ -106,9 +107,9 @@ Yes — email us anytime and we'll remove your listing within 24 hours. Refunds 
 
 **Step 2 — We review.** 1–2 business days. We review your listing details to make sure they are complete and match our listing guidelines.
 
-**Step 3 — You pay ₹999.** You can pay by UPI on the payment page, or we can send you a payment link.
+**Step 3 — You pay ₹999.** You can pay by UPI on the [payment page](/payment/), or we can send you a payment link.
 
-**Step 4 — Your listing goes live.** Within 24 business hours of payment verification.
+**Step 4 — Your listing goes live.** Within **4 business days** of payment verification.
 
 ## Payment Methods
 
