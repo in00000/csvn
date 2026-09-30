@@ -30,6 +30,60 @@ body{
   line-height:1.6;-webkit-font-smoothing:antialiased;
 }
 
+/* ═══ GOOGLE TRANSLATE — hide default banner ═══ */
+body > .skiptranslate{display:none !important}
+.goog-te-banner-frame{display:none !important}
+body{top:0 !important;position:static !important}
+.goog-te-gadget{
+  font-family:'Inter',sans-serif !important;
+  font-size:15px !important;
+  color:var(--slate-700) !important;
+}
+.goog-te-gadget > span > a{display:none !important}
+.goog-te-gadget-simple{
+  background:transparent !important;
+  border:none !important;
+  padding:0 !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value{
+  color:var(--slate-900) !important;
+  font-weight:700 !important;
+  font-size:15px !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span{
+  color:var(--slate-900) !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span:nth-child(3),
+.goog-te-gadget-simple .goog-te-menu-value span:nth-child(4){
+  display:none !important;
+}
+.goog-te-menu-frame{
+  box-shadow:0 24px 48px -16px rgba(15,23,42,.28) !important;
+  border:1px solid var(--slate-200) !important;
+  border-radius:14px !important;
+  overflow:hidden !important;
+}
+.goog-te-menu2{border:none !important;padding:8px !important}
+.goog-te-menu2-item div,
+.goog-te-menu2-item:link div,
+.goog-te-menu2-item:visited div,
+.goog-te-menu2-item:active div{
+  font-family:'Inter',sans-serif !important;
+  color:var(--slate-700) !important;
+  font-size:14px !important;
+  padding:8px 12px !important;
+  border-radius:8px !important;
+}
+.goog-te-menu2-item:hover div{
+  background:var(--indigo-50) !important;
+  color:var(--indigo-700) !important;
+}
+.goog-te-menu2-item-selected div{
+  background:var(--indigo-100) !important;
+  color:var(--indigo-700) !important;
+  font-weight:700 !important;
+}
+
 /* ═══ HEADER ═══ */
 .page-header{
   background:linear-gradient(135deg,#1e1b4b 0%,#312e81 45%,#0f172a 100%);
@@ -70,12 +124,89 @@ body{
   max-width:720px;line-height:1.65;
 }
 
+/* ═══════════════════════════════════════════
+   LANGUAGE SELECTOR — prominent, spacious
+   ═══════════════════════════════════════════ */
+.lang-section{
+  background:#ffffff;
+  border-bottom:1px solid var(--slate-200);
+  padding:56px 32px 64px;
+  position:relative;
+  overflow:hidden;
+}
+.lang-section::before{
+  content:'';position:absolute;top:-30%;right:-8%;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(99,102,241,.07),transparent 70%);
+  pointer-events:none;
+}
+.lang-section::after{
+  content:'';position:absolute;bottom:-30%;left:-8%;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(16,185,129,.06),transparent 70%);
+  pointer-events:none;
+}
+.lang-inner{
+  position:relative;z-index:2;
+  max-width:900px;margin:0 auto;text-align:center;
+}
+.lang-icon-wrap{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:72px;height:72px;border-radius:20px;
+  background:linear-gradient(135deg,var(--indigo-600),var(--indigo-800));
+  color:#ffffff;font-size:28px;margin-bottom:28px;
+  box-shadow:0 18px 36px -12px rgba(79,70,229,.5);
+}
+.lang-heading{
+  font-size:clamp(28px,3.6vw,42px);
+  font-weight:900;letter-spacing:-.03em;
+  color:var(--slate-900);
+  line-height:1.15;
+  margin-bottom:16px;
+}
+.lang-subtext{
+  font-size:clamp(15px,1.5vw,17px);
+  color:var(--slate-500);
+  line-height:1.7;
+  max-width:640px;
+  margin:0 auto 40px;
+}
+.lang-selector-box{
+  display:inline-flex;align-items:center;gap:16px;
+  background:var(--slate-50);
+  border:2px solid var(--indigo-200);
+  border-radius:16px;
+  padding:18px 26px;
+  box-shadow:0 12px 28px -14px rgba(79,70,229,.2);
+  transition:all .24s cubic-bezier(.4,0,.2,1);
+  cursor:pointer;
+}
+.lang-selector-box:hover{
+  border-color:var(--indigo-500);
+  box-shadow:0 16px 36px -14px rgba(79,70,229,.35);
+  transform:translateY(-2px);
+}
+.lang-selector-box .lang-arrow{
+  color:var(--indigo-600);font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+}
+.lang-selector-box #google_translate_element{
+  font-size:16px;line-height:1;
+  min-width:180px;text-align:left;
+}
+.lang-hint{
+  margin-top:28px;
+  font-size:13px;
+  color:var(--slate-400);
+  display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;
+}
+.lang-hint i{color:var(--indigo-500);font-size:14px}
+.lang-hint strong{color:var(--slate-600);font-weight:700}
+
 /* ═══ CONTAINER ═══ */
 .container{max-width:1100px;margin:0 auto;padding:0 32px}
 section{padding:56px 0}
 section.tight{padding:36px 0}
 
-/* ═══ SECTION HEADINGS ═══ */
+/* ═══ HEADINGS ═══ */
 .sec-eyebrow{
   display:inline-flex;align-items:center;gap:9px;
   font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
@@ -139,7 +270,7 @@ h2{
   color:var(--slate-400);margin-left:6px;
 }
 
-/* ═══ DIFFERENCE CARDS ═══ */
+/* ═══ GRID ═══ */
 .grid{display:grid;gap:20px}
 .grid-3{grid-template-columns:repeat(3,1fr)}
 .grid-2{grid-template-columns:repeat(2,1fr)}
@@ -252,6 +383,7 @@ h2{
 @media print{
   @page{size:A4;margin:14mm}
   body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .lang-section{display:none}
   .page-header{padding:36px 24px 40px}
   .page-header h1{font-size:26px}
   .cta-section .cta-buttons{display:none}
@@ -266,6 +398,10 @@ h2{
 @media(max-width:700px){
   .container{padding:0 20px}
   .page-header{padding:44px 20px 52px}
+  .lang-section{padding:44px 20px 52px}
+  .lang-icon-wrap{width:60px;height:60px;font-size:24px;margin-bottom:22px}
+  .lang-selector-box{padding:14px 20px;gap:12px;flex-direction:column;align-items:stretch}
+  .lang-selector-box #google_translate_element{min-width:auto;text-align:center}
   .compare-wrap{overflow-x:auto}
   .compare-table{min-width:640px}
   .compare-table th,.compare-table td{padding:14px 14px;font-size:12.5px}
@@ -288,6 +424,28 @@ h2{
     <p>Most B2B vendor platforms are built for large advertisers. CSVN is built for corporate service providers who want visibility without paying ₹10,000+ per year, without commissions, and without gatekeepers.</p>
   </div>
 </header>
+
+<!-- ═══════════════════ LANGUAGE SELECTOR ═══════════════════ -->
+<section class="lang-section">
+  <div class="lang-inner">
+    <div class="lang-icon-wrap">
+      <i class="fa-solid fa-language"></i>
+    </div>
+    <h2 class="lang-heading">Choose Your Language</h2>
+    <p class="lang-subtext">
+      Read this page in your preferred Indian language. Select from the dropdown below — the page will translate instantly.
+    </p>
+    <div class="lang-selector-box">
+      <i class="fa-solid fa-globe lang-arrow"></i>
+      <div id="google_translate_element"></div>
+      <i class="fa-solid fa-chevron-down lang-arrow"></i>
+    </div>
+    <p class="lang-hint">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Supported: <strong>हिन्दी · मराठी · தமிழ் · తెలుగు · বাংলা · ગુજરાતી · ಕನ್ನಡ · മലയാളം · ਪੰਜਾਬੀ · اردو · ଓଡ଼ିଆ</strong></span>
+    </p>
+  </div>
+</section>
 
 <!-- ═══════════════════ COMPARISON TABLE ═══════════════════ -->
 <section>
@@ -342,11 +500,10 @@ h2{
             <td class="csvn-col">4 business days</td>
           </tr>
           <tr>
-<tr>
-  <td class="feature">Who operates the platform</td>
-  <td class="lgd-col">Corporate / team-managed</td>
-  <td class="csvn-col">Founder-operated</td>
-</tr>
+            <td class="feature">Who operates the platform</td>
+            <td class="lgd-col">Corporate / team-managed</td>
+            <td class="csvn-col">Founder-operated</td>
+          </tr>
           <tr>
             <td class="feature">Long-term commitment</td>
             <td class="lgd-col">Annual contracts</td>
@@ -458,6 +615,19 @@ h2{
     <a href="https://www.csvn.in">www.csvn.in</a>
   </p>
 </footer>
+
+<!-- ═══════════════════ GOOGLE TRANSLATE ═══════════════════ -->
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,hi,mr,ta,te,bn,gu,kn,ml,pa,ur,or,as',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
