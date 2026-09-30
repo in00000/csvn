@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
 <title>CSVN — How We Reach Decision-Makers</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,115 +26,6 @@ html,body{height:100%;overflow:hidden;background:var(--slate-950)}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--slate-900);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
 
-/* ═══ LANGUAGE SELECTOR — direct links ═══ */
-.lang-fixed{
-  position:fixed;
-  bottom:26px;
-  left:96px;
-  z-index:9999;
-  display:flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.95);
-  border:1.5px solid var(--indigo-200);
-  border-radius:12px;
-  padding:6px 10px 6px 12px;
-  box-shadow:0 10px 28px -10px rgba(15,23,42,.35);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  transition:all .22s cubic-bezier(.4,0,.2,1);
-  min-height:44px;
-  font-family:'Inter',system-ui,sans-serif;
-}
-.lang-fixed:hover{
-  border-color:var(--indigo-500);
-  box-shadow:0 14px 34px -10px rgba(79,70,229,.4);
-}
-.lang-fixed .lang-ico{
-  color:var(--indigo-600);font-size:15px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.lang-fixed .lang-label{
-  font-size:13px;font-weight:700;color:var(--slate-800);
-  margin-right:2px;
-}
-.lang-menu{position:relative}
-.lang-trigger{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--slate-50);
-  border:1px solid var(--slate-200);
-  border-radius:8px;
-  padding:6px 12px;
-  font-family:'Inter',sans-serif;
-  font-size:13px;font-weight:700;color:var(--slate-800);
-  cursor:pointer;
-  transition:all .18s ease;
-}
-.lang-trigger:hover{
-  background:var(--indigo-50);
-  border-color:var(--indigo-300);
-  color:var(--indigo-700);
-}
-.lang-trigger i{font-size:10px;color:var(--indigo-600)}
-
-.lang-dropdown{
-  display:none;
-  position:absolute;
-  bottom:calc(100% + 8px);
-  right:0;
-  background:#ffffff;
-  border:1px solid var(--slate-200);
-  border-radius:12px;
-  box-shadow:0 20px 40px -12px rgba(15,23,42,.28);
-  min-width:220px;
-  max-height:70vh;
-  overflow-y:auto;
-  padding:6px;
-  z-index:10000;
-}
-.lang-dropdown.open{display:block}
-.lang-dropdown a{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;
-  padding:9px 12px;
-  border-radius:8px;
-  text-decoration:none;
-  color:var(--slate-700);
-  font-size:13.5px;font-weight:700;
-  transition:all .15s ease;
-}
-.lang-dropdown a:hover{
-  background:var(--indigo-50);
-  color:var(--indigo-700);
-}
-.lang-dropdown a span{
-  font-size:11px;font-weight:600;color:var(--slate-400);
-}
-
-/* Dark theme */
-.deck[data-theme="dark"] .lang-fixed{
-  background:rgba(255,255,255,.1);
-  border-color:rgba(129,140,248,.35);
-  box-shadow:0 10px 28px -10px rgba(0,0,0,.5);
-}
-.deck[data-theme="dark"] .lang-fixed:hover{
-  background:rgba(255,255,255,.15);
-  border-color:var(--emerald-400);
-}
-.deck[data-theme="dark"] .lang-fixed .lang-ico{color:var(--emerald-400)}
-.deck[data-theme="dark"] .lang-fixed .lang-label{color:#ffffff}
-.deck[data-theme="dark"] .lang-trigger{
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.18);
-  color:#ffffff;
-}
-.deck[data-theme="dark"] .lang-trigger:hover{
-  background:rgba(52,211,153,.18);
-  border-color:var(--emerald-400);
-  color:#ffffff;
-}
-.deck[data-theme="dark"] .lang-trigger i{color:var(--emerald-400)}
-
-/* ═══ SLIDES ═══ */
 .slide{
   position:absolute;inset:0;display:flex;flex-direction:column;
   opacity:0;visibility:hidden;transform:translateX(60px) scale(.98);
@@ -372,7 +262,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
   .deck{height:auto;overflow:visible}
   .slide{position:relative;opacity:1;visibility:visible;transform:none;page-break-after:always;height:100vh;padding:60px 72px;width:100vw}
   .slide:last-child{page-break-after:auto}
-  .nav-btn,.progress-track,.slide-counter,.lang-fixed{display:none!important}
+  .nav-btn,.progress-track,.slide-counter{display:none!important}
   .slide.dark,.flow-num,.title-logo-plate,.card,.trust-node,.cta-btn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .anim{opacity:1!important;transform:none!important;animation:none!important}
 }
@@ -381,7 +271,6 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
   .slide{padding:76px 56px 64px}
   .brand-bar{left:56px;right:56px}
   .slide-counter{right:56px}
-  .lang-fixed{left:56px}
 }
 @media(max-width:900px){
   .grid-2,.grid-3,.grid-4,.split{grid-template-columns:1fr}
@@ -402,41 +291,10 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
   .trust-chain{gap:10px}
   .trust-node{min-width:auto;padding:14px 16px}
   .trust-arrow{display:none}
-  .lang-fixed{left:26px;bottom:20px;padding:5px 8px 5px 10px;gap:7px}
-  .lang-fixed .lang-label{display:none}
-  .lang-trigger{font-size:12px;padding:5px 10px}
-  .lang-dropdown{min-width:200px}
 }
 </style>
 </head>
 <body>
-
-<!-- ═══════════════════ LANGUAGE SELECTOR ═══════════════════ -->
-<div class="lang-fixed">
-  <i class="fa-solid fa-language lang-ico"></i>
-  <span class="lang-label">Language</span>
-  <div class="lang-menu">
-    <button class="lang-trigger" onclick="toggleLangMenu(event)">
-      <span>Select</span>
-      <i class="fa-solid fa-chevron-down"></i>
-    </button>
-    <div class="lang-dropdown" id="langDropdown">
-      <a href="#" onclick="openTranslation('en');return false;">English</a>
-      <a href="#" onclick="openTranslation('hi');return false;">हिन्दी <span>Hindi</span></a>
-      <a href="#" onclick="openTranslation('mr');return false;">मराठी <span>Marathi</span></a>
-      <a href="#" onclick="openTranslation('ta');return false;">தமிழ் <span>Tamil</span></a>
-      <a href="#" onclick="openTranslation('te');return false;">తెలుగు <span>Telugu</span></a>
-      <a href="#" onclick="openTranslation('bn');return false;">বাংলা <span>Bengali</span></a>
-      <a href="#" onclick="openTranslation('gu');return false;">ગુજરાતી <span>Gujarati</span></a>
-      <a href="#" onclick="openTranslation('kn');return false;">ಕನ್ನಡ <span>Kannada</span></a>
-      <a href="#" onclick="openTranslation('ml');return false;">മലയാളം <span>Malayalam</span></a>
-      <a href="#" onclick="openTranslation('pa');return false;">ਪੰਜਾਬੀ <span>Punjabi</span></a>
-      <a href="#" onclick="openTranslation('ur');return false;">اردو <span>Urdu</span></a>
-      <a href="#" onclick="openTranslation('or');return false;">ଓଡ଼ିଆ <span>Odia</span></a>
-      <a href="#" onclick="openTranslation('as');return false;">অসমীয়া <span>Assamese</span></a>
-    </div>
-  </div>
-</div>
 
 <div class="deck" id="deck" data-theme="dark">
 
@@ -612,7 +470,7 @@ h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
     </div>
   </section>
 
-  <!-- ═══ 5. INDUSTRY NETWORKS ═══ -->
+  <!-- ═══ 5. INDUSTRY NETWORKS (no founder refs) ═══ -->
   <section class="slide light" data-index="4">
     <div class="brand-bar">
       <img src="https://www.csvn.in/logo.png" alt="CSVN">
@@ -991,42 +849,6 @@ window.addEventListener('hashchange', readHash);
 if(location.hash) readHash();
 updateUI();
 })();
-
-/* ═══ Language menu toggle ═══ */
-function toggleLangMenu(e) {
-  e.stopPropagation();
-  var dd = document.getElementById('langDropdown');
-  if (dd) dd.classList.toggle('open');
-}
-
-/* Close menu when clicking outside */
-document.addEventListener('click', function(e) {
-  var dd = document.getElementById('langDropdown');
-  var menu = document.querySelector('.lang-menu');
-  if (dd && menu && !menu.contains(e.target)) {
-    dd.classList.remove('open');
-  }
-});
-
-/* Open Google Translate in a new tab with the correct URL */
-function openTranslation(lang) {
-  var pageURL = 'https://www.csvn.in/outreach.html';
-  var target;
-
-  if (lang === 'en') {
-    target = pageURL;
-  } else {
-    target = 'https://translate.google.com/translate?' +
-             'sl=en' +
-             '&tl=' + lang +
-             '&u=' + encodeURIComponent(pageURL);
-  }
-
-  window.open(target, '_blank');
-  var dd = document.getElementById('langDropdown');
-  if (dd) dd.classList.remove('open');
-}
 </script>
-
 </body>
 </html>
