@@ -1,18 +1,19 @@
 ---
 title: "List Your Business"
-description: "Get your business listed on CSVN — India's verified B2B vendor network. Introductory rate ₹999/year. Reach thousands of businesses looking for your services."
+description: "Get your business listed on CSVN — India's B2B service provider directory. Introductory rate ₹999/year. Make your services discoverable to decision-makers across India."
 layout: "page"
 ---
 
 ## Grow Your B2B Business with CSVN
 
-Every day, businesses across India search CSVN looking for reliable service vendors. When you list your business on CSVN, you put your company in front of:
+Every day, decision-makers across India browse CSVN looking for reliable service vendors. When you list your business on CSVN, you put your company in front of:
 
-- **Procurement managers** sourcing vendors for their plants
-- **Facility heads** looking for housekeeping, pest control, and maintenance services
-- **IT managers** sourcing software, hardware, and support
-- **HR teams** looking for staffing, training, and wellness providers
-- **Factory owners** needing industrial supplies, safety equipment, and more
+- **Procurement Heads** sourcing vendors for their plants
+- **Facility Heads** looking for housekeeping, pest control, and maintenance services
+- **IT Heads** sourcing software, hardware, and support
+- **HR Heads** looking for staffing, training, and wellness providers
+- **Admin Heads** managing office services and facility operations
+- **Business owners and founders** seeking reliable service partners
 
 **Introductory rate: ₹999/year.** No commissions. No hidden fees.
 
@@ -20,15 +21,15 @@ Every day, businesses across India search CSVN looking for reliable service vend
 
 ### Direct Buyer Contact
 
-Buyers contact you directly. There's no middleman, no lead broker, no commission on your deals. You keep 100% of every transaction.
+Buyers reach out to you directly through the contact details published on your profile. There are no commissions on deals you close with buyers.
 
-### Fair Rotation System
+### Rotation Within Your Tier
 
-Unlike traditional directories where the highest bidder wins, CSVN rotates vendors daily within each tier. Every vendor gets fair top-of-category exposure.
+Listings rotate within their tier for fair placement. No listing is permanently buried at the bottom.
 
 ### 90+ Service Categories
 
-We cover every B2B service category in India:
+We cover a wide range of B2B service categories in India:
 
 - Facility Management (housekeeping, pest control, landscaping)
 - Technical Services (electrical, HVAC, plumbing, solar)
@@ -43,9 +44,9 @@ We cover every B2B service category in India:
 - Travel & Events (corporate travel, MICE)
 - And many more
 
-### Verified Badge
+### Listed Badge
 
-Get the CSVN "Verified" badge on your listing after our verification process. Instant credibility with potential buyers.
+Get the CSVN "Listed" badge on your profile after our listing review. It signals to buyers that your business has a published, reviewed profile on the directory.
 
 ## How to List — Step by Step
 
@@ -61,15 +62,15 @@ Email [info@csvn.in](mailto:info@csvn.in?subject=Standard%20Plan%20-%20%E2%82%B9
 - **Service description** — 2 to 3 sentences about what you offer
 - **List of key services** — 5–10 specific services you provide
 
-### Step 2: We Verify Your Business
+### Step 2: We Review Your Listing
 
-Our team reviews your submission and verifies:
+We review your submission to check:
 
-- Business existence and contact details
-- Website or online presence
-- Service category accuracy
+- Listing details are complete
+- Service category is accurate
+- Contact information is valid
 
-**Typical verification time: 1–2 business days.**
+**Typical review time: 1–2 business days.**
 
 ### Step 3: Pay the Introductory Fee
 
@@ -77,18 +78,18 @@ Listings on CSVN are available at our introductory rate:
 
 **₹999/year** — Standard Plan
 
-This gives you a complete business profile, direct buyer contact, and fair daily rotation. Premium and Featured plans are coming soon.
+This gives you a professional business profile, direct contact details on your listing, and rotation within your tier. Premium and Featured plans are coming soon.
 
 [See full pricing details →](/pricing/)
 
 ### Step 4: Your Listing Goes Live
 
-Once verified and paid, your listing goes live within 24 hours.
+Once reviewed and paid, your listing goes live within **4 business days** of payment verification.
 
 You'll receive:
 
 - A confirmation email with your listing URL
-- A GST-compliant invoice (if you have GST) or simple receipt
+- A payment receipt (and a GST-inclusive receipt if you provide your GSTIN)
 - Instructions for requesting edits in the future
 
 ## What Your Listing Includes
@@ -99,9 +100,8 @@ Your CSVN profile page shows:
 - **Full contact details** — phone, WhatsApp, email, website
 - **Service list** — up to 10 services displayed
 - **1 catalogue link** — product catalogue, price list, or brochure
-- **Customer reviews** — build credibility over time
-- **"Clients We Serve"** showcase
-- **Verified badge** — after verification
+- **"Clients We Serve"** showcase (if you provide this information)
+- **Listed badge** — after listing review
 - **Location and map link**
 - **Business hours**
 
@@ -112,10 +112,10 @@ Your CSVN profile page shows:
 To keep CSVN quality high, we ask that vendors:
 
 - **Keep information accurate** — update us if your phone, address, or services change
-- **Respond to buyer inquiries promptly** — usually within 24 hours
-- **Comply with Indian business laws** — GST, licenses, and registrations as applicable
+- **Respond to buyer enquiries promptly**
+- **Comply with Indian business laws** — GST, licences, and registrations as applicable
 - **Maintain professional standards** — no false claims, no misleading promises
-- **Honor your quoted pricing** — no bait-and-switch
+- **Honour your quoted pricing** — no bait-and-switch
 
 ## Frequently Asked Questions
 
@@ -128,33 +128,33 @@ No. CSVN connects you directly with buyers. All commercial terms are between you
 **Q: How do buyers contact me?**
 Through the phone, WhatsApp, email, and website links on your listing page. Buyers reach out to you directly.
 
-**Q: How long does verification take?**
-Typically 1–2 business days. Complex cases may take longer.
+**Q: How long does the review take?**
+Typically 1–2 business days.
 
-**Q: What if I don't get any inquiries?**
-We can't guarantee inquiries — that depends on buyer demand and your specific category. But every vendor gets the same fair rotation, so you have equal visibility.
+**Q: Will I get enquiries?**
+We can't guarantee enquiries — that depends on buyer demand, your category, and your profile. What we provide is a professional listing on the CSVN directory, visible to decision-makers browsing the platform. Every listing gets rotation within its tier for fair placement.
 
 **Q: Do I need GST to list?**
-No. You can list on the Standard plan without GST. We'll issue a simple payment receipt.
+No. You can list on the Standard plan without GST. We'll issue a simple payment receipt. If you have GST, provide it and we'll include it in your receipt.
 
 **Q: Can I upgrade to Premium or Featured later?**
 Yes — you'll be notified the moment these plans launch, and Standard vendors will get upgrade discounts.
 
 **Q: What if I want to remove my listing?**
-Email [info@csvn.in](mailto:info@csvn.in) and we'll remove it within 24 hours. No questions asked.
+Email [info@csvn.in](mailto:info@csvn.in) and we'll remove it within **4 business days**. No questions asked.
 
 **Q: Can I cancel?**
 Yes — email us anytime. Refunds are governed by our [Refund Policy](/refund/).
 
 **Q: How do I pay?**
-After verification, we'll send you a secure payment link (UPI, card, net banking, or bank transfer).
+Currently, we accept payments by UPI. You can pay directly through our [payment page](/payment/). If you need an alternative method, contact us.
 
 ## Ready to Get Listed?
 
 Send us your business details at [info@csvn.in](mailto:info@csvn.in?subject=Standard%20Plan%20-%20%E2%82%B9999%2Fyear), or call us at **+91 87939 32827** (Mon–Sat, 10 AM – 6 PM IST).
 
-**Your business could be live on CSVN within 48 hours.**
+**Your business can be listed on CSVN within 4 business days of payment verification.**
 
 ---
 
-*CSVN — Corporate Services Vendor Network is owned and operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
+*CSVN — Corporate Services Vendor Network is a proprietorship operated by Sachin Ambekar, based in Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India.*
