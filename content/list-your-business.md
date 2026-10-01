@@ -11,54 +11,54 @@ Every plan puts your business in front of decision-makers browsing CSVN. Pick th
 <div class="grid gap-6 md:grid-cols-3 my-8">
 
   <!-- STARTER -->
-  <div class="flex flex-col rounded-2xl border-2 border-gray-200 bg-white p-6 text-center shadow-sm">
-    <div class="mb-4 self-center rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-indigo-600">Starter</div>
-    <h3 class="text-xl font-extrabold text-gray-900">Starter Listing</h3>
-    <p class="mt-1 text-sm text-gray-500">For vendors testing network reach and reliable B2B exposure.</p>
-    <div class="mt-4 text-4xl font-extrabold text-gray-900">₹999<span class="text-base font-medium text-gray-500"> / year</span></div>
-    <p class="mt-1 text-xs text-gray-400">1 year validity</p>
-    <ul class="mt-6 space-y-2 text-left text-sm text-gray-700">
-      <li class="flex gap-2"><span class="font-bold text-indigo-600">✔</span> Standard B2B directory listing (1 year)</li>
-      <li class="flex gap-2"><span class="font-bold text-indigo-600">✔</span> Standard category placement</li>
-      <li class="flex gap-2"><span class="font-bold text-indigo-600">✔</span> Direct buyer connection — calls, WhatsApp, website</li>
-      <li class="flex gap-2"><span class="font-bold text-indigo-600">✔</span> Zero commission on closed deals</li>
-      <li class="flex gap-2"><span class="font-bold text-indigo-600">✔</span> Rotation within the Standard tier</li>
+  <div style="display: flex; flex-direction: column; background: #ffffff; border: 2px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+    <div style="align-self: center; background: #eef2ff; color: #4f46e5; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Starter</div>
+    <h3 style="font-size: 1.25rem; font-weight: 800; color: #111827; margin: 0;">Starter Listing</h3>
+    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">For vendors testing network reach and reliable B2B exposure.</p>
+    <div style="font-size: 2.5rem; font-weight: 800; color: #111827; margin-top: 1rem;">₹999<span style="font-size: 1rem; font-weight: 500; color: #6b7280;"> / year</span></div>
+    <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.25rem;">1 year validity</p>
+    <ul style="margin-top: 1.5rem; margin-bottom: 1.5rem; padding: 0; list-style: none; text-align: left; font-size: 0.875rem; color: #374151;">
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #4f46e5; font-weight: 700;">✔</span> Standard B2B directory listing (1 year)</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #4f46e5; font-weight: 700;">✔</span> Standard category placement</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #4f46e5; font-weight: 700;">✔</span> Direct buyer connection — calls, WhatsApp, website</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #4f46e5; font-weight: 700;">✔</span> Zero commission on closed deals</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #4f46e5; font-weight: 700;">✔</span> Rotation within the Standard tier</li>
     </ul>
-    <a href="/payment/" class="mt-auto inline-block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-bold text-white no-underline hover:bg-indigo-700">Get Listed — ₹999</a>
+    <a href="/payment/" style="margin-top: auto; display: block; background: #4f46e5; color: #ffffff; font-weight: 700; padding: 0.75rem 1.25rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;">Get Listed — ₹999</a>
   </div>
 
   <!-- FEATURED PRO -->
-  <div class="relative flex flex-col rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-800 p-6 text-center text-white shadow-xl">
-    <div class="mb-4 self-center rounded-full border border-white/30 bg-white/20 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">Most Popular</div>
-    <h3 class="text-xl font-extrabold">Featured Pro Growth</h3>
-    <p class="mt-1 text-sm text-indigo-100">High-value package for growing vendors seeking continuous, automated exposure.</p>
-    <div class="mt-4 text-4xl font-extrabold">₹4,999<span class="text-base font-medium text-indigo-200"> / 2 years</span></div>
-    <p class="mt-1 text-xs text-indigo-200">Only ~₹208 / month</p>
-    <ul class="mt-6 space-y-2 text-left text-sm">
-      <li class="flex gap-2"><span class="font-bold">✔</span> Full B2B directory listing (2 years)</li>
-      <li class="flex gap-2"><span class="font-bold">✔</span> <strong>“Top 10 Pool”</strong> category auto-rotation</li>
-      <li class="flex gap-2"><span class="font-bold">✔</span> 24 monthly mentions in CSVN HR &amp; Decision-Maker Digest</li>
-      <li class="flex gap-2"><span class="font-bold">✔</span> Priority search placement</li>
-      <li class="flex gap-2"><span class="font-bold">✔</span> Direct buyer connection + zero commission</li>
+  <div style="display: flex; flex-direction: column; background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%); border-radius: 1rem; padding: 1.5rem; text-align: center; color: #ffffff; box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.4);">
+    <div style="align-self: center; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Most Popular</div>
+    <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">Featured Pro Growth</h3>
+    <p style="font-size: 0.875rem; color: #e0e7ff; margin-top: 0.25rem;">High-value package for growing vendors seeking continuous, automated exposure.</p>
+    <div style="font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-top: 1rem;">₹4,999<span style="font-size: 1rem; font-weight: 500; color: #c7d2fe;"> / 2 years</span></div>
+    <p style="font-size: 0.75rem; color: #c7d2fe; margin-top: 0.25rem;">Only ~₹208 / month</p>
+    <ul style="margin-top: 1.5rem; margin-bottom: 1.5rem; padding: 0; list-style: none; text-align: left; font-size: 0.875rem; color: #ffffff;">
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="font-weight: 700;">✔</span> Full B2B directory listing (2 years)</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="font-weight: 700;">✔</span> <strong>“Top 10 Pool”</strong> category auto-rotation</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="font-weight: 700;">✔</span> 24 monthly mentions in CSVN HR &amp; Decision-Maker Digest</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="font-weight: 700;">✔</span> Priority search placement</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="font-weight: 700;">✔</span> Direct buyer connection + zero commission</li>
     </ul>
-    <a href="/payment/" class="mt-auto inline-block rounded-lg bg-white px-5 py-3 text-sm font-bold text-indigo-700 no-underline hover:bg-indigo-50">Get Featured Pro — ₹4,999</a>
+    <a href="/payment/" style="margin-top: auto; display: block; background: #ffffff; color: #4f46e5; font-weight: 700; padding: 0.75rem 1.25rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;">Get Featured Pro — ₹4,999</a>
   </div>
 
   <!-- VIP -->
-  <div class="flex flex-col rounded-2xl border-2 border-amber-500 bg-gradient-to-br from-slate-900 to-slate-800 p-6 text-center text-white shadow-xl">
-    <div class="mb-4 self-center rounded-full border border-amber-500/50 bg-amber-500/15 px-3 py-1 text-xs font-bold uppercase tracking-wide text-amber-400">Maximum Visibility</div>
-    <h3 class="text-xl font-extrabold">VIP Leader Spotlight</h3>
-    <p class="mt-1 text-sm text-slate-300">For market leaders demanding premium position, homepage reach, and maximum exposure.</p>
-    <div class="mt-4 text-4xl font-extrabold">₹9,999<span class="text-base font-medium text-slate-400"> / 2 years</span></div>
-    <p class="mt-1 text-xs text-slate-400">Only ~₹416 / month</p>
-    <ul class="mt-6 space-y-2 text-left text-sm">
-      <li class="flex gap-2"><span class="font-bold text-amber-400">★</span> <strong>Homepage featured auto-rotation</strong></li>
-      <li class="flex gap-2"><span class="font-bold text-amber-400">★</span> <strong>“Top 3 Pool”</strong> category auto-rotation</li>
-      <li class="flex gap-2"><span class="font-bold text-amber-400">★</span> Exclusive “Top Partner Spotlight” in 24 monthly HR Digest emails</li>
-      <li class="flex gap-2"><span class="font-bold text-amber-400">★</span> Highest priority category &amp; search placement</li>
-      <li class="flex gap-2"><span class="font-bold text-amber-400">★</span> Full B2B directory listing (2 years) + zero commission</li>
+  <div style="display: flex; flex-direction: column; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 2px solid #f59e0b; border-radius: 1rem; padding: 1.5rem; text-align: center; color: #ffffff; box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.5);">
+    <div style="align-self: center; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.5); color: #fbbf24; border-radius: 9999px; padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Maximum Visibility</div>
+    <h3 style="font-size: 1.25rem; font-weight: 800; color: #ffffff; margin: 0;">VIP Leader Spotlight</h3>
+    <p style="font-size: 0.875rem; color: #94a3b8; margin-top: 0.25rem;">For market leaders demanding premium position, homepage reach, and maximum exposure.</p>
+    <div style="font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-top: 1rem;">₹9,999<span style="font-size: 1rem; font-weight: 500; color: #94a3b8;"> / 2 years</span></div>
+    <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.25rem;">Only ~₹416 / month</p>
+    <ul style="margin-top: 1.5rem; margin-bottom: 1.5rem; padding: 0; list-style: none; text-align: left; font-size: 0.875rem; color: #ffffff;">
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #fbbf24; font-weight: 700;">★</span> <strong>Homepage featured auto-rotation</strong></li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #fbbf24; font-weight: 700;">★</span> <strong>“Top 3 Pool”</strong> category auto-rotation</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #fbbf24; font-weight: 700;">★</span> Exclusive “Top Partner Spotlight” in 24 monthly HR Digest emails</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #fbbf24; font-weight: 700;">★</span> Highest priority category &amp; search placement</li>
+      <li style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;"><span style="color: #fbbf24; font-weight: 700;">★</span> Full B2B directory listing (2 years) + zero commission</li>
     </ul>
-    <a href="/payment/" class="mt-auto inline-block rounded-lg bg-amber-500 px-5 py-3 text-sm font-extrabold text-slate-900 no-underline hover:bg-amber-400">Get VIP Spotlight — ₹9,999</a>
+    <a href="/payment/" style="margin-top: auto; display: block; background: #f59e0b; color: #0f172a; font-weight: 800; padding: 0.75rem 1.25rem; border-radius: 0.5rem; text-decoration: none; font-size: 0.875rem;">Get VIP Spotlight — ₹9,999</a>
   </div>
 
 </div>
@@ -67,34 +67,34 @@ Every plan puts your business in front of decision-makers browsing CSVN. Pick th
 
 ## Plan Comparison
 
-<div class="overflow-x-auto my-8">
+<div class="table-wrapper">
   <table class="csvn-table">
     <thead>
       <tr>
         <th>Feature</th>
-        <th class="text-center">Starter<br><span class="text-xs font-normal text-gray-500">₹999 / 1 yr</span></th>
-        <th class="text-center">Featured Pro<br><span class="text-xs font-normal text-gray-500">₹4,999 / 2 yrs</span></th>
-        <th class="text-center">VIP Leader<br><span class="text-xs font-normal text-gray-500">₹9,999 / 2 yrs</span></th>
+        <th>Starter<br><span style="font-size: 0.7rem; font-weight: normal; color: #6b7280;">₹999 / 1 yr</span></th>
+        <th>Featured Pro<br><span style="font-size: 0.7rem; font-weight: normal; color: #6b7280;">₹4,999 / 2 yrs</span></th>
+        <th>VIP Leader<br><span style="font-size: 0.7rem; font-weight: normal; color: #6b7280;">₹9,999 / 2 yrs</span></th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Full business profile page</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Direct contact details (phone, WhatsApp, email, website)</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Category listing (90+ categories)</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Service list (up to 10 services)</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Location + map link</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Business hours displayed</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Listed badge</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Unlimited buyer contacts</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Payment receipt</td><td class="text-center">✅</td><td class="text-center">✅</td><td class="text-center">✅</td></tr>
-      <tr><td>Listing validity</td><td class="text-center">1 year</td><td class="text-center">2 years</td><td class="text-center">2 years</td></tr>
-      <tr><td>Catalogue links</td><td class="text-center">1</td><td class="text-center">Multiple</td><td class="text-center">Multiple</td></tr>
-      <tr><td>Category rotation pool</td><td class="text-center">Standard tier</td><td class="text-center"><strong>Top 10 Pool</strong></td><td class="text-center"><strong>Top 3 Pool</strong></td></tr>
-      <tr><td>Homepage featured rotation</td><td class="text-center">—</td><td class="text-center">—</td><td class="text-center">✅</td></tr>
-      <tr><td>Monthly HR &amp; Decision-Maker Digest mentions</td><td class="text-center">—</td><td class="text-center">24</td><td class="text-center">24 (Top Partner Spotlight)</td></tr>
-      <tr><td>Search placement priority</td><td class="text-center">Standard</td><td class="text-center">Priority</td><td class="text-center">Highest priority</td></tr>
-      <tr><td>Commission on closed deals</td><td class="text-center">₹0</td><td class="text-center">₹0</td><td class="text-center">₹0</td></tr>
-      <tr><td>Effective monthly cost</td><td class="text-center">₹83 / month</td><td class="text-center">~₹208 / month</td><td class="text-center">~₹416 / month</td></tr>
+      <tr><td>Full business profile page</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Direct contact details</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Category listing (90+ categories)</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Service list (up to 10 services)</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Location + map link</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Business hours displayed</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Listed badge</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Unlimited buyer contacts</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Payment receipt</td><td>✅</td><td>✅</td><td>✅</td></tr>
+      <tr><td>Listing validity</td><td>1 year</td><td>2 years</td><td>2 years</td></tr>
+      <tr><td>Catalogue links</td><td>1</td><td>Multiple</td><td>Multiple</td></tr>
+      <tr><td>Category rotation pool</td><td>Standard tier</td><td><strong>Top 10 Pool</strong></td><td><strong>Top 3 Pool</strong></td></tr>
+      <tr><td>Homepage featured rotation</td><td>—</td><td>—</td><td>✅</td></tr>
+      <tr><td>Monthly HR Digest mentions</td><td>—</td><td>24</td><td>24 (Top Partner Spotlight)</td></tr>
+      <tr><td>Search placement priority</td><td>Standard</td><td>Priority</td><td>Highest priority</td></tr>
+      <tr><td>Commission on closed deals</td><td>₹0</td><td>₹0</td><td>₹0</td></tr>
+      <tr><td>Effective monthly cost</td><td>₹83 / month</td><td>~₹208 / month</td><td>~₹416 / month</td></tr>
     </tbody>
   </table>
 </div>
