@@ -18,8 +18,8 @@ Every plan puts your business in front of decision-makers browsing CSVN. Pick th
     <div style="font-size: 40px; font-weight: 800; color: #111827;">₹999<span style="font-size: 16px; font-weight: normal; color: #6b7280;"> / year</span></div>
     <p style="font-size: 12px; color: #9ca3af; margin-top: 4px; margin-bottom: 24px;">1 year validity</p>
     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; text-align: left; font-size: 14px; color: #374151; line-height: 1.6;">
-      <li style="margin-bottom: 10px;">✔ <strong>Standard</strong> B2B directory listing (1 year)</li>
-      <li style="margin-bottom: 10px;">✔ <strong>Standard</strong> category placement</li>
+      <li style="margin-bottom: 10px;">✔ <span style="font-weight: 700; background: transparent; color: inherit; padding: 0;">Standard</span> B2B directory listing (1 year)</li>
+      <li style="margin-bottom: 10px;">✔ <span style="font-weight: 700; background: transparent; color: inherit; padding: 0;">Standard</span> category placement</li>
       <li style="margin-bottom: 10px;">✔ Direct buyer connection — calls, WhatsApp, website</li>
       <li style="margin-bottom: 10px;">✔ Zero commission on closed deals</li>
       <li style="margin-bottom: 10px;">✔ Rotation within the Standard tier</li>
@@ -36,7 +36,7 @@ Every plan puts your business in front of decision-makers browsing CSVN. Pick th
     <p style="font-size: 12px; color: #c7d2fe; margin-top: 4px; margin-bottom: 24px;">Only ~₹208 / month</p>
     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; text-align: left; font-size: 14px; color: #ffffff; line-height: 1.6;">
       <li style="margin-bottom: 10px;">✔ Full B2B directory listing (2 years)</li>
-      <li style="margin-bottom: 10px;">✔ <strong>“Top 10 Pool”</strong> category auto-rotation</li>
+      <li style="margin-bottom: 10px;">✔ <span style="font-weight: 700; background: transparent; color: inherit; padding: 0;">“Top 10 Pool”</span> category auto-rotation</li>
       <li style="margin-bottom: 10px;">✔ 24 monthly mentions in CSVN HR &amp; Decision-Maker Digest</li>
       <li style="margin-bottom: 10px;">✔ Priority search placement</li>
       <li style="margin-bottom: 10px;">✔ Direct buyer connection + zero commission</li>
@@ -52,8 +52,8 @@ Every plan puts your business in front of decision-makers browsing CSVN. Pick th
     <div style="font-size: 40px; font-weight: 800; color: #ffffff;">₹9,999<span style="font-size: 16px; font-weight: normal; color: #94a3b8;"> / 2 years</span></div>
     <p style="font-size: 12px; color: #94a3b8; margin-top: 4px; margin-bottom: 24px;">Only ~₹416 / month</p>
     <ul style="list-style: none; padding: 0; margin: 0 0 24px 0; text-align: left; font-size: 14px; color: #ffffff; line-height: 1.6;">
-      <li style="margin-bottom: 10px;">★ <strong>Homepage featured auto-rotation</strong></li>
-      <li style="margin-bottom: 10px;">★ <strong>“Top 3 Pool”</strong> category auto-rotation</li>
+      <li style="margin-bottom: 10px;">★ <span style="font-weight: 700; background: transparent; color: inherit; padding: 0;">Homepage featured auto-rotation</span></li>
+      <li style="margin-bottom: 10px;">★ <span style="font-weight: 700; background: transparent; color: inherit; padding: 0;">“Top 3 Pool”</span> category auto-rotation</li>
       <li style="margin-bottom: 10px;">★ Exclusive “Top Partner Spotlight” in 24 monthly HR Digest emails</li>
       <li style="margin-bottom: 10px;">★ Highest priority category &amp; search placement</li>
       <li style="margin-bottom: 10px;">★ Full B2B directory listing (2 years) + zero commission</li>
