@@ -306,11 +306,11 @@ layout: "page"
 (function(){
 'use strict';
 
-// --- UROPAY LINKS ---
+// --- UROPAY LINKS (UPDATED) ---
 var UROPAY_LINKS = {
-  starter: 'https://p.urpy.link/igwb',
-  pro:     'https://p.urpy.link/0Bza',
-  vip:     'https://p.urpy.link/HTIj'
+  starter: 'https://p.urpy.link/VCeX',
+  pro:     'https://p.urpy.link/Bw2W',
+  vip:     'https://p.urpy.link/2Vl5'
 };
 
 var PLANS={
