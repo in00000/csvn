@@ -110,7 +110,7 @@ layout: "page"
     </div>
   </div>
 
-  <p class="csvn-foot"><strong>CSVN</strong> — Corporate Services Vendor Network<br>Nigdi, Pimchi-Chinchwad, Pune, Maharashtra<br><a href="mailto:info@csvn.in">info@csvn.in</a> · <a href="tel:+918793932827">+91 87939 32827</a> · Mon–Sat, 10 AM – 6 PM IST</p>
+  <p class="csvn-foot"><strong>CSVN</strong> — Corporate Services Vendor Network<br>Nigdi, Pimpri-Chinchwad, Pune, Maharashtra<br><a href="mailto:info@csvn.in">info@csvn.in</a> · <a href="tel:+918793932827">+91 87939 32827</a> · Mon–Sat, 10 AM – 6 PM IST</p>
 </div>
 
 <script>
