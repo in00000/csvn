@@ -165,45 +165,136 @@ layout: "page"
   </div>
 </div>
 
-<div class="csvn-steps"><div class="csvn-step active" data-step="1"><div class="csvn-step-num"><span>1</span></div><span class="step-label">Your Details</span></div><div class="csvn-step" data-step="2"><div class="csvn-step-num"><span>2</span></div><span class="step-label">Pay via UPI</span></div><div class="csvn-step" data-step="3"><div class="csvn-step-num"><span>3</span></div><span class="step-label">Generate Receipt</span></div><div class="csvn-step" data-step="4"><div class="csvn-step-num"><span>4</span></div><span class="step-label">Confirmation</span></div></div>
+<div class="csvn-steps"><div class="csvn-step active" data-step="1"><div class="csvn-step-num"><span>1</span></div><span class="step-label">Your Details</span></div><div class="csvn-step" data-step="2"><div class="csvn-step-num"><span>2</span></div><span class="step-label">Secure Payment</span></div><div class="csvn-step" data-step="3"><div class="csvn-step-num"><span>3</span></div><span class="step-label">Download Receipt</span></div><div class="csvn-step" data-step="4"><div class="csvn-step-num"><span>4</span></div><span class="step-label">What's Next</span></div></div>
 
-<div class="csvn-card" id="csvn-section-1"><div class="csvn-card-title"><span class="csvn-badge">1</span>Choose Your Plan &amp; Business Details</div><p class="csvn-card-desc">Select a plan, then tell us about your business. We'll use these details to prepare your receipt and activate your listing.</p>
+<!-- SECTION 1: Business Details & Plan -->
+<div class="csvn-card" id="csvn-section-1">
+  <div class="csvn-card-title"><span class="csvn-badge">1</span>Choose Your Plan &amp; Business Details</div>
+  <p class="csvn-card-desc">Select a plan, then tell us about your business. We'll use these details to prepare your receipt and activate your listing.</p>
 
-<div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Step 1a — Choose Your Plan</div>
-<div class="csvn-plans" id="csvn-plans">
-  <div class="csvn-plan selected" data-plan="starter">
-    <div class="csvn-plan-tag starter">Starter</div>
-    <div class="csvn-plan-name">Starter Listing</div>
-    <div class="csvn-plan-price">₹999</div>
-    <div class="csvn-plan-validity">1 year · Standard placement</div>
+  <div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Step 1a — Choose Your Plan</div>
+  <div class="csvn-plans" id="csvn-plans">
+    <div class="csvn-plan selected" data-plan="starter">
+      <div class="csvn-plan-tag starter">Starter</div>
+      <div class="csvn-plan-name">Starter Listing</div>
+      <div class="csvn-plan-price">₹999</div>
+      <div class="csvn-plan-validity">1 year · Standard placement</div>
+    </div>
+    <div class="csvn-plan" data-plan="pro">
+      <div class="csvn-plan-tag pro">Most Popular</div>
+      <div class="csvn-plan-name">Featured Pro</div>
+      <div class="csvn-plan-price">₹4,999</div>
+      <div class="csvn-plan-validity">2 years · Top 10 Pool</div>
+    </div>
+    <div class="csvn-plan" data-plan="vip">
+      <div class="csvn-plan-tag vip">VIP</div>
+      <div class="csvn-plan-name">VIP Leader</div>
+      <div class="csvn-plan-price">₹9,999</div>
+      <div class="csvn-plan-validity">2 years · Top 3 Pool + Homepage</div>
+    </div>
   </div>
-  <div class="csvn-plan" data-plan="pro">
-    <div class="csvn-plan-tag pro">Most Popular</div>
-    <div class="csvn-plan-name">Featured Pro</div>
-    <div class="csvn-plan-price">₹4,999</div>
-    <div class="csvn-plan-validity">2 years · Top 10 Pool</div>
-  </div>
-  <div class="csvn-plan" data-plan="vip">
-    <div class="csvn-plan-tag vip">VIP</div>
-    <div class="csvn-plan-name">VIP Leader</div>
-    <div class="csvn-plan-price">₹9,999</div>
-    <div class="csvn-plan-validity">2 years · Top 3 Pool + Homepage</div>
+
+  <div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;">Step 1b — Business Details</div>
+  <div class="csvn-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><p>Please enter details exactly as you want them to appear on your receipt and public listing. You'll be able to review everything in Step 3.</p></div>
+  
+  <form id="csvnBusinessForm" onsubmit="csvnSubmitBusiness(event)" novalidate>
+    <div class="csvn-form-grid">
+      <div class="csvn-field"><label for="csvn-bizName">Business Name <span class="req">*</span></label><input type="text" id="csvn-bizName" placeholder="e.g. Shree Ganesh Electricals Pvt Ltd" required><div class="csvn-err" id="csvn-err-bizName">Please enter your business name (min. 2 characters)</div></div>
+      <div class="csvn-field"><label for="csvn-contactName">Account Holder / Contact Person <span class="req">*</span></label><input type="text" id="csvn-contactName" placeholder="e.g. Rahul Sharma" required><div class="csvn-err" id="csvn-err-contactName">Please enter the account holder name</div></div>
+      <div class="csvn-form-row">
+        <div class="csvn-field"><label for="csvn-email">Email Address <span class="req">*</span></label><input type="email" id="csvn-email" placeholder="you@business.com" required><div class="csvn-hint">Your receipt and confirmation will be emailed here.</div><div class="csvn-err" id="csvn-err-email">Please enter a valid email address</div></div>
+        <div class="csvn-field"><label for="csvn-phone">WhatsApp Number <span class="req">*</span></label><input type="tel" id="csvn-phone" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric" required><div class="csvn-err" id="csvn-err-phone">Please enter a valid 10-digit mobile number</div></div>
+      </div>
+      <div class="csvn-form-row">
+        <div class="csvn-field"><label for="csvn-category">Business Category <span class="req">*</span></label><select id="csvn-category" required><option value="">Select your category</option><option>Accounting &amp; Taxation</option><option>Legal &amp; Compliance</option><option>IT &amp; Software Services</option><option>Marketing &amp; Advertising</option><option>HR &amp; Recruitment</option><option>Logistics &amp; Supply Chain</option><option>Manufacturing &amp; Industrial</option><option>Real Estate &amp; Construction</option><option>Financial Services</option><option>Consulting &amp; Advisory</option><option>Other Corporate Services</option></select><div class="csvn-err" id="csvn-err-category">Please select a category</div></div>
+        <div class="csvn-field"><label for="csvn-city">City / Area <span class="req">*</span></label><input type="text" id="csvn-city" placeholder="e.g. Pimpri-Chinchwad, Pune" required><div class="csvn-err" id="csvn-err-city">Please enter your city</div></div>
+      </div>
+      <div class="csvn-form-row">
+        <div class="csvn-field"><label for="csvn-website">Business Website <span class="opt">(optional)</span></label><input type="url" id="csvn-website" placeholder="https://yourbusiness.com"></div>
+        <div class="csvn-field"><label for="csvn-gst">GST Number <span class="opt">(optional)</span></label><input type="text" id="csvn-gst" placeholder="27ABCDE1234F1Z5" maxlength="15" style="text-transform:uppercase"></div>
+      </div>
+    </div>
+    <button type="submit" class="csvn-btn csvn-btn-primary csvn-btn-block" style="margin-top:22px" id="csvnContinueBtn">Proceed to Secure Payment →</button>
+  </form>
+</div>
+
+<!-- SECTION 2: Redirecting State (Hidden by default) -->
+<div class="csvn-card" id="csvn-section-2" style="display:none">
+  <div style="text-align:center;padding:40px;">
+    <div class="csvn-success-icon" style="background:#eef2ff;color:#4f46e5;margin-bottom:20px;">⏳</div>
+    <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin-bottom:10px;">Redirecting to Secure Payment</h3>
+    <p style="color:#64748b;">Please wait while we redirect you to UroPay to complete your payment securely...</p>
   </div>
 </div>
 
-<div style="font-size:12px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin:20px 0 10px;">Step 1b — Business Details</div>
-<div class="csvn-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><p>Please enter details exactly as you want them to appear on your receipt and public listing. You'll be able to review everything in Step 3.</p></div>
-<form id="csvnBusinessForm" onsubmit="csvnSubmitBusiness(event)" novalidate><div class="csvn-form-grid"><div class="csvn-field"><label for="csvn-bizName">Business Name <span class="req">*</span></label><input type="text" id="csvn-bizName" placeholder="e.g. Shree Ganesh Electricals Pvt Ltd" required><div class="csvn-err" id="csvn-err-bizName">Please enter your business name (min. 2 characters)</div></div><div class="csvn-field"><label for="csvn-contactName">Account Holder / Contact Person <span class="req">*</span></label><input type="text" id="csvn-contactName" placeholder="e.g. Rahul Sharma" required><div class="csvn-err" id="csvn-err-contactName">Please enter the account holder name</div></div><div class="csvn-form-row"><div class="csvn-field"><label for="csvn-email">Email Address <span class="req">*</span></label><input type="email" id="csvn-email" placeholder="you@business.com" required><div class="csvn-hint">Your receipt and confirmation will be emailed here.</div><div class="csvn-err" id="csvn-err-email">Please enter a valid email address</div></div><div class="csvn-field"><label for="csvn-phone">WhatsApp Number <span class="req">*</span></label><input type="tel" id="csvn-phone" placeholder="10-digit mobile number" maxlength="10" inputmode="numeric" required><div class="csvn-err" id="csvn-err-phone">Please enter a valid 10-digit mobile number</div></div></div><div class="csvn-form-row"><div class="csvn-field"><label for="csvn-category">Business Category <span class="req">*</span></label><select id="csvn-category" required><option value="">Select your category</option><option>Accounting &amp; Taxation</option><option>Legal &amp; Compliance</option><option>IT &amp; Software Services</option><option>Marketing &amp; Advertising</option><option>HR &amp; Recruitment</option><option>Logistics &amp; Supply Chain</option><option>Manufacturing &amp; Industrial</option><option>Real Estate &amp; Construction</option><option>Financial Services</option><option>Consulting &amp; Advisory</option><option>Other Corporate Services</option></select><div class="csvn-err" id="csvn-err-category">Please select a category</div></div><div class="csvn-field"><label for="csvn-city">City / Area <span class="req">*</span></label><input type="text" id="csvn-city" placeholder="e.g. Pimpri-Chinchwad, Pune" required><div class="csvn-err" id="csvn-err-city">Please enter your city</div></div></div><div class="csvn-form-row"><div class="csvn-field"><label for="csvn-website">Business Website <span class="opt">(optional)</span></label><input type="url" id="csvn-website" placeholder="https://yourbusiness.com"></div><div class="csvn-field"><label for="csvn-gst">GST Number <span class="opt">(optional)</span></label><input type="text" id="csvn-gst" placeholder="27ABCDE1234F1Z5" maxlength="15" style="text-transform:uppercase"></div></div></div><button type="submit" class="csvn-btn csvn-btn-primary csvn-btn-block" style="margin-top:22px">Continue to Payment →</button></form></div>
+<!-- SECTION 3: Success & Invoice -->
+<div class="csvn-card" id="csvn-section-3" style="display:none">
+  <div class="csvn-card-title"><span class="csvn-badge">3</span>Payment Successful &amp; Receipt</div>
+  <p class="csvn-card-desc">Your payment has been received successfully. You can download your official receipt below.</p>
+  
+  <div class="csvn-summary">
+    <h4>Your Order</h4>
+    <div class="csvn-summary-row"><span class="k">Plan</span><span class="v" id="csvn-sum-plan">Starter Listing</span></div>
+    <div class="csvn-summary-row"><span class="k">Validity</span><span class="v" id="csvn-sum-validity">1 year</span></div>
+    <div class="csvn-summary-row"><span class="k">Business Name</span><span class="v" id="csvn-sum-biz">—</span></div>
+    <div class="csvn-summary-row"><span class="k">Account Holder</span><span class="v" id="csvn-sum-name">—</span></div>
+    <div class="csvn-summary-row"><span class="k">Email</span><span class="v" id="csvn-sum-email">—</span></div>
+    <div class="csvn-summary-row"><span class="k">WhatsApp</span><span class="v" id="csvn-sum-phone">—</span></div>
+    <div class="csvn-summary-row"><span class="k">Category</span><span class="v" id="csvn-sum-category">—</span></div>
+    <div class="csvn-summary-row"><span class="k">City</span><span class="v" id="csvn-sum-city">—</span></div>
+    <div class="csvn-summary-row total"><span class="k">Amount Paid</span><span class="v" id="csvn-sum-total">₹999.00</span></div>
+  </div>
 
-<div class="csvn-card" id="csvn-section-2" style="display:none"><div class="csvn-card-title"><span class="csvn-badge">2</span>Pay <span id="csvn-step2-amount">₹999</span> via UPI</div><p class="csvn-card-desc">Scan the QR code with any UPI app, or pay directly to our verified UPI ID. Complete the payment, then continue to Step 3.</p><div class="csvn-payee"><div class="csvn-payee-head"><div class="csvn-payee-check">✓</div><div class="csvn-payee-title">Verified Payee — Confirm Before Paying</div></div><div class="csvn-payee-row"><span class="lbl">Account Holder</span><span class="val">Sachin Ambekar</span></div><div class="csvn-payee-row"><span class="lbl">Business Name</span><span class="val">CSVN — Corporate Services Vendor Network</span></div><div class="csvn-payee-row"><span class="lbl">Payment Gateway</span><span class="val">BharatPe (Yes Bank)</span></div><div class="csvn-payee-row"><span class="lbl">UPI ID</span><span class="val mono">BHARATPE09B9S1M8C3G33183@yesbankltd</span></div></div><p style="font-size:13px;color:#64748b;margin-bottom:16px">When you scan the QR or paste the UPI ID, your app will display the payee as <span style="font-weight:800;color:#0f172a">Sachin Ambekar</span>. This is the only correct account for CSVN payments.</p><div class="csvn-qr"><img id="csvnQr" src="/qr.png" alt="CSVN Payment QR Code" loading="lazy"><div class="csvn-qr-hint">Scan with any UPI app</div><div class="csvn-upi-apps"><span class="dot"></span>PhonePe · GPay · Paytm · BHIM</div><div class="csvn-btn-row" style="margin-top:16px"><button type="button" class="csvn-btn csvn-btn-ghost" onclick="csvnDownloadQR(this)">↓ Download QR</button><a class="csvn-btn csvn-btn-primary" id="csvnUpiLink" href="#" style="display:none">Open UPI App</a></div></div><p style="font-size:11.5px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Or pay to this UPI ID</p><div class="csvn-upi-box"><code>BHARATPE09B9S1M8C3G33183@yesbankltd</code><button type="button" class="csvn-copy-btn" onclick="csvnCopy('BHARATPE09B9S1M8C3G33183@yesbankltd',this)">Copy</button></div><p style="font-size:11.5px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px">Amount to pay</p><div class="csvn-upi-box"><code style="color:#10b981" id="csvn-upi-amount">₹999.00</code><button type="button" class="csvn-copy-btn" onclick="csvnCopyAmount(this)">Copy</button></div><div class="csvn-info" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><p>After completing the payment, keep your UPI app open — you'll need the <span style="font-weight:800">12-digit UTR / Transaction ID</span> for the next step.</p></div><button type="button" class="csvn-btn csvn-btn-primary csvn-btn-block" style="margin-top:18px" onclick="csvnNextStep(3)">I've Paid · Continue to Receipt →</button></div>
+  <div class="csvn-success show" id="csvnSuccess">
+    <div class="csvn-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h3>Payment Confirmed</h3>
+    <p>Thank you! We've received your payment details. A confirmation email has been sent to you and our team. We'll activate your listing within 4 business days.</p>
+    <div class="csvn-success-ref" id="csvnSuccessRef">Order ID: UROPAY-XXXX</div>
+    <div class="csvn-btn-row" style="margin-bottom:16px">
+      <button type="button" class="csvn-btn csvn-btn-primary" onclick="csvnDownloadInvoice(this)" id="csvnDownloadBtn">↓ Download Receipt (PDF)</button>
+      <button type="button" class="csvn-btn csvn-btn-ghost" onclick="window.print()">Print</button>
+    </div>
+    <p style="font-size:12px;color:#64748b">Questions? Email <a href="mailto:info@csvn.in" style="color:#4f46e5;font-weight:700">info@csvn.in</a> or WhatsApp <a href="tel:+918793932827" style="color:#4f46e5;font-weight:700">+91 87939 32827</a></p>
+  </div>
+</div>
 
-<div class="csvn-card" id="csvn-section-3" style="display:none"><div class="csvn-card-title"><span class="csvn-badge">3</span>Confirm Payment &amp; Generate Receipt</div><p class="csvn-card-desc">Enter your UPI Transaction ID (UTR) and upload a screenshot of your payment. We'll generate your receipt instantly.</p><div class="csvn-summary"><h4>Your Order <a class="edit-link" onclick="csvnShowStep(1)">Edit →</a></h4><div class="csvn-summary-row"><span class="k">Plan</span><span class="v" id="csvn-sum-plan">Starter Listing</span></div><div class="csvn-summary-row"><span class="k">Validity</span><span class="v" id="csvn-sum-validity">1 year</span></div><div class="csvn-summary-row"><span class="k">Business Name</span><span class="v" id="csvn-sum-biz">—</span></div><div class="csvn-summary-row"><span class="k">Account Holder</span><span class="v" id="csvn-sum-name">—</span></div><div class="csvn-summary-row"><span class="k">Email</span><span class="v" id="csvn-sum-email">—</span></div><div class="csvn-summary-row"><span class="k">WhatsApp</span><span class="v" id="csvn-sum-phone">—</span></div><div class="csvn-summary-row"><span class="k">Category</span><span class="v" id="csvn-sum-category">—</span></div><div class="csvn-summary-row"><span class="k">City</span><span class="v" id="csvn-sum-city">—</span></div><div class="csvn-summary-row total"><span class="k">Amount</span><span class="v" id="csvn-sum-total">₹999.00</span></div></div><form id="csvnPaymentForm" onsubmit="csvnSubmitPayment(event)" novalidate><div class="csvn-form-grid"><div class="csvn-field"><label for="csvn-utr">UPI Transaction ID / UTR <span class="req">*</span></label><input type="text" id="csvn-utr" placeholder="12-digit reference from your UPI app" maxlength="12" inputmode="numeric" required><div class="csvn-hint">Find this in your UPI app → tap the payment → copy the 12-digit Transaction ID.</div><div class="csvn-err" id="csvn-err-utr">Please enter a valid 12-digit UTR</div></div><div class="csvn-field"><label>Payment Screenshot <span class="req">*</span></label><label class="csvn-upload" id="csvnUpload" for="csvn-screenshot"><input type="file" id="csvn-screenshot" accept="image/*" onchange="csvnHandleFile(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg><div class="fu-title">Click to upload or drag &amp; drop</div><div class="fu-desc">PNG, JPG up to 5 MB</div></label><div class="csvn-file-preview" id="csvnFilePreview"><img id="csvnFileThumb" src="" alt=""><div class="info"><div class="name" id="csvnFileName"></div><div class="size" id="csvnFileSize"></div></div><button type="button" class="remove" onclick="csvnRemoveFile()">Remove</button></div><div class="csvn-err" id="csvn-err-screenshot">Please attach a payment screenshot</div></div></div><button type="submit" class="csvn-btn csvn-btn-primary csvn-btn-block" style="margin-top:22px" id="csvnSubmitBtn">Confirm Payment · Generate Receipt</button></form><div class="csvn-success" id="csvnSuccess"><div class="csvn-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><h3>Receipt Generated Successfully</h3><p>We've received your payment details. A confirmation email with your receipt has been sent to both you and our team. We'll verify the UTR and activate your listing within 4 business days.</p><div class="csvn-success-ref" id="csvnSuccessRef">Receipt: CSVN-XXXX-XXXX</div><div class="csvn-btn-row" style="margin-bottom:16px"><button type="button" class="csvn-btn csvn-btn-primary" onclick="csvnDownloadInvoice(this)" id="csvnDownloadBtn">↓ Download Receipt (PDF)</button><button type="button" class="csvn-btn csvn-btn-ghost" onclick="window.print()">Print</button><button type="button" class="csvn-btn csvn-btn-ghost" onclick="csvnReset()">New Payment</button></div><p style="font-size:12px;color:#64748b">Questions? Email <a href="mailto:info@csvn.in" style="color:#4f46e5;font-weight:700">info@csvn.in</a> or WhatsApp <a href="tel:+918793932827" style="color:#4f46e5;font-weight:700">+91 87939 32827</a></p></div></div>
+<!-- SECTION 4: What Happens Next & FAQ -->
+<div class="csvn-card" id="csvn-section-4" style="display:none">
+  <div class="csvn-card-title"><span class="csvn-badge">4</span>What Happens Next</div>
+  <p class="csvn-card-desc">Your payment confirmation has reached our team. Here's our verification and activation timeline.</p>
+  <div style="display:grid;gap:10px">
+    <div class="csvn-trust"><div class="ti-icon">1</div><div><div class="ti-title">Payment Verification</div><div class="ti-desc">We match your UroPay transaction against our bank statement. Typically within <span style="font-weight:800">4 business hours</span>.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">2</div><div><div class="ti-title">Business Details Confirmation</div><div class="ti-desc">We verify your business name, address, and category. Within <span style="font-weight:800">1 business day</span>.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">3</div><div><div class="ti-title">Listing Goes Live</div><div class="ti-desc">Your business appears on CSVN with your plan's placement. Within <span style="font-weight:800">4 business days</span>.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">4</div><div><div class="ti-title">Official Receipt Email</div><div class="ti-desc">An official payment receipt is emailed to you. Sent the <span style="font-weight:800">same day</span> as activation.</div></div></div>
+  </div>
+</div>
 
-<div class="csvn-card" id="csvn-section-4" style="display:none"><div class="csvn-card-title"><span class="csvn-badge">4</span>What Happens Next</div><p class="csvn-card-desc">Your payment confirmation has reached our team. Here's our verification and activation timeline.</p><div style="display:grid;gap:10px"><div class="csvn-trust"><div class="ti-icon">1</div><div><div class="ti-title">Payment Verification</div><div class="ti-desc">We match your UTR against our bank statement. Typically within <span style="font-weight:800">4 business hours</span>.</div></div></div><div class="csvn-trust"><div class="ti-icon">2</div><div><div class="ti-title">Business Details Confirmation</div><div class="ti-desc">We verify your business name, address, and category. Within <span style="font-weight:800">1 business day</span>.</div></div></div><div class="csvn-trust"><div class="ti-icon">3</div><div><div class="ti-title">Listing Goes Live</div><div class="ti-desc">Your business appears on CSVN with your plan's placement. Within <span style="font-weight:800">4 business days</span>.</div></div></div><div class="csvn-trust"><div class="ti-icon">4</div><div><div class="ti-title">Official Receipt Email</div><div class="ti-desc">An official payment receipt is emailed to you. Sent the <span style="font-weight:800">same day</span> as activation.</div></div></div></div></div>
+<div class="csvn-card">
+  <div class="csvn-card-title">Your Payment Is Protected</div>
+  <p class="csvn-card-desc">We follow strict verification practices to keep your money and data safe.</p>
+  <div class="csvn-trust-grid">
+    <div class="csvn-trust"><div class="ti-icon">🔒</div><div><div class="ti-title">Verified Payee</div><div class="ti-desc">Registered under Sachin Ambekar via UroPay.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">✓</div><div><div class="ti-title">Refund Policy</div><div class="ti-desc">Full refund if requested before listing goes live. See <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">⏱</div><div><div class="ti-title">4-Day Activation</div><div class="ti-desc">Your listing goes live within 4 business days.</div></div></div>
+    <div class="csvn-trust"><div class="ti-icon">✉</div><div><div class="ti-title">Official Receipt</div><div class="ti-desc">Emailed automatically after activation.</div></div></div>
+  </div>
+  <div class="csvn-warn">
+    <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>We will NEVER ask you for:</h4>
+    <ul><li>Your UPI PIN, OTP, CVV, or bank password</li><li>Payment to any UPI ID other than the one on this page</li><li>Payment via gift cards, crypto, or unusual methods</li><li>Payment requests over WhatsApp or social media DMs</li></ul>
+    <p style="font-size:12px;color:#7f1d1d;margin-top:12px;line-height:1.6">If anyone contacts you claiming to be from CSVN and asks for something different, report it to <a href="mailto:report@csvn.in" style="color:#991b1b;font-weight:800">report@csvn.in</a> immediately.</p>
+  </div>
+</div>
 
-<div class="csvn-card"><div class="csvn-card-title">Your Payment Is Protected</div><p class="csvn-card-desc">We follow strict verification practices to keep your money and data safe.</p><div class="csvn-trust-grid"><div class="csvn-trust"><div class="ti-icon">🔒</div><div><div class="ti-title">Verified Payee</div><div class="ti-desc">Registered under Sachin Ambekar via BharatPe.</div></div></div><div class="csvn-trust"><div class="ti-icon">✓</div><div><div class="ti-title">Refund Policy</div><div class="ti-desc">Full refund if requested before listing goes live. See <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div></div></div><div class="csvn-trust"><div class="ti-icon">⏱</div><div><div class="ti-title">4-Day Activation</div><div class="ti-desc">Your listing goes live within 4 business days.</div></div></div><div class="csvn-trust"><div class="ti-icon">✉</div><div><div class="ti-title">Official Receipt</div><div class="ti-desc">Emailed automatically after activation.</div></div></div></div><div class="csvn-warn"><h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>We will NEVER ask you for:</h4><ul><li>Your UPI PIN, OTP, CVV, or bank password</li><li>Payment to any UPI ID other than the one on this page</li><li>Payment via gift cards, crypto, or unusual methods</li><li>Payment requests over WhatsApp or social media DMs</li></ul><p style="font-size:12px;color:#7f1d1d;margin-top:12px;line-height:1.6">If anyone contacts you claiming to be from CSVN and asks for something different, report it to <a href="mailto:report@csvn.in" style="color:#991b1b;font-weight:800">report@csvn.in</a> immediately.</p></div></div>
-
-<div class="csvn-card"><div class="csvn-card-title">Frequently Asked Questions</div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">What if I paid but didn't receive a confirmation?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Email us at info@csvn.in with your UTR and business name. We'll verify manually and confirm within 2 business hours.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Can I pay from a different UPI app?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. Any UPI app works — PhonePe, Google Pay, Paytm, BHIM, Amazon Pay, WhatsApp Pay, or your bank's app. Just make sure the payee name shows "Sachin Ambekar".</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Can I upgrade to a higher plan later?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes — you can upgrade from Starter to Featured Pro or VIP Leader at any time by paying the difference. Email info@csvn.in with your business name and the plan you want to upgrade to.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Is the payment refundable?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes — full refund if requested before your listing goes live. Once the listing is activated, refunds are subject to our <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">How long does activation take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Within 4 business days of payment verification. You'll get an email with your listing URL and receipt as soon as it's live.</div></div><div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Do I get a payment receipt?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. An official payment receipt is emailed to the address you provide, on the same day your listing is activated.</div></div></div>
+<div class="csvn-card">
+  <div class="csvn-card-title">Frequently Asked Questions</div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">What if I paid but didn't receive a confirmation?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Email us at info@csvn.in with your UroPay Order ID and business name. We'll verify manually and confirm within 2 business hours.</div></div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Can I pay from a different UPI app?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. UroPay supports all major UPI apps, cards, and netbanking. You will be redirected to their secure checkout page to complete the payment.</div></div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Can I upgrade to a higher plan later?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes — you can upgrade from Starter to Featured Pro or VIP Leader at any time by paying the difference. Email info@csvn.in with your business name and the plan you want to upgrade to.</div></div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Is the payment refundable?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes — full refund if requested before your listing goes live. Once the listing is activated, refunds are subject to our <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div></div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">How long does activation take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Within 4 business days of payment verification. You'll get an email with your listing URL and receipt as soon as it's live.</div></div>
+  <div class="csvn-faq-item" onclick="this.classList.toggle('open')"><div class="csvn-faq-q">Do I get a payment receipt?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="csvn-faq-a">Yes. You can download the official CSVN receipt directly from this page after payment. UroPay will also email you their standard transaction receipt.</div></div>
+</div>
 
 <p class="csvn-foot"><strong>CSVN</strong> — Corporate Services Vendor Network<br>Nigdi, Pimpri-Chinchwad, Pune, Maharashtra<br><a href="mailto:info@csvn.in">info@csvn.in</a> · <a href="tel:+918793932827">+91 87939 32827</a> · Mon–Sat, 10 AM – 6 PM IST</p>
 
@@ -214,6 +305,14 @@ layout: "page"
 <script>
 (function(){
 'use strict';
+
+// --- UROPAY LINKS ---
+var UROPAY_LINKS = {
+  starter: 'https://p.urpy.link/mOsN',
+  pro:     'https://p.urpy.link/0Bza',
+  vip:     'https://p.urpy.link/HTIj'
+};
+
 var PLANS={
   starter:{key:'starter',name:'Starter Listing',short:'Starter',amount:999,validity:'1 year',product:'CSVN Starter Listing — 12 Months',tier:'Standard'},
   pro:{key:'pro',name:'Featured Pro Growth',short:'Featured Pro',amount:4999,validity:'2 years',product:'CSVN Featured Pro Growth — 24 Months',tier:'Premium'},
@@ -221,9 +320,6 @@ var PLANS={
 };
 var CONFIG={
   brandName:'CSVN — Corporate Services Vendor Network',
-  upiId:'BHARATPE09B9S1M8C3G33183@yesbankltd',
-  payeeName:'Sachin Ambekar',
-  qrUrl:'/qr.png',
   supportEmail:'info@csvn.in',
   supportPhone:'+91 87939 32827',
   adminEndpoint:'https://formsubmit.co/ajax/info@csvn.in'
@@ -231,34 +327,23 @@ var CONFIG={
 function currentPlan(){return PLANS[state.plan]||PLANS.starter;}
 function formatINR(n){return '₹'+n.toLocaleString('en-IN');}
 function formatINRDecimal(n){return '₹'+n.toLocaleString('en-IN')+'.00';}
-var STORAGE_KEY='csvn_payment_v2';
-var state={step:1,plan:'starter',form:{},hasScreenshot:false,submittedRef:null,receiptData:null};
+var STORAGE_KEY='csvn_uropay_v1';
+var state={step:1,plan:'starter',form:{},submittedRef:null,receiptData:null};
+
 function saveState(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({step:state.step,plan:state.plan,form:state.form,submittedRef:state.submittedRef,receiptData:state.receiptData}));}catch(e){}}
 function loadState(){try{var raw=localStorage.getItem(STORAGE_KEY);if(!raw)return;Object.assign(state,JSON.parse(raw));}catch(e){}}
+
 function updatePlanUI(){
   var p=currentPlan();
-  // Hero
   var heroPrice=document.getElementById('csvn-hero-price');if(heroPrice)heroPrice.textContent=formatINR(p.amount);
   var heroVal=document.getElementById('csvn-hero-validity');if(heroVal)heroVal.textContent=p.name+' · '+p.validity+' validity';
-  // Step 2 title + amount
-  var s2a=document.getElementById('csvn-step2-amount');if(s2a)s2a.textContent=formatINR(p.amount);
-  var upiAmt=document.getElementById('csvn-upi-amount');if(upiAmt)upiAmt.textContent=formatINRDecimal(p.amount);
-  // Summary
   var sumPlan=document.getElementById('csvn-sum-plan');if(sumPlan)sumPlan.textContent=p.name;
   var sumVal=document.getElementById('csvn-sum-validity');if(sumVal)sumVal.textContent=p.validity;
   var sumTotal=document.getElementById('csvn-sum-total');if(sumTotal)sumTotal.textContent=formatINRDecimal(p.amount);
-  // Plan cards
   var cards=document.querySelectorAll('#csvn-plans .csvn-plan');
   for(var i=0;i<cards.length;i++){cards[i].classList.toggle('selected',cards[i].getAttribute('data-plan')===state.plan);}
-  // Mobile UPI link
-  var link=document.getElementById('csvnUpiLink');
-  if(link && link.style.display!=='none'){
-    var params=new URLSearchParams({pa:CONFIG.upiId,pn:CONFIG.payeeName,am:p.amount.toFixed(2),cu:'INR',tn:'CSVN '+p.short});
-    link.href='upi://pay?'+params.toString();
-  }
 }
-window.csvnCopyAmount=function(btn){csvnCopy(String(currentPlan().amount),btn);};
-// Plan card clicks
+
 document.querySelectorAll('#csvn-plans .csvn-plan').forEach(function(card){
   card.addEventListener('click',function(){
     state.plan=this.getAttribute('data-plan')||'starter';
@@ -267,6 +352,7 @@ document.querySelectorAll('#csvn-plans .csvn-plan').forEach(function(card){
     csvnToast(currentPlan().short+' plan selected','success');
   });
 });
+
 function showStep(n){
   state.step=Math.max(1,Math.min(4,n));saveState();
   for(var i=1;i<=4;i++){
@@ -293,15 +379,7 @@ function scrollToActiveSection(){
   window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
 }
 window.csvnShowStep=showStep;
-window.csvnNextStep=function(n){showStep(n);if(n===3)refreshSummary();};
-var stepEls=document.querySelectorAll('.csvn-step');
-for(var k=0;k<stepEls.length;k++){
-  stepEls[k].addEventListener('click',function(){
-    var n=parseInt(this.getAttribute('data-step'));
-    if(n>1 && !state.form.bizName){csvnToast('Please complete Step 1 first','error');return;}
-    showStep(n);if(n===3)refreshSummary();
-  });
-}
+
 function showFieldError(id,show){
   var err=document.getElementById('csvn-err-'+id);
   var inp=document.getElementById('csvn-'+id);
@@ -317,12 +395,15 @@ function isFieldValid(id,v){
     default:return true;
   }
 }
+
 ['bizName','contactName','email','phone','category','city','website','gst'].forEach(function(id){
   var el=document.getElementById('csvn-'+id);if(!el)return;
   function handler(){state.form[id]=el.value;saveState();if(el.classList.contains('error'))showFieldError(id,false);}
   el.addEventListener('input',handler);
   el.addEventListener('change',handler);
 });
+
+// --- REDIRECT TO UROPAY ---
 window.csvnSubmitBusiness=function(e){
   e.preventDefault();
   var ok=true;
@@ -332,107 +413,109 @@ window.csvnSubmitBusiness=function(e){
     if(!isFieldValid(id,v)){showFieldError(id,true);ok=false;}else showFieldError(id,false);
   });
   if(!ok){csvnToast('Please fix the highlighted fields','error');return;}
+  
   ['bizName','contactName','email','phone','category','city','website','gst'].forEach(function(id){
     var el=document.getElementById('csvn-'+id);if(el)state.form[id]=el.value;
   });
   saveState();
-  var btn=e.target.querySelector('button[type="submit"]');
+
+  var btn=document.getElementById('csvnContinueBtn');
   btn.classList.add('loading');
-  setTimeout(function(){btn.classList.remove('loading');csvnToast('Business details saved','success');window.csvnNextStep(2);},350);
+  
+  // Show redirecting state
+  showStep(2);
+  setTimeout(function(){
+    window.location.href = UROPAY_LINKS[state.plan];
+  }, 1000);
 };
-function refreshSummary(){
-  var f=state.form;
-  document.getElementById('csvn-sum-biz').textContent=f.bizName||'—';
-  document.getElementById('csvn-sum-name').textContent=f.contactName||'—';
-  document.getElementById('csvn-sum-email').textContent=f.email||'—';
-  document.getElementById('csvn-sum-phone').textContent=f.phone?'+91 '+f.phone:'—';
-  document.getElementById('csvn-sum-category').textContent=f.category||'—';
-  document.getElementById('csvn-sum-city').textContent=f.city||'—';
-  updatePlanUI();
-}
-var MAX_SIZE=5*1024*1024;
-window.csvnHandleFile=function(input){
-  var file=input.files && input.files[0];
-  if(!file)return;
-  if(file.size>MAX_SIZE){csvnToast('File too large. Max 5 MB.','error');input.value='';return;}
-  if(!file.type.startsWith('image/')){csvnToast('Please upload an image file','error');input.value='';return;}
-  var reader=new FileReader();
-  reader.onload=function(e){
-    document.getElementById('csvnFileThumb').src=e.target.result;
-    document.getElementById('csvnFileName').textContent=file.name;
-    document.getElementById('csvnFileSize').textContent=(file.size/1024).toFixed(1)+' KB';
-    document.getElementById('csvnFilePreview').classList.add('show');
-    document.getElementById('csvnUpload').style.display='none';
-    showFieldError('screenshot',false);
-    state.hasScreenshot=true;saveState();
-  };
-  reader.readAsDataURL(file);
-};
-window.csvnRemoveFile=function(){
-  document.getElementById('csvn-screenshot').value='';
-  document.getElementById('csvnFilePreview').classList.remove('show');
-  document.getElementById('csvnUpload').style.display='block';
-  state.hasScreenshot=false;saveState();
-};
-window.csvnSubmitPayment=function(e){
-  e.preventDefault();
-  var utr=document.getElementById('csvn-utr').value.trim();
-  if(utr.length!==12){showFieldError('utr',true);csvnToast('Please enter a valid 12-digit UTR','error');return;}
-  showFieldError('utr',false);
-  if(!state.hasScreenshot){showFieldError('screenshot',true);csvnToast('Please attach the payment screenshot','error');return;}
-  showFieldError('screenshot',false);
-  var btn=document.getElementById('csvnSubmitBtn');
-  btn.classList.add('loading');
-  var ref='CSVN-'+Date.now().toString(36).toUpperCase().slice(-6)+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
-  state.submittedRef=ref;
-  var f=state.form;var p=currentPlan();
-  state.receiptData={ref:ref,plan:p.key,planName:p.name,planShort:p.short,tier:p.tier,validity:p.validity,product:p.product,business:f.bizName||'',name:f.contactName||'',email:f.email||'',phone:f.phone||'',category:f.category||'',city:f.city||'',website:f.website||'',gst:f.gst||'',utr:utr,amount:p.amount,paidAt:new Date().toISOString()};
-  saveState();
-  sendEmails(state.receiptData).then(function(){csvnToast('Receipt generated & emailed','success');}).catch(function(err){console.error(err);csvnToast('Receipt generated (email may be delayed)','info');});
-  document.getElementById('csvnPaymentForm').style.display='none';
-  document.getElementById('csvnSuccessRef').textContent='Receipt: '+ref;
-  document.getElementById('csvnSuccess').classList.add('show');
-  document.getElementById('csvn-section-4').style.display='block';
-  var steps2=document.querySelectorAll('.csvn-step');
-  for(var i=0;i<steps2.length;i++){
-    var s=parseInt(steps2[i].getAttribute('data-step'));
-    steps2[i].classList.toggle('done',s<=3);
-    steps2[i].classList.toggle('active',s===4);
+
+// --- HANDLE RETURN FROM UROPAY ---
+var urlParams = new URLSearchParams(window.location.search);
+var status = urlParams.get('status');
+
+if (status === 'success') {
+  loadState();
+  if (state.form && state.form.bizName) {
+    // Generate a CSVN Reference ID
+    var ref = 'CSVN-' + Date.now().toString(36).toUpperCase().slice(-6) + '-' + Math.random().toString(36).slice(2,6).toUpperCase();
+    state.submittedRef = ref;
+    var p = currentPlan();
+    var f = state.form;
+    
+    state.receiptData = {
+      ref: ref, plan: p.key, planName: p.name, planShort: p.short, tier: p.tier, validity: p.validity, product: p.product,
+      business: f.bizName || '', name: f.contactName || '', email: f.email || '', phone: f.phone || '',
+      category: f.category || '', city: f.city || '', website: f.website || '', gst: f.gst || '',
+      utr: 'UROPAY-' + ref, amount: p.amount, paidAt: new Date().toISOString()
+    };
+    saveState();
+    
+    // Update Summary
+    document.getElementById('csvn-sum-biz').textContent = f.bizName;
+    document.getElementById('csvn-sum-name').textContent = f.contactName;
+    document.getElementById('csvn-sum-email').textContent = f.email;
+    document.getElementById('csvn-sum-phone').textContent = '+91 ' + f.phone;
+    document.getElementById('csvn-sum-category').textContent = f.category;
+    document.getElementById('csvn-sum-city').textContent = f.city;
+    document.getElementById('csvnSuccessRef').textContent = 'Order ID: ' + ref;
+    
+    // Notify Admin
+    sendAdminNotification(state.receiptData);
+    
+    // Show Success UI
+    showStep(3);
+    document.getElementById('csvn-section-4').style.display = 'block';
+    csvnToast('Payment Successful! Receipt ready.', 'success');
+  } else {
+    csvnToast('Session expired. Please fill the form again.', 'error');
+    showStep(1);
   }
-  state.step=3;saveState();
-  btn.classList.remove('loading');
-  requestAnimationFrame(function(){requestAnimationFrame(scrollToActiveSection);});
-};
-function sendEmails(d){
-  var dateStr=new Date(d.paidAt).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
-  var jsonSnippet=JSON.stringify({id:d.ref.toLowerCase().replace(/[^a-z0-9]/g,'-'),name:d.business,phone:d.phone,city:d.city,category:(d.category||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''),tier:d.tier,order:999,website:d.website||'',gst:d.gst||'',email:d.email,plan:d.planShort},null,2);
-  var payload={
-    _subject:'🟡 PENDING VERIFICATION — '+d.planShort+' — '+d.business+' (₹'+d.amount+') — UTR: '+d.utr+' | CSVN',
-    _template:'table',
-    _captcha:'false',
-    _replyto:d.email,
-    _cc:d.email,
-    'Receipt No.':d.ref,
-    'Plan Selected':d.planName,
-    'Plan Tier':d.tier,
-    'Validity':d.validity,
-    'Business Name':d.business,
-    'Account Holder':d.name,
-    'Email':d.email,
-    'WhatsApp':'+91 '+d.phone,
-    'Category':d.category,
-    'City':d.city,
-    'Website':d.website||'—',
-    'GST Number':d.gst||'—',
-    'Amount Paid':'Rs. '+d.amount,
-    'UPI / UTR':d.utr,
-    'Payment Date':dateStr,
-    'Status':'⚠ PENDING VERIFICATION',
-    'Next Action':'1) Verify UTR against BharatPe. 2) Paste JSON below into data/clients/real-XX.json. 3) Push to GitHub.',
-    '--- JSON for data/clients/ ---':jsonSnippet
-  };
-  return fetch(CONFIG.adminEndpoint,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)}).then(function(res){if(!res.ok)throw new Error('Email failed: '+res.status);return res;});
+} else if (status === 'failed') {
+  csvnToast('Payment failed or cancelled. Please try again.', 'error');
+  showStep(1);
+} else {
+  // Normal page load
+  loadState();
+  Object.keys(state.form).forEach(function(k){var el=document.getElementById('csvn-'+k);if(el&&state.form[k])el.value=state.form[k];});
+  updatePlanUI();
+  showStep(state.step || 1);
 }
+
+// --- ADMIN NOTIFICATION VIA FORMSUBMIT ---
+function sendAdminNotification(d){
+  var dateStr = new Date(d.paidAt).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'});
+  var payload = {
+    _subject: '🟢 PAID VIA UROPAY: ' + d.planShort + ' — ' + d.business + ' (₹' + d.amount + ')',
+    _template: 'table',
+    _captcha: 'false',
+    _replyto: d.email,
+    _cc: d.email,
+    'Receipt No.': d.ref,
+    'Plan Selected': d.planName,
+    'Plan Tier': d.tier,
+    'Validity': d.validity,
+    'Business Name': d.business,
+    'Account Holder': d.name,
+    'Email': d.email,
+    'WhatsApp': '+91 ' + d.phone,
+    'Category': d.category,
+    'City': d.city,
+    'Website': d.website || '—',
+    'GST Number': d.gst || '—',
+    'Amount Paid': 'Rs. ' + d.amount,
+    'UroPay Order ID': d.utr,
+    'Payment Date': dateStr,
+    'Status': '✅ PAID — ACTION REQUIRED',
+    'Next Action': '1) Verify payment in UroPay dashboard. 2) Activate listing in your data/clients/ folder.'
+  };
+  fetch(CONFIG.adminEndpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(function(err){ console.log('Admin email failed:', err); });
+}
+
+// --- PDF INVOICE GENERATOR ---
 window.csvnDownloadInvoice=function(btn){
   var d=state.receiptData;
   if(!d){csvnToast('No receipt data available','error');return;}
@@ -460,7 +543,7 @@ window.csvnDownloadInvoice=function(btn){
     // Receipt Details
     doc.setTextColor(15,23,42);doc.setFont('helvetica','bold');doc.setFontSize(11);doc.text('Receipt Details',margin,y);
     y+=3;doc.setDrawColor(226,232,240);doc.line(margin,y,pageW-margin,y);y+=7;
-    [['Receipt No.',d.ref],['Receipt Date',new Date(d.paidAt).toLocaleDateString('en-IN',{dateStyle:'medium'})],['Payment Method','UPI / BharatPe (Yes Bank)'],['Payment Status','Paid — Awaiting Verification']].forEach(function(row){
+    [['Receipt No.',d.ref],['Receipt Date',new Date(d.paidAt).toLocaleDateString('en-IN',{dateStyle:'medium'})],['Payment Method','UroPay (Secured Payment Gateway)'],['Payment Status','PAID']].forEach(function(row){
       doc.setFont('helvetica','normal');doc.setTextColor(100,116,139);doc.text(row[0],margin,y);
       doc.setFont('helvetica','bold');doc.setTextColor(15,23,42);doc.text(String(row[1]),margin+42,y);y+=7;
     });
@@ -496,10 +579,10 @@ window.csvnDownloadInvoice=function(btn){
     doc.setFontSize(12);doc.setTextColor(255,255,255);doc.text('TOTAL PAID',margin+3,y+3);
     doc.text('Rs. '+d.amount+'.00',pageW-margin-3,y+3,{align:'right'});y+=18;
 
-    // UTR Box
+    // Order Reference Box
     doc.setFillColor(240,253,244);doc.setDrawColor(134,239,172);doc.roundedRect(margin,y,pageW-margin*2,22,3,3,'FD');
     doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(6,95,70);
-    doc.text('UPI TRANSACTION REFERENCE (UTR)',margin+6,y+8);doc.setFontSize(14);doc.text(d.utr,margin+6,y+16);
+    doc.text('UROPAY ORDER REFERENCE',margin+6,y+8);doc.setFontSize(12);doc.text(d.utr,margin+6,y+16);
     y+=30;
 
     // Validity Box
@@ -508,9 +591,9 @@ window.csvnDownloadInvoice=function(btn){
     doc.text('IMPORTANT — VALIDITY OF THIS RECEIPT',margin+6,y+6);
     doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(120,53,15);
     [
-      'This receipt is provisional and becomes valid only upon successful verification of the UTR above against the',
-      'CSVN bank statement. Until verification is completed, this document does not constitute final proof of payment.',
-      'For verification status or queries, contact info@csvn.in within 4 business days.'
+      'This receipt is valid for the payment made via UroPay on ' + new Date(d.paidAt).toLocaleDateString('en-IN') + '.',
+      'Your listing will be activated within 4 business days of successful payment verification.',
+      'For verification status or queries, contact info@csvn.in.'
     ].forEach(function(line,i){doc.text(line,margin+6,y+12+i*4);});
     y+=32;
 
@@ -530,20 +613,7 @@ window.csvnDownloadInvoice=function(btn){
     if(btn)btn.classList.remove('loading');
   }
 };
-window.csvnCopy=function(text,btn){
-  function done(){var orig=btn.textContent;btn.textContent='✓ Copied';btn.classList.add('copied');csvnToast('Copied to clipboard','success');setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);}
-  function fallback(t,cb){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');cb();}catch(e){csvnToast('Copy failed','error');}document.body.removeChild(ta);}
-  if(navigator.clipboard && navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(function(){fallback(text,done);});}else fallback(text,done);
-};
-window.csvnDownloadQR=function(btn){
-  if(btn)btn.classList.add('loading');
-  fetch(CONFIG.qrUrl,{mode:'cors'}).then(function(r){return r.blob();}).then(function(blob){
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');a.href=url;a.download='CSVN-Payment-QR.png';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-    csvnToast('QR downloaded','success');
-  }).catch(function(){window.open(CONFIG.qrUrl,'_blank');}).finally(function(){if(btn)btn.classList.remove('loading');});
-};
+
 window.csvnToast=function(msg,type){
   var c=document.getElementById('csvnToasts');if(!c)return;
   var icons={success:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',error:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'};
@@ -551,25 +621,6 @@ window.csvnToast=function(msg,type){
   var t=document.createElement('div');t.className='csvn-toast '+(type||'info');t.innerHTML=(icons[type]||icons.info)+'<span>'+msg+'</span>';c.appendChild(t);
   setTimeout(function(){t.style.transition='opacity .3s ease,transform .3s ease';t.style.opacity='0';t.style.transform='translateY(20px)';setTimeout(function(){t.remove();},300);},2800);
 };
-window.csvnReset=function(){if(!confirm('Clear this submission and start a new payment?'))return;localStorage.removeItem(STORAGE_KEY);location.reload();};
-var isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-if(isMobile){
-  var link=document.getElementById('csvnUpiLink');
-  if(link){link.style.display='inline-flex';}
-}
-loadState();
-Object.keys(state.form).forEach(function(k){var el=document.getElementById('csvn-'+k);if(el&&state.form[k])el.value=state.form[k];});
-updatePlanUI();
-if(state.submittedRef && state.receiptData){
-  document.getElementById('csvnSuccessRef').textContent='Receipt: '+state.submittedRef;
-  document.getElementById('csvnSuccess').classList.add('show');
-  document.getElementById('csvnPaymentForm').style.display='none';
-  document.getElementById('csvn-section-4').style.display='block';
-  showStep(3);
-  var ss=document.querySelectorAll('.csvn-step');
-  for(var i2=0;i2<ss.length;i2++){var s2=parseInt(ss[i2].getAttribute('data-step'));ss[i2].classList.toggle('done',s2<=3);}
-}else{
-  showStep(state.step||1);
-}
+
 })();
 </script>
