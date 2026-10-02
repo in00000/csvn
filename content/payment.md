@@ -308,7 +308,7 @@ layout: "page"
 
 // --- UROPAY LINKS ---
 var UROPAY_LINKS = {
-  starter: 'https://p.urpy.link/mOsN',
+  starter: 'https://p.urpy.link/igwb',
   pro:     'https://p.urpy.link/0Bza',
   vip:     'https://p.urpy.link/HTIj'
 };
