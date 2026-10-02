@@ -22,14 +22,16 @@
 .csvn-wrap .csvn-info svg{width:22px;height:22px;color:#4f46e5;flex-shrink:0;margin-top:1px}
 .csvn-wrap .csvn-info p{font-size:13.5px;color:#3730a3;line-height:1.65;margin:0}
 .csvn-wrap .csvn-info strong{color:#1e1b4b;}
-.csvn-wrap .csvn-faq-item{border-bottom:1px solid #e2e8f0;padding:16px 0;cursor:pointer;user-select:none;}
-.csvn-wrap .csvn-faq-item:last-child{border-bottom:0}
-.csvn-wrap .csvn-faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:14px;font-weight:700;color:#0f172a}
-/* FIX 1: Prevent the SVG from blocking clicks */
-.csvn-wrap .csvn-faq-q svg{width:16px;height:16px;color:#64748b;transition:transform .3s ease;flex-shrink:0;pointer-events:none;}
-.csvn-wrap .csvn-faq-item.open .csvn-faq-q svg{transform:rotate(180deg);color:#4f46e5}
-.csvn-wrap .csvn-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;font-size:13px;color:#64748b;line-height:1.7}
-.csvn-wrap .csvn-faq-item.open .csvn-faq-a{max-height:500px;padding-top:10px}
+
+/* NEW CSS for Native <details> FAQ */
+.csvn-wrap details.csvn-faq-item{border-bottom:1px solid #e2e8f0;padding:16px 0;}
+.csvn-wrap details.csvn-faq-item:last-child{border-bottom:0}
+.csvn-wrap summary.csvn-faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:14px;font-weight:700;color:#0f172a;cursor:pointer;list-style:none;}
+.csvn-wrap summary.csvn-faq-q::-webkit-details-marker{display:none}
+.csvn-wrap summary.csvn-faq-q svg{width:16px;height:16px;color:#64748b;transition:transform .3s ease;flex-shrink:0;}
+.csvn-wrap details[open] summary.csvn-faq-q svg{transform:rotate(180deg);color:#4f46e5}
+.csvn-wrap details.csvn-faq-item .csvn-faq-a{padding-top:10px;font-size:13px;color:#64748b;line-height:1.7}
+
 .csvn-wrap .csvn-foot{text-align:center;font-size:12px;color:#64748b;padding:36px 16px 8px;line-height:1.7}
 .csvn-wrap .csvn-foot strong{color:#0f172a;font-weight:800}
 .csvn-wrap .csvn-foot a{color:#4f46e5;text-decoration:none;font-weight:700}
@@ -85,40 +87,28 @@
   <div class="csvn-card">
     <div style="font-size:14px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;">Frequently Asked Questions</div>
     
-    <!-- FIX 2: Removed inline onclick, added class only -->
-    <div class="csvn-faq-item">
-      <div class="csvn-faq-q">How do I pay?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <!-- NATIVE HTML FAQ - NO JAVASCRIPT NEEDED -->
+    <details class="csvn-faq-item">
+      <summary class="csvn-faq-q">How do I pay?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
       <div class="csvn-faq-a">Click the "Proceed to Secure Payment" button above. You will be redirected to UroPay's secure checkout page where you can pay via UPI, Card, or Netbanking. Please enter the amount matching your chosen plan.</div>
-    </div>
+    </details>
     
-    <div class="csvn-faq-item">
-      <div class="csvn-faq-q">How will I get my receipt?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <details class="csvn-faq-item">
+      <summary class="csvn-faq-q">How will I get my receipt?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
       <div class="csvn-faq-a">UroPay will instantly email you an official payment receipt after your transaction is successful.</div>
-    </div>
+    </details>
 
-    <div class="csvn-faq-item">
-      <div class="csvn-faq-q">How long does activation take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <details class="csvn-faq-item">
+      <summary class="csvn-faq-q">How long does activation take?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
       <div class="csvn-faq-a">We verify your payment and activate your listing within 4 business days. You'll receive an email confirmation once it's live.</div>
-    </div>
+    </details>
 
-    <div class="csvn-faq-item">
-      <div class="csvn-faq-q">Is the payment refundable?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <details class="csvn-faq-item">
+      <summary class="csvn-faq-q">Is the payment refundable?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
       <div class="csvn-faq-a">Yes — full refund if requested before your listing goes live. Once the listing is activated, refunds are subject to our <a href="/refund/" style="color:#4f46e5;font-weight:700">Refund Policy</a>.</div>
-    </div>
+    </details>
   </div>
 
   <p class="csvn-foot"><strong>CSVN</strong> — Corporate Services Vendor Network<br>Nigdi, Pimpri-Chinchwad, Pune, Maharashtra<br><a href="mailto:info@csvn.in">info@csvn.in</a> · <a href="tel:+918793932827">+91 87939 32827</a> · Mon–Sat, 10 AM – 6 PM IST</p>
 </div>
-
-<!-- FIX 3: Robust JavaScript wrapped in DOMContentLoaded -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var faqItems = document.querySelectorAll('.csvn-faq-item');
-    for (var i = 0; i < faqItems.length; i++) {
-      faqItems[i].addEventListener('click', function() {
-        this.classList.toggle('open');
-      });
-    }
-  });
-</script>
 {{ end }}
