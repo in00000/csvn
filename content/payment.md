@@ -1,9 +1,4 @@
----
-title: "Payment"
-description: "Pay for your CSVN listing. Starter ₹999/year, Featured Pro ₹4,999/2 years, VIP Leader ₹9,999/2 years. Secure payments via UroPay."
-layout: "page"
----
-
+{{ define "main" }}
 <div style="max-width:800px; margin:0 auto; padding:40px 20px; font-family:'Inter',system-ui,-apple-system,sans-serif; color:#1e293b;">
 
   <!-- Hero -->
@@ -55,7 +50,7 @@ layout: "page"
   </div>
 
   <!-- CTA Button -->
-  <a href="https://p.urpy.link/OJbQ" style="display:block; text-align:center; background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%); color:#fff; text-decoration:none; font-size:17px; font-weight:800; padding:20px 32px; border-radius:14px; box-shadow:0 10px 28px -6px rgba(79,70,229,.5); transition:transform .2s ease;">Proceed to Secure Payment →</a>
+  <a href="https://p.urpy.link/OJbQ" style="display:block; text-align:center; background:linear-gradient(135deg,#4f46e5 0%,#6366f1 100%); color:#fff; text-decoration:none; font-size:17px; font-weight:800; padding:20px 32px; border-radius:14px; box-shadow:0 10px 28px -6px rgba(79,70,229,.5);">Proceed to Secure Payment →</a>
 
   <!-- Trust -->
   <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-top:24px; font-size:12px; color:#64748b; font-weight:500;">
@@ -116,3 +111,4 @@ layout: "page"
   </div>
 
 </div>
+{{ end }}
