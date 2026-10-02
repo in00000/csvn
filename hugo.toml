@@ -66,5 +66,3 @@ disableKinds = ["RSS", "term"]
 # Generate HTML for every page + a sitemap for the home page.
 [outputs]
   home = ["HTML", "Sitemap"]
-  [markup.goldmark.renderer]
-unsafe = true
