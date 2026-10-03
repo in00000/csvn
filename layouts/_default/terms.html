@@ -6,73 +6,73 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-  {{/* Breadcrumb */}}
+  {{/* ── Breadcrumb ─────────────────────────────────────────── */}}
   <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4">
     <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
     <span class="text-slate-300">/</span>
-    <span class="text-slate-800 font-medium">All Categories</span>
+    <span class="text-slate-800 font-medium">Categories</span>
   </nav>
 
-  {{/* Hero header */}}
+  {{/* ── Hero header ────────────────────────────────────────── */}}
   <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl overflow-hidden mb-8 relative">
     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
     <div class="relative z-10 p-8 sm:p-10">
       <span class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">
         <i class="fa-solid fa-table-cells-large"></i> Service Directory
       </span>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">All Categories</h1>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">Explore B2B Service Categories</h1>
       <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
-        Browse all {{ $totalCats }} corporate service categories organised into {{ len $allGroups }} service groups.
+        {{ $totalCats }} categories across {{ len $allGroups }} service groups. Click any group below to see its categories, then click a category to browse listed vendors.
       </p>
     </div>
   </div>
 
-  {{/* Category groups */}}
-  {{ range $allGroups }}
-    {{ $groupId   := .id }}
-    {{ $groupName := .name }}
-    {{ $groupSub  := .sub }}
-    {{ $groupIcon := .icon }}
-    {{ $groupCats := where $allCats "group" $groupId }}
-
-    {{ if $groupCats }}
-      <section class="mb-8">
-        <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200">
-          <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl shrink-0 border border-indigo-100">
+  {{/* ── 12 Group cards (click to expand) ────────────────────── */}}
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+    {{ range $allGroups }}
+      {{ $groupId   := .id }}
+      {{ $groupName := .name }}
+      {{ $groupSub  := .sub }}
+      {{ $groupIcon := .icon }}
+      {{ $count     := len (where $allCats "group" $groupId) }}
+      <button type="button"
+              class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between"
+              data-target="group-{{ $groupId }}">
+        <div>
+          <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100">
             <i class="fa-solid {{ $groupIcon }}"></i>
           </div>
-          <div class="min-w-0 flex-1">
-            <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">{{ $groupName }}</h2>
-            {{ if $groupSub }}<p class="text-xs text-slate-500 leading-relaxed">{{ $groupSub }}</p>{{ end }}
-          </div>
-          <span class="text-xs font-semibold text-slate-400 shrink-0">{{ len $groupCats }} categories</span>
+          <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">
+            {{ $groupName }}
+          </h3>
+          <p class="text-xs text-slate-500 leading-relaxed">{{ $groupSub }}</p>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {{ range $groupCats }}
-            <a href="/categories/{{ .slug }}/"
-               class="group flex items-start gap-3 bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-md rounded-xl p-4 transition-all">
-              <span class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                <i class="fa-solid fa-circle text-[6px]"></i>
-              </span>
-              <div class="min-w-0 flex-1">
-                <div class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug mb-1">
-                  {{ .name }}
-                </div>
-                {{ with .description }}
-                  <p class="text-[11.5px] text-slate-500 leading-relaxed line-clamp-2">{{ . }}</p>
-                {{ end }}
-              </div>
-              <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all text-[10px] mt-2 shrink-0"></i>
-            </a>
-          {{ end }}
+        <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+          <span class="text-slate-400">{{ $count }} categories</span>
+          <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+            Browse <i class="fa-solid fa-arrow-right text-[10px]"></i>
+          </span>
         </div>
-      </section>
+      </button>
     {{ end }}
-  {{ end }}
+  </div>
 
-  {{/* CTA strip */}}
-  <section class="mt-12">
+  {{/* ── Expandable panel (hidden until a group is clicked) ─── */}}
+  <div id="home-cat-panel" class="hidden mb-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="flex items-center justify-between gap-3 px-6 py-4 border-b border-slate-100">
+      <div id="home-cat-title" class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+        <i class="fa-solid fa-folder-open text-indigo-600"></i>
+        <span>Select a category</span>
+      </div>
+      <button type="button" id="home-cat-close" class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div id="home-cat-body" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"></div>
+  </div>
+
+  {{/* ── CTA strip ──────────────────────────────────────────── */}}
+  <section class="mt-8">
     <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-8 sm:p-12 text-white text-center relative overflow-hidden">
       <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
       <div class="relative z-10 max-w-2xl mx-auto">
@@ -91,5 +91,63 @@
   </section>
 
 </div>
+
+{{/* ── Category panel JS ────────────────────────────────────── */}}
+<script>
+  (function () {
+    'use strict';
+
+    var groups = {{ .Site.Data.categories.groups | jsonify | safeJS }};
+    var cats   = {{ .Site.Data.categories.categories | jsonify | safeJS }};
+
+    var panel    = document.getElementById('home-cat-panel');
+    var titleEl  = document.getElementById('home-cat-title');
+    var titleTxt = titleEl.querySelector('span');
+    var body     = document.getElementById('home-cat-body');
+    var closeBtn = document.getElementById('home-cat-close');
+
+    document.querySelectorAll('.home-cat-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var groupId = card.getAttribute('data-target').replace('group-', '');
+        var group = groups.find(function (g) { return g.id === groupId; });
+        if (!group) return;
+
+        // Update title
+        titleTxt.textContent = group.name + ' — ' + group.categories.length + ' categories';
+
+        // Clear body
+        body.innerHTML = '';
+
+        // Add category items
+        cats.filter(function (c) { return c.group === groupId; })
+            .forEach(function (c) {
+              var a = document.createElement('a');
+              a.href = '/categories/' + c.slug + '/';
+              a.className = 'flex items-center justify-between gap-3 px-6 py-4 text-sm font-semibold text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors border-b border-slate-100 last:border-b-0 group';
+              a.innerHTML =
+                '<span class="flex items-center gap-3 min-w-0">' +
+                  '<span class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors">' +
+                    '<i class="fa-solid fa-circle text-[6px]"></i>' +
+                  '</span>' +
+                  '<span class="min-w-0">' +
+                    '<span class="block truncate">' + c.name + '</span>' +
+                    (c.description ? '<span class="block text-[11px] text-slate-400 font-medium truncate">' + c.description + '</span>' : '') +
+                  '</span>' +
+                '</span>' +
+                '<i class="fa-solid fa-arrow-right text-slate-300 text-[11px] group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all shrink-0"></i>';
+              body.appendChild(a);
+            });
+
+        // Show panel and scroll into view
+        panel.classList.remove('hidden');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+
+    closeBtn.addEventListener('click', function () {
+      panel.classList.add('hidden');
+    });
+  })();
+</script>
 
 {{ end }}
