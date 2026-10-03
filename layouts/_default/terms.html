@@ -1,0 +1,95 @@
+{{ define "main" }}
+
+{{ $allGroups := .Site.Data.categories.groups }}
+{{ $allCats   := .Site.Data.categories.categories }}
+{{ $totalCats := len $allCats }}
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+  {{/* Breadcrumb */}}
+  <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4">
+    <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+    <span class="text-slate-300">/</span>
+    <span class="text-slate-800 font-medium">All Categories</span>
+  </nav>
+
+  {{/* Hero header */}}
+  <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl overflow-hidden mb-8 relative">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#818cf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    <div class="relative z-10 p-8 sm:p-10">
+      <span class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-4">
+        <i class="fa-solid fa-table-cells-large"></i> Service Directory
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">All Categories</h1>
+      <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
+        Browse all {{ $totalCats }} corporate service categories organised into {{ len $allGroups }} service groups.
+      </p>
+    </div>
+  </div>
+
+  {{/* Category groups */}}
+  {{ range $allGroups }}
+    {{ $groupId   := .id }}
+    {{ $groupName := .name }}
+    {{ $groupSub  := .sub }}
+    {{ $groupIcon := .icon }}
+    {{ $groupCats := where $allCats "group" $groupId }}
+
+    {{ if $groupCats }}
+      <section class="mb-8">
+        <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-200">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl shrink-0 border border-indigo-100">
+            <i class="fa-solid {{ $groupIcon }}"></i>
+          </div>
+          <div class="min-w-0 flex-1">
+            <h2 class="text-lg font-extrabold text-slate-900 tracking-tight">{{ $groupName }}</h2>
+            {{ if $groupSub }}<p class="text-xs text-slate-500 leading-relaxed">{{ $groupSub }}</p>{{ end }}
+          </div>
+          <span class="text-xs font-semibold text-slate-400 shrink-0">{{ len $groupCats }} categories</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {{ range $groupCats }}
+            <a href="/categories/{{ .slug }}/"
+               class="group flex items-start gap-3 bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-md rounded-xl p-4 transition-all">
+              <span class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                <i class="fa-solid fa-circle text-[6px]"></i>
+              </span>
+              <div class="min-w-0 flex-1">
+                <div class="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug mb-1">
+                  {{ .name }}
+                </div>
+                {{ with .description }}
+                  <p class="text-[11.5px] text-slate-500 leading-relaxed line-clamp-2">{{ . }}</p>
+                {{ end }}
+              </div>
+              <i class="fa-solid fa-arrow-right text-slate-300 group-hover:text-indigo-500 group-hover:translate-x-0.5 transition-all text-[10px] mt-2 shrink-0"></i>
+            </a>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+
+  {{/* CTA strip */}}
+  <section class="mt-12">
+    <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-8 sm:p-12 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
+      <div class="relative z-10 max-w-2xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Cannot find your category?</h2>
+        <p class="text-sm text-slate-300 mb-6">Contact us and we will help you find the right listing category for your business.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/contact/" class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-md">
+            <i class="fa-solid fa-envelope text-xs"></i> Contact Us
+          </a>
+          <a href="/list-your-business/" class="inline-flex items-center gap-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/40 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+            <i class="fa-solid fa-plus text-xs"></i> List Your Business
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{{ end }}
